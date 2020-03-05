@@ -15,6 +15,7 @@ w.onload=()=>{
 
 
 // SLIDER:
+// TODO: mejorar modulo para poder reutilizarlo sin duplicar codigo
 var j=1,x=d.getElementsByClassName("carouselItem");
 const showDivs=n=>{
   if(n>x.length){j=1}
@@ -47,6 +48,7 @@ const altClassFromSelector = ( clase, selector, mainClass = false )=>{
   // if there is a main class removes all other classes
   if(mainClass){
     x.classList.forEach( item=>{
+      // TODO: testear si anda con el nuevo condicional
       if( item!=mainClass && item!=clase ){
         x.classList.remove(item);
       }

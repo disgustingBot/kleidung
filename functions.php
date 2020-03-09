@@ -6,7 +6,7 @@ function lattte_setup(){
   wp_enqueue_style('style', get_stylesheet_uri(), NULL, microtime(), 'all');
   wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), NULL, microtime(), true);
 
-  
+
 }
 add_action('wp_enqueue_scripts', 'lattte_setup');
 
@@ -18,10 +18,10 @@ function gp_init() {
   add_theme_support('html5',
     array('comment-list', 'comment-form', 'search-form')
   );
-  // add_theme_support( 'woocommerce' );
-  // add_theme_support( 'wc-product-gallery-zoom' );
-  // add_theme_support( 'wc-product-gallery-lightbox' );
-  // add_theme_support( 'wc-product-gallery-slider' );
+  add_theme_support( 'woocommerce' );
+  add_theme_support( 'wc-product-gallery-zoom' );
+  add_theme_support( 'wc-product-gallery-lightbox' );
+  add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action('after_setup_theme', 'gp_init');
 

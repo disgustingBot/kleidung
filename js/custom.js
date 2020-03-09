@@ -1,4 +1,6 @@
 d=document;w=window;c=console;
+import $ from 'jquery';
+import ajaxLoadMore from 'ajaxLoadMore';
 
 
 w.onload=()=>{

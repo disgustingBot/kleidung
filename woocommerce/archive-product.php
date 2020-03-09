@@ -1,28 +1,32 @@
 <?php get_header(); ?>
+<?php
+global $wp_query;
+?>
 
-<div class="shopFront">
+<section
+  class="slider"
+  data-page="<?= get_query_var('paged') ? get_query_var('paged') : 1; ?>"
+  data-max="<?= $wp_query->max_num_pages; ?>"
+>
 
+  <h3 class="sliderTitle">LASTEST <?php // echo $wp_query->max_num_pages; ?></h3>
+  <?php while(have_posts()){the_post(); ?>
+    <?php global $product; ?>
 
-
-
-  <?php while (have_posts()){the_post(); ?>
-
-  <figure class="product">
-    <a class="productImg" href="<?php echo get_permalink(); ?>"><img class="productImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></a>
-    <figcaption class="productCaption">
-      <h5 class="productTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h5>
-      <p class="productTxt"><a href="<?php echo get_permalink(); ?>"><?php echo excerpt(70); ?></a></p>
-      <p class="productPrice">
-        <?php
-        // $product = wc_get_product( $product_id );
-        echo $product->get_price_html(); ?>
-      </p>
-    </figcaption>
-  </figure>
+    <figure class="card">
+      <a class="cardImg" href="<?php echo get_permalink(); ?>">
+        <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+      </a>
+      <!-- <figcaption class="cardCaption">
+        <h4 class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
+        <p class="productCardTxt"><a href="<?php echo get_permalink(); ?>"><?php echo excerpt(70); ?></a></p>
+      </figcaption> -->
+    </figure>
   <?php } ?>
 
-</div>
-<?php echo latte_pagination($blogPosts->max_num_pages); ?>
+  <button class="sliderArrow" type="button" name="button">&#62;</button>
 
+</section>
+<a class="btn" href="">View all</a>
 
 <?php get_footer(); ?>

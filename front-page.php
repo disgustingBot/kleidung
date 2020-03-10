@@ -9,7 +9,6 @@
 <section class="homeATF ATF">
   <img class="homeATFImg rowcol1" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
   <h1 class="homeATFTitle rowcol1"><?php the_title(); ?></h1>
-
 </section>
 
 
@@ -22,7 +21,7 @@
   );
   $blogPosts=new WP_Query($args); ?>
 
-  <h3 class="sliderTitle">LATEST</h3>
+  <h3 class="sliderTitle">DISCOVER THE LATEST</h3>
   <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
     <?php global $product; ?>
 

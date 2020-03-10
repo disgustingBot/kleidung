@@ -74,8 +74,8 @@ function excerpt($charNumber){
 
 
  function register_menus() {
-   // register_nav_menu('navBar',__( 'Header' ));
-   // register_nav_menu('navBarMobile',__( 'Header Mobile' ));
+   register_nav_menu('header',__( 'Header' ));
+   register_nav_menu('footerNav',__( 'Footer' ));
    // register_nav_menu('contactMenu',__( 'Contact Menu' ));
    // add_post_type_support( 'page', 'excerpt' );
  }

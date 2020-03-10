@@ -2,10 +2,16 @@
 <?php
   global $wp_query;
 ?>
-<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/atf.jpg" alt=""> -->
 <?php while(have_posts()){the_post();
   //the_content();
 } ?>
+
+<section class="homeATF ATF">
+  <img class="homeATFImg rowcol1" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+  <h1 class="homeATFTitle rowcol1"><?php the_title(); ?></h1>
+
+</section>
+
 
 
 <section class="slider">
@@ -16,7 +22,7 @@
   );
   $blogPosts=new WP_Query($args); ?>
 
-  <h3 class="sliderTitle">LASTEST <?php echo $wp_query->max_num_pages; ?></h3>
+  <h3 class="sliderTitle">LATEST</h3>
   <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
     <?php global $product; ?>
 
@@ -33,8 +39,17 @@
 
   <button class="sliderArrow" type="button" name="button">&#62;</button>
 
+  <a class="btn" href="">View all</a>
 </section>
-<a class="btn" href="">View all</a>
+
+
+<figure class="color">
+  <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
+  <figcaption class="colorCaption">
+    <h5 class="colorTitle">COLOR</h5>
+    <p class="colorTxt">Cosas cosas lorem ipsum si</p>
+  </figcaption>
+</figure>
     <!-- <div id="more_posts">Load More</div> -->
 
 

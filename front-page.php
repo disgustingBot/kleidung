@@ -21,7 +21,7 @@
   );
   $blogPosts=new WP_Query($args); ?>
 
-  <h3 class="sliderTitle">DISCOVER THE LATEST</h3>
+  <h3 class="sliderTitle title">DISCOVER THE LATEST</h3>
   <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
     <?php global $product; ?>
 
@@ -45,8 +45,9 @@
 <figure class="color">
   <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
   <figcaption class="colorCaption">
-    <h5 class="colorTitle">COLOR</h5>
-    <p class="colorTxt">Cosas cosas lorem ipsum si</p>
+    <h5 class="colorTitle"><nobr>SLOW FASHON</nobr></h5>
+    <p class="colorTxt">Against the overproduction, we bet for exclusivity and take care of the people who work in the manufacturing process.</p>
+    <a class="btn" href="">About us</a>
   </figcaption>
 </figure>
     <!-- <div id="more_posts">Load More</div> -->

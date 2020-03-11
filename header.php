@@ -92,7 +92,7 @@
       <form class="suscribe" action="">
       <p class="suscribeTitle">Suscríbete a nuestro newsletter</p>
       <input class="suscribeInput" type="email" placeholder="E-MAIL">
-      <button class="btn suscribeButton"></button>
+      <button class="btn suscribeButton">SUSCRIBE</button>
       </form>
       <?php include 'socialMedia.php'; ?>
 

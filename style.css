@@ -96,7 +96,10 @@ FIN DE MAPA DE CONTENIDOS */
   /* ?HEADER */
   --headerDisplay: none;
   --mobileHeaderDisplay: flex;
+
   /* ?FOOTER */
+  --footerTemplateColumns: 1fr;
+  --footerGridGap: 1.5rem;
 
   /* ?SLIDER */
   --frontPageSilderTemplateColumns: 1fr 1fr;
@@ -165,6 +168,9 @@ FIN DE MAPA DE CONTENIDOS */
     --mobileHeaderDisplay: none;
 
     /* ?FOOTER */
+    --footerTemplateColumns: repeat(4,1fr);
+    --footerGridGap: .5rem;
+
 
     /* ?SLIDER */
     --frontPageSilderTemplateColumns: repeat(4,1fr);
@@ -387,6 +393,7 @@ main ul,main ol{list-style:unset}
 
 .mobileHeader {
   display: var(--mobileHeaderDisplay);
+  /* display: none; */
   flex-direction: column;
   width: 100%;
   overflow: hidden;
@@ -447,6 +454,8 @@ main ul,main ol{list-style:unset}
   color: black;
   width: max-content;
 }
+
+.mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
 
 .mobileNavBar .socialMedia .socialSVGLink {
   width: 3rem;
@@ -638,12 +647,37 @@ main ul,main ol{list-style:unset}
                           6.7) =suscribe:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.suscribe{
+.suscribe {
   color:white;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
 }
-.suscribeInput{
+
+.suscribeInput {
   background:none;
-  border:1px solid white;
+  border: 1px solid white;
+  padding: .5rem;
+}
+
+.suscribeTitle {
+  font-size: .5rem;
+  margin: .4rem 0;
+  word-spacing: 2px;
+}
+
+.suscribeButton {
+  background: white;
+  color: black;
+  transition: .25s;
+  font-weight: bold;
+  margin: .5rem auto;
+  margin-right: 0;
+}
+
+.suscribeButton:hover {
+  background: black;
+  color: white;
 }
 
 /* ---------------------------------------------------------------------------
@@ -690,17 +724,48 @@ main ul,main ol{list-style:unset}
 .footer{
   background:#202020;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-gap:.5rem;
-  padding:1rem var(--lateral);
+  grid-template-columns: var(--footerTemplateColumns);
+  grid-gap:var(--footerGridGap);
+  padding: 4rem  1rem calc(var(--lateral) / 2 );
 }
-.footerBrand{
-  color:white;
-  font-family: 'Roboto', sans-serif;
-  font-weight:100;
-  text-align:center;
-  text-transform:uppercase;
+
+.logoFooterLink {margin: auto;}
+
+.logoFooter {height: .75rem;width: auto;}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  font-size: .75rem;
+  height: 100%;
+  justify-content: space-between;
+  text-transform: uppercase;
 }
+
+.footerNav li {
+  margin: .25rem 0;
+  position: relative;
+  width: max-content;
+}
+
+
+.footerNav li::after {
+  background: white;
+  bottom: -.05rem;
+  content: ' ';
+  height: .1rem;
+  left:0;
+  position: absolute;
+  transform: scale(0);
+  transition: .25s;
+  transform-origin: center;
+  width: 100%;
+}
+
+.footerNav li:hover::after {transform: scale(1);}
+
+.footer .socialMedia {color: white; margin: auto;}
+.footer .socialSVGLink  {border-color: white; margin: .5rem}
 
 .signature{
   color:#ddd;
@@ -708,4 +773,5 @@ main ul,main ol{list-style:unset}
   font-size:.7rem;
   grid-column:1/-1;
   justify-content:center;
+  margin: .25rem auto;
 }

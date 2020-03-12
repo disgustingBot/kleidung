@@ -27,12 +27,15 @@ Version: 1.0
 
 5) =ESTRUCTURA:
 
-6) =COMPONENTES:
+5.1) =COSAS QUE NO SE DONDE PONER 😊
+
+6-7) =COMPONENTES:
 6.0) =load:
 6.1) =header:
 6.2) =ATFs:
 6.2.0) =homeATF:
-6.2.1) =ShopATF
+6.2.1) =ShopATF:
+6.2.2) =ContactATF:
 6.3) =slider:
 6.4) =multiCards:
 6.4.0) =card:
@@ -46,6 +49,11 @@ Version: 1.0
 6.7) =suscribe:
 6.8) =filterBars
 6.9) =colors
+7.0) =TITLES:
+7.1) =FORMS
+
+
+
 
 9.99) =footer
 
@@ -88,6 +96,29 @@ FIN DE MAPA DE CONTENIDOS */
 
   --sizeR: calc(var(--sizeRa) * 1px);
 
+  /* SHADOWS */
+
+  /**MATERIAL DESIGN'S ELEVATION: POINTS*/
+
+  /*---- Nav drawer: 16dp
+         App bar:     4dp
+         Card:        1dp to 6dp
+         FAB:         6dp
+         Button:      2dp to 8dp
+         Dialog:      24dp ----*/
+
+    --DP0:  0px 0px 0px  rgba(0, 0, 0, 0.0),  0px 0px 0px  rgba(0, 0, 0, 0.00), 0px 0px 0px   rgba(0, 0, 0, 0.00);
+    --DP1:  0px 1px 3px  rgba(0, 0, 0, 0.2),  0px 2px 2px  rgba(0, 0, 0, 0.12), 0px 0px 2px   rgba(0, 0, 0, 0.14);
+    --DP2:  0px 1px 5px  rgba(0, 0, 0, 0.2),  0px 3px 4px  rgba(0, 0, 0, 0.12), 0px 2px 4px   rgba(0, 0, 0, 0.14);
+    --DP3:  0px 1px 8px  rgba(0, 0, 0, 0.2),  0px 3px 4px  rgba(0, 0, 0, 0.12), 0px 3px 3px   rgba(0, 0, 0, 0.14);
+    --DP4:  0px 1px 10px rgba(0, 0, 0, 0.2),  0px 4px 5px  rgba(0, 0, 0, 0.12), 0px 2px 4px   rgba(0, 0, 0, 0.14);
+    --DP6:  0px 3px 5px  rgba(0, 0, 0, 0.2),  0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px  rgba(0, 0, 0, 0.14);
+    --DP8:  0px 4px 5px  rgba(0, 0, 0, 0.2),  0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px  rgba(0, 0, 0, 0.14);
+    --DP9:  0px 5px 6px  rgba(0, 0, 0, 0.2),  0px 3px 16px rgba(0, 0, 0, 0.12), 0px 9px 12px  rgba(0, 0, 0, 0.14);
+    --DP12: 0px 7px 8px  rgba(0, 0, 0, 0.2),  0px 5px 22px rgba(0, 0, 0, 0.12), 0px 12px 17px rgba(0, 0, 0, 0.14);
+    --DP16: 0px 8px 10px rgba(0, 0, 0, 0.2),  0px 6px 30px rgba(0, 0, 0, 0.12), 0px 16px 24px rgba(0, 0, 0, 0.14);
+    --DP24: 0px 11px 15px rgba(0, 0, 0, 0.2), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 24px 38px rgba(0, 0, 0, 0.14);
+
   /* ---------------------------------------------------------------------------
   ------------------------------------------------------------------------------
       1.2) =Variables de cambio visual relacionado a al ancho de la pantalla
@@ -124,7 +155,10 @@ FIN DE MAPA DE CONTENIDOS */
   /* ATFS */
 
   /* HOME ATF */
-  --homeATFMargin: unset;
+  --homeATFMargin: 2.5rem;
+
+  /* SHOP ATF */
+  --shopATFTitleFontSize: 1.5rem;
 }
 
 
@@ -160,6 +194,11 @@ FIN DE MAPA DE CONTENIDOS */
   :root {
     /* ?HEADER */
     /* ?FOOTER */
+
+    /* ATFS */
+
+    /* SHOP ATF */
+    --shopATFTitleFontSize: 2rem;
   }
 }
 
@@ -203,7 +242,7 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* ATFS */
     /* HOME ATF */
-    --homeATFMargin: 2.5rem;
+    --homeATFMargin: unset;
   }
 }
 
@@ -228,6 +267,35 @@ FIN DE MAPA DE CONTENIDOS */
 @media  screen and (min-width: 1200px) {
   :root {
     --lateral:3rem;
+    --sizeR: calc(var(--sizeRd) * 1px);
+
+    /* ?HEADER */
+    /* ?FOOTER */
+  }
+}
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          2.5) min-width:  =1200px
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@media  screen and (min-width: 1500px) {
+  :root {
+    --lateral:5rem;
+    --sizeR: calc(var(--sizeRd) * 1px);
+
+    /* ?HEADER */
+    /* ?FOOTER */
+  }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          2.5) min-width:  =1200px
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@media  screen and (min-width: 1700px) {
+  :root {
+    --lateral:10rem;
     --sizeR: calc(var(--sizeRd) * 1px);
 
     /* ?HEADER */
@@ -265,8 +333,8 @@ img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
 main {
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 main p,
 main a,
@@ -297,6 +365,24 @@ main ul,main ol{list-style:unset}
 .flex2>*{flex:2 1 calc(50% - 1rem)}
 .flex3>*{flex:3 1 calc(33% - 1rem)}
 .flex4>*{flex:4 1 calc(25% - 1rem)}
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                  5.1) =COSAS QUE NO SE DONDE PONER 😊
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.contactBox {
+  background: black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: -3rem 15% auto 15%;
+  margin-bottom: 7.5rem;
+}
+
+
 
 
 
@@ -410,7 +496,7 @@ main ul,main ol{list-style:unset}
 
 .mobileHeader {
   display: var(--mobileHeaderDisplay);
-  /* display: none; */
+  display: none;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
@@ -440,32 +526,36 @@ main ul,main ol{list-style:unset}
                           6.2) =ATFs:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
+
+.ATF {
+  display: grid;
+  border-bottom: 2px solid black;
+}
+
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.2.0) =homeATF:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.homeATF{
-  display:grid;
+.homeATF {
   margin-top: var(--homeATFMargin);
 }
-.homeATFTitle{
+
+.homeATFTitle {
   margin: auto;
   margin-left:var(--lateral);
   padding-top:8rem;
   font-size:3rem;
   text-transform: uppercase;
 }
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.2.1) =ShopATF:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-.shopATF {
-  display: grid;
-  border-bottom: 2px solid black;
-}
 
 .ShopOverlay {
   grid-column: 1;
@@ -493,7 +583,7 @@ main ul,main ol{list-style:unset}
 }
 
 .ShopATFTitle {
-  font-size: 2rem;
+  font-size: var(--shopATFTitleFontSize);
   text-transform: uppercase;
   width: max-content;
 }
@@ -514,7 +604,11 @@ main ul,main ol{list-style:unset}
 }
 
 
-
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.2.2) =ContactATF:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
 
 
 /* ---------------------------------------------------------------------------
@@ -525,7 +619,7 @@ main ul,main ol{list-style:unset}
 .slider{
   display:grid;
   grid-template-columns: var(--frontPageSilderTemplateColumns);
-  grid-gap:.5rem;
+  grid-gap: 1rem;
   padding:1rem var(--lateral);
   position: relative;
   z-index: 1;
@@ -552,8 +646,20 @@ main ul,main ol{list-style:unset}
   /* display:grid; */
 }
 .cardImg{display:grid}
+
+.cardCaption {
+  text-align: center;
+}
+
 .cardCaption{
-  padding:.5rem;
+  padding: .5rem;
+  font-size: .6rem;
+  text-transform: uppercase;
+}
+
+.productCardPrice {
+  font-size: .8rem;
+  font-weight: bold;
 }
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -733,6 +839,11 @@ main ul,main ol{list-style:unset}
   color: black;
 }
 
+.shopBtn {
+  margin: 2rem auto;
+  margin-top: 0;
+}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.6.1) =sliderArrow:
@@ -814,12 +925,10 @@ main ul,main ol{list-style:unset}
 
 .filterBarItem {
   margin: 0 1rem;
+  width: 5rem;
+  padding: .5rem;
 }
 
-.filterBarItem::after {
-  content: 'ᐊ';
-  margin-left: .3rem;
-}
 
 
 /* ---------------------------------------------------------------------------
@@ -858,6 +967,76 @@ main ul,main ol{list-style:unset}
   margin: var(--colorCaptionBtnMargin);
   width: max-content
 }
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          7.0) =TITLES:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.ShopTitle2 {
+  grid-column: 1/-1;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          7.0) =FORMS:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  text-transform: uppercase;
+  box-shadow: var(--DP6);
+}
+
+.form .formTitle {
+  font-weight: 100;
+  margin-bottom: 1.5rem;
+}
+
+.form label {
+  font-size: .5rem;
+  margin-top: .5rem;
+}
+
+.form input, textarea {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.form input:focus, textarea:focus {
+  outline: none;
+}
+
+.form input {
+  height: 2rem;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          7.0) =contactForm:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.contactForm {
+  grid-column: 1/4;
+}
+
+
+
+
+
+
+
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           9.99) =footer

@@ -32,17 +32,22 @@ Version: 1.0
 6.1) =header:
 6.2) =ATFs:
 6.2.0) =homeATF:
+6.2.1) =ShopATF
 6.3) =slider:
 6.4) =multiCards:
 6.4.0) =card:
 6.5) =NAVIGATION BARS:
 6.5.0) =navBar:
+6.5.1) =FooterNav:
+6.5.2) =MobileNav
 6.6) =BUTTONS:
 6.6.0) =btn:
 6.6.1) =sliderArrow:
 6.7) =suscribe:
+6.8) =filterBars
+6.9) =colors
 
-6.99) =footer
+9.99) =footer
 
 FIN DE MAPA DE CONTENIDOS */
 
@@ -115,7 +120,15 @@ FIN DE MAPA DE CONTENIDOS */
   --colotTitleWidth:  100%;
   --colorTitleTextAlign: center;
   --colorCaptionBtnMargin: 1rem auto;
+
+  /* ATFS */
+
+  /* HOME ATF */
+  --homeATFMargin: unset;
 }
+
+
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                             2) =MEDIA QUERIES:
@@ -187,6 +200,10 @@ FIN DE MAPA DE CONTENIDOS */
     --colotTitleWidth:  max-content;
     --colorTitleTextAlign: left;
     --colorCaptionBtnMargin: 1rem 0;
+
+    /* ATFS */
+    /* HOME ATF */
+    --homeATFMargin: 2.5rem;
   }
 }
 
@@ -418,71 +435,6 @@ main ul,main ol{list-style:unset}
   width: auto;
 }
 
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  height: 1.5rem;
-  width: 1.5rem;
-  justify-content: space-around;
-  cursor: pointer;
-  margin: auto;
-  margin-right: var(--lateral);
-}
-
-.menuStripe {
-  width: 100%;
-  height: .2rem;
-  background: black;
-}
-
-.mobileNavBar {
-  height: calc(100vh - 2.5rem);
-  width: 100vw;
-  background: white;
-  transition: .25s;
-  position: relative;
-  transform: translateX(100vh);
-  display: flex;
-  flex-direction: column;
-  border-top: solid 2px black;
-}
-
-.mobileNavBar >* {margin: 2rem auto;}
-
-
-.mobileNavBar .suscribe {
-  color: black;
-  width: max-content;
-}
-
-.mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
-
-.mobileNavBar .socialMedia .socialSVGLink {
-  width: 3rem;
-  height: 3rem;
-  padding: .5rem;
-  margin: 1rem;
-}
-
-.mobileNavBar .socialMedia {
-  margin: auto;
-}
-
-#mobileNavBar.alt {
-  transform: translateX(0);
-}
-
-.navBarMobile {
-  display: flex;
-  flex-direction: column;
-}
-
-.navBarMobile li {
-  font-size: 2rem;
-  margin: 1rem auto;
-  width: max-content;
-}
-
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.2) =ATFs:
@@ -495,14 +447,75 @@ main ul,main ol{list-style:unset}
 --------------------------------------------------------------------------- */
 .homeATF{
   display:grid;
+  margin-top: var(--homeATFMargin);
 }
 .homeATFTitle{
   margin: auto;
   margin-left:var(--lateral);
   padding-top:8rem;
   font-size:3rem;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.2.1) =ShopATF:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.shopATF {
+  display: grid;
+  border-bottom: 2px solid black;
+}
+
+.ShopOverlay {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .5;
+}
+
+.ShopBanner {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.ShopATFTxt {
+  color: white;
+  grid-column: 1;
+  grid-row: 1;
+  width: min-content;
+  z-index: 1;
+  height: max-content;
+  margin: auto;
+  margin-left: 10%;
+}
+
+.ShopATFTitle {
+  font-size: 2rem;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.ShopATFSubtitle {
+  margin-bottom: 1rem;
+}
+
+.ShopATFTxt .btn {
+  background: white;
+  color: black;
+  margin-top: 2rem;
+  border: none;
+}
+.ShopATFTxt .btn:hover {
+  color: white;
+  background: black;
+}
+
+
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -586,10 +599,113 @@ main ul,main ol{list-style:unset}
                           6.5.1) =footerNav:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.footerNav{
-  display:grid;
+
+
+.footerNav {
   color:white;
+  display: flex;
+  flex-direction: column;
+  font-size: .75rem;
+  height: 100%;
+  justify-content: space-between;
+  text-transform: uppercase;
 }
+
+.footerNav li {
+  margin: .25rem 0;
+  position: relative;
+  width: max-content;
+}
+
+
+.footerNav li::after {
+  background: white;
+  bottom: -.05rem;
+  content: ' ';
+  height: .1rem;
+  left:0;
+  position: absolute;
+  transform: scale(0);
+  transition: .25s;
+  transform-origin: center;
+  width: 100%;
+}
+
+.footerNav li:hover::after {transform: scale(1);}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.5.2) =mobileNav:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  height: 1.5rem;
+  width: 1.5rem;
+  justify-content: space-around;
+  cursor: pointer;
+  margin: auto;
+  margin-right: var(--lateral);
+}
+
+.menuStripe {
+  width: 100%;
+  height: .2rem;
+  background: black;
+}
+
+.mobileNavBar {
+  height: calc(100vh - 2.5rem);
+  width: 100vw;
+  background: white;
+  transition: .5s;
+  position: relative;
+  transform: translateX(100vh);
+  display: flex;
+  flex-direction: column;
+  border-top: solid 2px black;
+}
+
+.mobileNavBar >* {margin: 2rem auto;}
+
+
+.mobileNavBar .suscribe {
+  color: black;
+  width: max-content;
+}
+
+.mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
+
+.mobileNavBar .socialMedia .socialSVGLink {
+  width: 3rem;
+  height: 3rem;
+  padding: .5rem;
+  margin: 1rem;
+}
+
+.mobileNavBar .socialMedia {
+  margin: auto;
+}
+
+#mobileNavBar.alt {
+  transform: translateX(0);
+}
+
+.navBarMobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.navBarMobile li {
+  font-size: 2rem;
+  margin: 1rem auto;
+  width: max-content;
+}
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -680,9 +796,35 @@ main ul,main ol{list-style:unset}
   color: white;
 }
 
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          6.7) =color:
+                          6.8) =filterBars:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.shopFilterBar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem var(--lateral);
+  margin: 1rem 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.filterBarItem {
+  margin: 0 1rem;
+}
+
+.filterBarItem::after {
+  content: 'ᐊ';
+  margin-left: .3rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.9) =color:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .color{
@@ -718,7 +860,7 @@ main ul,main ol{list-style:unset}
 }
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          6.99) =footer
+                          9.99) =footer
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .footer{
@@ -733,36 +875,7 @@ main ul,main ol{list-style:unset}
 
 .logoFooter {height: .75rem;width: auto;}
 
-.footerNav {
-  display: flex;
-  flex-direction: column;
-  font-size: .75rem;
-  height: 100%;
-  justify-content: space-between;
-  text-transform: uppercase;
-}
 
-.footerNav li {
-  margin: .25rem 0;
-  position: relative;
-  width: max-content;
-}
-
-
-.footerNav li::after {
-  background: white;
-  bottom: -.05rem;
-  content: ' ';
-  height: .1rem;
-  left:0;
-  position: absolute;
-  transform: scale(0);
-  transition: .25s;
-  transform-origin: center;
-  width: 100%;
-}
-
-.footerNav li:hover::after {transform: scale(1);}
 
 .footer .socialMedia {color: white; margin: auto;}
 .footer .socialSVGLink  {border-color: white; margin: .5rem}

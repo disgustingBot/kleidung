@@ -10,7 +10,7 @@ global $wp_query;
     <hgroup class="ShopATFTxt">
       <h3 class="ShopATFTitle">The finest clothing</h3>
       <h5 class="ShopATFSubtitle">Fluid and comfortable clothing, with a pleasant touch. Designs with a character between modern and vintage.</h5>
-      <a class="btn" href="#">See our Latest</a>
+      <a class="btn btnWhite" href="#">See our Latest</a>
     </hgroup>
   </div>
   <form class="shopFilterBar">

@@ -29,10 +29,10 @@
       <a class="cardImg" href="<?php echo get_permalink(); ?>">
         <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
       </a>
-      <!-- <figcaption class="cardCaption">
-        <h4 class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
-        <p class="productCardTxt"><a href="<?php echo get_permalink(); ?>"><?php echo excerpt(70); ?></a></p>
-      </figcaption> -->
+      <figcaption class="cardCaption">
+        <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+        <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
+      </figcaption>
     </figure>
   <?php } ?>
 

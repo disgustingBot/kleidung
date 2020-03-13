@@ -83,9 +83,9 @@ FIN DE MAPA DE CONTENIDOS */
   /* COLORS */
   /* Al editar colores siempre usar HEX y nunca
   dejar espacio entre los dos puntos y el color */
-  --color1:#000;
-  --color2:#FFF;
-  --color3:red;
+  --color1: #202020;
+  --color2: ;
+  --color3: ;
   /* --color4:#EBE1C8; */
   /* --color5:#F5F0DC; */
   /* --color6:#FFFAE6; */
@@ -586,16 +586,7 @@ main ul,main ol{list-style:unset}
   margin-bottom: 1rem;
 }
 
-.ShopATFTxt .btn {
-  background: white;
-  color: black;
-  margin-top: 2rem;
-  border: none;
-}
-.ShopATFTxt .btn:hover {
-  color: white;
-  background: black;
-}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -604,6 +595,9 @@ main ul,main ol{list-style:unset}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+.contactBanner {
+  max-height: 250px;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -833,9 +827,24 @@ main ul,main ol{list-style:unset}
   color: black;
 }
 
+.btnWhite {
+  background: white;
+  color: black;
+}
+
+.btnWhite:hover {
+  color: white;
+  background: black;
+}
+
 .shopBtn {
   margin: 2rem auto;
   margin-top: 0;
+}
+
+.ShopATFTxt .btn {
+  margin-top: 2rem;
+  border: none;
 }
 
 /* ---------------------------------------------------------------------------
@@ -888,17 +897,10 @@ main ul,main ol{list-style:unset}
 }
 
 .suscribeButton {
-  background: white;
-  color: black;
   transition: .25s;
   font-weight: bold;
   margin: .5rem auto;
   margin-right: 0;
-}
-
-.suscribeButton:hover {
-  background: black;
-  color: white;
 }
 
 
@@ -1022,21 +1024,45 @@ main ul,main ol{list-style:unset}
 
 .contactForm {
   grid-column: 1/4;
+  box-shadow: none!important;
 }
 
-
+.contactForm textarea {
+  height: 4rem;
+}
 
 .contactBox {
-  background: black;
+  background: var(--color1);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: -3rem 15% auto 15%;
-  margin-bottom: 7.5rem;
+  margin: -3rem 13% auto 13%;
+  margin-bottom: 7rem;
+  box-shadow: var(--DP6);
 }
 
+.contactForm .btn {
+  margin: 3rem 0 auto auto;
+  border: black 1px solid;
+}
 
+.contactInformation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+  color: white;
+}
 
+.contactInformationItemTitle {
+  text-transform: uppercase;
+  font-size: .75rem;
+  margin-bottom: .3rem;
+}
 
+.contactInformationItemTxt {
+  font-size: .6rem;
+  opacity: .7;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1044,7 +1070,7 @@ main ul,main ol{list-style:unset}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .footer{
-  background:#202020;
+  background: var(--color1);
   display:grid;
   grid-template-columns: var(--footerTemplateColumns);
   grid-gap:var(--footerGridGap);

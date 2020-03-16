@@ -33,14 +33,6 @@ add_action('after_setup_theme', 'gp_init');
 
 
 
-
-
-
-
-
-
-
-
 // this removes the "Archive" word from the archive title in the archive page
 add_filter('get_the_archive_title',function($title){
   if(is_category()){$title=single_cat_title('',false);

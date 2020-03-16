@@ -36,6 +36,7 @@ Version: 1.0
 6.02.0) =homeATF:
 6.02.1) =ShopATF:
 6.02.2) =ContactATF:
+6.02.3) =storiesATF:
 6.03) =slider:
 6.04) =multiCards:
 6.04.0) =card:
@@ -363,6 +364,21 @@ FIN DE MAPA DE CONTENIDOS */
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
+                           4) =TOPOGRAFIAS:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'SalvalynDemo';
+    src: url('fonts/SalvalynDemo.otf') format('otf'),
+         url('fonts/SalvalynDemo.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
                            4) =ETIQUETAS GLOBALES:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
@@ -655,13 +671,159 @@ main ul,main ol{list-style:unset}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          6.2.2) =ContactATF:
+                          6.02.2) =ContactATF:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
 .contactBanner {
   max-height: 250px;
 }
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.02.3) =storiesATF:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.storiesATF{
+  display: grid;
+  /* grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr; */
+  grid-template-areas: "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie3"
+                       "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie4";
+  padding: 1rem var(--lateral);
+  grid-gap: 1rem;
+  max-height: min-content;
+}
+
+.featuredStorie .storieImg{
+  width: 100%;
+}
+
+.featuredStorie {
+  position: relative;
+  height: min-content;
+}
+
+.storiesATF .featuredStorie:nth-child(1) {
+  grid-area: featuredStorie1;
+}
+
+.storiesATF .featuredStorie:nth-child(2) {
+  grid-area: featuredStorie2;
+}
+.storiesATF .featuredStorie:nth-child(3) {
+  grid-area: featuredStorie3;
+}
+.storiesATF .featuredStorie:nth-child(4) {
+  grid-area: featuredStorie4;
+}
+
+.storiesATF .featuredStorie:nth-child(1) .storieImg{
+  object-fit: cover;
+  height: auto;
+}
+
+.featuredStorieTitle{
+  position: absolute;
+  top: 4rem;
+  background: white;
+  text-transform: uppercase;
+}
+
+.storiesATF .featuredStorie:nth-child(2) .storieImg{
+  object-fit: contain;
+}
+.storiesATF .featuredStorie:nth-child(3) .storieImg{
+  object-fit: cover;
+  height: auto;
+}
+.storiesATF .featuredStorie:nth-child(4) .storieImg{
+  object-fit: cover;
+  height: auto;
+}
+
+
+/*
+
+  storiesGeneral
+
+*/
+
+.storiesTitle{
+  text-align: center;
+  padding: 1rem 0;
+  font-family: 'SalvalynDemo';
+}
+
+.archiveStories{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 1rem var(--lateral);
+  grid-gap: 1rem;
+}
+
+.storieTitle{
+  font-size: .7rem;
+}
+
+.storieTitle h3{
+  text-transform: uppercase;
+}
+
+.storieDescription{
+  height: min-content;
+  overflow-y: hidden;
+  margin: 0 0 1rem;
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.02.4) =singleStoriesATF:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+
+.singleStorieImg{
+  padding: 0 var(--lateral);
+  max-height: 55vh;
+  object-fit: cover ;
+}
+
+.singleStorieCaption{
+  padding: 2rem var(--lateral);
+  background: white;
+  z-index: 10;
+  box-shadow: var(--DP6);
+  margin: 2rem calc(var(--lateral) + 5rem);
+  margin-top: -3rem;
+}
+
+.singleStorieCaption *{
+  padding: .5rem 0;
+}
+
+.singleStorieTitle{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+
+/*
+
+singleStorieContent
+
+*/
+.singleStorieOthers{
+  display: grid;
+  grid-template-columns: 1fr repeat(2,2fr);
+  margin: 1rem var(--lateral);
+  grid-gap: 1rem;
+}
+
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

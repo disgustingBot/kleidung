@@ -86,8 +86,8 @@ FIN DE MAPA DE CONTENIDOS */
   /* Al editar colores siempre usar HEX y nunca
   dejar espacio entre los dos puntos y el color */
   --color1: #202020;
-  --color2: ;
-  --color3: ;
+  --color2: white;
+  --color3: black;
   /* --color4:#EBE1C8; */
   /* --color5:#F5F0DC; */
   /* --color6:#FFFAE6; */
@@ -1049,18 +1049,18 @@ singleStorieContent
 }
 
 .btn:hover {
-  background: white;
-  color: black;
+  background: var(--color2);
+  color: var(--color3);
 }
 
 .btnWhite {
-  background: white;
-  color: black;
+  background: var(--color2);
+  color: var(--color3);
 }
 
 .btnWhite:hover {
-  color: white;
-  background: black;
+  color: var(--color2);
+  background: var(--color1);
 }
 
 .shopBtn {

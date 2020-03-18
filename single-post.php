@@ -8,6 +8,7 @@
 
     <figure class="singleStorieFigure">
       <img class="singleStorieImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+
       <button class="sliderArrow" type="button" name="button">&#62;</button>
       <button class="sliderArrow slideLeft" type="button" name="button">&#62;</button>
     </figure>
@@ -21,9 +22,9 @@
     <h3 class="singleStorieTitle">
       <?php echo the_title(); ?>
     </h3>
-    <p class="singleStorieContent">
+    <div class="singleStorieContent">
       <?php echo the_content(); ?>
-    </p>
+    </div>
   </section>
   <!--
   ////////////////////

@@ -24,6 +24,7 @@
           <h3><?php the_title(); ?></h3>
         </figcaption>
       </figure>
+
     <?php } wp_reset_query(); ?>
 
     </section>

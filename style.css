@@ -174,7 +174,8 @@ FIN DE MAPA DE CONTENIDOS */
   --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
                          "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
                          "featuredStorie4 featuredStorie4 featuredStorie4 featuredStorie4";
-
+  /*SINGLE STORIE*/
+  --singleStorieCaptionTextAlign: left;
 
   /* STORIES GALLERY */
 
@@ -306,10 +307,13 @@ FIN DE MAPA DE CONTENIDOS */
     --homeATFMargin: unset;
 
     /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
     --storiesATFaspectRatio3and4:  calc((var(--storiesATFaspectRatio) - 1rem)/ 2);
     --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
                            "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
                            "featuredStorie2 featuredStorie2 featuredStorie4 featuredStorie4";
+    /*SINGLE STORIE*/
+    --singleStorieCaptionTextAlign: left;
 
     /* STORIES GALLERY */
 
@@ -373,6 +377,7 @@ FIN DE MAPA DE CONTENIDOS */
     --contactBoxMargin: -3rem 13% auto 13%;
 
     /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 4 / .72);
     --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie3"
                            "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie4";
 
@@ -770,7 +775,7 @@ main ul,main ol{list-style:unset}
 .storiesATF{
   display: grid;
   grid-template-areas: var(--storiesATFgridAreas);
-  padding: 1rem var(--lateral);
+  padding: 2rem var(--lateral);
   grid-gap: 1rem;
   height: min-content;
 }
@@ -850,12 +855,18 @@ main ul,main ol{list-style:unset}
 }
 
 .singleStorieCaption{
-  padding: 2rem var(--lateral);
+  padding: 2rem 1rem;
   background: white;
   z-index: 10;
   box-shadow: var(--DP6);
   margin: 2rem calc(var(--lateral) + 5rem);
   margin-top: -3rem;
+  position: relative;
+  text-align: var(--singleStorieCaptionTextAlign);
+}
+
+.singleStorieCaption{
+
 }
 
 .singleStorieCaption *{
@@ -895,7 +906,7 @@ singleStorieContent
 .singleStorieOthers{
   display: grid;
   grid-template-columns: repeat(4,2fr);
-  margin: 1rem var(--lateral);
+  margin: 1rem var(--lateral) 2rem var(--lateral);
   grid-gap: 1rem;
 }
 
@@ -955,7 +966,10 @@ singleStorieContent
   padding: .5rem;
   font-size: var(--cardCaptionFontSize);
   text-transform: uppercase;
-  text-align: center;
+}
+
+.cardTitle{
+  text-align: var(--textAlignCenterLeft);
 }
 
 .productCardPrice {

@@ -281,7 +281,7 @@ FIN DE MAPA DE CONTENIDOS */
     --mobileHeaderDisplay: none;
 
     /* ?FOOTER */
-    --footerTemplateColumns: repeat(4,1fr);
+
     --footerGridGap: .5rem;
 
 
@@ -366,6 +366,7 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
+    --footerTemplateColumns: 1fr 1fr 2fr 1fr;
 
     /* FORMS */
 
@@ -544,9 +545,9 @@ main ul,main ol{list-style:unset}
   border-radius: 50%;
   display: flex;
   margin-left: .25rem;
-  padding: .2rem;
-  width: 1rem;
-  height: 1rem;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transition: .25s;
 }
 
@@ -636,7 +637,7 @@ main ul,main ol{list-style:unset}
   position:sticky;
   top: 0;
   width:100%;
-  z-index:10;
+  z-index:1;
 }
 
 .home .header{position:fixed}
@@ -647,7 +648,36 @@ main ul,main ol{list-style:unset}
 
 .logo {
   height: .75rem;
+  color: transparent;
+  animation-delay: 2s;
 }
+
+.logo path{
+  stroke-dasharray:  var(--strokeDashLenght);
+  stroke-dashoffset: var(--strokeDashLenght);
+  animation: line-anim 2s ease forwards;
+  animation-delay: var(--strokeDashAnimDelay);
+}
+.logo path:nth-child(1)  {--strokeDashLenght: 262.36;--strokeDashAnimDelay: 1.0s}
+.logo path:nth-child(2)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.2s}
+.logo path:nth-child(3)  {--strokeDashLenght: 208.84;--strokeDashAnimDelay: 1.4s}
+.logo path:nth-child(4)  {--strokeDashLenght:  67.19;--strokeDashAnimDelay: 1.6s}
+.logo path:nth-child(5)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.8s}
+.logo path:nth-child(6)  {--strokeDashLenght: 103.48;--strokeDashAnimDelay: 2.0s}
+.logo path:nth-child(7)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.2s}
+.logo path:nth-child(8)  {--strokeDashLenght: 230.65;--strokeDashAnimDelay: 2.4s}
+.logo path:nth-child(9)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.6s}
+.logo path:nth-child(10) {--strokeDashLenght: 199.23;--strokeDashAnimDelay: 2.8s}
+.logo path:nth-child(11) {--strokeDashLenght: 187.20;--strokeDashAnimDelay: 3.0s}
+.logo path:nth-child(12) {--strokeDashLenght: 149.22;--strokeDashAnimDelay: 3.2s}
+
+@keyframes line-anim{
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+
 
 
 /* MOBILE HEADER */
@@ -1043,23 +1073,41 @@ singleStorieContent
 }
 
 .mobileNavBar {
+  position: fixed;
+  top: 2.5rem;
   height: calc(100vh - 2.5rem);
   width: 100vw;
   background: white;
   transition: .5s;
-  position: relative;
-  transform: translateX(100vh);
-  display: flex;
-  flex-direction: column;
+  margin-left: 100vw;
+  display: grid;
   border-top: solid 2px black;
+  grid-template-rows: 1fr auto auto;
+  grid-gap: 1.5rem;
+  padding: 1.5rem 0;
 }
 
-.mobileNavBar >* {margin: 2rem auto;}
+.mobileNavBar.alt {
+  margin-left: 0;
+}
 
 
 .mobileNavBar .suscribe {
+  margin: 0 auto;
+}
+
+.mobileNavBar .suscribe>* {
   color: black;
-  width: max-content;
+}
+
+.mobileNavBar .suscribe .suscribeButton {
+  width: 100%;
+  color: white;
+  margin: .5rem auto;
+}
+.mobileNavBar .suscribe .suscribeButton:hover {
+  color: black;
+  border: solid 1px var(--color3);
 }
 
 .mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
@@ -1075,13 +1123,12 @@ singleStorieContent
   margin: auto;
 }
 
-#mobileNavBar.alt {
-  transform: translateX(0);
-}
+
 
 .navBarMobile {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .navBarMobile li {
@@ -1089,6 +1136,23 @@ singleStorieContent
   margin: 1rem auto;
   width: max-content;
 }
+
+.mobileHeader .socialSVGPinterest {
+  background: #E60023;
+  border: none;
+  color: white;
+}
+.mobileHeader .socialSVGInstagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  border: none;
+  color: white;
+}
+.mobileHeader .socialSVGFacebook {
+  background: #4267B2;
+  border: none;
+  color: white;
+}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -1211,7 +1275,6 @@ singleStorieContent
 }
 
 .suscribeTitle {
-  font-size: .5rem;
   margin: .4rem 0;
   word-spacing: 2px;
 }
@@ -1532,6 +1595,7 @@ singleStorieContent
   grid-template-columns: var(--footerTemplateColumns);
   grid-gap:var(--footerGridGap);
   padding: 4rem  1rem calc(var(--lateral) / 2 );
+  font-size: 16px;
 }
 
 .logoFooterLink {margin: auto;}
@@ -1545,7 +1609,6 @@ singleStorieContent
 .signature{
   color:#ddd;
   display:grid;
-  font-size:.7rem;
   grid-column:1/-1;
   justify-content:center;
   margin: .25rem auto;

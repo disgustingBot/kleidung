@@ -825,13 +825,6 @@ main ul,main ol{list-style:unset}
   grid-gap: 1rem;
 }
 
-.storieTitle{
-  font-size: .7rem;
-}
-
-.storieTitle h3{
-  text-transform: uppercase;
-}
 
 .storieDescription{
   height: min-content;
@@ -853,8 +846,7 @@ main ul,main ol{list-style:unset}
 
 .singleStorieImg{
   padding: 0 var(--lateral);
-  max-height: 55vh;
-  object-fit: cover ;
+  max-height: 75vh;
 }
 
 .singleStorieCaption{
@@ -882,11 +874,38 @@ main ul,main ol{list-style:unset}
 singleStorieContent
 
 */
+
+.storieSocialSharing{
+  margin: auto;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.storieSocialSharing h5{font-weight: 100; margin: .5rem 0;}
+
+.storieSocialSharing .socialMedia .socialSVGLink {
+  margin-right: .25rem;
+  height: 35px;
+  width: 35px;
+}
+
+.singleOthersTitle{
+  margin: 1rem var(--lateral);
+}
 .singleStorieOthers{
   display: grid;
-  grid-template-columns: 1fr repeat(2,2fr);
+  grid-template-columns: repeat(4,2fr);
   margin: 1rem var(--lateral);
   grid-gap: 1rem;
+}
+
+.cardStorieDate{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  text-align: center;
+  padding: .2rem .5rem;
 }
 
 
@@ -923,6 +942,10 @@ singleStorieContent
                           6.4.0) =card:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
+
+.card{
+  position: relative;
+}
 
 .cardImg {
   display:grid

@@ -125,6 +125,10 @@ FIN DE MAPA DE CONTENIDOS */
     --DP16: 0px 8px 10px rgba(0, 0, 0, 0.2),  0px 6px 30px rgba(0, 0, 0, 0.12), 0px 16px 24px rgba(0, 0, 0, 0.14);
     --DP24: 0px 11px 15px rgba(0, 0, 0, 0.2), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 24px 38px rgba(0, 0, 0, 0.14);
 
+    /* =TIPOGRAFIAS */
+
+    --DMSerif: 'DM Serif Display', serif;
+    --spartanSans: 'Spartan', sans-serif;
   /* ---------------------------------------------------------------------------
   ------------------------------------------------------------------------------
       1.2) =Variables de cambio visual relacionado a al ancho de la pantalla
@@ -453,14 +457,7 @@ FIN DE MAPA DE CONTENIDOS */
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-@font-face {
-    font-family: 'SalvalynDemo';
-    src: url('fonts/SalvalynDemo.otf') format('otf'),
-         url('fonts/SalvalynDemo.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
 
-}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -491,6 +488,11 @@ main h6,
 main ul,
 main li{margin:unset;padding:unset}
 main ul,main ol{list-style:unset}
+
+
+h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
+
+p {font-family: var(--spartanSans)}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1636,3 +1638,4 @@ singleStorieContent
   justify-content:center;
   margin: .25rem auto;
 }
+.signature span:hover{color: #ffcc00!important;transition: .25s; cursor: pointer; }

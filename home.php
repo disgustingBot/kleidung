@@ -28,8 +28,31 @@
 
     </section>
 
+    <section class="storiesATFAlternativa">
 
-    <hr>
+      <?php
+      $args=array(
+        'post_type'=>'post',
+        'posts_per_page'=>3,
+        'tag' => 'featured',
+      );$stories=new WP_Query($args);
+      while($stories->have_posts()){$stories->the_post(); ?>
+        <figure class="featuredStorie2">
+          <a class="storieLink2" href="<?php the_permalink(); ?>">
+            <img class="storieImg2 lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          </a>
+          <figcaption class="featuredStorieTitle2">
+            <h3><?php the_title(); ?></h3>
+          </figcaption>
+        </figure>
+
+      <?php } wp_reset_query(); ?>
+
+      <button class="sliderArrow" type="button" name="button">&#62;</button>
+      <button class="sliderArrow slideLeft" type="button" name="button">&#62;</button>
+      </section>
+
+
 
 
     <h4 class="archiveStoriesTitle">ALL OF OUR STORIES</h4>

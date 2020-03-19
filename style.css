@@ -655,21 +655,21 @@ main ul,main ol{list-style:unset}
 .logo path{
   stroke-dasharray:  var(--strokeDashLenght);
   stroke-dashoffset: var(--strokeDashLenght);
-  animation: line-anim 2s ease forwards;
+  animation: line-anim 1.2s ease forwards;
   animation-delay: var(--strokeDashAnimDelay);
 }
-.logo path:nth-child(1)  {--strokeDashLenght: 262.36;--strokeDashAnimDelay: 1.0s}
-.logo path:nth-child(2)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.2s}
-.logo path:nth-child(3)  {--strokeDashLenght: 208.84;--strokeDashAnimDelay: 1.4s}
-.logo path:nth-child(4)  {--strokeDashLenght:  67.19;--strokeDashAnimDelay: 1.6s}
-.logo path:nth-child(5)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.8s}
-.logo path:nth-child(6)  {--strokeDashLenght: 103.48;--strokeDashAnimDelay: 2.0s}
-.logo path:nth-child(7)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.2s}
-.logo path:nth-child(8)  {--strokeDashLenght: 230.65;--strokeDashAnimDelay: 2.4s}
-.logo path:nth-child(9)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.6s}
-.logo path:nth-child(10) {--strokeDashLenght: 199.23;--strokeDashAnimDelay: 2.8s}
-.logo path:nth-child(11) {--strokeDashLenght: 187.20;--strokeDashAnimDelay: 3.0s}
-.logo path:nth-child(12) {--strokeDashLenght: 149.22;--strokeDashAnimDelay: 3.2s}
+.logo path:nth-child(1)  {--strokeDashLenght: 262.36;--strokeDashAnimDelay: 0.1s}
+.logo path:nth-child(2)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 0.2s}
+.logo path:nth-child(3)  {--strokeDashLenght: 208.84;--strokeDashAnimDelay: 0.3s}
+.logo path:nth-child(4)  {--strokeDashLenght:  67.19;--strokeDashAnimDelay: 0.4s}
+.logo path:nth-child(5)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 0.5s}
+.logo path:nth-child(6)  {--strokeDashLenght: 103.48;--strokeDashAnimDelay: 0.6s}
+.logo path:nth-child(7)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 0.7s}
+.logo path:nth-child(8)  {--strokeDashLenght: 230.65;--strokeDashAnimDelay: 0.8s}
+.logo path:nth-child(9)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 0.9s}
+.logo path:nth-child(10) {--strokeDashLenght: 199.23;--strokeDashAnimDelay: 1.0s}
+.logo path:nth-child(11) {--strokeDashLenght: 187.20;--strokeDashAnimDelay: 1.1s}
+.logo path:nth-child(12) {--strokeDashLenght: 149.22;--strokeDashAnimDelay: 1.2s}
 
 @keyframes line-anim{
   to{

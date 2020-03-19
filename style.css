@@ -49,6 +49,7 @@ Version: 1.0
 6.06.1) =sliderArrow:
 6.07) =suscribe:
 6.08) =filterBars
+6.08.1) =selectBox:
 6.09) =colors
 6.10) =TITLES:
 6.11) =FORMS:
@@ -845,6 +846,23 @@ singleStorieContent
 .slider .btn{
   grid-column:1/-1;
 }
+.slider .load{
+  position:absolute;
+  z-index:10;
+  background:white;
+  width:100%;
+  top:0;
+  bottom:0;
+  height: unset;
+  opacity:0;
+  transition:none;
+  pointer-events:none;
+  /* transition-delay:opacity 10s; */
+}
+.slider.loading .load{
+  /* transition-delay:opacity 0s; */
+  opacity:1;
+}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.4) =multiCards:
@@ -1144,11 +1162,134 @@ singleStorieContent
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+.shopFilterBar .selectBox:first-child{margin-right:1rem;}
 
-.filterBarItem {
-  margin: 0 1rem;
-  width: 5rem;
-  padding: .5rem;
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.08.1) =selectBox:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.selectBox{
+  --selectBoxHeight:40px;
+  display: grid;
+  align-items: center;
+  grid-template-rows: var(--selectBoxHeight);
+  position: relative;
+  /* width:100%; */
+  /* width:max-content; */
+  min-width: 6rem;
+}
+
+
+.selectBoxButton{
+  background: white;
+  color:#333;
+  cursor: pointer;
+  display:grid;
+  grid-row:1;
+  grid-column:1;
+  height: var(--selectBoxHeight);
+  position: relative;
+  transition:.4s;
+  width:100%;
+  /* width:max-content; */
+  height:40px;
+  z-index:4;
+}
+
+.selectBoxPlaceholder{
+  font-size: .8rem;
+  height:1rem;
+  line-height:1rem;
+  left:16px;
+  position: absolute;
+  top:calc(50% - .5rem);
+  transition:.3s;
+  transform-origin:left;
+}
+.selectBoxCurrent{
+  /* padding:16px 52px 2px 16px; */
+  padding:16px;
+  padding-bottom:2px;
+  font-size: .8rem;
+  position: relative;
+  border-bottom:2px solid #666;
+}
+.selectBoxCurrent::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width: 100%;
+  transform-origin: center;
+  transform: scaleX(0);
+  height: 2px;
+  transition:.2s;
+  background: #000;
+}
+.selectBox:focus{
+  outline:none;
+}
+.selectBox:focus .selectBoxCurrent::after,
+.selectBox.alt .selectBoxCurrent::after{
+  /* background:#F78D15; */
+  background:var(--color1);
+  transform:scaleX(1);
+}
+.selectBox:focus .selectBoxPlaceholder,
+.selectBox.alt .selectBoxPlaceholder{
+  transform:translateY(-50%) scale(.6);
+}
+
+
+.selectBoxList{
+  align-items: center;
+  background: #FFF;
+  display: grid;
+  grid-gap: .2rem;
+  grid-auto-rows:1.5rem;
+  padding: .2rem;
+  left:0;
+  position: absolute;
+  pointer-events: none;
+  opacity:0;
+  right:0;
+  top:0;
+  transition:.3s;
+  transition-delay:.2s;
+  width:100%;
+  z-index: 10;
+}
+.selectBox:focus .selectBoxList{
+  opacity:1;
+  top:40px;
+  pointer-events: unset;
+
+}
+.selectBoxOption{
+  cursor:pointer;
+  font-size: .7rem;
+  height: 1.5rem;
+  line-height: 1.8rem;
+  transition:.3s;
+  padding:0 16px;
+  /* width:max-content; */
+}
+.selectBoxOption:hover{
+  background:#BBB;
+}
+.selectBoxInput{
+  display: none;
+}
+.selectBoxCurrent:focus + .selectBoxList{
+  transform: translateY(calc(-20px - 50%));
+  background: red;
+  transition: .7s;
+}
+.colrOptP{
+  /* width:max-content; */
+  /* height: var(--selectBoxHeight); */
+  line-height: var(--selectBoxHeight);
 }
 
 

@@ -11,9 +11,9 @@
 </head>
 <body <?php body_class(); ?>>
 
-	<view id="load" class="load">
+	<!-- <view id="load" class="load">
 			<div class="circle"></div>
-	</view>
+	</view> -->
 
   <header class="header" id="header">
 

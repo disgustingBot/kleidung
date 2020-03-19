@@ -179,7 +179,9 @@ FIN DE MAPA DE CONTENIDOS */
 
   /* STORIES GALLERY */
 
-  --archiveStoriesGTC:  repeat(2,1fr);
+  --archiveStoriesGTC:  repeat(1,1fr);
+
+  --cardGalleryGridGap: 3rem;
 
 
   /* FORMS */
@@ -317,7 +319,8 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* STORIES GALLERY */
 
-    --archiveStoriesGTC: repeat(3,1fr);
+    --archiveStoriesGTC: repeat(2,1fr);
+    --cardGalleryGridGap: 2rem;
 
     /* FORMS  */
     --formPadding: 2rem;
@@ -384,7 +387,7 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* STORIES GALLERY */
 
-    --archiveStoriesGTC: repeat(4,1fr);
+
 
 
   }
@@ -458,14 +461,6 @@ FIN DE MAPA DE CONTENIDOS */
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-@font-face {
-    font-family: 'SalvalynDemo';
-    src: url('fonts/SalvalynDemo.otf') format('otf'),
-         url('fonts/SalvalynDemo.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -541,7 +536,6 @@ main ul,main ol{list-style:unset}
 .socialMedia {
   display: flex;
   margin: auto;
-  margin-right: 0;
   width: min-content;
 }
 
@@ -853,14 +847,19 @@ main ul,main ol{list-style:unset}
   font-family: 'SalvalynDemo';
 }
 
+.archiveStoriesTitle{padding: 2rem var(--lateral)}
+
 .archiveStories{
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
-  padding: 1rem var(--lateral);
-  grid-gap: 1rem;
+  padding: 2rem var(--lateral);
+  grid-gap: var(--cardGalleryGridGap);
 }
 
-
+.singleStorieOthers .cardCaption{
+  color: white;
+  padding: 1rem 0;
+}
 .storieDescription{
   height: min-content;
   overflow-y: hidden;
@@ -885,7 +884,7 @@ main ul,main ol{list-style:unset}
 }
 
 .singleStorieCaption{
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   background: white;
   z-index: 10;
   box-shadow: var(--DP6);
@@ -895,17 +894,11 @@ main ul,main ol{list-style:unset}
   text-align: var(--singleStorieCaptionTextAlign);
 }
 
-.singleStorieCaption{
 
-}
-
-.singleStorieCaption *{
-  padding: .5rem 0;
-}
-
-.singleStorieTitle{
+h3.singleStorieTitle{
   text-align: center;
   text-transform: uppercase;
+  padding: 1rem;
 }
 
 
@@ -916,28 +909,51 @@ singleStorieContent
 
 */
 
+.singleOthersTitle{
+  width: 100%;
+  padding-top: 8rem;
+  background: black;
+  margin-top: -5rem;
+
+}
+
 .storieSocialSharing{
   margin: auto;
   text-align: center;
-  margin: 1rem auto;
+  padding: 1rem auto;
+  padding-top: -5rem;
+  background: black;
+  color: white;
+  width: 100%;
 }
 
-.storieSocialSharing h5{font-weight: 100; margin: .5rem 0;}
+.singleOthersTitle .titleMoreStories{
+  margin: 6rem var(--lateral) 0 ;
+  color: white;
+
+}
+
+.storieSocialSharing .storieSocialSharingTitle{
+  font-weight: 100;
+  background: black;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
 
 .storieSocialSharing .socialMedia .socialSVGLink {
   margin-right: .25rem;
-  height: 35px;
-  width: 35px;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: 1rem .8rem;
 }
 
-.singleOthersTitle{
-  margin: 1rem var(--lateral);
-}
+
 .singleStorieOthers{
   display: grid;
-  grid-template-columns: repeat(4,2fr);
-  margin: 1rem var(--lateral) 2rem var(--lateral);
-  grid-gap: 1rem;
+  grid-template-columns: var(--archiveStoriesGTC);;
+  padding: 1rem var(--lateral) 2rem var(--lateral);
+  grid-gap: var(--cardGalleryGridGap);
 }
 
 .cardStorieDate{
@@ -946,7 +962,18 @@ singleStorieContent
   left: 0;
   background: white;
   text-align: center;
-  padding: .2rem .5rem;
+  padding: 1rem!important;
+}
+.singleStorieOthers .cardStorieDate{
+  top: -.5rem;
+  left: -.5rem;
+}
+
+.cardAuthor{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
 }
 
 
@@ -987,6 +1014,8 @@ singleStorieContent
 .card{
   position: relative;
 }
+
+.card *{padding: .5rem 0;}
 
 .cardImg {
   display:grid

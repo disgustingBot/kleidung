@@ -3,8 +3,39 @@
 require_once 'customPosts.php';
 
 function lattte_setup(){
+
+  // TOOOODO ESTO ES PARA TESTEAR AJAX
+	global $wp_query;
+	// In most cases it is already included on the page and this line can be removed
+	wp_enqueue_script('jquery');
+	// register our main script but do not enqueue it yet
+	wp_register_script( 'my_loadmore', get_stylesheet_directory_uri() . '/js/myloadmore.js', array('jquery') );
+
+	// now the most interesting part
+	// we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
+	// you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
+	wp_localize_script( 'my_loadmore', 'misha_loadmore_params', array(
+		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+		'max_page' => $wp_query->max_num_pages
+	) );
+
+ 	wp_enqueue_script( 'my_loadmore' );
+  // FIN DE PARA AJAX
+
+
+
+
+
+
+
+
+
+
   wp_enqueue_style('style', get_stylesheet_uri(), NULL, microtime(), 'all');
-  wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), NULL, microtime(), true);
+  wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), array( 'jquery' ), microtime(), true);
+  // wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/custom_script.js', array( 'jquery' ));
 
 
 }
@@ -270,6 +301,90 @@ function lt_new_pass(){
 
 
 
+
+
+
+
+
+
+
+function misha_loadmore_ajax_handler(){
+
+	// prepare our arguments for the query
+	$args = json_decode( stripslashes( $_POST['query'] ), true );
+	// $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+	$args['post_status'] = 'publish';
+
+	// var_dump($_POST['category']);
+	// var_dump($_POST['parent']);
+	// var_dump($_POST['query']['post_type']);
+
+  // $j_decoded = json_decode($j_encoded);
+	// $args = array(
+	// 	'post_type'=>'product',
+	// );
+	if (isset($_POST['parent'])) {
+
+
+		$parentArray = $_POST['parent']; // Replace ... with your PHP Array
+		$categoryArray = $_POST['category']; // Replace ... with your PHP Array
+	  foreach ($parentArray as $key => $value) {
+			// var_dump($value);
+			// var_dump($key);
+	    // echo $value["name"] . ", " . $value["gender"] . "<br>";
+			$args['tax_query'][$key] = array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => $categoryArray[$key],
+			);
+	  }
+
+
+	} else {
+		// $args['tax_query'] = array();
+
+	}
+	// var_dump($args['tax_query']);
+  $el_query=new WP_Query($args);
+
+	// it is always better to use WP_Query but not here
+	query_posts( $args );
+
+	if( $el_query->have_posts() ) :
+
+		// run the loop
+		while( $el_query->have_posts() ): $el_query->the_post();
+
+			// look into your theme code how the posts are inserted, but you can use your own HTML of course
+			// do you remember? - my example is adapted for Twenty Seventeen theme
+			// get_template_part( 'template-parts/post/content', get_post_format() );
+			// for the test purposes comment the line above and uncomment the below one
+			// the_title();
+      // echo '<br>';
+      ?>
+
+        <figure class="card">
+          <a class="cardImg" href="<?php echo get_permalink(); ?>">
+            <img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <!-- <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
+          </a>
+          <figcaption class="cardCaption">
+            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); echo get_the_ID(); ?></a></p>
+          </figcaption>
+        </figure>
+      <?php
+
+
+		endwhile;
+
+	endif;
+	die; // here we exit the script and even no wp_reset_query() required!
+}
+
+
+
+add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
 
 
 

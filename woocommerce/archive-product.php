@@ -4,7 +4,7 @@ global $wp_query;
 ?>
 
   <div class="shopATF ATF">
-    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(5); ?>" alt="">
+    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(110); ?>" alt="">
     <overlay class="ShopOverlay"></overlay>
 
     <hgroup class="ShopATFTxt">
@@ -56,7 +56,7 @@ global $wp_query;
               id="<?php echo $sc->slug; ?>"
               data-slug="<?php echo $sc->slug; ?>"
               data-parent="<?php echo $term->slug; ?>"
-              type="checkbox"
+              type="radio"
               name="filter_<?php echo $term->slug; ?>"
               onclick="selectBoxControler('<?php echo $sc->name ?>', '#selectBox<?php echo $term->term_id; ?>', '#selectBoxCurrent<?php echo $term->term_id; ?>')"
               value="<?php echo $sc->slug; ?>"

@@ -2,7 +2,6 @@
 
 <main class="stories">
 
-
   <h3 class="storiesTitle">STORIES</h3>
 
 
@@ -30,9 +29,13 @@
     </section>
 
 
-  <hr>
+    <hr>
 
-  <section class="archiveStories">
+
+    <h4 class="archiveStoriesTitle">ALL OF OUR STORIES</h4>
+
+
+    <section class="archiveStories">
 
     <?php
     $args=array(

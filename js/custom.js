@@ -89,6 +89,16 @@ function goBack(){w.history.back()}
 
 
 
+// SELECT BOX CONTROLER
+const selectBoxControler=(a, selectBoxId, current)=>{// c.log(a)
+  if(!!a){d.querySelector(selectBoxId).classList.add('alt')}
+  else   {d.querySelector(selectBoxId).classList.remove('alt')}
+
+  d.querySelector(current).innerHTML=a;
+  d.activeElement.blur();
+}
+
+
 
 //Accordion //Desplegable
 var acc = d.getElementsByClassName("accordion");
@@ -110,9 +120,9 @@ for (i = 0; i < acc.length; i++) {
 }
 
 
-// // LOGO ANIMATION
+
 // const logo = document.querySelectorAll("#logo path");
-//
+
 // for(let i = 0; i<logo.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
-// }
+

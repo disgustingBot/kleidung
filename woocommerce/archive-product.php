@@ -4,7 +4,7 @@ global $wp_query;
 ?>
 
   <div class="shopATF ATF">
-    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(119); ?>" alt="">
+    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(110); ?>" alt="">
     <overlay class="ShopOverlay"></overlay>
 
     <hgroup class="ShopATFTxt">
@@ -13,34 +13,82 @@ global $wp_query;
       <a class="btn btnWhite" href="#">See our Latest</a>
     </hgroup>
   </div>
+
+
+  <?php function woocommerce_subcats_from_parentcat($category){
+    if (is_numeric($category)) {$term = get_term(           $category, 'product_cat');}
+    else                       {$term = get_term_by('slug', $category, 'product_cat');}
+
+
+    $args = array(
+     'hierarchical' => 1,
+     'show_option_none' => '',
+     'hide_empty' => 0,
+     'parent' => $term->term_id,
+     'taxonomy' => 'product_cat'
+    );
+    $subcats = get_categories($args); ?>
+
+    <div class="selectBox" tabindex="1" id="selectBox<?php echo $term->term_id; ?>">
+      <div class="selectBoxButton">
+        <p class="selectBoxPlaceholder"><?php echo $term->name; ?></p>
+        <p class="selectBoxCurrent" id="selectBoxCurrent<?php echo $term->term_id; ?>"></p>
+      </div>
+      <div class="selectBoxList">
+        <label for="nul<?php echo $term->term_id; ?>" class="selectBoxOption">
+          <input
+            class="selectBoxInput"
+            id="nul<?php echo $term->term_id; ?>"
+            type="radio"
+            data-slug="0"
+            data-parent="<?php echo $term->slug; ?>"
+            name="filter_<?php echo $term->slug; ?>"
+            onclick="selectBoxControler('','#selectBox<?php echo $term->term_id; ?>','#selectBoxCurrent<?php echo $term->term_id; ?>')"
+            value="0"
+          >
+          <!-- <span class="checkmark"></span> -->
+          <p class="colrOptP"></p>
+        </label>
+        <?php foreach ($subcats as $sc) { ?>
+          <label for="<?php echo $sc->slug; ?>" class="selectBoxOption">
+            <input
+              class="selectBoxInput"
+              id="<?php echo $sc->slug; ?>"
+              data-slug="<?php echo $sc->slug; ?>"
+              data-parent="<?php echo $term->slug; ?>"
+              type="radio"
+              name="filter_<?php echo $term->slug; ?>"
+              onclick="selectBoxControler('<?php echo $sc->name ?>', '#selectBox<?php echo $term->term_id; ?>', '#selectBoxCurrent<?php echo $term->term_id; ?>')"
+              value="<?php echo $sc->slug; ?>"
+              <?php // if($_GET['filter_'.$term->slug]==$sc->slug){echo "selected";} ?>
+            >
+            <!-- <span class="checkmark"></span> -->
+            <p class="colrOptP"><?php echo $sc->name ?></p>
+          </label>
+        <?php } ?>
+      </div>
+    </div>
+  <?php } ?>
+
   <form class="shopFilterBar">
-    <select class="filterBarItem clothingType">
-      <option value="Type" class="filterBarOption">Type</option>
-      <option value="Dress" class="filterBarOption">Dress</option>
-      <option value="Skirt" class="filterBarOption">Skirt</option>
-      <option value="Jumpsuit" class="filterBarOption">Jumpsuit</option>
-    </select>
-    <select class="filterBarItem clothingSize">
-      <option value="Size" class="filterBarOption">Size</option>
-      <option value="S" class="filterBarOption">S</option>
-      <option value="M" class="filterBarOption">M</option>
-      <option value="L" class="filterBarOption">L</option>
-      <option value="XL" class="filterBarOption">XL</option>
-    </select>
-    <select class="filterBarItem clothingColor">
-      <option value="Color" class="filterBarOption">Color</option>
-      <option value="Red" class="filterBarOption">Red</option>
-      <option value="Green" class="filterBarOption">Green</option>
-      <option value="Blue" class="filterBarOption">Blue</option>
-    </select>
+    <?php woocommerce_subcats_from_parentcat('tipo'); ?>
+    <?php woocommerce_subcats_from_parentcat('motivo'); ?>
   </form>
+
+
   <section
     class="slider"
+    id="slider"
     data-page="<?= get_query_var('paged') ? get_query_var('paged') : 1; ?>"
     data-max="<?= $wp_query->max_num_pages; ?>"
   >
 
   <h4 class="ShopTitle2">Current collections</h4>
+
+  	<view id="load" class="load">
+  			<div class="circle"></div>
+  	</view>
+
   <?php while(have_posts()){the_post(); ?>
     <?php global $product; ?>
 

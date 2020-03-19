@@ -178,11 +178,14 @@ FIN DE MAPA DE CONTENIDOS */
   --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
                          "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
                          "featuredStorie4 featuredStorie4 featuredStorie4 featuredStorie4";
-
+  /*SINGLE STORIE*/
+  --singleStorieCaptionTextAlign: left;
 
   /* STORIES GALLERY */
 
-  --archiveStoriesGTC:  repeat(2,1fr);
+  --archiveStoriesGTC:  repeat(1,1fr);
+
+  --cardGalleryGridGap: 3rem;
 
 
   /* FORMS */
@@ -310,14 +313,18 @@ FIN DE MAPA DE CONTENIDOS */
     --homeATFMargin: unset;
 
     /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
     --storiesATFaspectRatio3and4:  calc((var(--storiesATFaspectRatio) - 1rem)/ 2);
     --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
                            "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
                            "featuredStorie2 featuredStorie2 featuredStorie4 featuredStorie4";
+    /*SINGLE STORIE*/
+    --singleStorieCaptionTextAlign: left;
 
     /* STORIES GALLERY */
 
-    --archiveStoriesGTC: repeat(3,1fr);
+    --archiveStoriesGTC: repeat(2,1fr);
+    --cardGalleryGridGap: 2rem;
 
     /* FORMS  */
     --formPadding: 2rem;
@@ -378,12 +385,13 @@ FIN DE MAPA DE CONTENIDOS */
     --contactBoxMargin: -3rem 13% auto 13%;
 
     /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 4 / .72);
     --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie3"
                            "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie4";
 
     /* STORIES GALLERY */
 
-    --archiveStoriesGTC: repeat(4,1fr);
+
 
 
   }
@@ -456,8 +464,6 @@ FIN DE MAPA DE CONTENIDOS */
                            4) =TOPOGRAFIAS:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-
-
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -538,7 +544,6 @@ p {font-family: var(--spartanSans)}
 .socialMedia {
   display: flex;
   margin: auto;
-  margin-right: 0;
   width: min-content;
 }
 
@@ -802,7 +807,7 @@ p {font-family: var(--spartanSans)}
 .storiesATF{
   display: grid;
   grid-template-areas: var(--storiesATFgridAreas);
-  padding: 1rem var(--lateral);
+  padding: 2rem var(--lateral);
   grid-gap: 1rem;
   height: min-content;
 }
@@ -850,14 +855,19 @@ p {font-family: var(--spartanSans)}
   font-family: 'SalvalynDemo';
 }
 
+.archiveStoriesTitle{padding: 2rem var(--lateral)}
+
 .archiveStories{
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
-  padding: 1rem var(--lateral);
-  grid-gap: 1rem;
+  padding: 2rem var(--lateral);
+  grid-gap: var(--cardGalleryGridGap);
 }
 
-
+.singleStorieOthers .cardCaption{
+  color: white;
+  padding: 1rem 0;
+}
 .storieDescription{
   height: min-content;
   overflow-y: hidden;
@@ -882,21 +892,21 @@ p {font-family: var(--spartanSans)}
 }
 
 .singleStorieCaption{
-  padding: 2rem var(--lateral);
+  padding: 2.5rem 1rem;
   background: white;
   z-index: 10;
   box-shadow: var(--DP6);
   margin: 2rem calc(var(--lateral) + 5rem);
   margin-top: -3rem;
+  position: relative;
+  text-align: var(--singleStorieCaptionTextAlign);
 }
 
-.singleStorieCaption *{
-  padding: .5rem 0;
-}
 
-.singleStorieTitle{
+h3.singleStorieTitle{
   text-align: center;
   text-transform: uppercase;
+  padding: 1rem;
 }
 
 
@@ -907,28 +917,51 @@ singleStorieContent
 
 */
 
+.singleOthersTitle{
+  width: 100%;
+  padding-top: 8rem;
+  background: black;
+  margin-top: -5rem;
+
+}
+
 .storieSocialSharing{
   margin: auto;
   text-align: center;
-  margin: 1rem auto;
+  padding: 1rem auto;
+  padding-top: -5rem;
+  background: black;
+  color: white;
+  width: 100%;
 }
 
-.storieSocialSharing h5{font-weight: 100; margin: .5rem 0;}
+.singleOthersTitle .titleMoreStories{
+  margin: 6rem var(--lateral) 0 ;
+  color: white;
+
+}
+
+.storieSocialSharing .storieSocialSharingTitle{
+  font-weight: 100;
+  background: black;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
 
 .storieSocialSharing .socialMedia .socialSVGLink {
   margin-right: .25rem;
-  height: 35px;
-  width: 35px;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: 1rem .8rem;
 }
 
-.singleOthersTitle{
-  margin: 1rem var(--lateral);
-}
+
 .singleStorieOthers{
   display: grid;
-  grid-template-columns: repeat(4,2fr);
-  margin: 1rem var(--lateral);
-  grid-gap: 1rem;
+  grid-template-columns: var(--archiveStoriesGTC);;
+  padding: 1rem var(--lateral) 2rem var(--lateral);
+  grid-gap: var(--cardGalleryGridGap);
 }
 
 .cardStorieDate{
@@ -937,7 +970,18 @@ singleStorieContent
   left: 0;
   background: white;
   text-align: center;
-  padding: .2rem .5rem;
+  padding: 1rem!important;
+}
+.singleStorieOthers .cardStorieDate{
+  top: -.5rem;
+  left: -.5rem;
+}
+
+.cardAuthor{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
 }
 
 
@@ -979,6 +1023,8 @@ singleStorieContent
   position: relative;
 }
 
+.card *{padding: .5rem 0;}
+
 .cardImg {
   display:grid
 }
@@ -987,7 +1033,10 @@ singleStorieContent
   padding: .5rem;
   font-size: var(--cardCaptionFontSize);
   text-transform: uppercase;
-  text-align: center;
+}
+
+.cardTitle{
+  text-align: var(--textAlignCenterLeft);
 }
 
 .productCardPrice {

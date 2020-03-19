@@ -805,7 +805,7 @@ p {font-family: var(--spartanSans)}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .storiesATF{
-  display: grid;
+  display: none;
   grid-template-areas: var(--storiesATFgridAreas);
   padding: 2rem var(--lateral);
   grid-gap: 1rem;
@@ -843,6 +843,41 @@ p {font-family: var(--spartanSans)}
   background: white;
   text-transform: uppercase;
 }
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.02.3) =storiesATFAlternativa:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.storiesATFAlternativa{
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr ;
+  margin: 1rem var(--lateral);
+  grid-gap: 1rem;
+  align-items: center;
+  position: relative;
+}
+
+.storiesATFAlternativa .sliderArrow{
+  right: -1.5rem;
+}
+
+.storiesATFAlternativa .slideLeft{
+  left: -1.5rem;
+}
+
+.featuredStorie2{
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.storiesATFAlternativa .featuredStorie2:nth-child(2){ filter: blur(1px);}
+.storiesATFAlternativa .featuredStorie2:nth-child(3){    filter: blur(2px);}
+
+
+
 /*
 
   storiesGeneral
@@ -855,7 +890,7 @@ p {font-family: var(--spartanSans)}
   font-family: 'SalvalynDemo';
 }
 
-.archiveStoriesTitle{padding: 2rem var(--lateral)}
+.archiveStoriesTitle{padding: 2rem var(--lateral) 0}
 
 .archiveStories{
   display: grid;

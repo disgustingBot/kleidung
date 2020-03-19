@@ -24,6 +24,7 @@
           <h3><?php the_title(); ?></h3>
         </figcaption>
       </figure>
+
     <?php } wp_reset_query(); ?>
 
     </section>
@@ -40,12 +41,12 @@
       'tag' => '',
     );$stories=new WP_Query($args);
     while($stories->have_posts()){$stories->the_post(); ?>
-      <figure class="storieCard">
+      <figure class="card">
         <a class="storieLink" href="<?php the_permalink(); ?>">
-          <img class="storieImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>
-        <figcaption class="storieTitle">
-          <h3>
+        <figcaption class="cardCaption">
+          <h3 class="cardTitle">
             <?php the_title(); ?>
           </h3>
           <p class="storieDescription">

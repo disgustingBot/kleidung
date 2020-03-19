@@ -47,14 +47,15 @@ Version: 1.0
 6.06) =BUTTONS:
 6.06.0) =btn:
 6.06.1) =sliderArrow:
+6.06.2) =slideButton:
 6.07) =suscribe:
 6.08) =filterBars
-6.08.1) =selectBox:
 6.09) =colors
 6.10) =TITLES:
 6.11) =FORMS:
 6.11.1) =contact Form
 6.12) =MAINS
+6.12.1) =SINGLE PRODUCT MAIN
 
 
 
@@ -87,8 +88,8 @@ FIN DE MAPA DE CONTENIDOS */
   /* Al editar colores siempre usar HEX y nunca
   dejar espacio entre los dos puntos y el color */
   --color1: #202020;
-  --color2: ;
-  --color3: ;
+  --color2: white;
+  --color3: black;
   /* --color4:#EBE1C8; */
   /* --color5:#F5F0DC; */
   /* --color6:#FFFAE6; */
@@ -166,6 +167,21 @@ FIN DE MAPA DE CONTENIDOS */
   --shopATFTitleFontSize: 1.5rem;
 
 
+  /* STORIES ATF */
+  /*                               vw - scrollbar - lateral */
+  --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
+  --storiesATFaspectRatio3and4: calc(var(--storiesATFaspectRatio) );
+  --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
+                         "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
+                         "featuredStorie4 featuredStorie4 featuredStorie4 featuredStorie4";
+  /*SINGLE STORIE*/
+  --singleStorieCaptionTextAlign: left;
+
+  /* STORIES GALLERY */
+
+  --archiveStoriesGTC:  repeat(2,1fr);
+
+
   /* FORMS */
   --formPadding: 1rem;
 
@@ -181,6 +197,27 @@ FIN DE MAPA DE CONTENIDOS */
   --contactInformationTextAlign: center;
   --contactInfoTitlesFontSize: .9rem;
   --contactInfoTxtFontSize: .7rem;
+
+  /* SINGLE */
+  --singleProductMainDisplay: flex;
+  --textAlignCenterLeft: center;
+  --textAlignJustifyLeft: justify;
+  --singleSideFontSize: 1.5rem;
+  --singleSideTxtalign: center;
+  --singleSideTxtMarginBottom: 1rem;
+  --singleProductButtonWidth: 60%;
+  --singleProductButtonMargin: .2rem auto;
+  --singleProductButtonsFontSize: 1rem;
+  --singleProductInteractionBtnPadding: 1rem;
+  --relatedProductDisplay: block;
+  --relatedProductsCardMarginBottom: 2rem;
+  --singleProductsgalleryBtnsContainerWidth: 100%;
+  --singleProductGalleryBtnsMargin: 1rem auto;
+
+
+  /* CARDS */
+  --cardCaptionFontSize: 1.2rem;
+  --cardPriceFontSize: 1.2rem;
 
 }
 
@@ -222,6 +259,8 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* SHOP ATF */
     --shopATFTitleFontSize: 2rem;
+
+
   }
 }
 
@@ -243,7 +282,7 @@ FIN DE MAPA DE CONTENIDOS */
     --mobileHeaderDisplay: none;
 
     /* ?FOOTER */
-    --footerTemplateColumns: repeat(4,1fr);
+
     --footerGridGap: .5rem;
 
 
@@ -267,6 +306,19 @@ FIN DE MAPA DE CONTENIDOS */
     /* HOME ATF */
     --homeATFMargin: unset;
 
+    /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
+    --storiesATFaspectRatio3and4:  calc((var(--storiesATFaspectRatio) - 1rem)/ 2);
+    --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie1 featuredStorie1"
+                           "featuredStorie2 featuredStorie2 featuredStorie3 featuredStorie3"
+                           "featuredStorie2 featuredStorie2 featuredStorie4 featuredStorie4";
+    /*SINGLE STORIE*/
+    --singleStorieCaptionTextAlign: left;
+
+    /* STORIES GALLERY */
+
+    --archiveStoriesGTC: repeat(3,1fr);
+
     /* FORMS  */
     --formPadding: 2rem;
 
@@ -280,7 +332,29 @@ FIN DE MAPA DE CONTENIDOS */
     --contactInformationPadding: 2rem 1.5rem;
     --contactInformationTextAlign: left;
     --contactInfoTitlesFontSize: .75rem;
-  --contactInfoTxtFontSize: .6rem;
+    --contactInfoTxtFontSize: .6rem;
+
+    /* SINGLE */
+    --singleProductMainDisplay: grid;
+    --textAlignCenterLeft: left;
+    --textAlignJustifyLeft: left;
+    --singleSideFontSize: .75rem;
+    --singleSideTxtalign: left;
+    --singleSideTxtMarginBottom: unset;
+    --singleProductButtonWidth: 100%;
+    --singleProductButtonMargin: .2rem 0;
+    --singleProductButtonsFontSize: .5rem;
+    --singleProductInteractionBtnPadding: .25rem;
+    --relatedProductDisplay: grid;
+    --relatedProductsCardMarginBottom: unset;
+    --singleProductsgalleryBtnsContainerWidth: unset;
+    --singleProductGalleryBtnsMargin: .25rem;
+
+    /* CARDS */
+    --cardCaptionFontSize: .6rem;
+    --cardPriceFontSize: .8rem;
+
+
   }
 }
 
@@ -296,11 +370,23 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
+    --footerTemplateColumns: 1fr 1fr 2fr 1fr;
 
     /* FORMS */
 
     /* CONTACT FORM */
     --contactBoxMargin: -3rem 13% auto 13%;
+
+    /* STORIES ATF */
+    --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 4 / .72);
+    --storiesATFgridAreas: "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie3"
+                           "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie4";
+
+    /* STORIES GALLERY */
+
+    --archiveStoriesGTC: repeat(4,1fr);
+
+
   }
 }
 
@@ -316,6 +402,9 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* ?HEADER */
     /* ?FOOTER */
+
+    /* STORIES GALLERY */
+    --archiveStoriesGTC: repeat(4,1fr);
   }
 }
 /* ---------------------------------------------------------------------------
@@ -461,9 +550,9 @@ main ul,main ol{list-style:unset}
   border-radius: 50%;
   display: flex;
   margin-left: .25rem;
-  padding: .2rem;
-  width: 1rem;
-  height: 1rem;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transition: .25s;
 }
 
@@ -553,7 +642,7 @@ main ul,main ol{list-style:unset}
   position:sticky;
   top: 0;
   width:100%;
-  z-index:10;
+  z-index:1;
 }
 
 .home .header{position:fixed}
@@ -564,14 +653,42 @@ main ul,main ol{list-style:unset}
 
 .logo {
   height: .75rem;
+  color: transparent;
+  animation-delay: 2s;
 }
+
+.logo path{
+  stroke-dasharray:  var(--strokeDashLenght);
+  stroke-dashoffset: var(--strokeDashLenght);
+  animation: line-anim 2s ease forwards;
+  animation-delay: var(--strokeDashAnimDelay);
+}
+.logo path:nth-child(1)  {--strokeDashLenght: 262.36;--strokeDashAnimDelay: 1.0s}
+.logo path:nth-child(2)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.2s}
+.logo path:nth-child(3)  {--strokeDashLenght: 208.84;--strokeDashAnimDelay: 1.4s}
+.logo path:nth-child(4)  {--strokeDashLenght:  67.19;--strokeDashAnimDelay: 1.6s}
+.logo path:nth-child(5)  {--strokeDashLenght: 141.46;--strokeDashAnimDelay: 1.8s}
+.logo path:nth-child(6)  {--strokeDashLenght: 103.48;--strokeDashAnimDelay: 2.0s}
+.logo path:nth-child(7)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.2s}
+.logo path:nth-child(8)  {--strokeDashLenght: 230.65;--strokeDashAnimDelay: 2.4s}
+.logo path:nth-child(9)  {--strokeDashLenght: 187.48;--strokeDashAnimDelay: 2.6s}
+.logo path:nth-child(10) {--strokeDashLenght: 199.23;--strokeDashAnimDelay: 2.8s}
+.logo path:nth-child(11) {--strokeDashLenght: 187.20;--strokeDashAnimDelay: 3.0s}
+.logo path:nth-child(12) {--strokeDashLenght: 149.22;--strokeDashAnimDelay: 3.2s}
+
+@keyframes line-anim{
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+
 
 
 /* MOBILE HEADER */
 
 .mobileHeader {
   display: var(--mobileHeaderDisplay);
-  display: none;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
@@ -687,63 +804,43 @@ main ul,main ol{list-style:unset}
 --------------------------------------------------------------------------- */
 .storiesATF{
   display: grid;
-  /* grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr; */
-  grid-template-areas: "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie3"
-                       "featuredStorie1 featuredStorie1 featuredStorie2 featuredStorie4";
-  padding: 1rem var(--lateral);
+  grid-template-areas: var(--storiesATFgridAreas);
+  padding: 2rem var(--lateral);
   grid-gap: 1rem;
-  max-height: min-content;
+  height: min-content;
 }
 
 .featuredStorie .storieImg{
-  width: 100%;
+  height: inherit;
 }
 
 .featuredStorie {
   position: relative;
-  height: min-content;
 }
 
-.storiesATF .featuredStorie:nth-child(1) {
-  grid-area: featuredStorie1;
+.featuredStorie .storieLink{
+  display: grid;
+  height: var(--storiesATFaspectRatio);
 }
 
-.storiesATF .featuredStorie:nth-child(2) {
-  grid-area: featuredStorie2;
-}
-.storiesATF .featuredStorie:nth-child(3) {
-  grid-area: featuredStorie3;
-}
-.storiesATF .featuredStorie:nth-child(4) {
-  grid-area: featuredStorie4;
+.storiesATF .featuredStorie:nth-child(1){grid-area:featuredStorie1}
+.storiesATF .featuredStorie:nth-child(2){grid-area:featuredStorie2}
+.storiesATF .featuredStorie:nth-child(3){grid-area:featuredStorie3}
+.storiesATF .featuredStorie:nth-child(4){grid-area:featuredStorie4}
+
+
+.storiesATF .featuredStorie:nth-child(3) .storieLink,
+.storiesATF .featuredStorie:nth-child(4) .storieLink{
+  height: var(--storiesATFaspectRatio3and4);
 }
 
-.storiesATF .featuredStorie:nth-child(1) .storieImg{
-  object-fit: cover;
-  height: auto;
-}
 
 .featuredStorieTitle{
   position: absolute;
-  top: 4rem;
+  top: 30%;
   background: white;
   text-transform: uppercase;
 }
-
-.storiesATF .featuredStorie:nth-child(2) .storieImg{
-  object-fit: contain;
-}
-.storiesATF .featuredStorie:nth-child(3) .storieImg{
-  object-fit: cover;
-  height: auto;
-}
-.storiesATF .featuredStorie:nth-child(4) .storieImg{
-  object-fit: cover;
-  height: auto;
-}
-
-
 /*
 
   storiesGeneral
@@ -758,18 +855,11 @@ main ul,main ol{list-style:unset}
 
 .archiveStories{
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: var(--archiveStoriesGTC);
   padding: 1rem var(--lateral);
   grid-gap: 1rem;
 }
 
-.storieTitle{
-  font-size: .7rem;
-}
-
-.storieTitle h3{
-  text-transform: uppercase;
-}
 
 .storieDescription{
   height: min-content;
@@ -784,20 +874,29 @@ main ul,main ol{list-style:unset}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+.singleStorie{
+  width: 100%;
+  position: relative;
+}
 
 .singleStorieImg{
   padding: 0 var(--lateral);
-  max-height: 55vh;
-  object-fit: cover ;
+  max-height: 75vh;
 }
 
 .singleStorieCaption{
-  padding: 2rem var(--lateral);
+  padding: 2rem 1rem;
   background: white;
   z-index: 10;
   box-shadow: var(--DP6);
   margin: 2rem calc(var(--lateral) + 5rem);
   margin-top: -3rem;
+  position: relative;
+  text-align: var(--singleStorieCaptionTextAlign);
+}
+
+.singleStorieCaption{
+
 }
 
 .singleStorieCaption *{
@@ -816,11 +915,38 @@ main ul,main ol{list-style:unset}
 singleStorieContent
 
 */
+
+.storieSocialSharing{
+  margin: auto;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.storieSocialSharing h5{font-weight: 100; margin: .5rem 0;}
+
+.storieSocialSharing .socialMedia .socialSVGLink {
+  margin-right: .25rem;
+  height: 35px;
+  width: 35px;
+}
+
+.singleOthersTitle{
+  margin: 1rem var(--lateral);
+}
 .singleStorieOthers{
   display: grid;
-  grid-template-columns: 1fr repeat(2,2fr);
-  margin: 1rem var(--lateral);
+  grid-template-columns: repeat(4,2fr);
+  margin: 1rem var(--lateral) 2rem var(--lateral);
   grid-gap: 1rem;
+}
+
+.cardStorieDate{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  text-align: center;
+  padding: .2rem .5rem;
 }
 
 
@@ -846,23 +972,6 @@ singleStorieContent
 .slider .btn{
   grid-column:1/-1;
 }
-.slider .load{
-  position:absolute;
-  z-index:10;
-  background:white;
-  width:100%;
-  top:0;
-  bottom:0;
-  height: unset;
-  opacity:0;
-  transition:none;
-  pointer-events:none;
-  /* transition-delay:opacity 10s; */
-}
-.slider.loading .load{
-  /* transition-delay:opacity 0s; */
-  opacity:1;
-}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.4) =multiCards:
@@ -874,23 +983,27 @@ singleStorieContent
                           6.4.0) =card:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.card{
-  /* display:grid; */
-}
-.cardImg{display:grid}
 
-.cardCaption {
-  text-align: center;
+.card{
+  position: relative;
+}
+
+.cardImg {
+  display:grid
 }
 
 .cardCaption{
   padding: .5rem;
-  font-size: .6rem;
+  font-size: var(--cardCaptionFontSize);
   text-transform: uppercase;
 }
 
+.cardTitle{
+  text-align: var(--textAlignCenterLeft);
+}
+
 .productCardPrice {
-  font-size: .8rem;
+  font-size: var(--cardPriceFontSize);
   font-weight: bold;
 }
 /* ---------------------------------------------------------------------------
@@ -997,23 +1110,41 @@ singleStorieContent
 }
 
 .mobileNavBar {
+  position: fixed;
+  top: 2.5rem;
   height: calc(100vh - 2.5rem);
   width: 100vw;
   background: white;
   transition: .5s;
-  position: relative;
-  transform: translateX(100vh);
-  display: flex;
-  flex-direction: column;
+  margin-left: 100vw;
+  display: grid;
   border-top: solid 2px black;
+  grid-template-rows: 1fr auto auto;
+  grid-gap: 1.5rem;
+  padding: 1.5rem 0;
 }
 
-.mobileNavBar >* {margin: 2rem auto;}
+.mobileNavBar.alt {
+  margin-left: 0;
+}
 
 
 .mobileNavBar .suscribe {
+  margin: 0 auto;
+}
+
+.mobileNavBar .suscribe>* {
   color: black;
-  width: max-content;
+}
+
+.mobileNavBar .suscribe .suscribeButton {
+  width: 100%;
+  color: white;
+  margin: .5rem auto;
+}
+.mobileNavBar .suscribe .suscribeButton:hover {
+  color: black;
+  border: solid 1px var(--color3);
 }
 
 .mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
@@ -1029,13 +1160,12 @@ singleStorieContent
   margin: auto;
 }
 
-#mobileNavBar.alt {
-  transform: translateX(0);
-}
+
 
 .navBarMobile {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .navBarMobile li {
@@ -1043,6 +1173,23 @@ singleStorieContent
   margin: 1rem auto;
   width: max-content;
 }
+
+.mobileHeader .socialSVGPinterest {
+  background: #E60023;
+  border: none;
+  color: white;
+}
+.mobileHeader .socialSVGInstagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  border: none;
+  color: white;
+}
+.mobileHeader .socialSVGFacebook {
+  background: #4267B2;
+  border: none;
+  color: white;
+}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -1062,23 +1209,41 @@ singleStorieContent
   margin: auto;
   padding:.5rem 1.3rem;
   text-transform:uppercase;
-  border: solid black 1px;
+  border: var(--color1) black 1px;
   transition: .25s;
 }
 
+.thinBtn {
+  background: var(--color1);
+  color:var(--color2);
+  margin: auto;
+  padding: .25rem;
+  text-transform: uppercase;
+  border: var(--color1) solid 1px;
+  transition: .25s;
+}
+.thinBtn:hover {
+  background: var(--color2);
+  color: var(--color3);
+  border: var(--color3) solid 1px;
+
+}
+
 .btn:hover {
-  background: white;
-  color: black;
+  background: var(--color2);
+  color: var(--color3);
+  border: var(--color3) black 1px;
 }
 
 .btnWhite {
-  background: white;
-  color: black;
+  background: var(--color2);
+  color: var(--color3);
+  border: var(--color3) solid 1px;
 }
 
 .btnWhite:hover {
-  color: white;
-  background: black;
+  color: var(--color2);
+  background: var(--color1);
 }
 
 .shopBtn {
@@ -1091,6 +1256,13 @@ singleStorieContent
   border: none;
 }
 
+
+
+
+
+
+
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.6.1) =sliderArrow:
@@ -1102,6 +1274,7 @@ singleStorieContent
   position:absolute;
   top:50%;
   transform:translateY(-50%);
+  transform-origin: center;
   right:.75rem;
   background:var(--color2);
   border-radius:50%;
@@ -1112,9 +1285,13 @@ singleStorieContent
   font-size:1.2rem;
   font-weight:100;
   font-family: 'Roboto', sans-serif;
+  z-index: 10;
 }
 
-
+.slideLeft{
+  transform: translateY(-50%) rotate(180deg) ;
+  left: .75rem;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1135,7 +1312,6 @@ singleStorieContent
 }
 
 .suscribeTitle {
-  font-size: .5rem;
   margin: .4rem 0;
   word-spacing: 2px;
 }
@@ -1162,134 +1338,11 @@ singleStorieContent
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-.shopFilterBar .selectBox:first-child{margin-right:1rem;}
 
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-                          6.08.1) =selectBox:
-------------------------------------------------------------------------------
---------------------------------------------------------------------------- */
-.selectBox{
-  --selectBoxHeight:40px;
-  display: grid;
-  align-items: center;
-  grid-template-rows: var(--selectBoxHeight);
-  position: relative;
-  /* width:100%; */
-  /* width:max-content; */
-  min-width: 6rem;
-}
-
-
-.selectBoxButton{
-  background: white;
-  color:#333;
-  cursor: pointer;
-  display:grid;
-  grid-row:1;
-  grid-column:1;
-  height: var(--selectBoxHeight);
-  position: relative;
-  transition:.4s;
-  width:100%;
-  /* width:max-content; */
-  height:40px;
-  z-index:4;
-}
-
-.selectBoxPlaceholder{
-  font-size: .8rem;
-  height:1rem;
-  line-height:1rem;
-  left:16px;
-  position: absolute;
-  top:calc(50% - .5rem);
-  transition:.3s;
-  transform-origin:left;
-}
-.selectBoxCurrent{
-  /* padding:16px 52px 2px 16px; */
-  padding:16px;
-  padding-bottom:2px;
-  font-size: .8rem;
-  position: relative;
-  border-bottom:2px solid #666;
-}
-.selectBoxCurrent::after{
-  content:'';
-  position:absolute;
-  bottom:-2px;
-  left:0;
-  width: 100%;
-  transform-origin: center;
-  transform: scaleX(0);
-  height: 2px;
-  transition:.2s;
-  background: #000;
-}
-.selectBox:focus{
-  outline:none;
-}
-.selectBox:focus .selectBoxCurrent::after,
-.selectBox.alt .selectBoxCurrent::after{
-  /* background:#F78D15; */
-  background:var(--color1);
-  transform:scaleX(1);
-}
-.selectBox:focus .selectBoxPlaceholder,
-.selectBox.alt .selectBoxPlaceholder{
-  transform:translateY(-50%) scale(.6);
-}
-
-
-.selectBoxList{
-  align-items: center;
-  background: #FFF;
-  display: grid;
-  grid-gap: .2rem;
-  grid-auto-rows:1.5rem;
-  padding: .2rem;
-  left:0;
-  position: absolute;
-  pointer-events: none;
-  opacity:0;
-  right:0;
-  top:0;
-  transition:.3s;
-  transition-delay:.2s;
-  width:100%;
-  z-index: 10;
-}
-.selectBox:focus .selectBoxList{
-  opacity:1;
-  top:40px;
-  pointer-events: unset;
-
-}
-.selectBoxOption{
-  cursor:pointer;
-  font-size: .7rem;
-  height: 1.5rem;
-  line-height: 1.8rem;
-  transition:.3s;
-  padding:0 16px;
-  /* width:max-content; */
-}
-.selectBoxOption:hover{
-  background:#BBB;
-}
-.selectBoxInput{
-  display: none;
-}
-.selectBoxCurrent:focus + .selectBoxList{
-  transform: translateY(calc(-20px - 50%));
-  background: red;
-  transition: .7s;
-}
-.colrOptP{
-  /* width:max-content; */
-  /* height: var(--selectBoxHeight); */
-  line-height: var(--selectBoxHeight);
+.filterBarItem {
+  margin: 0 1rem;
+  width: 5rem;
+  padding: .5rem;
 }
 
 
@@ -1450,7 +1503,123 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.12.1) =SINGLE PRODUCT MAIN
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
 
+.singleProductMain {
+  display: var(--singleProductMainDisplay);
+  flex-direction: column;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 1rem calc(var(--lateral) * 2);
+}
+
+.singleProductMainImg {
+  grid-column: span 2;
+  grid-row: span 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  order: 2;
+}
+.singleProductsgalleryBtnsContainer {
+  margin: auto;
+  display: flex;
+  width: var(--singleProductsgalleryBtnsContainerWidth);
+}
+
+.singleProductsGalleryBtns {
+  /* padding: .5rem; */
+  margin: var(--singleProductGalleryBtnsMargin);
+  border-radius: 50%;
+  box-shadow: var(--DP4);
+  border: none;
+  background-color: white;
+  color: var(--color3);
+  transition: .25s;
+  height: 2rem;
+  width: 2rem;
+}
+.singleProductsGalleryBtns:hover {
+  box-shadow: var(--DP6);
+}
+
+
+.SingleProductInteraction {
+  display: flex;
+  flex-direction: column;
+  grid-column: 4/ span 1;
+  grid-row: 1;
+  margin: auto;
+  width: 100%;
+  order: 3;
+}
+
+
+.SingleProductInteraction button {
+  width: var(--singleProductButtonWidth);
+  margin: var(--singleProductButtonMargin);
+  font-size: var(--singleProductButtonsFontSize);
+  padding: var(--singleProductInteractionBtnPadding);
+}
+
+.singleProductSizeBtn {margin-bottom: 1.5rem!important;}
+
+.singleSideTitle {
+  opacity: .8;
+  text-transform: uppercase;
+}
+.singleSideTitle, .singleSidePrice {
+  font-size: var(--singleSideFontSize);
+  text-align: var(--singleSideTxtalign);
+  margin-bottom: var(--singleSideTxtMarginBottom);
+}
+
+.singleProductDescription {
+  grid-column: 4/ span 2;
+  grid-row: 2;
+  margin: auto;
+  margin-top: 1rem;
+  order: 1;
+}
+
+.singleProductTitle {
+  font-size: 2rem;
+  font-weight: 100;
+  margin-bottom: .5rem;
+  text-align: var(--textAlignCenterLeft);
+  text-transform: uppercase;
+}
+.singleProductSubtitle {
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  text-align: var(--textAlignCenterLeft);
+}
+.singleProductTxt {
+  font-size: .8rem;
+  opacity: .8;
+  text-align: var(--textAlignJustifyLeft);
+}
+
+.relatedProducts {
+  display: var(--relatedProductDisplay);
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2rem;
+  padding: 0 calc(var(--lateral) * 2);
+  margin-bottom: var(--lateral);
+}
+
+.relatedProducts .sliderTitle {
+  text-align: left;
+}
+
+.relatedProducts .card {
+  margin-bottom: var(--relatedProductsCardMarginBottom);
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1463,6 +1632,7 @@ singleStorieContent
   grid-template-columns: var(--footerTemplateColumns);
   grid-gap:var(--footerGridGap);
   padding: 4rem  1rem calc(var(--lateral) / 2 );
+  font-size: 16px;
 }
 
 .logoFooterLink {margin: auto;}
@@ -1476,7 +1646,6 @@ singleStorieContent
 .signature{
   color:#ddd;
   display:grid;
-  font-size:.7rem;
   grid-column:1/-1;
   justify-content:center;
   margin: .25rem auto;

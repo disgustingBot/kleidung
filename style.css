@@ -850,10 +850,14 @@ p {font-family: var(--spartanSans)}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+.stories{
+  margin: 0 var(--lateral);
+}
+
 .storiesATFAlternativa{
   display: grid;
   grid-template-columns: 2fr 1.5fr 1fr ;
-  margin: 1rem var(--lateral);
+  margin: 1rem 0;
   grid-gap: 1rem;
   align-items: center;
   position: relative;
@@ -873,8 +877,8 @@ p {font-family: var(--spartanSans)}
   text-align: center;
 }
 
-.storiesATFAlternativa .featuredStorie2:nth-child(2){ filter: blur(1px);}
-.storiesATFAlternativa .featuredStorie2:nth-child(3){    filter: blur(2px);}
+.storiesATFAlternativa .featuredStorie2:nth-child(2){filter: blur(1px);}
+.storiesATFAlternativa .featuredStorie2:nth-child(3){filter: blur(2px);}
 
 
 
@@ -890,12 +894,12 @@ p {font-family: var(--spartanSans)}
   font-family: 'SalvalynDemo';
 }
 
-.archiveStoriesTitle{padding: 2rem var(--lateral) 0}
+.archiveStoriesTitle{padding: 2rem 0}
 
 .archiveStories{
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
-  padding: 2rem var(--lateral);
+  padding: 2rem 0;
   grid-gap: var(--cardGalleryGridGap);
 }
 
@@ -915,6 +919,10 @@ p {font-family: var(--spartanSans)}
                           6.02.4) =singleStoriesATF:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
+
+.singleStoriesATF{
+  margin: 0 var(--lateral);
+}
 
 .singleStorie{
   width: 100%;
@@ -1001,15 +1009,16 @@ singleStorieContent
 
 .cardStorieDate{
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -.5rem;
+  left: -.5rem;
   background: white;
   text-align: center;
   padding: 1rem!important;
+  border-top: solid black 1px;
+  border-left: solid black 1px;
 }
 .singleStorieOthers .cardStorieDate{
-  top: -.5rem;
-  left: -.5rem;
+
 }
 
 .cardAuthor{

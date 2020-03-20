@@ -119,10 +119,15 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+////////////// initialize SILK (carousel library https://kenwheeler.github.io/slick/)
+// $(document).ready(function(){
+//   $('.your-class').slick({
+//     setting-name: setting-value
+//   });
+// });
 
 
 // const logo = document.querySelectorAll("#logo path");
 
 // for(let i = 0; i<logo.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
-

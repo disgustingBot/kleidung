@@ -121,8 +121,89 @@ for (i = 0; i < acc.length; i++) {
 
 
 // LOGO ANIMATION
-const logo = document.querySelectorAll("#logo path");
-
+// const logo = document.querySelectorAll("#logo path");
 // for(let i = 0; i<logo.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const options = {
+//   root: null, // it is the viewport, that's the default
+//   threshold: 1, // that's the default
+//   rootMargin: "32px 0px 0px 0px" // that's the default
+// };
+
+// const observer = new IntersectionObserver(function(entries, observer){
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//     } else {
+//     }
+//   })
+// }, options);
+
+const altClassFromSelectorOnObserveSelector = (clase, selector, observado, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
+
+  const optionsObserver = options;
+  const observer = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      altClassFromSelector(clase, selector)
+      // if (entry.isIntersecting) {
+      //   c.log("activate!");
+      // } else {
+      //   c.log("NOT!");
+      // }
+    })
+  }, optionsObserver);
+
+  // observer.observe(detector);
+  d.querySelectorAll(observado).forEach(e => {
+    observer.observe(e);
+  })
+
+// threshold: 1
+}
+
+// scrollObserver('alt', '#homeATF',{
+altClassFromSelectorOnObserveSelector('alt', '#header', '#homeATF', { threshold : .7 });

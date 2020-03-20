@@ -6,7 +6,7 @@
   //the_content();
 } ?>
 
-<section class="homeATF ATF">
+<section class="homeATF ATF" id="homeATF">
   <img class="homeATFImg rowcol1" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
   <h1 class="homeATFTitle rowcol1"><?php the_title(); ?></h1>
 </section>

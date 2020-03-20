@@ -475,15 +475,42 @@ FIN DE MAPA DE CONTENIDOS */
   margin:0;
   padding:0;
 }
+html{overflow-x:hidden}
 body{display:grid}
 img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
+
 main {
   display: flex;
   flex-direction: column;
+  padding: 2rem var(--lateral);
 }
-main p,
+main p, main li {
+  margin-bottom: .75rem;
+  line-height: 1.65;
+  font-size: 16px;
+  text-align: var(--textAlignJustifyLeft);
+}
+
+main li {
+  padding-left: 16px;
+}
+
+main a,
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  margin-bottom: 1rem;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
 main a,
 main h1,
 main h2,
@@ -492,8 +519,9 @@ main h4,
 main h5,
 main h6,
 main ul,
-main li{margin:unset;padding:unset}
-main ul,main ol{list-style:unset}
+
+main ul {list-style-type: circle}
+main ul ul {list-style-type: square;}
 
 
 h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
@@ -635,6 +663,7 @@ p {font-family: var(--spartanSans)}
 --------------------------------------------------------------------------- */
 .header {
   align-items:center;
+  background:transparent;
   border-bottom:1px solid black;
   display:var(--headerDisplay);
   grid-auto-flow:column;
@@ -644,8 +673,15 @@ p {font-family: var(--spartanSans)}
   position:sticky;
   top: 0;
   width:100%;
-  z-index:1;
+  z-index:15;
+  transition:.7s;
 }
+
+.header.alt{
+  background:white;
+}
+
+.header .socialMedia{margin-right:0;}
 
 .home .header{position:fixed}
 
@@ -1051,6 +1087,24 @@ singleStorieContent
 .slider .btn{
   grid-column:1/-1;
 }
+
+.slider .load{
+  position:absolute;
+  z-index:10;
+  background:white;
+  width:100%;
+  top:0!important;
+  bottom:0;
+  height: unset;
+  opacity:0;
+  transition:none;
+  pointer-events:none;
+  /* transition-delay:opacity 10s; */
+}
+.slider.loading .load{
+  /* transition-delay:opacity 0s; */
+  opacity:1;
+}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.4) =multiCards:
@@ -1425,8 +1479,135 @@ singleStorieContent
   width: 5rem;
   padding: .5rem;
 }
+.shopFilterBar .selectBox:nth-child(1){margin-right:1rem}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.08.1) =selectBox:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.selectBox{
+  --selectBoxHeight:40px;
+  display: grid;
+  align-items: center;
+  grid-template-rows: var(--selectBoxHeight);
+  position: relative;
+  /* width:100%; */
+  /* width:max-content; */
+  min-width: 6rem;
+}
 
 
+.selectBoxButton{
+  background: white;
+  color:#333;
+  cursor: pointer;
+  display:grid;
+  grid-row:1;
+  grid-column:1;
+  height: var(--selectBoxHeight);
+  position: relative;
+  transition:.4s;
+  width:100%;
+  /* width:max-content; */
+  height:40px;
+  z-index:4;
+}
+
+.selectBoxPlaceholder{
+  font-size: .8rem;
+  height:1rem;
+  line-height:1rem;
+  left:16px;
+  position: absolute;
+  top:calc(50% - .5rem);
+  transition:.3s;
+  transform-origin:left;
+}
+.selectBoxCurrent{
+  /* padding:16px 52px 2px 16px; */
+  padding:16px;
+  padding-bottom:2px;
+  font-size: .8rem;
+  position: relative;
+  border-bottom:2px solid #666;
+}
+.selectBoxCurrent::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width: 100%;
+  transform-origin: center;
+  transform: scaleX(0);
+  height: 2px;
+  transition:.2s;
+  background: #000;
+}
+.selectBox:focus{
+  outline:none;
+}
+.selectBox:focus .selectBoxCurrent::after,
+.selectBox.alt .selectBoxCurrent::after{
+  /* background:#F78D15; */
+  background:var(--color1);
+  transform:scaleX(1);
+}
+.selectBox:focus .selectBoxPlaceholder,
+.selectBox.alt .selectBoxPlaceholder{
+  transform:translateY(-50%) scale(.6);
+}
+
+
+.selectBoxList{
+  align-items: center;
+  background: #FFF;
+  display: grid;
+  grid-gap: .2rem;
+  grid-auto-rows:1.5rem;
+  padding: .2rem;
+  left:0;
+  position: absolute;
+  pointer-events: none;
+  opacity:0;
+  right:0;
+  top:0;
+  transition:.3s;
+  transition-delay:.2s;
+  width:100%;
+  z-index: 10;
+}
+.selectBox:focus .selectBoxList{
+  opacity:1;
+  top:40px;
+  pointer-events: unset;
+
+}
+.selectBoxOption{
+  cursor:pointer;
+  font-size: .7rem;
+  height: 1.5rem;
+  line-height: 1.8rem;
+  transition:.3s;
+  padding:0 16px;
+  /* width:max-content; */
+}
+.selectBoxOption:hover{
+  background:#BBB;
+}
+.selectBoxInput{
+  display: none;
+}
+.selectBoxCurrent:focus + .selectBoxList{
+  transform: translateY(calc(-20px - 50%));
+  background: red;
+  transition: .7s;
+}
+.colrOptP{
+  /* width:max-content; */
+  /* height: var(--selectBoxHeight); */
+  line-height: var(--selectBoxHeight);
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

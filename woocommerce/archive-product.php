@@ -1,6 +1,14 @@
 <?php get_header(); ?>
 <?php
 global $wp_query;
+// var_dump($wp_query);
+
+
+
+
+
+
+
 ?>
 
   <div class="shopATF ATF">
@@ -18,6 +26,20 @@ global $wp_query;
   <?php function woocommerce_subcats_from_parentcat($category){
     if (is_numeric($category)) {$term = get_term(           $category, 'product_cat');}
     else                       {$term = get_term_by('slug', $category, 'product_cat');}
+
+
+
+    	if (isset($_GET[$category])) {
+        // var_dump($_GET[$category]);
+    		$parentArray = $_GET[$category];
+    	  // foreach ($parentArray as $key => $value) {
+  			$wp_query['query']['tax_query'][$key] = array(
+  				'taxonomy' => 'product_cat',
+  				'field'    => 'slug',
+  				'terms'    => $parentArray,
+  			);
+    	  // }
+    	}
 
 
     $args = array(
@@ -45,6 +67,7 @@ global $wp_query;
             name="filter_<?php echo $term->slug; ?>"
             onclick="selectBoxControler('','#selectBox<?php echo $term->term_id; ?>','#selectBoxCurrent<?php echo $term->term_id; ?>')"
             value="0"
+            selected
           >
           <!-- <span class="checkmark"></span> -->
           <p class="colrOptP"></p>

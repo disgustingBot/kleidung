@@ -7,6 +7,7 @@
 
   <!-- GOOGLE FONTS! -->
   <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display|Spartan:200,300&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/> -->
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

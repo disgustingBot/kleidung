@@ -119,11 +119,18 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+////////////// initialize SILK (carousel library https://kenwheeler.github.io/slick/)
+// $(document).ready(function(){
+//   $('.your-class').slick({
+//     setting-name: setting-value
+//   });
+// });
 
 // LOGO ANIMATION
 // const logo = document.querySelectorAll("#logo path");
 // for(let i = 0; i<logo.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
+
 // }
 
 
@@ -203,3 +210,4 @@ const altClassFromSelectorOnObserveSelector = (clase, selector, observado, optio
 }
 
 altClassFromSelectorOnObserveSelector('alt', '#header', '#homeATF', { threshold : .7 });
+

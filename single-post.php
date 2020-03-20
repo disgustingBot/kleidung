@@ -2,7 +2,7 @@
 
 <?php while(have_posts()){the_post(); ?>
 
-<div class="singleStories">
+<div class="singleStoriesATF">
 
   <section class="singleStorie">
 

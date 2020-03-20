@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="stories">
+<div class="stories">
 
   <h3 class="storiesTitle">STORIES</h3>
 
@@ -28,7 +28,7 @@
 
     </section>
 
-    <section class="storiesATFAlternativa">
+    <section class="storiesATFAlternativa" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
 
       <?php
       $args=array(
@@ -71,6 +71,11 @@
         <a class="storieLink" href="<?php the_permalink(); ?>">
           <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>
+        <p class="cardStorieDate">
+          <?php echo get_the_date( 'j' ); ?>
+          <br>
+          <?php echo get_the_date( 'M' ); ?>
+        </p>
         <figcaption class="cardCaption">
           <h3 class="cardTitle">
             <?php the_title(); ?>
@@ -89,7 +94,7 @@
 
 
 
-</main>
+</div>
 
 
 

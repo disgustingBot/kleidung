@@ -111,43 +111,6 @@ function excerpt($charNumber){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // FUCTION FOR USER GENERATION
 // https://tommcfarlin.com/create-a-user-in-wordpress/
 add_action( 'admin_post_nopriv_lt_login', 'lt_login');
@@ -396,3 +359,14 @@ add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
 function load_admin_styles() {
   // wp_enqueue_style( 'admin_css_foo', get_template_directory_uri() . '/css/backoffice.css', false, '1.0.0' );
 }
+
+
+///////////////AGREGO LIBRERIA DE JS CON SILK
+
+add_action( 'wp_footer', function () { ?>
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+
+<?php } );

@@ -411,7 +411,7 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     /* STORIES GALLERY */
-    --archiveStoriesGTC: repeat(4,1fr);
+    --archiveStoriesGTC: repeat(3,1fr);
   }
 }
 /* ---------------------------------------------------------------------------
@@ -475,7 +475,7 @@ FIN DE MAPA DE CONTENIDOS */
   margin:0;
   padding:0;
 }
-html{overflow-x:hidden}
+/* html{overflow-x:hidden} */
 body{display:grid}
 img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
@@ -841,9 +841,8 @@ p {font-family: var(--spartanSans)}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .storiesATF{
-  display: none;
+  display: grid;
   grid-template-areas: var(--storiesATFgridAreas);
-  padding: 2rem var(--lateral);
   grid-gap: 1rem;
   height: min-content;
 }
@@ -943,11 +942,7 @@ p {font-family: var(--spartanSans)}
   color: white;
   padding: 1rem 0;
 }
-.storieDescription{
-  height: min-content;
-  overflow-y: hidden;
-  margin: 0 0 1rem;
-}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -957,7 +952,7 @@ p {font-family: var(--spartanSans)}
 --------------------------------------------------------------------------- */
 
 .singleStoriesATF{
-  margin: 0 var(--lateral);
+  /* margin: 0 var(--lateral); */
 }
 
 .singleStorie{
@@ -966,7 +961,6 @@ p {font-family: var(--spartanSans)}
 }
 
 .singleStorieImg{
-  padding: 0 var(--lateral);
   max-height: 75vh;
 }
 
@@ -975,17 +969,23 @@ p {font-family: var(--spartanSans)}
   background: white;
   z-index: 10;
   box-shadow: var(--DP6);
-  margin: 2rem calc(var(--lateral) + 5rem);
+  margin: 2rem  var(--lateral);
   margin-top: -3rem;
   position: relative;
   text-align: var(--singleStorieCaptionTextAlign);
+}
+
+.singleStorieCaption .cardStorieDate{
+  border: none;
+  top: 0;
+  left: 0;
 }
 
 
 h3.singleStorieTitle{
   text-align: center;
   text-transform: uppercase;
-  padding: 1rem;
+  padding: .5rem;
 }
 
 
@@ -1049,7 +1049,7 @@ singleStorieContent
   left: -.5rem;
   background: white;
   text-align: center;
-  padding: 1rem!important;
+  padding: .5rem!important;
   border-top: solid black 1px;
   border-left: solid black 1px;
 }
@@ -1119,23 +1119,36 @@ singleStorieContent
 
 .card{
   position: relative;
+  display: grid;
 }
 
-.card *{padding: .5rem 0;}
 
 .cardImg {
-  display:grid
+  display:flex;
 }
 
 .cardCaption{
-  padding: .5rem;
+  display: grid;
+  padding: .5rem 0;
   font-size: var(--cardCaptionFontSize);
   text-transform: uppercase;
+  grid-gap: .5rem;
 }
 
 .cardTitle{
   text-align: var(--textAlignCenterLeft);
+
 }
+
+.cardDescription{
+  height: min-content;
+  overflow-y: hidden;
+}
+
+.card .btn{
+  margin-left: 0;
+}
+
 
 .productCardPrice {
   font-size: var(--cardPriceFontSize);
@@ -1344,7 +1357,7 @@ singleStorieContent
   margin: auto;
   padding:.5rem 1.3rem;
   text-transform:uppercase;
-  border: var(--color1) black 1px;
+  border: var(--color1) solid 1px;
   transition: .25s;
 }
 
@@ -1367,7 +1380,7 @@ singleStorieContent
 .btn:hover {
   background: var(--color2);
   color: var(--color3);
-  border: var(--color3) black 1px;
+  border: var(--color3) solid 1px;
 }
 
 .btnWhite {

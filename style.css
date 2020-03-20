@@ -479,11 +479,37 @@ body{display:grid}
 img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
+
 main {
   display: flex;
   flex-direction: column;
+  padding: 2rem var(--lateral);
 }
-main p,
+main p, main li {
+  margin-bottom: .75rem;
+  line-height: 1.65;
+  font-size: 16px;
+  text-align: var(--textAlignJustifyLeft);
+}
+
+main li {
+  padding-left: 16px;
+}
+
+main a,
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  margin-bottom: 1rem;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
 main a,
 main h1,
 main h2,
@@ -492,8 +518,9 @@ main h4,
 main h5,
 main h6,
 main ul,
-main li{margin:unset;padding:unset}
-main ul,main ol{list-style:unset}
+
+main ul {list-style-type: circle}
+main ul ul {list-style-type: square;}
 
 
 h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}

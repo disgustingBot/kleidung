@@ -28,6 +28,10 @@
 
     </section>
 
+      <!-- SECCION ATF ALTERNATIVA COMENTADA  -->
+<?php if (false): ?>
+
+
     <section class="storiesATFAlternativa" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
 
       <?php
@@ -53,6 +57,8 @@
       </section>
 
 
+<?php endif; ?>
+      <!-- FIN COMENTARIO  -->
 
 
     <h4 class="archiveStoriesTitle">ALL OF OUR STORIES</h4>
@@ -68,7 +74,7 @@
     );$stories=new WP_Query($args);
     while($stories->have_posts()){$stories->the_post(); ?>
       <figure class="card">
-        <a class="storieLink" href="<?php the_permalink(); ?>">
+        <a class="cardImg" href="<?php the_permalink(); ?>">
           <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>
         <p class="cardStorieDate">
@@ -80,10 +86,10 @@
           <h3 class="cardTitle">
             <?php the_title(); ?>
           </h3>
-          <p class="storieDescription">
+          <p class="cardDescription">
             <?php echo excerpt(100); ?>
           </p>
-          <a class="storieLink btnWhite btn" href="<?php the_permalink(); ?>">
+          <a class="btnWhite btn" href="<?php the_permalink(); ?>">
             Read More&raquo;
           </a>
         </figcaption>

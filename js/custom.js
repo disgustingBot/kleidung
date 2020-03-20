@@ -197,13 +197,9 @@ const altClassFromSelectorOnObserveSelector = (clase, selector, observado, optio
     })
   }, optionsObserver);
 
-  // observer.observe(detector);
   d.querySelectorAll(observado).forEach(e => {
     observer.observe(e);
   })
-
-// threshold: 1
 }
 
-// scrollObserver('alt', '#homeATF',{
 altClassFromSelectorOnObserveSelector('alt', '#header', '#homeATF', { threshold : .7 });

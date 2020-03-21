@@ -20,24 +20,43 @@ w.onload=()=>{
   altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
 }
 
-
 // SLIDER:
 // TODO: mejorar modulo para poder reutilizarlo sin duplicar codigo
-var j=1,x=d.getElementsByClassName("carouselItem");
-const showDivs=n=>{
-  if(n>x.length){j=1}
-  if(n<1){j=x.length}
-  for(i=0;i<x.length;i++){x[i].classList.add("inactive")}
-  x[j-1].classList.remove("inactive");
-}
-const carousel=()=>{j++;
-  for(i=0;i<x.length;i++){x[i].classList.add("inactive")}
-  if(j>x.length){j=1}
-  x[j-1].classList.remove("inactive");
-  setTimeout(carousel, 8000); // Change image every N/1000 seconds
-}
-const plusDivs=n=>{showDivs(j+=n)}
-if(x.length>0){showDivs(j);setTimeout(carousel, 8000);}
+var j=1;
+var x=d.getElementsByClassName("carouselItem");
+var carousels = d.querySelectorAll('.gallery');
+carousels.forEach((item, i) => {
+  // c.log(item.querySelectorAll('.element'));
+  let j=1,x=item.getElementsByClassName("element");
+
+
+  const showDivs=n=>{
+
+    if(n>x.length){j=1}
+    if(n<1){j=x.length}
+    for(i=0;i<x.length;i++){x[i].classList.add("inactive")}
+    x[j-1].classList.remove("inactive");
+
+  }
+  const carousel=()=>{j++;
+
+    for(i=0;i<x.length;i++){x[i].classList.add("inactive")}
+    if(j>x.length){j=1}
+    x[j-1].classList.remove("inactive");
+    setTimeout(carousel, 8000); // Change image every N/1000 seconds
+
+  }
+
+  const plusDivs=n=>{showDivs(j+=n)}
+
+  if(x.length>0){showDivs(j);setTimeout(carousel, 8000);}
+
+  item.querySelector('#nextButton').onclick = () =>{plusDivs(+1)}
+  item.querySelector('#prevButton').onclick = () =>{plusDivs(-1)}
+
+});
+
+
 
 
 
@@ -160,47 +179,17 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
 
   const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
-
-
-
-        // const x = d.querySelectorAll(selector);
-        // x.forEach((y, i) => {
-        //   if(y.classList.contains(clase)){
-        //     y.classList.remove(clase)
-        //   }else{
-        //     y.classList.add(clase)
-        //   }
-        // });
-
-
-
-
-        const x = d.querySelectorAll(selector);
-        if(entry.isIntersecting){
-          x.forEach( y => {
-            y.classList.add(clase)
-          });
-        } else {
-          x.forEach( y => {
-            y.classList.remove(clase)
-          });
-        }
-
-
-
-
-      // altClassFromSelector(clase, selector)
-      if(entry.isIntersecting && unobserve){
-        observer.unobserve(entry.target);
-      // } else {
-
+      const x = d.querySelectorAll(selector);
+      if(entry.isIntersecting){
+        x.forEach( y => {
+          y.classList.add(clase)
+        });
+        if(unobserve){observer.unobserve(entry.target)}
+      } else {
+        x.forEach( y => {
+          y.classList.remove(clase)
+        });
       }
-
-
-
-
-
-
     })
   }, options);
 
@@ -209,12 +198,11 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
   })
 }
 
-altClassFromSelectorOnObserveSelector('alt', '#header', '#homeATF', { threshold : .7 });
+altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
 
 
-cards = d.querySelectorAll('.card')
-cards.forEach((item, i) => {
-  console.log(item.id);
-  altClassFromSelectorOnObserveSelector('alt', '.archiveStories', item.id { threshold : .51 });
-});
-
+// cards = d.querySelectorAll('.card')
+// cards.forEach((item, i) => {
+//   console.log(item.id);
+//   altClassOnScroll('alt', '.archiveStories', item.id { threshold : .51 });
+// });

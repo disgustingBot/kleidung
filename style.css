@@ -946,11 +946,13 @@ p {font-family: var(--spartanSans)}
   padding: 2rem 0;
   grid-gap: var(--cardGalleryGridGap);
   transition: 2s;
+  transition-delay: .3s;
 }
 
-.archiveStories.alt{
+.archiveStories .card{
   opacity: 0;
 }
+
 
 .singleStorieOthers .cardCaption{
   color: white;
@@ -1137,7 +1139,12 @@ singleStorieContent
   display: grid;
   /* background: white; */
   transition:.5s;
+  transition-delay: .5s;
 }
+.card.alt{
+  opacity: 1;
+}
+
 .cardImg {
   display:flex;
 }

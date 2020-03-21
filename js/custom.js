@@ -13,7 +13,7 @@ w.onload=()=>{
   }
 
   d.getElementById("load").style.top="-100vh";
-  altClassOnScroll('alt', '#header', '#homeATF', { threshold : .5 });
+  altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
 }
 
 
@@ -152,11 +152,14 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-const altClassOnScroll = (clase, selector, observado, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
+const altClassOnScroll = (clase, selector, observado, unobserve = true, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
 
   const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
       altClassFromSelector(clase, selector)
+      if(entry.isIntersecting && unobserve){
+        observer.unobserve(entry.target);
+      }
     })
   }, options);
 

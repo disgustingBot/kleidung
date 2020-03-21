@@ -28,6 +28,13 @@ function lattte_setup(){
 
 
 
+	// OTRO AJAX
+  wp_enqueue_script( 'so_test', plugins_url( 'js/test.js', __FILE__ ) );
+  $i18n = array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'checkout_url' => get_permalink( wc_get_page_id( 'checkout' ) ) );
+  wp_localize_script( 'so_test', 'SO_TEST_AJAX', $i18n );
+	// OTRO AJAX
+
+
 
 
 
@@ -340,32 +347,3 @@ function misha_loadmore_ajax_handler(){
 
 add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Second solution : two or more files.
-//If you're using a child theme you could use:
-// get_stylesheet_directory_uri() instead of get_template_directory_uri()
-add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
-function load_admin_styles() {
-  // wp_enqueue_style( 'admin_css_foo', get_template_directory_uri() . '/css/backoffice.css', false, '1.0.0' );
-}

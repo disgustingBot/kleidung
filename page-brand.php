@@ -27,14 +27,14 @@
     <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3>
     <p class="brandTxt1Txt">Lorem ipsum dolor sit amet nunquam durmiens...</p>
   </div>
-  <p class="brandTxt2">Centrada en el diseño de vestidos, la marca busca formas que se ajusten a diferentes tipos de cuerpos, edades, y conceptos que trascienden las modas estacionales. Lisos o de estampados singulares; facilitando la tarea de vestirse a la mañana con un look de pocos elementos y mucho carácter.</p>
+  <p class="brandTxt2" id="brandTxt2">Centrada en el diseño de vestidos, la marca busca formas que se ajusten a diferentes tipos de cuerpos, edades, y conceptos que trascienden las modas estacionales. Lisos o de estampados singulares; facilitando la tarea de vestirse a la mañana con un look de pocos elementos y mucho carácter.</p>
   <img class="brandImg2" id="brandImg2" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
 </section>
 <section class="brandSection2 brandSection">
-  <p class="brandTxt3">Apostamos al slow fashion y la exclusividad y estamos en contra de la sobreproducción. Por ello, nuestras prendas son fabricadas en cantidades limitadas hasta agotar stock.</p>
-  <img class="brandImg3" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
-  <img class="brandImg4" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
-    <p class="brandTxt4">Tenemos total control y cuidado sobre las personas que trabajan en el proceso: todos nuestros productos son de diseño y fabricación europea y cada prenda es acabada a mano.</p>
+  <p class="brandTxt3" id="brandTxt3">Apostamos al slow fashion y la exclusividad y estamos en contra de la sobreproducción. Por ello, nuestras prendas son fabricadas en cantidades limitadas hasta agotar stock.</p>
+  <img class="brandImg3" id="brandImg3" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
+  <img class="brandImg4" id="brandImg4" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
+    <p class="brandTxt4" id="brandTxt4">Tenemos total control y cuidado sobre las personas que trabajan en el proceso: todos nuestros productos son de diseño y fabricación europea y cada prenda es acabada a mano.</p>
 </section>
 <section class="brandSection3">
   <img class="lazy rowcol1 brandImg5" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">

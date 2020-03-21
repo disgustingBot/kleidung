@@ -22,13 +22,13 @@
   </figcaption>
 </figure>
 <section class="brandSection1 brandSection">
-  <img class="brandImg1" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
-  <div class="brandTxt1">
+  <img class="brandImg1" id="brandImg1" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
+  <div class="brandTxt1" id="brandTxt1">
     <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3>
     <p class="brandTxt1Txt">Lorem ipsum dolor sit amet nunquam durmiens...</p>
   </div>
   <p class="brandTxt2">Centrada en el diseño de vestidos, la marca busca formas que se ajusten a diferentes tipos de cuerpos, edades, y conceptos que trascienden las modas estacionales. Lisos o de estampados singulares; facilitando la tarea de vestirse a la mañana con un look de pocos elementos y mucho carácter.</p>
-  <img class="brandImg2" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
+  <img class="brandImg2" id="brandImg2" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
 </section>
 <section class="brandSection2 brandSection">
   <p class="brandTxt3">Apostamos al slow fashion y la exclusividad y estamos en contra de la sobreproducción. Por ello, nuestras prendas son fabricadas en cantidades limitadas hasta agotar stock.</p>

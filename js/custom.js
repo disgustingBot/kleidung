@@ -164,3 +164,12 @@ const altClassOnScroll = (clase, selector, observado, options = { root: null, th
     observer.observe(e);
   })
 }
+
+altClassFromSelectorOnObserveSelector('alt', '#header', '#homeATF', { threshold : .7 });
+
+
+cards = d.querySelectorAll('.card')
+cards.forEach((item, i) => {
+  console.log(item.id);
+  altClassFromSelectorOnObserveSelector('alt', '.archiveStories', item.id { threshold : .51 });
+});

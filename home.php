@@ -33,7 +33,7 @@
 <?php if (false): ?>
 
 
-    <section class="storiesATFAlternativa" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+    <section class="storiesATFAlternativa" >
 
       <?php
       $args=array(
@@ -74,7 +74,7 @@
       'tag' => '',
     );$stories=new WP_Query($args);
     while($stories->have_posts()){$stories->the_post(); ?>
-      <figure class="card">
+      <figure class="card" id="card<?php get_the_id();?>">
         <a class="cardImg" href="<?php the_permalink(); ?>">
           <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>

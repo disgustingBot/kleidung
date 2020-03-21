@@ -12,6 +12,7 @@ w.onload=()=>{
     lIs.forEach(lI=>{lIO.observe(lI)});lBs.forEach(lB=>{lBO.observe(lB)});
   }
   d.querySelector("#logo").classList.add("loaded");
+  d.querySelector("#logoBrand").classList.add("loaded");
   d.getElementById("load").style.top="-100vh";
 }
 

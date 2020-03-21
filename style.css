@@ -484,10 +484,9 @@ ul,ol{list-style:none}
 main {
   display: flex;
   flex-direction: column;
-  padding: 2rem var(--lateral);
 }
 main p, main li {
-  margin-bottom: .75rem;
+  margin-bottom: .5rem;
   line-height: 1.65;
   font-size: 16px;
   text-align: var(--textAlignJustifyLeft);
@@ -518,8 +517,7 @@ main h3,
 main h4,
 main h5,
 main h6,
-main ul,
-
+main ol,
 main ul {list-style-type: circle}
 main ul ul {list-style-type: square;}
 
@@ -528,9 +526,6 @@ h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
 
 p {font-family: var(--spartanSans)}
 
-.uppercase {
-  text-transform: uppercase;
-}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               5) =ESTRUCTURA:
@@ -557,7 +552,10 @@ p {font-family: var(--spartanSans)}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+.pageMain{
+  padding: 2rem var(--lateral);
 
+}
 
 
 
@@ -874,13 +872,21 @@ p {font-family: var(--spartanSans)}
   height: var(--storiesATFaspectRatio3and4);
 }
 
-
 .featuredStorieTitle{
   position: absolute;
-  top: 30%;
-  background: white;
+  background: rgba(255,255,255,.4);
   text-transform: uppercase;
+  font-size: .7rem;
 }
+
+
+.storiesATF .featuredStorie:nth-child(1) .featuredStorieTitle{top: 30%;}
+
+.storiesATF .featuredStorie:nth-child(2) .featuredStorieTitle{bottom: 20%;left: 10%;}
+
+.storiesATF .featuredStorie:nth-child(3) .featuredStorieTitle{bottom: 50%;left: 0;}
+
+.storiesATF .featuredStorie:nth-child(4) .featuredStorieTitle{bottom: 50%;right: 0;}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -939,6 +945,11 @@ p {font-family: var(--spartanSans)}
   grid-template-columns: var(--archiveStoriesGTC);
   padding: 2rem 0;
   grid-gap: var(--cardGalleryGridGap);
+  transition: 2s;
+}
+
+.archiveStories.alt{
+  opacity: 0;
 }
 
 .singleStorieOthers .cardCaption{
@@ -1115,51 +1126,8 @@ singleStorieContent
   margin: auto;
 }
 
-.brandTxt2 {
-  grid-column: 2/ span 2;
-  grid-row: 2;
-  height: max-content;
-  margin: auto;
-}
-
-.brandImg2 {
-  grid-column: 4/ span 4;
-  grid-row: 2;
-}
 
 
-.brandImg3 {
-  grid-column: 1/ span 4;
-  grid-row: 1;
-}
-.brandTxt3 {
-  grid-column: 5/ span 2;
-  grid-row: 1;
-  height: max-content;
-  margin: auto;
-}
-
-.brandImg4 {
-  grid-column: 4/ span 3;
-  grid-row: 2;
-}
-
-.brandTxt4 {
-  grid-column: 2/ span 2;
-  grid-row: 2;
-  height: min-content;
-  margin: auto;
-}
-
-.brandImg5 {
-}
-
-.brandTxt5 {
-  margin: auto 0 4rem auto;
-  max-width: 60%;
-  padding: 1rem 4rem 1rem 1rem;
-  background: rgba(255,255,255,0.5);
-}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.3) =slider:
@@ -1171,6 +1139,7 @@ singleStorieContent
   grid-gap: 1rem;
   padding:1rem var(--lateral);
   position: relative;
+  overflow:hidden;
   z-index: 1;
 }
 .sliderTitle{
@@ -1213,9 +1182,9 @@ singleStorieContent
 .card{
   position: relative;
   display: grid;
+  /* background: white; */
+  transition:.5s;
 }
-
-
 .cardImg {
   display:flex;
 }
@@ -1600,7 +1569,7 @@ singleStorieContent
   position: relative;
   /* width:100%; */
   /* width:max-content; */
-  min-width: 6rem;
+  min-width: 10rem;
 }
 
 

@@ -484,10 +484,9 @@ ul,ol{list-style:none}
 main {
   display: flex;
   flex-direction: column;
-  padding: 2rem var(--lateral);
 }
 main p, main li {
-  margin-bottom: .75rem;
+  margin-bottom: .5rem;
   line-height: 1.65;
   font-size: 16px;
   text-align: var(--textAlignJustifyLeft);
@@ -518,8 +517,7 @@ main h3,
 main h4,
 main h5,
 main h6,
-main ul,
-
+main ol,
 main ul {list-style-type: circle}
 main ul ul {list-style-type: square;}
 
@@ -557,7 +555,10 @@ p {font-family: var(--spartanSans)}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
+.pageMain{
+  padding: 2rem var(--lateral);
 
+}
 
 
 
@@ -1181,6 +1182,7 @@ singleStorieContent
   grid-gap: 1rem;
   padding:1rem var(--lateral);
   position: relative;
+  overflow:hidden;
   z-index: 1;
 }
 .sliderTitle{
@@ -1223,9 +1225,9 @@ singleStorieContent
 .card{
   position: relative;
   display: grid;
+  /* background: white; */
+  transition:.5s;
 }
-
-
 .cardImg {
   display:flex;
 }
@@ -1610,7 +1612,7 @@ singleStorieContent
   position: relative;
   /* width:100%; */
   /* width:max-content; */
-  min-width: 6rem;
+  min-width: 10rem;
 }
 
 

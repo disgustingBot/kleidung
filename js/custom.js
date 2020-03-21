@@ -13,6 +13,7 @@ w.onload=()=>{
   }
 
   d.getElementById("load").style.top="-100vh";
+  altClassOnScroll('alt', '#header', '#homeATF', { threshold : .5 });
 }
 
 
@@ -46,22 +47,23 @@ if(x.length>0){showDivs(j);setTimeout(carousel, 8000);}
 // alternates a class from a selector of choice, example:
 // <div class="someButton" onclick="altClassFromSelector('activ', '#navBar')"></div>
 const altClassFromSelector = ( clase, selector, mainClass = false )=>{
-  const x = d.querySelector(selector);
-  // if there is a main class removes all other classes
-  if(mainClass){
-    x.classList.forEach( item=>{
-      // TODO: testear si anda con el nuevo condicional
-      if( item!=mainClass && item!=clase ){
-        x.classList.remove(item);
-      }
-    });
-  }
-
-  if(x.classList.contains(clase)){
-    x.classList.remove(clase)
-  }else{
-    x.classList.add(clase)
-  }
+  const x = d.querySelectorAll(selector);
+  x.forEach((y, i) => {
+    // if there is a main class removes all other classes
+    if(mainClass){
+      y.classList.forEach( item=>{
+        // TODO: testear si anda con el nuevo condicional
+        if( item!=mainClass && item!=clase ){
+          y.classList.remove(item);
+        }
+      });
+    }
+    if(y.classList.contains(clase)){
+      y.classList.remove(clase)
+    }else{
+      y.classList.add(clase)
+    }
+  });
 }
 
 
@@ -119,13 +121,6 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-////////////// initialize SILK (carousel library https://kenwheeler.github.io/slick/)
-// $(document).ready(function(){
-//   $('.your-class').slick({
-//     setting-name: setting-value
-//   });
-// });
-
 // LOGO ANIMATION
 // const logo = document.querySelectorAll("#logo path");
 // for(let i = 0; i<logo.length; i++) {
@@ -157,52 +152,13 @@ for (i = 0; i < acc.length; i++) {
 
 
 
+const altClassOnScroll = (clase, selector, observado, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const options = {
-//   root: null, // it is the viewport, that's the default
-//   threshold: 1, // that's the default
-//   rootMargin: "32px 0px 0px 0px" // that's the default
-// };
-
-// const observer = new IntersectionObserver(function(entries, observer){
-//   entries.forEach(entry => {
-//     if (entry.isIntersecting) {
-//     } else {
-//     }
-//   })
-// }, options);
-
-const altClassFromSelectorOnObserveSelector = (clase, selector, observado, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
-
-  const optionsObserver = options;
   const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
       altClassFromSelector(clase, selector)
-      // if (entry.isIntersecting) {
-      //   c.log("activate!");
-      // } else {
-      //   c.log("NOT!");
-      // }
     })
-  }, optionsObserver);
+  }, options);
 
   d.querySelectorAll(observado).forEach(e => {
     observer.observe(e);

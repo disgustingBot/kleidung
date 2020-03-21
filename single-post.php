@@ -111,7 +111,7 @@
 
 <div class="singleStorieOthers">
   <?php $args = array('post_type' => 'post',
-  'posts_per_page' => 4, );
+  'posts_per_page' => 3, );
   $stories=new WP_Query($args);
   while($stories->have_posts()){$stories->the_post(); ?>
     <figure class="card">

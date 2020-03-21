@@ -37,18 +37,18 @@
           ?>
 
           <?php
-          // do_action( 'woocommerce_before_add_to_cart_quantity' );
-          //
-          // woocommerce_quantity_input( array(
-          //   'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-          //   'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-          //   'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-          // ) );
-          //
-          // do_action( 'woocommerce_after_add_to_cart_quantity' );
+          do_action( 'woocommerce_before_add_to_cart_quantity' );
+
+          woocommerce_quantity_input( array(
+            'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+            'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+            'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+          ) );
+
+          do_action( 'woocommerce_after_add_to_cart_quantity' );
           ?>
 
-          <!-- <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="thinBtn"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button> -->
+          <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="thinBtn"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
           <?php // do_action( 'woocommerce_after_add_to_cart_button' ); ?>
         <!-- </form> -->
@@ -60,11 +60,11 @@
       <!-- <a class="thinBtn" href="<?php echo $add_to_cart; ?>">Buy It Now</a> -->
     </div>
 
-      <figcaption class="singleProductDescription">
+      <div class="singleProductDescription">
         <h1 class="singleProductTitle"><?php the_title(); ?></h1>
         <h2 class="singleProductSubtitle"><?php echo get_the_excerpt(); ?></h2>
         <p class="singleProductTxt"><?php echo get_the_content(); ?></p>
-      </figcaption>
+      </div>
   </article>
 
   <div class="relatedProducts">

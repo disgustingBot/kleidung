@@ -225,6 +225,31 @@ FIN DE MAPA DE CONTENIDOS */
   --cardCaptionFontSize: 1.2rem;
   --cardPriceFontSize: 1.2rem;
 
+  /* BRAND ANIMATION */
+  --brandImg1GridC: 1/span 6;
+  --brandTxt1GridC: 2/ span 5;
+  --brandTxt1GridR: 2;
+  --brandTxt1Margin: unset;
+
+  --brandImg2GridC: 2/-1;
+  --brandImg2GridR: 3;
+
+  --brandTxt2GridC: 2/ span 5;
+  --brandTxt2GridR: 4;
+
+  --brandImg3GridC: 1/ span 6;
+
+  --brandTxt3GridC:  2/ span 5;
+  --brandTxt3GridR: 2;
+
+  --brandImg4GridC: 2/-1;
+  --brandImg4GridR: 3;
+
+  --brandTxt4GridC: 2/ -2;
+  --brandTxt4GridR: 4;
+
+
+
 }
 
 
@@ -361,6 +386,29 @@ FIN DE MAPA DE CONTENIDOS */
     --cardCaptionFontSize: .6rem;
     --cardPriceFontSize: .8rem;
 
+
+    /* BRAND ANIMATION */
+    --brandImg1GridC: 2/span 3;
+    --brandTxt1GridC: 5/ span 2;
+    --brandTxt1GridR: 1;
+    --brandTxt1Margin: auto;
+
+    --brandImg2GridC: 4/ span 4;
+    --brandImg2GridR: 2;
+
+    --brandTxt2GridC: 2/ span 2;
+    --brandTxt2GridR: 2;
+
+    --brandImg3GridC: 1/ span 4;
+
+    --brandTxt3GridC:  5/ span 2;
+    --brandTxt3GridR: 1;
+
+    --brandImg4GridC: 4/ span 3;
+    --brandImg4GridR: 2;
+
+    --brandTxt4GridC: 2/ span 2;
+    --brandTxt4GridR: 2;
 
   }
 }
@@ -1101,6 +1149,8 @@ singleStorieContent
 .brandSection p {font-size: 16px!important}
 .brandSection h3 {font-size: 24px;margin-bottom: .5rem;}
 
+
+
 .brandSection {
   display: grid;
   grid-gap: 1rem;
@@ -1117,7 +1167,7 @@ singleStorieContent
 }
 
 .brandImg1 {
-  grid-column: 2/ span 3;
+  grid-column: var(--brandImg1GridC);
   grid-row: 1;
   transition: 1.5s ease-in;
   opacity: 0;
@@ -1127,22 +1177,23 @@ singleStorieContent
 }
 
 .brandTxt1 {
-  grid-column: 5/ span 2;
-  grid-row: 1;
-  margin: auto;
+  grid-column: var(--brandTxt1GridC);
+  grid-row: var(--brandTxt1GridR);
+  margin: var(--brandTxt1Margin);
   transform: translateX(7.5rem);
   opacity: 0;
   transition: 1s ease-out;
   transition-delay: .5s;
 }
+
 .brandTxt1.alt {
   transform: translateX(0);
   opacity: 2;
 }
 
 .brandTxt2 {
-  grid-column: 2/ span 2;
-  grid-row: 2;
+  grid-column: var(--brandTxt2GridC);
+  grid-row: var(--brandTxt2GridR);
   height: max-content;
   margin: auto;
   opacity: 0;
@@ -1154,8 +1205,8 @@ singleStorieContent
 }
 
 .brandImg2 {
-  grid-column: 4/ span 4;
-  grid-row: 2;
+  grid-column: var(--brandImg2GridC);
+  grid-row: var(--brandImg2GridR);
   opacity: 0;
   transition: 1s ease-in;
   transform: translateX(5rem);
@@ -1167,7 +1218,7 @@ singleStorieContent
 }
 
 .brandImg3 {
-  grid-column: 1/ span 4;
+  grid-column: var(--brandImg3GridC);
   grid-row: 1;
   transition: 1.5s;
   opacity: 0;
@@ -1178,8 +1229,8 @@ singleStorieContent
 }
 
 .brandTxt3 {
-  grid-column: 5/ span 2;
-  grid-row: 1;
+  grid-column: var(--brandTxt3GridC);
+  grid-row: var(--brandTxt3GridR);
   height: max-content;
   margin: auto;
   z-index: -1;
@@ -1195,28 +1246,32 @@ singleStorieContent
 }
 
 .brandImg4 {
-  grid-column: 4/ span 3;
-  grid-row: 2;
+  grid-column: var(--brandImg4GridC);
+  grid-row: var(--brandImg4GridR);
   transform: translateX(40rem);
   transition: 2s;
   transition-delay: .5s;
+  opacity: 0;
 }
 .brandImg4.alt {
   transform: translateX(0rem);
+  opacity: 1;
 }
 .brandTxt4 {
-  grid-column: 2/ span 2;
-  grid-row: 2;
+  grid-column: var(--brandTxt4GridC);
+  grid-row: var(--brandTxt4GridR);
   height: min-content;
   margin: auto;
   transform: translateX(40rem);
   transition: 2s;
   z-index: -1;
+  opacity: 0;
 }
 
 
 .brandTxt4.alt {
   transform: translateX(0rem);
+  opacity: 1;
 }
 
 .brandImg5 {

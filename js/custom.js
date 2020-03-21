@@ -156,10 +156,47 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
 
   const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
-      altClassFromSelector(clase, selector)
+
+
+
+        // const x = d.querySelectorAll(selector);
+        // x.forEach((y, i) => {
+        //   if(y.classList.contains(clase)){
+        //     y.classList.remove(clase)
+        //   }else{
+        //     y.classList.add(clase)
+        //   }
+        // });
+
+
+
+
+        const x = d.querySelectorAll(selector);
+        if(entry.isIntersecting){
+          x.forEach( y => {
+            y.classList.add(clase)
+          });
+        } else {
+          x.forEach( y => {
+            y.classList.remove(clase)
+          });
+        }
+
+
+
+
+      // altClassFromSelector(clase, selector)
       if(entry.isIntersecting && unobserve){
         observer.unobserve(entry.target);
+      // } else {
+
       }
+
+
+
+
+
+
     })
   }, options);
 

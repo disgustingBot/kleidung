@@ -475,7 +475,7 @@ FIN DE MAPA DE CONTENIDOS */
   margin:0;
   padding:0;
 }
-/* html{overflow-x:hidden} */
+html{overflow-x:hidden}
 body{display:grid}
 img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
@@ -506,9 +506,7 @@ main h6 {
   margin-bottom: 1rem;
 }
 
-hr {
-  margin: 1rem 0;
-}
+hr {margin: 1rem 0}
 
 main a,
 main h1,
@@ -946,11 +944,13 @@ p {font-family: var(--spartanSans)}
   padding: 2rem 0;
   grid-gap: var(--cardGalleryGridGap);
   transition: 2s;
+  transition-delay: .3s;
 }
 
-.archiveStories.alt{
+.archiveStories .card{
   opacity: 0;
 }
+
 
 .singleStorieOthers .cardCaption{
   color: white;
@@ -1119,14 +1119,116 @@ singleStorieContent
 .brandImg1 {
   grid-column: 2/ span 3;
   grid-row: 1;
+  transition: 1.5s ease-in;
+  opacity: 0;
 }
+.brandImg1.alt {
+  opacity: 1;
+}
+
 .brandTxt1 {
   grid-column: 5/ span 2;
   grid-row: 1;
   margin: auto;
+  transform: translateX(7.5rem);
+  opacity: 0;
+  transition: 1s ease-out;
+  transition-delay: .5s;
+}
+.brandTxt1.alt {
+  transform: translateX(0);
+  opacity: 2;
+}
+
+.brandTxt2 {
+  grid-column: 2/ span 2;
+  grid-row: 2;
+  height: max-content;
+  margin: auto;
+  opacity: 0;
+  transition: 2s ease-in;
+}
+
+.brandTxt2.alt {
+  opacity: 1;
+}
+
+.brandImg2 {
+  grid-column: 4/ span 4;
+  grid-row: 2;
+  opacity: 0;
+  transition: 1s ease-in;
+  transform: translateX(5rem);
+}
+
+.brandImg2.alt {
+  opacity: 1;
+  transform: translateX(0rem);
+}
+
+.brandImg3 {
+  grid-column: 1/ span 4;
+  grid-row: 1;
+  transition: 1.5s;
+  opacity: 0;
+}
+
+.brandImg3.alt {
+  opacity: 1;
+}
+
+.brandTxt3 {
+  grid-column: 5/ span 2;
+  grid-row: 1;
+  height: max-content;
+  margin: auto;
+  z-index: -1;
+  transform: translateX(-20rem);
+  transition: 2s;
+  transition-delay: .5s;
+  opacity: 0;
+}
+
+.brandTxt3.alt {
+  transform: translateX(0rem);
+  opacity: 1;
+}
+
+.brandImg4 {
+  grid-column: 4/ span 3;
+  grid-row: 2;
+  transform: translateX(40rem);
+  transition: 2s;
+  transition-delay: .5s;
+}
+.brandImg4.alt {
+  transform: translateX(0rem);
+}
+.brandTxt4 {
+  grid-column: 2/ span 2;
+  grid-row: 2;
+  height: min-content;
+  margin: auto;
+  transform: translateX(40rem);
+  transition: 2s;
+  z-index: -1;
 }
 
 
+.brandTxt4.alt {
+  transform: translateX(0rem);
+}
+
+.brandImg5 {
+}
+
+
+.brandTxt5 {
+  margin: auto 0 4rem auto;
+  max-width: 60%;
+  padding: 1rem 4rem 1rem 1rem;
+  background: rgba(255,255,255,0.5);
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1184,7 +1286,12 @@ singleStorieContent
   display: grid;
   /* background: white; */
   transition:.5s;
+  transition-delay: .5s;
 }
+.card.alt{
+  opacity: 1;
+}
+
 .cardImg {
   display:flex;
 }

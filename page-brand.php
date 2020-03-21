@@ -2,7 +2,7 @@
 <figure class="brandATF ATF">
   <img class="lazy rowcol1" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
   <figcaption class="brandATFCaption rowcol1">
-    <svg class="logo brandLogo" id="logo" width="374" height="33" viewBox="0 0 374 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <svg class="logo brandLogo" id="logoBrand" width="374" height="33" viewBox="0 0 374 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 
       <path d="M1.76 33H0.799999V0.84C0.799999 0.360001 1.52 0.216 1.712 0.648L15.68 31.368L29.6 0.648C29.792 0.216 30.512 0.360001 30.512 0.84L30.56 32.52V33H29.6V32.52L29.552 3.048L16.112 32.712C15.968 33.048 15.392 33.048 15.248 32.712L1.76 3.048V33Z" stroke="black" stroke-width="1.5"></path>
       <path d="M37.247 32.712L37.151 33H36.095L36.383 32.328L50.303 0.648C50.447 0.311998 51.023 0.311998 51.167 0.648L65.087 32.328L65.375 33H64.319L64.223 32.712L50.735 2.04L37.247 32.712Z" stroke="black" stroke-width="1.5"></path>

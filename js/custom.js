@@ -12,6 +12,10 @@ w.onload=()=>{
     lIs.forEach(lI=>{lIO.observe(lI)});lBs.forEach(lB=>{lBO.observe(lB)});
   }
 
+  if (d.querySelector("#logoBrand") ){
+    d.querySelector("#logoBrand").classList.add("loaded");
+  }
+  d.querySelector("#logo").classList.add("loaded");
   d.getElementById("load").style.top="-100vh";
   altClassOnScroll('alt', '#header', '#homeATF', { threshold : .5 });
 }
@@ -173,3 +177,4 @@ cards.forEach((item, i) => {
   console.log(item.id);
   altClassFromSelectorOnObserveSelector('alt', '.archiveStories', item.id { threshold : .51 });
 });
+

@@ -874,13 +874,22 @@ p {font-family: var(--spartanSans)}
   height: var(--storiesATFaspectRatio3and4);
 }
 
-
 .featuredStorieTitle{
   position: absolute;
-  top: 30%;
-  background: white;
+  background: rgba(255,255,255,.4);
   text-transform: uppercase;
+  font-size: .7rem;
 }
+
+
+.storiesATF .featuredStorie:nth-child(1) .featuredStorieTitle{top: 30%;}
+
+.storiesATF .featuredStorie:nth-child(2) .featuredStorieTitle{bottom: 20%;left: 10%;}
+.storiesATF .featuredStorie:nth-child(2) .cardStorieDate{top: auto;bottom: -.5rem;left: -.5rem;}
+
+.storiesATF .featuredStorie:nth-child(3) .featuredStorieTitle{bottom: 50%;left: 0;}
+
+.storiesATF .featuredStorie:nth-child(4) .featuredStorieTitle{bottom: 50%;right: 0;}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

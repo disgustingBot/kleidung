@@ -11,8 +11,11 @@ w.onload=()=>{
         lIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){let l=e.target;l.classList.remove("lazy");lIO.unobserve(l);l.srcset=l.dataset.url}})},opt);
     lIs.forEach(lI=>{lIO.observe(lI)});lBs.forEach(lB=>{lBO.observe(lB)});
   }
+
+  if (d.querySelector("#logoBrand") ){
+    d.querySelector("#logoBrand").classList.add("loaded");
+  }
   d.querySelector("#logo").classList.add("loaded");
-  d.querySelector("#logoBrand").classList.add("loaded");
   d.getElementById("load").style.top="-100vh";
 }
 

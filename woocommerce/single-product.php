@@ -26,38 +26,47 @@
         <p class="singleSideTitle"><?php the_title(); ?></p>
         <p class="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button>
-        <!-- <button class="thinBtn">Add to Cart</button> -->
-        <?php // if ( $product->is_in_stock() ) : ?>
 
-        <?php // do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-        <!-- <form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'> -->
-          <?php
-          // do_action( 'woocommerce_before_add_to_cart_button' );
-          ?>
 
-          <?php
-          do_action( 'woocommerce_before_add_to_cart_quantity' );
 
-          woocommerce_quantity_input( array(
-            'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-            'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-            'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-          ) );
 
-          do_action( 'woocommerce_after_add_to_cart_quantity' );
-          ?>
 
-          <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="thinBtn"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
-          <?php // do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-        <!-- </form> -->
 
-        <?php // do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
-      <?php // endif; ?>
-      <?php // $add_to_cart = do_shortcode('[add_to_cart_url id="'.$product->get_id().'"]'); ?>
-      <!-- <a class="thinBtn" href="<?php echo $add_to_cart; ?>">Buy It Now</a> -->
+
+               <div class="add-to-cart "><?php
+                 echo sprintf( '<a href="%s" data-quantity="1" class="%s" %s>%s</a>',
+                     esc_url( $product->add_to_cart_url() ),
+                     esc_attr( implode( ' ', array_filter( array(
+                         'button', 'product_type_' . $product->get_type(),
+                         $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                         $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+                     ) ) ) ),
+                     wc_implode_html_attributes( array(
+                         'data-product_id'  => $product->get_id(),
+                         // 'data-product_sku' => $product->get_sku(),
+                         'aria-label'       => $product->add_to_cart_description(),
+                         'rel'              => 'nofollow',
+                     ) ),
+                     esc_html( $product->add_to_cart_text() )
+                 );
+               ?></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
       <div class="singleProductDescription">

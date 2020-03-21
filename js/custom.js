@@ -12,8 +12,12 @@ w.onload=()=>{
     lIs.forEach(lI=>{lIO.observe(lI)});lBs.forEach(lB=>{lBO.observe(lB)});
   }
 
+  if (d.querySelector("#logoBrand") ){
+    d.querySelector("#logoBrand").classList.add("loaded");
+  }
+  d.querySelector("#logo").classList.add("loaded");
   d.getElementById("load").style.top="-100vh";
-  altClassOnScroll('alt', '#header', '#homeATF', { threshold : .5 });
+  altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
 }
 
 
@@ -152,11 +156,51 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-const altClassOnScroll = (clase, selector, observado, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
+const altClassOnScroll = (clase, selector, observado, unobserve = true, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
 
   const observer = new IntersectionObserver(function(entries, observer){
     entries.forEach(entry => {
-      altClassFromSelector(clase, selector)
+
+
+
+        // const x = d.querySelectorAll(selector);
+        // x.forEach((y, i) => {
+        //   if(y.classList.contains(clase)){
+        //     y.classList.remove(clase)
+        //   }else{
+        //     y.classList.add(clase)
+        //   }
+        // });
+
+
+
+
+        const x = d.querySelectorAll(selector);
+        if(entry.isIntersecting){
+          x.forEach( y => {
+            y.classList.add(clase)
+          });
+        } else {
+          x.forEach( y => {
+            y.classList.remove(clase)
+          });
+        }
+
+
+
+
+      // altClassFromSelector(clase, selector)
+      if(entry.isIntersecting && unobserve){
+        observer.unobserve(entry.target);
+      // } else {
+
+      }
+
+
+
+
+
+
     })
   }, options);
 
@@ -172,3 +216,14 @@ d.querySelectorAll('.card').forEach((item, i) => {
   console.log(item.id);
   altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .99 });
 });
+altClassOnScroll('alt', '#header', '#homeATF',      false, { threshold : .7 });
+altClassOnScroll('alt', '#brandImg1', '#brandImg1', false, { threshold : .3 });
+altClassOnScroll('alt', '#brandTxt1', '#brandImg1', false, { threshold : .3 });
+altClassOnScroll('alt', '#brandImg2', '#brandImg2', false, { threshold : .3 });
+//
+//
+// cards = d.querySelectorAll('.card')
+// cards.forEach((item, i) => {
+//   console.log(item.id);
+//   altClassFromSelectorOnObserveSelector('alt', '.archiveStories', item.id { threshold : .51 });
+// });

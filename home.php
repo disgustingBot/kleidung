@@ -17,7 +17,7 @@
     while($stories->have_posts()){$stories->the_post(); ?>
       <figure class="featuredStorie">
         <a class="storieLink" href="<?php the_permalink(); ?>">
-          <img class="storieImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          <img class="storieImg lazy" id="storieImg<?php echo get_the_id();?>" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>
         <figcaption class="featuredStorieTitle">
           <h3><?php the_title(); ?></h3>
@@ -44,7 +44,7 @@
       while($stories->have_posts()){$stories->the_post(); ?>
         <figure class="featuredStorie2">
           <a class="storieLink2" href="<?php the_permalink(); ?>">
-            <img class="storieImg2 lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <img class="storieImg2  lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
           </a>
           <figcaption class="featuredStorieTitle2">
             <h3><?php the_title(); ?></h3>

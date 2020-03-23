@@ -212,10 +212,22 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
 altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
 
 
+/*  Animacion de STORIES ATF  */
+d.querySelectorAll('.storieImg').forEach((item, i) => {
+  console.log(item.id);
+  altClassOnScroll('animate', "#"+item.id, "#"+item.id,  { threshold : .3 });
+});
+
+/*  Animacion de STORIES ARCHIVE  */
 d.querySelectorAll('.card').forEach((item, i) => {
   console.log(item.id);
-  altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .99 });
+  altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .2 });
 });
+
+
+/*  Animacion de SINGLE STORIE SOCIALSHARING  */
+altClassOnScroll('alt', '.storieSocialSharing', '.singleStorieCaption',  { threshold : .5 });
+
 altClassOnScroll('alt', '#header', '#homeATF',      false, { threshold : .7 });
 altClassOnScroll('alt', '#brandImg1', '#brandImg1', false, { threshold : .3 });
 altClassOnScroll('alt', '#brandTxt1', '#brandImg1', false, { threshold : .3 });

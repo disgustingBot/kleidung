@@ -848,7 +848,44 @@ p {font-family: var(--spartanSans)}
 
 .featuredStorie .storieImg{
   height: inherit;
+  opacity: 0;
+  transition: 1.5s ease-in;
 }
+
+.featuredStorie .storieImg.animate{
+  opacity: 1;
+}
+
+.storiesATF .featuredStorie:nth-child(1) .storieImg{
+  transform:  translateX(-5rem);
+}
+.storiesATF .featuredStorie:nth-child(1) .storieImg.animate{
+  transform: translateX(0);
+}
+
+.storiesATF .featuredStorie:nth-child(2) .storieImg{
+  transform: translateY(-7rem);
+}
+.storiesATF .featuredStorie:nth-child(2) .storieImg.animate{
+  transform: translateY(0);
+}
+
+.storiesATF .featuredStorie:nth-child(3) .storieImg{
+  transform: translateX(7rem);
+}
+.storiesATF .featuredStorie:nth-child(3) .storieImg.animate{
+  transform: translateY(0);
+}
+
+.storiesATF .featuredStorie:nth-child(4) .storieImg{
+  transform: translateX(7rem);
+}
+.storiesATF .featuredStorie:nth-child(4) .storieImg.animate{
+  transform: translateY(0);
+}
+
+
+
 
 .featuredStorie {
   position: relative;
@@ -1026,13 +1063,14 @@ singleStorieContent
   background: black;
   color: white;
   width: 100%;
+  transform: translateY(-5rem);
+  transition: 1.5s;
 }
 
-.singleOthersTitle .titleMoreStories{
-  margin: 6rem var(--lateral) 0 ;
-  color: white;
-
+.storieSocialSharing.alt{
+  transform: translateY(0);
 }
+
 
 .storieSocialSharing .storieSocialSharingTitle{
   font-weight: 100;
@@ -1049,6 +1087,12 @@ singleStorieContent
   margin: 1rem .8rem;
 }
 
+
+.singleOthersTitle .titleMoreStories{
+  margin: 6rem var(--lateral) 0 ;
+  color: white;
+
+}
 
 .singleStorieOthers{
   display: grid;
@@ -1248,8 +1292,8 @@ singleStorieContent
   position: relative;
   display: grid;
   /* background: white; */
-  transition:.5s;
-  transition-delay: .5s;
+  transition:.5s ease-in;
+  transition-delay: .15s;
 }
 .card.alt{
   opacity: 1;

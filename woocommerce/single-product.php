@@ -6,15 +6,43 @@
 
 
   <article class="singleProductMain">
-      <div class="singleProductMainImg">
-        <img class="lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+      <div class="gallery" id="gallery">
+
+
+
+
+
+
+        <!-- <img class="lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
+
+        <!-- <div class="gallery" id="gallery"> -->
+          <?php $attachment_ids = $product->get_gallery_attachment_ids(); ?>
+
+          <!-- <div class="galleryMainCarousel"> -->
+
+            <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <?php $count=0; foreach( $attachment_ids as $attachment_id ) { ?>
+              <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo $image_link = wp_get_attachment_url( $attachment_id ); ?>" alt="">
+            <?php $count++; } ?>
+          <!-- </div> -->
+          <!-- <button class="slideButton rowcol1 slideLeft" onclick="plusImgs(-1)"></button> -->
+          <!-- <button class="slideButton rowcol1 slideRight" onclick="plusImgs(+1)"></button> -->
+
+        <!-- </div> -->
+
+
+
+
+
+
+
         <div class="singleProductsgalleryBtnsContainer">
-          <button class="singleProductsGalleryBtns">
+          <button class="singleProductsGalleryBtns" id="nextButton">
             <svg class="singleProductArrowSVG" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18.5455 21.18L9.77992 12L18.5455 2.82L15.8469 0L4.36365 12L15.8469 24L18.5455 21.18Z" fill="currentColor"/>
             </svg>
           </button>
-          <button class="singleProductsGalleryBtns">
+          <button class="singleProductsGalleryBtns" id="prevButton">
             <svg class="singleProductArrowSVG" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 21.18L14.2713 12L5 2.82L7.85425 0L20 12L7.85425 24L5 21.18Z" fill="currentColor"/>
             </svg>
@@ -36,23 +64,23 @@
 
 
 
-               <div class="add-to-cart "><?php
-                 echo sprintf( '<a href="%s" data-quantity="1" class="%s" %s>%s</a>',
-                     esc_url( $product->add_to_cart_url() ),
-                     esc_attr( implode( ' ', array_filter( array(
-                         'button', 'product_type_' . $product->get_type(),
-                         $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-                         $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
-                     ) ) ) ),
-                     wc_implode_html_attributes( array(
-                         'data-product_id'  => $product->get_id(),
-                         // 'data-product_sku' => $product->get_sku(),
-                         'aria-label'       => $product->add_to_cart_description(),
-                         'rel'              => 'nofollow',
-                     ) ),
-                     esc_html( $product->add_to_cart_text() )
-                 );
-               ?></div>
+         <div class="add-to-cart"><?php
+           echo sprintf( '<a href="%s" data-quantity="1" class="%s" %s>%s</a>',
+               esc_url( $product->add_to_cart_url() ),
+               esc_attr( implode( ' ', array_filter( array(
+                   'button', 'product_type_' . $product->get_type(),
+                   $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                   $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+               ) ) ) ),
+               wc_implode_html_attributes( array(
+                   'data-product_id'  => $product->get_id(),
+                   // 'data-product_sku' => $product->get_sku(),
+                   'aria-label'       => $product->add_to_cart_description(),
+                   'rel'              => 'nofollow',
+               ) ),
+               esc_html( $product->add_to_cart_text() )
+           );
+         ?></div>
 
 
 

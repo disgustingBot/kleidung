@@ -226,8 +226,8 @@ altClassOnScroll('alt', '.storieSocialSharing', '.singleStorieCaption',  { thres
 
 
 altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });
-altClassOnScroll('alt', '#brandImg1', '#brandImg1', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandTxt1', '#brandImg1', true, { threshold : .3 });
+altClassOnScroll('alt', '#brandImg1', '#brandTxt1', true, { threshold : .7, rootMargin: "0px 0px 0px 0px" });
+altClassOnScroll('alt', '#brandTxt1', '#brandTxt1', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandImg2', '#brandImg2', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandTxt2', '#brandTxt2', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandImg3', '#brandImg3', true, { threshold : .3 });

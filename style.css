@@ -225,6 +225,11 @@ FIN DE MAPA DE CONTENIDOS */
   --cardCaptionFontSize: 1.2rem;
   --cardPriceFontSize: 1.2rem;
 
+
+  /* BRAND */
+  --brandATFCaptionMaxWidth: unset;
+  --brandTxt5: auto 0 0 auto;
+
   /* BRAND ANIMATION */
   --brandImg1GridC: 1/span 6;
   --brandTxt1GridC: 2/ span 5;
@@ -385,6 +390,10 @@ FIN DE MAPA DE CONTENIDOS */
     /* CARDS */
     --cardCaptionFontSize: .6rem;
     --cardPriceFontSize: .8rem;
+
+    /* BRAND */
+    --brandATFCaptionMaxWidth: 60%;
+    --brandTxt5: auto 0 4rem auto;
 
 
     /* BRAND ANIMATION */
@@ -1180,7 +1189,7 @@ singleStorieContent
   background: rgba(255,255,255,0.5);
   margin: 4rem auto auto 0;
   padding: 1rem;
-  max-width: 60%;
+  max-width: var(--brandATFCaptionMaxWidth);
 }
 
 .brandLogo {
@@ -1213,7 +1222,7 @@ singleStorieContent
 .brandImg1 {
   grid-column: var(--brandImg1GridC);
   grid-row: 1;
-  transition: 1.5s ease-in;
+  transition: 1.5s ease-out;
   opacity: 0;
 }
 .brandImg1.alt {
@@ -1224,15 +1233,14 @@ singleStorieContent
   grid-column: var(--brandTxt1GridC);
   grid-row: var(--brandTxt1GridR);
   margin: var(--brandTxt1Margin);
-  transform: translateX(7.5rem);
+  transform: translateX(5rem);
   opacity: 0;
-  transition: 1s ease-out;
-  transition-delay: .5s;
+  transition: 1.5s ease-out;
 }
 
 .brandTxt1.alt {
   transform: translateX(0);
-  opacity: 2;
+  opacity: 1;
 }
 
 .brandTxt2 {
@@ -1241,7 +1249,7 @@ singleStorieContent
   height: max-content;
   margin: auto;
   opacity: 0;
-  transition: 2s ease-in;
+  transition: 1.5s ease-out;
 }
 
 .brandTxt2.alt {
@@ -1252,7 +1260,7 @@ singleStorieContent
   grid-column: var(--brandImg2GridC);
   grid-row: var(--brandImg2GridR);
   opacity: 0;
-  transition: 1s ease-in;
+  transition: 1.5s ease-out;
   transform: translateX(5rem);
 }
 
@@ -1278,8 +1286,8 @@ singleStorieContent
   height: max-content;
   margin: auto;
   z-index: -1;
-  transform: translateX(-20rem);
-  transition: 2s;
+  transform: translateX(-5rem);
+  transition: 1.5s;
   transition-delay: .5s;
   opacity: 0;
 }
@@ -1292,24 +1300,23 @@ singleStorieContent
 .brandImg4 {
   grid-column: var(--brandImg4GridC);
   grid-row: var(--brandImg4GridR);
-  transform: translateX(40rem);
-  transition: 2s;
-  transition-delay: .5s;
+  transition: 1.5s;
   opacity: 0;
+  z-index: 2;
 }
 .brandImg4.alt {
-  transform: translateX(0rem);
   opacity: 1;
 }
+
 .brandTxt4 {
   grid-column: var(--brandTxt4GridC);
   grid-row: var(--brandTxt4GridR);
   height: min-content;
   margin: auto;
-  transform: translateX(40rem);
-  transition: 2s;
-  z-index: -1;
+  transform: translateX(5rem);
+  transition: 1.5s;
   opacity: 0;
+  z-index: 0;
 }
 
 
@@ -1323,8 +1330,8 @@ singleStorieContent
 
 
 .brandTxt5 {
-  margin: auto 0 4rem auto;
-  max-width: 60%;
+  margin: var(--brandTxt5);
+  max-width: var(--brandATFCaptionMaxWidth);
   padding: 1rem 4rem 1rem 1rem;
   background: rgba(255,255,255,0.5);
 }

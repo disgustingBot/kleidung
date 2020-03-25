@@ -12,7 +12,6 @@
 
 
 
-
         <!-- <img class="lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
 
         <!-- <div class="gallery" id="gallery"> -->
@@ -55,42 +54,26 @@
         <p class="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button>
 
+        <!-- esto tiene un bug, testear extensivamente y asegurarse de que anda bien antes de poner en produccion -->
+        <!-- <input class="addToCartQnt" placeholder="Cantidad" type="number" id="addToCartQantity" onchange="addToCartControler(this)"> -->
 
-
-
-
-
-
-
-
-
-         <div class="add-to-cart"><?php
-           echo sprintf( '<a href="%s" data-quantity="1" class="%s" %s>%s</a>',
-               esc_url( $product->add_to_cart_url() ),
-               esc_attr( implode( ' ', array_filter( array(
-                   'button', 'product_type_' . $product->get_type(),
-                   $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-                   $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
-               ) ) ) ),
-               wc_implode_html_attributes( array(
-                   'data-product_id'  => $product->get_id(),
-                   // 'data-product_sku' => $product->get_sku(),
-                   'aria-label'       => $product->add_to_cart_description(),
-                   'rel'              => 'nofollow',
-               ) ),
-               esc_html( $product->add_to_cart_text() )
-           );
-         ?></div>
-
-
-
-
-
-
-
-
-
-
+        <div class="addToCart"><?php
+         echo sprintf( '<a href="%s" id="addToCartA" data-quantity="1" class="%s" %s>%s</a>',
+             esc_url( $product->add_to_cart_url() ),
+             esc_attr( implode( ' ', array_filter( array(
+                 'button', 'product_type_' . $product->get_type(),
+                 $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                 $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+             ) ) ) ),
+             wc_implode_html_attributes( array(
+                 'data-product_id'  => $product->get_id(),
+                 // 'data-product_sku' => $product->get_sku(),
+                 'aria-label'       => $product->add_to_cart_description(),
+                 'rel'              => 'nofollow',
+             ) ),
+             esc_html( $product->add_to_cart_text() )
+         );
+        ?></div>
 
 
 
@@ -100,7 +83,7 @@
       <div class="singleProductDescription">
         <h1 class="singleProductTitle"><?php the_title(); ?></h1>
         <h2 class="singleProductSubtitle"><?php echo get_the_excerpt(); ?></h2>
-        <p class="singleProductTxt"><?php echo get_the_content(); ?></p>
+        <div class="singleProductTxt"><?php echo get_the_content(); ?></div>
       </div>
   </article>
 

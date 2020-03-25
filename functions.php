@@ -4,7 +4,7 @@ require_once 'customPosts.php';
 
 function lattte_setup(){
 
-  // TOOOODO ESTO ES PARA TESTEAR AJAX
+  // TOOOODO ESTO ES PARA AJAX
 	global $wp_query;
 	// In most cases it is already included on the page and this line can be removed
 	wp_enqueue_script('jquery');
@@ -29,9 +29,9 @@ function lattte_setup(){
 
 
 	// OTRO AJAX
-  wp_enqueue_script( 'so_test', plugins_url( 'js/test.js', __FILE__ ) );
-  $i18n = array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'checkout_url' => get_permalink( wc_get_page_id( 'checkout' ) ) );
-  wp_localize_script( 'so_test', 'SO_TEST_AJAX', $i18n );
+  // wp_enqueue_script( 'so_test', plugins_url( 'js/mycartButton.js', __FILE__ ) );
+  // $i18n = array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'checkout_url' => get_permalink( wc_get_page_id( 'checkout' ) ) );
+  // wp_localize_script( 'so_test', 'SO_TEST_AJAX', $i18n );
 	// OTRO AJAX
 
 
@@ -41,7 +41,8 @@ function lattte_setup(){
 
 
   wp_enqueue_style('style', get_stylesheet_uri(), NULL, microtime(), 'all');
-  wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), array( 'jquery' ), microtime(), true);
+	wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), array( 'jquery' ), microtime(), true);
+  wp_enqueue_script('main', get_theme_file_uri('/js/mycartButton.js'), array( 'jquery' ), microtime(), true);
   // wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/custom_script.js', array( 'jquery' ));
 
 
@@ -347,3 +348,99 @@ function misha_loadmore_ajax_handler(){
 
 add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
+
+
+
+
+function misha_added_to_cart_ajax_handler(){
+	echo WC()->cart->get_cart_contents_count();
+	// woocommerce_mini_cart();
+}
+add_action('wp_ajax_added_to_cart', 'misha_added_to_cart_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_added_to_cart', 'misha_added_to_cart_ajax_handler'); // wp_ajax_nopriv_{action}
+
+
+
+
+
+
+
+
+
+
+
+add_action( 'woocommerce_after_shop_loop_item', 'my_custom_quantity_field', 6 );
+
+function my_custom_quantity_field() {
+  global $product;
+
+  if ( ! $product->is_sold_individually() )
+    woocommerce_quantity_input( array(
+      'min_value' => apply_filters( 'woocommerce_quantity_input_min', 1, $product ),
+      'max_value' => apply_filters( 'woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product )
+    ) );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// add_action('wp_ajax_myajax', 'myajax_callback');
+// add_action('wp_ajax_nopriv_myajax', 'myajax_callback');
+//
+//     /**
+//      * AJAX add to cart.
+//      */
+// function myajax_callback() {
+//         ob_start();
+//
+//         //$product_id        = 264;
+//         $product_id        = 34;
+//         $quantity          = 1;
+//         $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
+//         $product_status    = get_post_status( $product_id );
+//
+//         if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity ) && 'publish' === $product_status ) {
+//
+//             do_action( 'woocommerce_ajax_added_to_cart', $product_id );
+//
+//             wc_add_to_cart_message( $product_id );
+//
+//         } else {
+//
+//             // If there was an error adding to the cart, redirect to the product page to show any errors
+//             $data = array(
+//                 'error'       => true,
+//                 'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id )
+//             );
+//
+//             wp_send_json( $data );
+//
+//         }
+//
+//         die();
+//
+// }

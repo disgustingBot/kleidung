@@ -17,7 +17,9 @@ w.onload=()=>{
   }
   d.querySelector("#logo").classList.add("loaded");
   d.getElementById("load").style.top="-100vh";
-  altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
+  if(d.querySelector('#homeATF')){
+    altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
+  }
 }
 
 // SLIDER:
@@ -113,6 +115,13 @@ function goBack(){w.history.back()}
 
 
 
+// add to cart controller
+const addToCartControler = (a) => {
+  c.log(a.value)
+  d.querySelector('#addToCartA').dataset.quantity = a.value;
+  c.log(d.querySelector('#addToCartA').dataset.quantity);
+}
+
 
 // SELECT BOX CONTROLER
 const selectBoxControler=(a, selectBoxId, current)=>{// c.log(a)
@@ -198,42 +207,42 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
   })
 }
 
-altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
-
-
-// cards = d.querySelectorAll('.card')
-// cards.forEach((item, i) => {
+// altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
+//
+//
+// // cards = d.querySelectorAll('.card')
+// // cards.forEach((item, i) => {
+// //   console.log(item.id);
+// //   altClassOnScroll('alt', '.archiveStories', item.id { threshold : .51 });
+// altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
+//
+//
+// /*  Animacion de STORIES ATF  */
+// d.querySelectorAll('.storieImg').forEach((item, i) => {
 //   console.log(item.id);
-//   altClassOnScroll('alt', '.archiveStories', item.id { threshold : .51 });
-altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
-
-
-/*  Animacion de STORIES ATF  */
-d.querySelectorAll('.storieImg').forEach((item, i) => {
-  console.log(item.id);
-  altClassOnScroll('animate', "#"+item.id, "#"+item.id,  { threshold : .3 });
-});
-
-/*  Animacion de STORIES ARCHIVE  */
-d.querySelectorAll('.card').forEach((item, i) => {
-  console.log(item.id);
-  altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .2 });
-});
-
-
-/*  Animacion de SINGLE STORIE SOCIALSHARING  */
-altClassOnScroll('alt', '.storieSocialSharing', '.singleStorieCaption',  { threshold : .5 });
-
-
-altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });
-altClassOnScroll('alt', '#brandImg1', '#brandTxt1', true, { threshold : .7, rootMargin: "0px 0px 0px 0px" });
-altClassOnScroll('alt', '#brandTxt1', '#brandTxt1', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandImg2', '#brandImg2', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandTxt2', '#brandTxt2', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandImg3', '#brandImg3', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandTxt3', '#brandTxt3', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandTxt4', '#brandTxt4', true, { threshold : .3 });
-altClassOnScroll('alt', '#brandImg4', '#brandTxt4', true, { threshold : .3 });
+//   altClassOnScroll('animate', "#"+item.id, "#"+item.id,  { threshold : .3 });
+// });
+//
+// /*  Animacion de STORIES ARCHIVE  */
+// d.querySelectorAll('.card').forEach((item, i) => {
+//   console.log(item.id);
+//   altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .2 });
+// });
+//
+//
+// /*  Animacion de SINGLE STORIE SOCIALSHARING  */
+// altClassOnScroll('alt', '.storieSocialSharing', '.singleStorieCaption',  { threshold : .5 });
+//
+//
+// altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });
+// altClassOnScroll('alt', '#brandImg1', '#brandTxt1', true, { threshold : .7, rootMargin: "0px 0px 0px 0px" });
+// altClassOnScroll('alt', '#brandTxt1', '#brandTxt1', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandImg2', '#brandImg2', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandTxt2', '#brandTxt2', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandImg3', '#brandImg3', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandTxt3', '#brandTxt3', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandTxt4', '#brandTxt4', true, { threshold : .3 });
+// altClassOnScroll('alt', '#brandImg4', '#brandTxt4', true, { threshold : .3 });
 
 //
 //brandImg5

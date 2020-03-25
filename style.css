@@ -585,6 +585,19 @@ main ul {list-style-type: circle}
 main ul ul {list-style-type: square;}
 
 
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
 h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
 
 p {font-family: var(--spartanSans)}
@@ -623,6 +636,14 @@ p {font-family: var(--spartanSans)}
 
 
 
+/* esto lo podemos encontrar en single-product.php */
+.addToCartQnt{
+  margin:.5rem 0;
+  padding:.2rem 1rem;
+  border:1px solid var(--color1);
+}
+
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               6) =COMPONENTES:
@@ -648,10 +669,12 @@ p {font-family: var(--spartanSans)}
   width: 1.5rem;
   height: 1.5rem;
   transition: .25s;
+  box-shadow:var(--DP1);
 }
 
 .socialSVGLink:hover {
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  box-shadow:var(--DP8);
   color: white;
   border: solid 1px rgba(0,0,0,0);
 }
@@ -731,7 +754,7 @@ p {font-family: var(--spartanSans)}
   border-bottom:1px solid black;
   display:var(--headerDisplay);
   grid-auto-flow:column;
-  grid-template-columns:1fr max-content 1fr;
+  /* grid-template-columns:1fr min-content auto min-content; */
   left: 0;
   padding:  .75rem var(--lateral);
   position:sticky;
@@ -756,6 +779,7 @@ p {font-family: var(--spartanSans)}
 .logo {
   height: .75rem;
   color: transparent;
+  width:100%;
   animation-delay: 2s;
 }
 
@@ -1401,6 +1425,7 @@ singleStorieContent
   /* background: white; */
   transition:.5s ease-in;
   transition-delay: .15s;
+  margin-bottom: auto;
 }
 .card.alt{
   opacity: 1;
@@ -1600,7 +1625,7 @@ singleStorieContent
 }
 
 .navBarMobile li {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem auto;
   width: max-content;
 }
@@ -1634,7 +1659,7 @@ singleStorieContent
                           6.6.0) =btn:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.btn,.woocommerce .SingleProductInteraction a.button{
+.btn,.woocommerce a.button{
   background:var(--color1);
   color:var(--color2);
   margin: auto;
@@ -1727,6 +1752,45 @@ singleStorieContent
   transform: translateY(-50%) rotate(180deg) ;
   left: .75rem;
 }
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.6.2) =cartButton:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.header .cartButton{display:grid;}
+.cartButton{
+  height:1.5rem;
+  width: 1.5rem;
+  display:none;
+  color:black;
+  transition:.3s;
+  padding:.3rem;
+  border: 1px solid black;
+  border-radius:50%;
+  position:relative;
+  box-shadow:var(--DP1);
+}
+.cartButton:hover{
+  background:black;
+  box-shadow:var(--DP8);
+  color:white;
+}
+.cartButtonCant{
+  position:absolute;
+  top:  -.3rem;
+  right:-.3rem;
+  background:red;
+  color:var(--color2);
+  border-radius:50%;
+  font-size:.5rem;
+  height: .9rem;
+  width:  .9rem;
+  text-align: center;
+  padding:.2rem;
+}
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

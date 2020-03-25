@@ -171,6 +171,10 @@ FIN DE MAPA DE CONTENIDOS */
   --shopATFTitleFontSize: 1.5rem;
 
 
+  /* GALLERY */
+  --galleryPosition:relative;
+
+
   /* STORIES ATF */
   /*                               vw - scrollbar - lateral */
   --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
@@ -356,6 +360,10 @@ FIN DE MAPA DE CONTENIDOS */
     --relatedProductsCardMarginBottom: unset;
     --singleProductsgalleryBtnsContainerWidth: unset;
     --singleProductGalleryBtnsMargin: .25rem;
+
+    /* GALLERY */
+    --galleryPosition:sticky;
+
 
     /* CARDS */
     --cardCaptionFontSize: .6rem;
@@ -1974,7 +1982,8 @@ singleStorieContent
   /* flex-direction: column; */
   order: 2;
   margin-bottom:auto;
-  position:sticky;
+  /* position:sticky; */
+  position:var(--galleryPosition);
   top:3rem;
 }
 .element{

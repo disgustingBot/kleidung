@@ -8,6 +8,62 @@
 // TODO: re - hacer con rewrite API
 jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" error
   // $('.misha_loadmore').click(function(){
+
+
+
+  $( document.body ).on( 'added_to_cart removed_from_cart', ()=>{
+
+  		var data = {
+  			'action'   : 'added_to_cart',
+  			'query'    : misha_loadmore_params.posts, // that's how we get params from wp_localize_script() function
+  			'page'     : misha_loadmore_params.current_page,
+  		};
+
+      $.ajax({ // you can also use $.post here
+          url : misha_loadmore_params.ajaxurl, // AJAX handler
+          data : data,
+          type : 'POST',
+          beforeSend : function ( xhr ) {},
+          success : function( respuesta ){
+            // c.log(respuesta);
+            d.querySelector('.cartButtonCant').innerText = respuesta/10;
+          }
+
+      });
+
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $('.selectBoxOption').change(function(){
     // c.log('Hola mundo')
     var button = $(this),

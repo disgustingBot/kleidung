@@ -211,7 +211,7 @@ altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
 /*  Animacion de STORIES ATF  */
 d.querySelectorAll('.storieImg').forEach((item, i) => {
   console.log(item.id);
-  altClassOnScroll('animate', "#"+item.id, "#"+item.id,  { threshold : .3 });
+  altClassOnScroll('animate', "#"+item.id, '.storiesTitle',  { threshold : .1 });
 });
 
 /*  Animacion de STORIES ARCHIVE  */

@@ -936,14 +936,14 @@ p {font-family: var(--spartanSans)}
 }
 
 .storiesATF .featuredStorie:nth-child(3) .storieImg{
-  transform: translateX(7rem);
+  transform: translateX(10%);
 }
 .storiesATF .featuredStorie:nth-child(3) .storieImg.animate{
   transform: translateY(0);
 }
 
 .storiesATF .featuredStorie:nth-child(4) .storieImg{
-  transform: translateX(7rem);
+  transform: translateX(10%);
 }
 .storiesATF .featuredStorie:nth-child(4) .storieImg.animate{
   transform: translateY(0);

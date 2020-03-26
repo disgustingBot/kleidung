@@ -18,7 +18,8 @@ function lattte_setup(){
 		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
 		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
 		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-		'max_page' => $wp_query->max_num_pages
+		'max_page' => $wp_query->max_num_pages,
+		'first_page' => get_pagenum_link(1) // here it is
 	) );
 
  	wp_enqueue_script( 'my_loadmore' );
@@ -271,6 +272,419 @@ function lt_new_pass(){
 
 
 
+/**
+ * Change number of products that are displayed per page (shop page)
+ */
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+
+function new_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options -> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 4;
+  return $cols;
+}
+
+function latte_pagination($max){
+  // This part gets the current pagination
+  if(get_query_var('paged')){$paged=get_query_var('paged');}elseif(get_query_var('page')){$paged=get_query_var('page');}else{$paged=1;}
+  // $result.='<div class="paginationCont"><h5 class="paginationTitle">';
+  // $result.=  'Page '.$paged.' of '.$max;
+  // $result.='</h5>';
+  $result.='<div class="pagination">';
+  $next=$paged + 1;
+  $prev=$paged - 1;
+
+	// $url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+	var_dump($wp->query_vars);
+	$result.= add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+	var_dump($wp->request);
+
+  if($prev>=1){$result.='<a class="paginationLink" href="'.$url.'/'.$prev.'">Prev</a>';}
+  else{$result.='<p class="paginationLink">Prev</p>';}
+
+  for ( $i=1; $i <= $max; $i++ ) {
+    if ( $i - $paged <= 2 ) {
+      if ( $i != $paged ) {
+        $result.='<a class="paginationLink" href="'.$url.'/'.$i.'">'.$i.'</a>';
+      } else {
+        $result.='<p class="paginationLink current">'.$i.'</p>';
+      }
+    }
+  }
+
+  if($next<=$max){$result.='<a class="paginationLink" href="'.$url.'/'.$next.'">Next</a>';}
+  else{$result.='<p class="paginationLink">Next</p>';}
+
+  $result.='</div>';
+  // $result.='</div>';
+  return $result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PAGINATION
+// bloque inspirado en el comienzo de este post:
+// https://rudrastyh.com/wordpress/load-more-and-pagination.html
+function misha_paginator( $first_page_url ){
+
+	// the function works only with $wp_query that's why we must use query_posts() instead of WP_Query()
+	global $wp_query;
+
+	// remove the trailing slash if necessary
+	$first_page_url = untrailingslashit( $first_page_url );
+
+
+	// it is time to separate our URL from search query
+	$first_page_url_exploded = array(); // set it to empty array
+	$first_page_url_exploded = explode("/?", $first_page_url);
+	// by default a search query is empty
+	$search_query = '';
+	// if the second array element exists
+	if( isset( $first_page_url_exploded[1] ) ) {
+		$search_query = "/?" . $first_page_url_exploded[1];
+		$first_page_url = $first_page_url_exploded[0];
+	}
+
+	// get parameters from $wp_query object
+	// how much posts to display per page (DO NOT SET CUSTOM VALUE HERE!!!)
+	$posts_per_page = (int) $wp_query->query_vars['posts_per_page'];
+	// current page
+	$current_page = (int) $wp_query->query_vars['paged'];
+	// the overall amount of pages
+	$max_page = $wp_query->max_num_pages;
+
+	// we don't have to display pagination or load more button in this case
+	if( $max_page <= 1 ) return;
+
+	// set the current page to 1 if not exists
+	if( empty( $current_page ) || $current_page == 0) $current_page = 1;
+
+	// you can play with this parameter - how much links to display in pagination
+	$links_in_the_middle = 4;
+	$links_in_the_middle_minus_1 = $links_in_the_middle-1;
+
+	// the code below is required to display the pagination properly for large amount of pages
+	// I mean 1 ... 10, 12, 13 .. 100
+	// $first_link_in_the_middle is 10
+	// $last_link_in_the_middle is 13
+	$first_link_in_the_middle = $current_page - floor( $links_in_the_middle_minus_1/2 );
+	$last_link_in_the_middle = $current_page + ceil( $links_in_the_middle_minus_1/2 );
+
+	// some calculations with $first_link_in_the_middle and $last_link_in_the_middle
+	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
+	if( ( $last_link_in_the_middle - $first_link_in_the_middle ) != $links_in_the_middle_minus_1 ) { $last_link_in_the_middle = $first_link_in_the_middle + $links_in_the_middle_minus_1; }
+	if( $last_link_in_the_middle > $max_page ) { $first_link_in_the_middle = $max_page - $links_in_the_middle_minus_1; $last_link_in_the_middle = (int) $max_page; }
+	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
+
+	// begin to generate HTML of the pagination
+	$pagination = '<nav class="pagination" role="navigation">';
+
+	// when to display "..." and the first page before it
+	if ($first_link_in_the_middle >= 3 && $links_in_the_middle < $max_page) {
+		$pagination.= '<a class="paginationLink" data-pagination="1">1</a>';
+
+		if( $first_link_in_the_middle != 2 )
+			$pagination .= '<span class="page-numbers extend">...</span>';
+
+	}
+
+	// arrow left (previous page)
+	// if ($current_page != 1)
+		// $pagination.= '<a class="paginationLink prev" data-pagination="-1">prev</a>';
+
+
+	// loop page links in the middle between "..." and "..."
+	for($i = $first_link_in_the_middle; $i <= $last_link_in_the_middle; $i++) {
+		if($i == $current_page) {
+			$pagination.= '<span class="paginationCurrent">'.$i.'</span>';
+		} else {
+			$pagination .= '<a class="paginationLink" data-pagination="'.$i.'">'.$i.'</a>';
+		}
+	}
+
+	// arrow right (next page)
+	// if ($current_page != $last_link_in_the_middle )
+		// $pagination.= '<a class="paginationLink next" data-pagination="+1">next</a>';
+
+
+	// when to display "..." and the last page after it
+	if ( $last_link_in_the_middle < $max_page ) {
+
+		if( $last_link_in_the_middle != ($max_page-1) )
+			$pagination .= '<span class="page-numbers extend">...</span>';
+
+		$pagination .= '<a class="paginationLink" data-pagination="'. $max_page .'">'. $max_page .'</a>';
+	}
+
+	// end HTML
+	// $pagination.= "</div></nav>\n";
+	$pagination.= "</nav>\n";
+
+	// haha, this is our load more posts link
+	// if( $current_page < $max_page )
+		// $pagination.= '<div id="misha_loadmore">More posts</div>';
+
+	// replace first page before printing it
+	echo str_replace(array("/page/1?", "/page/1\""), array("?", "\""), $pagination);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Receive the Request post that came from AJAX
+add_action( 'wp_ajax_latte_pagination', 'cvf_demo_pagination_load_posts' );
+// We allow non-logged in users to access our pagination
+add_action( 'wp_ajax_nopriv_latte_pagination', 'cvf_demo_pagination_load_posts' );
+function cvf_demo_pagination_load_posts() {
+
+  if(isset($_POST['page'])){
+		$args = json_decode( stripslashes( $_POST['query'] ), true );
+		// Sanitize the received page
+		$page = sanitize_text_field($_POST['page']);
+		// echo $page;
+		if ($page==='+1') {
+			// we need next page to be loaded
+			$args['paged'] = $_POST['page'] + 1;
+		} elseif ($page==='-1') {
+			// we need prev page to be loaded
+			$args['paged'] = $_POST['page'] - 1;
+		} else {
+			// we need a specific page to be loaded
+			$args['paged'] = $page;
+		}
+		$args['post_status'] = 'publish';
+
+
+
+		// TODO: conectar filtro con paginacion.
+		// TIP: checkar el bloque siguiente:
+		if (isset($_POST['parent'])) {
+			$parentArray = $_POST['parent'];
+			$categoryArray = $_POST['category'];
+		  foreach ($parentArray as $key => $value) {
+				$args['tax_query'][$key] = array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => $categoryArray[$key],
+				);
+		  }
+		}
+		// $all_blog_posts=new WP_Query($args);
+
+		query_posts( $args );
+
+
+		if( have_posts() ) :
+
+			// run the loop
+			while( have_posts() ): the_post();
+	      ?>
+	        <figure class="card">
+	          <a class="cardImg" href="<?php echo get_permalink(); ?>">
+	            <img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+	            <!-- <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
+	          </a>
+	          <figcaption class="cardCaption">
+	            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+	          </figcaption>
+	        </figure>
+	      <?php
+
+			endwhile;
+
+		endif;
+
+		// var_dump(misha_paginator(5));
+		// echo latte_pagination(5);
+		echo misha_paginator(get_pagenum_link());
+
+  }
+  // Always exit to avoid further execution
+  exit();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -332,7 +746,7 @@ function misha_loadmore_ajax_handler(){
             <!-- <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
           </a>
           <figcaption class="cardCaption">
-            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); echo get_the_ID(); ?></a></p>
+            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
           </figcaption>
         </figure>
       <?php
@@ -354,7 +768,6 @@ add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax
 
 function misha_added_to_cart_ajax_handler(){
 	echo WC()->cart->get_cart_contents_count();
-	// woocommerce_mini_cart();
 }
 add_action('wp_ajax_added_to_cart', 'misha_added_to_cart_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_added_to_cart', 'misha_added_to_cart_ajax_handler'); // wp_ajax_nopriv_{action}

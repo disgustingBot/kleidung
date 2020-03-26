@@ -1,14 +1,8 @@
 <?php get_header(); ?>
 <?php
 global $wp_query;
+global $wp;
 // var_dump($wp_query);
-
-
-
-
-
-
-
 ?>
 
   <div class="shopATF ATF">
@@ -99,14 +93,9 @@ global $wp_query;
   </form>
 
 
-  <section
-    class="slider"
-    id="slider"
-    data-page="<?= get_query_var('paged') ? get_query_var('paged') : 1; ?>"
-    data-max="<?= $wp_query->max_num_pages; ?>"
-  >
-
   <h4 class="ShopTitle2">Current collections</h4>
+  <section class="slider" id="slider">
+
 
   	<view id="load" class="load">
   			<div class="circle"></div>
@@ -125,10 +114,14 @@ global $wp_query;
       </figcaption>
     </figure>
   <?php } ?>
+  <?php echo misha_paginator(get_pagenum_link()); ?>
 
-  <button class="sliderArrow" type="button" name="button">&#62;</button>
+  <!-- <button class="sliderArrow" type="button" name="button">&#62;</button> -->
 
 </section>
-<a class="btn shopBtn" href="">View all</a>
+
+<?php // echo latte_pagination($wp_query->max_num_pages); ?>
+<!-- <a class="btn shopBtn testButton" data-pagination="+1">View all</a> -->
+
 
 <?php get_footer(); ?>

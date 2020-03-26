@@ -52,6 +52,16 @@
       <div class="SingleProductInteraction">
         <p class="singleSideTitle"><?php the_title(); ?></p>
         <p class="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
+        <?php
+    			$product = wc_get_product();
+    			if ( $product->is_type( 'variable' ) ) {
+      			$variations = $product->get_available_variations();
+            foreach ($variations as $key => $value){
+              echo $value['attributes']['attribute_talla'];
+              echo '<br/>';
+            }
+    			}
+        ?>
         <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button>
 
         <!-- esto tiene un bug, testear extensivamente y asegurarse de que anda bien antes de poner en produccion -->

@@ -1000,9 +1000,11 @@ li {letter-spacing: .1rem;}
 
 .featuredStorieTitle{
   position: absolute;
-  background: rgba(255,255,255,.4);
+  background: white;
   text-transform: uppercase;
   font-size: 1rem;
+  font-size: var(--fontSize4);
+  padding: .2rem .5rem;
 }
 
 
@@ -1068,7 +1070,7 @@ li {letter-spacing: .1rem;}
 .archiveStories{
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
-  padding: 2rem 0;
+  padding-bottom: 2rem;
   grid-gap: var(--cardGalleryGridGap);
   transition: 2s;
   transition-delay: .3s;
@@ -1198,8 +1200,8 @@ singleStorieContent
   background: white;
   text-align: center;
   padding: .5rem!important;
-  border-top: solid black 1px;
-  border-left: solid black 1px;
+  border-top: solid var(--color1) 2px;
+  border-left: solid var(--color1) 2px;
 }
 .singleStorieOthers .cardStorieDate{
 
@@ -1218,7 +1220,14 @@ singleStorieContent
   background: white;
 }
 
+.readMore {
+  display: flex;
+}
 
+.readMore svg{
+  margin: auto .5rem;
+  color: white;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1226,7 +1235,7 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .brandATFCaption {
-  background: rgba(255,255,255,0.5);
+  background: white;
   margin: 4rem auto auto 0;
   padding: 1rem;
   max-width: var(--brandATFCaptionMaxWidth);
@@ -1366,15 +1375,24 @@ singleStorieContent
 }
 
 .brandImg5 {
+  opacity: 0;
+  transition: 2s ease-in-out;
 }
 
+.brandImg5.alt {
+  opacity: 1;
+}
 
 .brandTxt5 {
   margin: var(--brandTxt5);
   max-width: var(--brandATFCaptionMaxWidth);
   padding: 1rem 4rem 1rem 1rem;
-  background: rgba(255,255,255,0.5);
+  background: white;
+  z-index: 2;
 }
+
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1446,18 +1464,19 @@ singleStorieContent
 .cardCaption{
   display: grid;
   padding: .5rem 0;
-  text-transform: uppercase;
   grid-gap: .5rem;
 }
 
 .cardTitle{
   text-align: var(--textAlignCenterLeft);
   font-size: var(--fontSize4);
+  text-transform: uppercase;
 }
 
 .cardDescription{
   height: min-content;
   overflow-y: hidden;
+  font-size: var(--fontSize5);
 }
 
 .card .btn{

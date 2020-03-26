@@ -246,6 +246,7 @@ altClassOnScroll('alt', '#brandImg3', '#brandImg3', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandTxt3', '#brandTxt3', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandTxt4', '#brandTxt4', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandImg4', '#brandTxt4', true, { threshold : .3 });
+altClassOnScroll('alt', '#brandImg5', '#brandImg5', true, { threshold : .3 });
 
 
 // brandImg5

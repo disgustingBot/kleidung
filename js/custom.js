@@ -207,6 +207,7 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
   })
 }
 
+
 altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
 
 

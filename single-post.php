@@ -83,8 +83,8 @@
         <p class="cardDescription">
           <?php echo excerpt(100); ?>
         </p>
-        <a class="btnWhite btn" href="<?php the_permalink(); ?>">
-          Read More&raquo;
+        <a class="btnWhite btn" href="<?php the_permalink(); ?> ">
+          <span class="readMore">Read more</span>
         </a>
       </figcaption>
     </figure>

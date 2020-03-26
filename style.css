@@ -379,7 +379,7 @@ FIN DE MAPA DE CONTENIDOS */
     --singleProductMainDisplay: grid;
     --textAlignCenterLeft: left;
     --textAlignJustifyLeft: left;
-    --singleSideFontSize: .75rem;
+    --singleSideFontSize: .65rem;
     --singleSideTxtalign: left;
     --singleSideTxtMarginBottom: unset;
     --singleProductButtonWidth: 100%;
@@ -1667,9 +1667,10 @@ singleStorieContent
   text-transform:uppercase;
   border: var(--color1) solid 1px;
   transition: .25s;
-  font-size:16px;
-  font-weight:200;
+  font-size: 15px;
+  font-weight:100;
   border-radius:0;
+  text-align: center;
 }
 .woocommerce a.button{width:100%}
 
@@ -2195,7 +2196,7 @@ singleStorieContent
   grid-column: 4/ span 1;
   grid-row: 1;
   margin: auto;
-  padding:6rem 0;
+  padding: 1.5rem 0 6rem 0;
   width: 100%;
   order: 3;
 }
@@ -2213,11 +2214,17 @@ singleStorieContent
 .singleSideTitle {
   opacity: .8;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
+
 .singleSideTitle, .singleSidePrice {
-  font-size: var(--singleSideFontSize);
+  font-size: 1rem;
   text-align: var(--singleSideTxtalign);
   margin-bottom: var(--singleSideTxtMarginBottom);
+}
+.singleSidePrice {
+  font-weight: 800;
+  font-size: var(--singleSideFontSize);
 }
 
 .singleProductDescription {

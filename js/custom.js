@@ -225,20 +225,22 @@ altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
 
 
 /*  Animacion de STORIES ATF  */
-d.querySelectorAll('.storieImg').forEach((item, i) => {
-  console.log(item.id);
-  altClassOnScroll('animate', "#"+item.id, '.storiesTitle',  { threshold : .1 });
-});
+if(d.querySelectorAll('.storieImg')){
+  d.querySelectorAll('.storieImg').forEach((item, i) => {
+    altClassOnScroll('animate', "#"+item.id, '.storiesTitle',  { threshold : .1 });
+  });
+}
 
 /*  Animacion de STORIES ARCHIVE  */
-d.querySelectorAll('.card').forEach((item, i) => {
-  console.log(item.id);
-  altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .2 });
-});
+if(d.querySelectorAll('.card')){
+  d.querySelectorAll('.card').forEach((item, i) => {
+    altClassOnScroll('alt', "#"+item.id, "#"+item.id,  { threshold : .2 });
+  });
+}
 
 
 /*  Animacion de SINGLE STORIE SOCIALSHARING  */
-altClassOnScroll('alt', '.storieSocialSharing', '.singleStorieCaption',  { threshold : .5 });
+altClassOnScroll('alt', '.storieSocialSharing', '.storieSocialSharing',  { threshold : .1 });
 
 
 altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });

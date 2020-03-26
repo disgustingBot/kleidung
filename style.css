@@ -960,14 +960,14 @@ p {font-family: var(--spartanSans)}
 }
 
 .storiesATF .featuredStorie:nth-child(3) .storieImg{
-  transform: translateX(10%);
+  transform: translateX(30%);
 }
 .storiesATF .featuredStorie:nth-child(3) .storieImg.animate{
   transform: translateY(0);
 }
 
 .storiesATF .featuredStorie:nth-child(4) .storieImg{
-  transform: translateX(10%);
+  transform: translateX(30%);
 }
 .storiesATF .featuredStorie:nth-child(4) .storieImg.animate{
   transform: translateY(0);
@@ -1107,7 +1107,7 @@ p {font-family: var(--spartanSans)}
 .singleStorieCaption{
   padding: 2.5rem 1rem;
   background: white;
-  z-index: 10;
+  z-index: 2;
   box-shadow: var(--DP6);
   margin: 2rem  var(--lateral);
   margin-top: -3rem;
@@ -1152,7 +1152,7 @@ singleStorieContent
   background: black;
   color: white;
   width: 100%;
-  transform: translateY(-5rem);
+  transform: translateY(5rem);
   transition: 1.5s;
 }
 
@@ -1210,6 +1210,13 @@ singleStorieContent
   right: 0;
   padding: 1rem;
 }
+
+
+.pruebaPaginacion{
+  display: flex;
+  background: white;
+}
+
 
 
 /* ---------------------------------------------------------------------------

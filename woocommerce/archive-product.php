@@ -10,7 +10,7 @@ global $wp;
     <overlay class="ShopOverlay"></overlay>
 
     <hgroup class="ShopATFTxt">
-      <h3 class="ShopATFTitle">The finest clothing</h3>
+      <h1 class="ShopATFTitle">The finest clothing</h1>
       <h5 class="ShopATFSubtitle">Fluid and comfortable clothing, with a pleasant touch. Designs with a character between modern and vintage.</h5>
       <a class="btn btnWhite" href="#">See our Latest</a>
     </hgroup>

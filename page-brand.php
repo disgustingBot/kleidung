@@ -22,22 +22,23 @@
   </figcaption>
 </figure>
 <section class="brandSection1 brandSection">
-  <img class="brandImg1" id="brandImg1" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
+  <img class="brandImg1" id="brandImg1" src="<?php echo get_post_meta($post->ID, 'img1', true); ?>" alt="">
   <div class="brandTxt1" id="brandTxt1">
-    <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3>
-    <p class="brandTxt1Txt">Lorem ipsum dolor sit amet nunquam durmiens...</p>
+    <!-- <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3> -->
+    <h3 class="brandTxt1Title uppercase"><?php echo get_post_meta($post->ID, 'titulo1', true); ?></h3>
+    <p class="brandTxt1Txt"><?php echo get_post_meta($post->ID, 'texto1', true); ?></p>
   </div>
-  <p class="brandTxt2" id="brandTxt2">Centrada en el diseño de vestidos, la marca busca formas que se ajusten a diferentes tipos de cuerpos, edades, y conceptos que trascienden las modas estacionales. Lisos o de estampados singulares; facilitando la tarea de vestirse a la mañana con un look de pocos elementos y mucho carácter.</p>
-  <img class="brandImg2" id="brandImg2" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
+  <p class="brandTxt2" id="brandTxt2"><?php echo get_post_meta($post->ID, 'texto2', true); ?></p>
+  <img class="brandImg2" id="brandImg2" src="<?php echo get_post_meta($post->ID, 'img2', true); ?>" alt="">
 </section>
 <section class="brandSection2 brandSection">
-  <p class="brandTxt3" id="brandTxt3">Apostamos al slow fashion y la exclusividad y estamos en contra de la sobreproducción. Por ello, nuestras prendas son fabricadas en cantidades limitadas hasta agotar stock.</p>
-  <img class="brandImg3" id="brandImg3" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg2.jpg" alt="">
-  <img class="brandImg4" id="brandImg4" src="http://localhost/MariaLebredo/wp-content/uploads/2020/03/brandImg1.jpg" alt="">
-    <p class="brandTxt4" id="brandTxt4">Tenemos total control y cuidado sobre las personas que trabajan en el proceso: todos nuestros productos son de diseño y fabricación europea y cada prenda es acabada a mano.</p>
+  <p class="brandTxt3" id="brandTxt3"><?php echo get_post_meta($post->ID, 'texto3', true); ?></p>
+  <img class="brandImg3" id="brandImg3" src="<?php echo get_post_meta($post->ID, 'img3', true); ?>" alt="">
+  <img class="brandImg4" id="brandImg4" src="<?php echo get_post_meta($post->ID, 'img4', true); ?>" alt="">
+    <p class="brandTxt4" id="brandTxt4"><?php echo get_post_meta($post->ID, 'texto4', true); ?></p>
 </section>
 <section class="brandSection3">
-  <img class="lazy rowcol1 brandImg5" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-  <p class="brandTxt5 rowcol1">La naturaleza de María Lebredo es sofisticada y relajada en igual medida. Clásica y atrevida, guiada por nuestra experiencia e intuición.</p>
+  <img class="lazy rowcol1 brandImg5" id="brandImg5" data-url="<?php echo get_post_meta($post->ID, 'img5', true); ?>" alt="">
+  <p class="brandTxt5 rowcol1"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
 </section>
 <?php get_footer(); ?>

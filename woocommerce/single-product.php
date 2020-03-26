@@ -50,7 +50,8 @@
       </div>
 
       <div class="SingleProductInteraction">
-        <p class="singleSideTitle"><?php the_title(); ?></p>
+        <h3 class="singleSideTitle"><?php the_title(); ?></h3>
+        <?php $product->get_attributes( 'Talla' ); ?>
         <p class="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <?php
     			$product = wc_get_product();
@@ -85,9 +86,6 @@
          );
         ?></div>
 
-
-
-
     </div>
 
       <div class="singleProductDescription">
@@ -99,13 +97,26 @@
 
   <div class="relatedProducts">
     <?php
+
+    $meta_query  = WC()->query->get_meta_query();
+    $tax_query   = WC()->query->get_tax_query();
+    $tax_query[] = array(
+                              'taxonomy' => 'product_visibility',
+                              'field'    => 'name',
+                              'terms'    => 'featured',
+                              'operator' => 'IN',
+                          );
+
     $args = array(
       'post_type'=>'product',
       'posts_per_page'=>4,
+      'meta_query'          => $meta_query,
+      'tax_query'           => $tax_query,
     );
+
     $blogPosts=new WP_Query($args); ?>
 
-    <h3 class="sliderTitle title">RELATED PRODUCTS</h3>
+    <h3 class="sliderTitle title">OTHER FEATURED PRODUCTS</h3>
     <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
       <?php global $product; ?>
 

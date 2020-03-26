@@ -103,6 +103,12 @@ FIN DE MAPA DE CONTENIDOS */
 
   --sizeR: calc(var(--sizeRa) * 1px);
 
+  --fontSize1: 2.5rem;
+  --fontSize2: 1.5rem;
+  --fontSize3: 1rem;
+  --fontSize4: .8rem;
+  --fontSize5: 16px;
+
   /* SHADOWS */
 
   /**MATERIAL DESIGN'S ELEVATION: POINTS*/
@@ -143,6 +149,7 @@ FIN DE MAPA DE CONTENIDOS */
   /* ?HEADER */
   --headerDisplay: none;
   --mobileHeaderDisplay: flex;
+  --navBarGridGap: 1rem;
 
   /* ?FOOTER */
   --footerTemplateColumns: 1fr;
@@ -152,16 +159,19 @@ FIN DE MAPA DE CONTENIDOS */
   --frontPageSilderTemplateColumns: 1fr 1fr;
 
   /* ?COLOR SECTION */
-  --colorSectionTemplateColumns: 1fr;
   --colorImgTemplateRows: unset;
-  --colorCaptionTemplateRows:  unset;
-  --colorCaptionTemplateColumns: 1;
   --colorImgTemplateColumns: 1;
-  --colorCaptionWidth: 100%;
   --colorTxtTxtAlign: justify;
   --colotTitleWidth:  100%;
   --colorTitleTextAlign: center;
   --colorCaptionBtnMargin: 1rem auto;
+
+  /* STICKY SECTION FRONT PAGE */
+
+  --stickyBannerAndStoriesDisplay: block;
+  --colorCaptionBackground: rgba(255,255,255,.8);
+  --colorImgDisplay: none;
+  --colorCaptionTop: 5rem;
 
   /* ATFS */
 
@@ -169,7 +179,7 @@ FIN DE MAPA DE CONTENIDOS */
   --homeATFMargin: 2.5rem;
 
   /* SHOP ATF */
-  --shopATFTitleFontSize: 1.5rem;
+
 
 
   /* GALLERY */
@@ -206,8 +216,6 @@ FIN DE MAPA DE CONTENIDOS */
   --contactInformationItemMarginBottom: 1rem;
   --contactInformationPadding: 1rem;
   --contactInformationTextAlign: center;
-  --contactInfoTitlesFontSize: .9rem;
-  --contactInfoTxtFontSize: .7rem;
 
   /* SINGLE */
   --singleProductMainDisplay: flex;
@@ -218,17 +226,15 @@ FIN DE MAPA DE CONTENIDOS */
   --singleSideTxtMarginBottom: 1rem;
   --singleProductButtonWidth: 60%;
   --singleProductButtonMargin: .2rem auto;
-  --singleProductButtonsFontSize: 1rem;
   --singleProductInteractionBtnPadding: 1rem;
   --relatedProductDisplay: block;
   --relatedProductsCardMarginBottom: 2rem;
   --singleProductsgalleryBtnsContainerWidth: 100%;
   --singleProductGalleryBtnsMargin: 1rem auto;
+  --singleProductDescriptionMarginTop: 3rem;
 
 
   /* CARDS */
-  --cardCaptionFontSize: 1.2rem;
-  --cardPriceFontSize: 1.2rem;
 
 
   /* BRAND */
@@ -299,7 +305,6 @@ FIN DE MAPA DE CONTENIDOS */
     /* ATFS */
 
     /* SHOP ATF */
-    --shopATFTitleFontSize: 2rem;
 
 
   }
@@ -332,16 +337,18 @@ FIN DE MAPA DE CONTENIDOS */
 
 
     /* ?COLOR SECTION */
-    --colorSectionTemplateColumns: repeat(4,1fr);
     --colorImgTemplateRows: 1;
-    --colorCaptionTemplateRows:  1;
-    --colorCaptionTemplateColumns: 1/3;
     --colorImgTemplateColumns: 2/5;
-    --colorCaptionWidth: min-content;
     --colorTxtTxtAlign: left;
     --colotTitleWidth:  max-content;
     --colorTitleTextAlign: left;
     --colorCaptionBtnMargin: 1rem 0;
+
+    /* STICKY GRONT PAGE */
+    --stickyBannerAndStoriesDisplay: grid;
+    --colorCaptionBackground: none;
+    --colorImgDisplay: block;
+    --colorCaptionTop: 8rem;
 
     /* ATFS */
     /* HOME ATF */
@@ -373,32 +380,29 @@ FIN DE MAPA DE CONTENIDOS */
     --contactInformationItemMarginBottom: unset;
     --contactInformationPadding: 2rem 1.5rem;
     --contactInformationTextAlign: left;
-    --contactInfoTitlesFontSize: .75rem;
-    --contactInfoTxtFontSize: .6rem;
 
     /* SINGLE */
     --singleProductMainDisplay: grid;
     --textAlignCenterLeft: left;
     --textAlignJustifyLeft: left;
-    --singleSideFontSize: .75rem;
+    --singleSideFontSize: .65rem;
     --singleSideTxtalign: left;
     --singleSideTxtMarginBottom: unset;
     --singleProductButtonWidth: 100%;
     --singleProductButtonMargin: .2rem 0;
-    --singleProductButtonsFontSize: .5rem;
     --singleProductInteractionBtnPadding: .25rem;
     --relatedProductDisplay: grid;
     --relatedProductsCardMarginBottom: unset;
     --singleProductsgalleryBtnsContainerWidth: unset;
     --singleProductGalleryBtnsMargin: .25rem;
+    --singleProductDescriptionMarginTop: 1rem;
+
 
     /* GALLERY */
     --galleryPosition:sticky;
 
 
     /* CARDS */
-    --cardCaptionFontSize: .6rem;
-    --cardPriceFontSize: .8rem;
 
     /* BRAND */
     --brandATFCaptionMaxWidth: 60%;
@@ -440,6 +444,8 @@ FIN DE MAPA DE CONTENIDOS */
 @media screen and (min-width: 992px) {
   :root {
     /* ?HEADER */
+    --navBarGridGap: 2rem;
+
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
@@ -603,6 +609,8 @@ h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
 
 p {font-family: var(--spartanSans)}
 
+li {letter-spacing: .1rem;}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               5) =ESTRUCTURA:
@@ -754,8 +762,7 @@ p {font-family: var(--spartanSans)}
   background:transparent;
   border-bottom:1px solid black;
   display:var(--headerDisplay);
-  grid-auto-flow:column;
-  /* grid-template-columns:1fr min-content auto min-content; */
+  grid-template-columns: 1fr 1fr 1fr;
   left: 0;
   padding:  .75rem var(--lateral);
   position:sticky;
@@ -865,7 +872,7 @@ p {font-family: var(--spartanSans)}
   margin: auto;
   margin-left:var(--lateral);
   padding-top:8rem;
-  font-size:3rem;
+  font-size: var(--fontSize1);
   text-transform: uppercase;
 }
 
@@ -902,7 +909,7 @@ p {font-family: var(--spartanSans)}
 }
 
 .ShopATFTitle {
-  font-size: var(--shopATFTitleFontSize);
+  font-size: var(--fontSize1);
   text-transform: uppercase;
   width: max-content;
 }
@@ -961,14 +968,14 @@ p {font-family: var(--spartanSans)}
 }
 
 .storiesATF .featuredStorie:nth-child(3) .storieImg{
-  transform: translateX(7rem);
+  transform: translateX(30%);
 }
 .storiesATF .featuredStorie:nth-child(3) .storieImg.animate{
   transform: translateY(0);
 }
 
 .storiesATF .featuredStorie:nth-child(4) .storieImg{
-  transform: translateX(7rem);
+  transform: translateX(30%);
 }
 .storiesATF .featuredStorie:nth-child(4) .storieImg.animate{
   transform: translateY(0);
@@ -999,9 +1006,11 @@ p {font-family: var(--spartanSans)}
 
 .featuredStorieTitle{
   position: absolute;
-  background: rgba(255,255,255,.4);
+  background: white;
   text-transform: uppercase;
-  font-size: .7rem;
+  font-size: 1rem;
+  font-size: var(--fontSize4);
+  padding: .2rem .5rem;
 }
 
 
@@ -1060,7 +1069,6 @@ p {font-family: var(--spartanSans)}
 .storiesTitle{
   text-align: center;
   padding: 1rem 0;
-  font-family: 'SalvalynDemo';
 }
 
 .archiveStoriesTitle{padding: 2rem 0}
@@ -1068,7 +1076,7 @@ p {font-family: var(--spartanSans)}
 .archiveStories{
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
-  padding: 2rem 0;
+  padding-bottom: 2rem;
   grid-gap: var(--cardGalleryGridGap);
   transition: 2s;
   transition-delay: .3s;
@@ -1108,7 +1116,7 @@ p {font-family: var(--spartanSans)}
 .singleStorieCaption{
   padding: 2.5rem 1rem;
   background: white;
-  z-index: 10;
+  z-index: 2;
   box-shadow: var(--DP6);
   margin: 2rem  var(--lateral);
   margin-top: -3rem;
@@ -1141,24 +1149,24 @@ singleStorieContent
   width: 100%;
   padding-top: 8rem;
   background: black;
-  margin-top: -5rem;
+  margin-top: -3rem;
 
 }
 
 .storieSocialSharing{
-  margin: auto;
+  margin: 1rem auto;
   text-align: center;
-  padding: 1rem auto;
-  padding-top: -5rem;
-  background: black;
+  background: rgba(0,0,0,0);
   color: white;
   width: 100%;
-  transform: translateY(-5rem);
-  transition: 1.5s;
+  transform: translateY(15rem);
+  transition: 1.2s ease-in;
+  opacity: 0;
 }
 
 .storieSocialSharing.alt{
-  transform: translateY(0);
+  transform: translateY(-5rem);
+  opacity: 1;
 }
 
 
@@ -1166,7 +1174,7 @@ singleStorieContent
   font-weight: 100;
   background: black;
   color: white;
-  font-size: 1.5rem;
+  font-size: var(--fontSize2);
   margin-bottom: .5rem;
 }
 
@@ -1198,8 +1206,8 @@ singleStorieContent
   background: white;
   text-align: center;
   padding: .5rem!important;
-  border-top: solid black 1px;
-  border-left: solid black 1px;
+  border-top: solid var(--color1) 2px;
+  border-left: solid var(--color1) 2px;
 }
 .singleStorieOthers .cardStorieDate{
 
@@ -1213,13 +1221,27 @@ singleStorieContent
 }
 
 
+.pruebaPaginacion{
+  display: flex;
+  background: white;
+}
+
+.readMore {
+  display: flex;
+}
+
+.readMore svg{
+  margin: auto .5rem;
+  color: white;
+}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.02.3) =brandATF:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .brandATFCaption {
-  background: rgba(255,255,255,0.5);
+  background: white;
   margin: 4rem auto auto 0;
   padding: 1rem;
   max-width: var(--brandATFCaptionMaxWidth);
@@ -1232,8 +1254,8 @@ singleStorieContent
 }
 
 
-.brandSection p {font-size: 16px!important}
-.brandSection h3 {font-size: 24px;margin-bottom: .5rem;}
+.brandSection p {font-size: var(--fontSize5)}
+.brandSection h3 {font-size: var(--fontSize3);margin-bottom: .5rem;}
 
 
 
@@ -1335,8 +1357,8 @@ singleStorieContent
   grid-row: var(--brandImg4GridR);
   transition: 1.5s;
   opacity: 0;
-  z-index: 2;
 }
+
 .brandImg4.alt {
   opacity: 1;
 }
@@ -1359,15 +1381,24 @@ singleStorieContent
 }
 
 .brandImg5 {
+  opacity: 0;
+  transition: 2s ease-in-out;
 }
 
+.brandImg5.alt {
+  opacity: 1;
+}
 
 .brandTxt5 {
   margin: var(--brandTxt5);
   max-width: var(--brandATFCaptionMaxWidth);
   padding: 1rem 4rem 1rem 1rem;
-  background: rgba(255,255,255,0.5);
+  background: white;
+  z-index: 2;
 }
+
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1440,19 +1471,19 @@ singleStorieContent
 .cardCaption{
   display: grid;
   padding: .5rem 0;
-  font-size: var(--cardCaptionFontSize);
-  text-transform: uppercase;
   grid-gap: .5rem;
 }
 
 .cardTitle{
   text-align: var(--textAlignCenterLeft);
-
+  font-size: var(--fontSize4);
+  text-transform: uppercase;
 }
 
 .cardDescription{
   height: min-content;
   overflow-y: hidden;
+  font-size: var(--fontSize5);
 }
 
 .card .btn{
@@ -1461,7 +1492,7 @@ singleStorieContent
 
 
 .productCardPrice {
-  font-size: var(--cardPriceFontSize);
+  font-size: var(--fontSize4);
   font-weight: bold;
 }
 /* ---------------------------------------------------------------------------
@@ -1477,13 +1508,13 @@ singleStorieContent
 .navBar {
   display: grid;
   grid-auto-flow: column;
-  grid-gap: 2rem;
+  grid-gap: var(--navBarGridGap);
   width: max-content;
 }
 
 .navBar .menu-item {
   text-transform: uppercase;
-  font-size: .6rem;
+  font-size: var(--fontSize5);
   position: relative;
 }
 
@@ -1514,7 +1545,7 @@ singleStorieContent
   color:white;
   display: flex;
   flex-direction: column;
-  font-size: .75rem;
+  font-size: var(--fontSize5);
   height: 100%;
   justify-content: space-between;
   text-transform: uppercase;
@@ -1522,6 +1553,7 @@ singleStorieContent
 
 .footerNav li {
   margin: .25rem 0;
+  font-size: var(--fontSize5);
   position: relative;
   width: max-content;
 }
@@ -1627,7 +1659,7 @@ singleStorieContent
 }
 
 .navBarMobile li {
-  font-size: 1.5rem;
+  font-size: var(--fontSize2);
   margin: 1rem auto;
   width: max-content;
 }
@@ -1686,20 +1718,21 @@ singleStorieContent
                           6.06.0) =btn:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.btn,.woocommerce a.button{
-  background:var(--color1);
-  color:var(--color2);
+.btn,.woocommerce a.button, .added_to_cart.wc-forward, .checkout-button{
+  background:var(--color1)!important;
+  color:var(--color2)!important;
   cursor:pointer;
   margin: auto;
-  padding:.5rem 1rem;
+  padding:.5rem;
   text-transform:uppercase;
   border: var(--color1) solid 1px;
   transition: .25s;
-  font-size:16px;
-  font-weight:200;
+  font-size: var(--fontSize5);
+  font-weight:100;
   border-radius:0;
+  text-align: center;
 }
-.woocommerce a.button{width:100%}
+.woocommerce a.button,.added_to_cart.wc-forward {width:100%; margin: .5rem auto;}
 
 .thinBtn {
   background: var(--color1);
@@ -1718,20 +1751,20 @@ singleStorieContent
 }
 
 .btn:hover,.woocommerce a.button:hover {
-  background: var(--color2);
-  color: var(--color3);
+  background: var(--color2)!important;
+  color: var(--color3)!important;
   border: var(--color3) solid 1px;
 }
 
 .btnWhite {
-  background: var(--color2);
-  color: var(--color3);
+  background: var(--color2)!important;
+  color: var(--color3)!important;
   border: var(--color3) solid 1px;
 }
 
 .btnWhite:hover {
-  color: var(--color2);
-  background: var(--color1);
+  color: var(--color2)!important;
+  background: var(--color1)!important;
 }
 
 .shopBtn {
@@ -1772,7 +1805,6 @@ singleStorieContent
   box-shadow:0 0 10px rgba(0,0,0,.3);
   font-size:1.2rem;
   font-weight:100;
-  font-family: 'Roboto', sans-serif;
   z-index: 10;
 }
 
@@ -1811,7 +1843,7 @@ singleStorieContent
   background:red;
   color:var(--color2);
   border-radius:50%;
-  font-size:.5rem;
+  font-size: var(--fontSize5);
   height: .9rem;
   width:  .9rem;
   text-align: center;
@@ -1841,6 +1873,7 @@ singleStorieContent
 .suscribeTitle {
   margin: .4rem 0;
   word-spacing: 2px;
+  font-family: var(--DMSerif);
 }
 
 .suscribeButton {
@@ -1906,8 +1939,8 @@ singleStorieContent
   z-index:4;
 }
 
-.selectBoxPlaceholder{
-  font-size: .8rem;
+.selectBoxPlaceholder {
+  font-size: var(--fontSize4);
   height:1rem;
   line-height:1rem;
   left:16px;
@@ -1917,10 +1950,9 @@ singleStorieContent
   transform-origin:left;
 }
 .selectBoxCurrent{
-  /* padding:16px 52px 2px 16px; */
   padding:16px;
   padding-bottom:2px;
-  font-size: .8rem;
+  font-size: var(--fontSize4);
   position: relative;
   border-bottom:2px solid #666;
 }
@@ -1977,7 +2009,7 @@ singleStorieContent
 }
 .selectBoxOption{
   cursor:pointer;
-  font-size: .7rem;
+  font-size: var(--fontSize4);
   height: 1.5rem;
   line-height: 1.8rem;
   transition:.3s;
@@ -2006,26 +2038,25 @@ singleStorieContent
                           6.09) =color:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.color{
-  display:grid;
-  grid-template-columns: var(--colorSectionTemplateColumns);
-  padding:1rem var(--lateral);
-}
+
 .colorImg{
-  grid-row: var(--colorImgTemplateRows);
-  grid-column:var(--colorImgTemplateColumns);
+  display: var(--colorImgDisplay);
+  grid-row: 1;
+  grid-column: 2/ span 3;
 }
 .colorCaption {
   display: flex;
+  grid-column: 1 / span 2;
+  grid-row: 1;
   flex-direction: column;
-  grid-column: var(--colorCaptionTemplateColumns);
-  grid-row: var(--colorCaptionTemplateRows);
+  background: var(--colorCaptionBackground);
+  position: sticky;
+  top: var(--colorCaptionTop);
   margin:auto 0;
-  width: var(--colorCaptionWidth);
+  z-index: 2;
 }
 .colorTitle{
-  width: var(--colotTitleWidth);
-  font-size: 2.5rem;
+  font-size: var(--fontSize1);
   text-align: var(--colorTitleTextAlign);
 }
 
@@ -2038,6 +2069,27 @@ singleStorieContent
   width: max-content
 }
 
+/*  ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          FRONT STORIES
+---------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+
+.stickyBannerAndStories{
+  display: var(--stickyBannerAndStoriesDisplay);
+  position: relative;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(4,1fr);
+  padding:1rem var(--lateral);
+}
+
+.frontStories{
+  grid-column: 3 / span 2;
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+
 
 
 /* ---------------------------------------------------------------------------
@@ -2048,7 +2100,7 @@ singleStorieContent
 
 .ShopTitle2 {
   grid-column: 1/-1;
-  font-size: 2rem;
+  font-size: var(--fontSize2);
   text-transform: uppercase;
 }
 
@@ -2073,7 +2125,7 @@ singleStorieContent
 }
 
 .form label {
-  font-size: .5rem;
+  font-size: var(--fontSize5);
   margin-top: .5rem;
 }
 
@@ -2138,13 +2190,13 @@ singleStorieContent
 
 .contactInformationItemTitle {
   text-transform: uppercase;
-  font-size: var(--contactInfoTitlesFontSize);
+  font-size: var(--fontSize4);
   margin-bottom: .3rem;
   font-weight: 100;
 }
 
 .contactInformationItemTxt {
-  font-size: var(--contactInfoTxtFontSize);
+  font-size: var(--fontSize5);
   opacity: .7;
 }
 
@@ -2195,10 +2247,11 @@ singleStorieContent
 
 .singleProductsgalleryBtnsContainer {
   margin: auto;
-  margin-top:0;
+  margin-top: 0;
   display: flex;
   width: var(--singleProductsgalleryBtnsContainerWidth);
 }
+.singleProductArrowSVG {color: var(--color1);}
 
 .singleProductsGalleryBtns {
   /* padding: .5rem; */
@@ -2223,7 +2276,6 @@ singleStorieContent
   grid-column: 4/ span 1;
   grid-row: 1;
   margin: auto;
-  padding:6rem 0;
   width: 100%;
   order: 3;
 }
@@ -2232,7 +2284,7 @@ singleStorieContent
 .SingleProductInteraction button {
   width: var(--singleProductButtonWidth);
   margin: var(--singleProductButtonMargin);
-  font-size: var(--singleProductButtonsFontSize);
+  font-size: var(--fontSize4);
   padding: var(--singleProductInteractionBtnPadding);
 }
 
@@ -2241,25 +2293,31 @@ singleStorieContent
 .singleSideTitle {
   opacity: .8;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: var(--fontSize4);
 }
+
 .singleSideTitle, .singleSidePrice {
-  font-size: var(--singleSideFontSize);
   text-align: var(--singleSideTxtalign);
   margin-bottom: var(--singleSideTxtMarginBottom);
+}
+.singleSidePrice {
+  font-weight: 800;
+  line-height: var(--fontSize3);
+  font-size: var(--fontSize5);
 }
 
 .singleProductDescription {
   grid-column: 4/ span 2;
   grid-row: 2;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: var(--singleProductDescriptionMarginTop);
   order: 1;
 }
 
 .singleProductTitle {
-  font-size: 2rem;
+  font-size: var(--fontSize2);
   font-weight: 100;
-  margin-bottom: .5rem;
   text-align: var(--textAlignCenterLeft);
   text-transform: uppercase;
 }
@@ -2269,7 +2327,7 @@ singleStorieContent
   text-align: var(--textAlignCenterLeft);
 }
 .singleProductTxt {
-  font-size: .8rem;
+  font-size: var(--fontSize4);
   opacity: .8;
   text-align: var(--textAlignJustifyLeft);
 }
@@ -2301,7 +2359,7 @@ singleStorieContent
   grid-template-columns: var(--footerTemplateColumns);
   grid-gap:var(--footerGridGap);
   padding: 4rem  1rem calc(var(--lateral) / 2 );
-  font-size: 16px;
+  font-size: var(--fontSize5);
 }
 
 .logoFooterLink {margin: auto;}

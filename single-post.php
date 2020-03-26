@@ -60,18 +60,12 @@
 
 <div class="singleStorieOthers">
   <?php
-  $args = array('post_type' => 'post', );
+  $args = array('post_type' => 'post',
+                'tag' => 'featured',
+                'posts_per_page' => 3, );
+
+
   $stories=new WP_Query($args);
-
-
-  $postXPage = 3;
-  $cantStories = $args->Count();
-  $cantPages =  $cantStories / $postXPage;
-  $cantPages = ceil($cantPages);
-
-  echo "La cantidadDeStories es:$cantStories";
-  echo "La cantidadDePaginas es:$cantPages";
-
   while($stories->have_posts()){$stories->the_post(); ?>
     <figure class="card"  id="card<?php echo get_the_id();?>">
       <a class="cardImg" href="<?php the_permalink(); ?>">
@@ -97,31 +91,6 @@
   <?php } wp_reset_query(); ?>
 </div>
 
-<?php
-
-
-
-
-?>
-
-<nav class="pruebaPaginacion<?php $postXPage ?>">
-  <ul class="pagination">
-    <li class="page-item">
-      <a href="#" class="pageLink">Previous</a>
-    </li>
-
-
-    <?php for($i=0; i<$cantPages;$i++): ?>
-    <li class="page-item">
-      <a href="#" class="pageLink"><?php echo $i+1 ?></a>
-    </li>
-  <?php endfor ?>
-
-    <li class="page-item">
-      <a href="#" class="pageLink">Next</a>
-    </li>
-  </ul>
-</nav>
 
 
 </div>

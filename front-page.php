@@ -38,19 +38,52 @@
 
   <button class="sliderArrow" type="button" name="button">&#62;</button>
 
-  <a class="btn" href="">View all</a>
+  <a class="btn" href="<?php echo site_url('shop'); ?>">View all</a>
 </section>
 
+<div class="stickyBannerAndStories">
 
-<figure class="color">
-  <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
-  <figcaption class="colorCaption">
-    <h5 class="colorTitle"><nobr>SLOW FASHON</nobr></h5>
-    <p class="colorTxt">Against the overproduction, we bet for exclusivity and take care of the people who work in the manufacturing process.</p>
-    <a class="btn" href="">About us</a>
-  </figcaption>
-</figure>
-    <!-- <div id="more_posts">Load More</div> -->
+    <div class="colorCaption">
+      <h5 class="colorTitle"><nobr>SLOW FASHON</nobr></h5>
+      <p class="colorTxt">Against the overproduction, we bet for exclusivity and take care of the people who work in the manufacturing process.</p>
+      <a class="btn" href="<?php echo site_url('brand'); ?>">About us</a>
+    </div>
+    <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
+  <!-- <div id="more_posts">Load More</div> -->
+
+  <div class="frontStories">
+    <?php $args = array('post_type' => 'post',
+    'posts_per_page'=> 3,
+    'tag'=> 'featured' );
+
+    $stories=new WP_Query($args);
+    while($stories->have_posts()){$stories->the_post(); ?>
+      <figure class="card"  id="card<?php echo get_the_id();?>">
+        <a class="cardImg" href="<?php the_permalink(); ?>">
+          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+        </a>
+        <p class="cardStorieDate">
+          <?php echo get_the_date( 'j' ); ?>
+          <br>
+          <?php echo get_the_date( 'M' ); ?>
+        </p>
+        <figcaption class="cardCaption">
+          <h3 class="cardTitle">
+            <?php the_title(); ?>
+          </h3>
+          <p class="cardDescription">
+            <?php echo excerpt(100); ?>
+          </p>
+          <a class="btnWhite btn" href="<?php the_permalink(); ?>">
+            Read More&raquo;
+          </a>
+        </figcaption>
+      </figure>
+    <?php } wp_reset_query(); ?>
+  </div>
+
+
+</div>
 
 
 <?php get_footer(); ?>

@@ -1159,7 +1159,7 @@ singleStorieContent
   color: white;
   width: 100%;
   transform: translateY(15rem);
-  transition: 1.2s ease-in;
+  transition: .7s ease-in;
   opacity: 0;
 }
 
@@ -1186,7 +1186,7 @@ singleStorieContent
 
 
 .singleOthersTitle .titleMoreStories{
-  margin: 6rem var(--lateral) 0 ;
+  margin: 2rem var(--lateral) 0 ;
   color: white;
 
 }

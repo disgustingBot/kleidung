@@ -455,12 +455,11 @@ function misha_paginator( $first_page_url ){
 
 		if( $first_link_in_the_middle != 2 )
 			$pagination .= '<span class="page-numbers extend">...</span>';
-
 	}
 
 	// arrow left (previous page)
-	// if ($current_page != 1)
-		// $pagination.= '<a class="paginationLink prev" data-pagination="-1">prev</a>';
+	if ($current_page != 1)
+		$pagination.= '<a class="paginationLink prev" data-pagination="prev">prev</a>';
 
 
 	// loop page links in the middle between "..." and "..."
@@ -473,8 +472,8 @@ function misha_paginator( $first_page_url ){
 	}
 
 	// arrow right (next page)
-	// if ($current_page != $last_link_in_the_middle )
-		// $pagination.= '<a class="paginationLink next" data-pagination="+1">next</a>';
+	if ($current_page != $last_link_in_the_middle )
+		$pagination.= '<a class="paginationLink next" data-pagination="next">next</a>';
 
 
 	// when to display "..." and the last page after it
@@ -561,16 +560,17 @@ function cvf_demo_pagination_load_posts() {
 		// Sanitize the received page
 		$page = sanitize_text_field($_POST['page']);
 		// echo $page;
-		if ($page==='+1') {
-			// we need next page to be loaded
-			$args['paged'] = $_POST['page'] + 1;
-		} elseif ($page==='-1') {
-			// we need prev page to be loaded
-			$args['paged'] = $_POST['page'] - 1;
-		} else {
-			// we need a specific page to be loaded
-			$args['paged'] = $page;
-		}
+		// if ($page==='next') {
+		// 	// we need next page to be loaded
+		// 	$args['paged'] = $_POST['page'] + 1;
+		// } elseif ($page==='prev') {
+		// 	// we need prev page to be loaded
+		// 	$args['paged'] = $_POST['page'] - 1;
+		// } else {
+		// 	// we need a specific page to be loaded
+		// 	$args['paged'] = $page;
+		// }
+		$args['paged'] = $page;
 		$args['post_status'] = 'publish';
 
 

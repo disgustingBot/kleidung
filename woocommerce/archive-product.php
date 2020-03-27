@@ -104,7 +104,7 @@ global $wp;
   <?php while(have_posts()){the_post(); ?>
     <?php global $product; ?>
 
-    <figure class="card">
+    <figure class="card" id="card<?php echo get_the_id();?>">
       <a class="cardImg" href="<?php echo get_permalink(); ?>">
         <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
       </a>
@@ -121,7 +121,6 @@ global $wp;
 </section>
 
 <?php // echo latte_pagination($wp_query->max_num_pages); ?>
-<!-- <a class="btn shopBtn testButton" data-pagination="+1">View all</a> -->
 
 
 <?php get_footer(); ?>

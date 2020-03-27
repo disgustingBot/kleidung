@@ -1700,6 +1700,9 @@ singleStorieContent
   font-weight: 100;
   font-family: var(--DMSerif);
 }
+.paginationCurrent{
+  border-bottom:1px solid grey;
+}
 .paginationLink{
   cursor:pointer;
 }

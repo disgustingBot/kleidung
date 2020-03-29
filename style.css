@@ -868,12 +868,17 @@ li {letter-spacing: .1rem;}
   margin-top: var(--homeATFMargin);
 }
 
+.homeATFVideo {
+  width: 100%;
+}
+
 .homeATFTitle {
   margin: auto;
   margin-left:var(--lateral);
   padding-top:8rem;
   font-size: var(--fontSize1);
   text-transform: uppercase;
+  z-index: 3;
 }
 
 /* ---------------------------------------------------------------------------

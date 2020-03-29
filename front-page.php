@@ -7,8 +7,10 @@
 } ?>
 
 <section class="homeATF ATF" id="homeATF">
-  <img class="homeATFImg rowcol1" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-  <h1 class="homeATFTitle rowcol1"><?php the_title(); ?></h1>
+  <video loop autoplay class="homeATFVideo rowcol1">
+    <source src="<?php echo get_post_meta($post->ID, 'video-portada', true); ?>" type="video/mp4">
+  </video>
+  <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta($post->ID, 'titulo-portada', true); ?></h1>
 </section>
 
 

@@ -239,6 +239,7 @@
         <input class="suscribeInput" type="email" placeholder="E-MAIL">
         <button class="btn suscribeButton">SUSCRIBE</button>
       </form>
+      
       <?php include 'socialMedia.php'; ?>
 
     </nav>

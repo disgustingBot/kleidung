@@ -180,7 +180,12 @@ FIN DE MAPA DE CONTENIDOS */
   --homeATFMargin: 2.5rem;
 
   /* SHOP ATF */
+  --shopATFTxtWidth: 90%;
+  --shopATFTxtMargin: auto var(--lateral);
+  --shopBannerHeight: 100%;
+  --shopATFMT: 2.5rem;
 
+  --shopFilterBarChild11MarginRight: auto;
 
 
   /* GALLERY */
@@ -283,13 +288,16 @@ FIN DE MAPA DE CONTENIDOS */
                           2.1) min-width:  =360px
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 410px) {
   :root {
   /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - 400px) / (1024 - 400))); */
   --sizeR: calc(calc(var(--sizeRa) * 1px) + (var(--sizeRb) - var(--sizeRa)) * ((100vw - 360px) / (768 - 360)));
 
     /* ?HEADER */
     /* ?FOOTER */
+    /* ATFS */
+    /* SHOP ATF */
+    --shopFilterBarChild11MarginRight: 1rem;
   }
 }
 
@@ -306,6 +314,8 @@ FIN DE MAPA DE CONTENIDOS */
     /* ATFS */
 
     /* SHOP ATF */
+    --shopBannerHeight: auto;
+    --shopFilterBarChild11MarginRight: 1rem;
 
 
   }
@@ -358,6 +368,9 @@ FIN DE MAPA DE CONTENIDOS */
     /* ATFS */
     /* HOME ATF */
     --homeATFMargin: unset;
+
+    /* SHOP ATF */
+    --shopATFTxtWidth: 60%;
 
     /* STORIES ATF */
     --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 2 / .72);
@@ -461,6 +474,11 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* CONTACT FORM */
     --contactBoxMargin: -3rem 13% auto 13%;
+
+    /* ATFS */
+
+    /* SHOP ATF */
+    --shopATFTxtWidth: 50%;
 
     /* STORIES ATF */
     --storiesATFaspectRatio: calc((100vw - 16px - var(--lateral) * 2 - 2rem) / 4 / .72);
@@ -895,7 +913,7 @@ li {letter-spacing: .1rem;}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-
+.shopATF {margin-top: var(--shopATFMT)}
 .ShopOverlay {
   grid-column: 1;
   grid-row: 1;
@@ -908,26 +926,25 @@ li {letter-spacing: .1rem;}
 .ShopBanner {
   grid-column: 1;
   grid-row: 1;
+  height: var(--shopBannerHeight)!important;
 }
 
 .ShopATFTxt {
   color: white;
   grid-column: 1;
   grid-row: 1;
-  width: min-content;
+  width: var(--shopATFTxtWidth);
   z-index: 1;
-  height: max-content;
-  margin: auto;
-  margin-left: 10%;
+  margin: var(--shopATFTxtMargin);
 }
 
 .ShopATFTitle {
   font-size: var(--fontSize1);
   text-transform: uppercase;
-  width: max-content;
 }
 
 .ShopATFSubtitle {
+  font-size: var(--fontSize3);
   margin-bottom: 1rem;
 }
 
@@ -1802,12 +1819,6 @@ singleStorieContent
 }
 
 
-
-
-
-
-
-
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.06.1) =sliderArrow:
@@ -1927,7 +1938,7 @@ singleStorieContent
   width: 5rem;
   padding: .5rem;
 }
-.shopFilterBar .selectBox:nth-child(1){margin-right:1rem}
+.shopFilterBar .selectBox:nth-child(1){margin-right: var(--shopFilterBarChild11MarginRight)}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -2125,6 +2136,7 @@ singleStorieContent
   grid-column: 1/-1;
   font-size: var(--fontSize2);
   text-transform: uppercase;
+  margin: auto var(--lateral);
 }
 
 /* ---------------------------------------------------------------------------

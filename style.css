@@ -48,7 +48,7 @@ Version: 1.0
 6.06) =BUTTONS:
 6.06.0) =btn:
 6.06.1) =sliderArrow:
-6.06.2) =slideButton:
+6.06.2) =cartButton:
 6.07) =suscribe:
 6.08) =filterBars
 6.09) =colors
@@ -392,7 +392,8 @@ FIN DE MAPA DE CONTENIDOS */
     --textAlignJustifyLeft: left;
     --singleSideFontSize: .65rem;
     --singleSideTxtalign: left;
-    --singleSideTxtMarginBottom: unset;
+    /* --singleSideTxtMarginBottom: unset; */
+    --singleSideTxtMarginBottom:1rem;
     --singleProductButtonWidth: 100%;
     --singleProductButtonMargin: .2rem 0;
     --singleProductInteractionBtnPadding: .25rem;
@@ -654,12 +655,35 @@ li {letter-spacing: .1rem;}
 
 
 /* esto lo podemos encontrar en single-product.php */
+.addToCartQntContainer{
+  position:relative;
+  display:flex;
+  border-bottom:2px solid #666;
+  /* border-right :2px solid #666; */
+}
 .addToCartQnt{
   margin:.5rem 0;
-  padding:.2rem 1rem;
-  border:1px solid var(--color1);
+  padding:0 16px;
+  /* border:1px solid var(--color1); */
+  border:none;
+  width:100%;
+  font-size:var(--fontSize3);
+  pointer-events:none;
 }
-
+.addToCartQntBtn{
+  align-items:center;
+  background:none;
+  border:none;
+  color:black;
+  display: grid;
+  transition:.4s;
+  min-width:2rem;
+  /* transform:scale(1.5); */
+}
+.addToCartQntBtn:focus{
+  outline:1px solid #666;
+  /* transform:rotate(90deg); */
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1866,7 +1890,8 @@ singleStorieContent
   background:red;
   color:var(--color2);
   border-radius:50%;
-  font-size: var(--fontSize5);
+  /* font-size: var(--fontSize5); */
+  font-size:.5rem;
   height: .9rem;
   width:  .9rem;
   text-align: center;
@@ -1942,7 +1967,7 @@ singleStorieContent
   position: relative;
   /* width:100%; */
   /* width:max-content; */
-  min-width: 10rem;
+  min-width: 2rem;
 }
 
 
@@ -2042,6 +2067,7 @@ singleStorieContent
 .selectBoxOption:hover{
   background:#BBB;
 }
+.hidden{display:none!important}
 .selectBoxInput{
   display: none;
 }
@@ -2294,8 +2320,10 @@ singleStorieContent
 
 
 .SingleProductInteraction {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+  display:grid;
+  grid-gap:.5rem;
   grid-column: 4/ span 1;
   grid-row: 1;
   margin: auto;
@@ -2306,7 +2334,7 @@ singleStorieContent
 
 .SingleProductInteraction button {
   width: var(--singleProductButtonWidth);
-  margin: var(--singleProductButtonMargin);
+  /* margin: var(--singleProductButtonMargin); */
   font-size: var(--fontSize4);
   padding: var(--singleProductInteractionBtnPadding);
 }
@@ -2314,10 +2342,10 @@ singleStorieContent
 .singleProductSizeBtn {margin-bottom: 1.5rem!important;}
 
 .singleSideTitle {
-  opacity: .8;
+  /* opacity: .8; */
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize3);
 }
 
 .singleSideTitle, .singleSidePrice {
@@ -2358,7 +2386,7 @@ singleStorieContent
 .relatedProducts {
   display: var(--relatedProductDisplay);
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 2rem;
+  grid-column-gap:.5rem;
   padding: 0 calc(var(--lateral) * 2);
   margin-bottom: var(--lateral);
 }
@@ -2367,9 +2395,9 @@ singleStorieContent
   text-align: left;
 }
 
-.relatedProducts .card {
+/* .relatedProducts .card {
   margin-bottom: var(--relatedProductsCardMarginBottom);
-}
+} */
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

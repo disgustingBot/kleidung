@@ -128,6 +128,44 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 
 
   // ADD TO CART CONTROLLER
+  $('#myAddToCart').on('click',()=>{
+		// c.log('add to cart')
+    let addToCart = d.querySelector('#myAddToCart');
+		var product_id = addToCart.dataset.productId;
+    var quantity = addToCart.dataset.quantity;
+
+    if(addToCart.dataset.productType == 'variable'){
+      var variationId = addToCart.dataset.variationId;
+      if (!variationId) {
+        alert('selecciona las opciones para poder comprar')
+        return;
+      }
+
+    }
+		var data = {
+			"action" : "woocommerce_add_variation_to_cart",
+			"product_id" : product_id,
+			"variation_id" : variationId,
+			"quantity" : quantity,
+			// "variation" : {
+			// 	"Attributes" : "m - l",
+			// },
+		};
+    $.ajax({
+      url : misha_loadmore_params.ajaxurl,
+      data : data,
+      type : 'POST',
+      success : respuesta => {
+				c.log(respuesta);
+	        d.querySelector('.cartButtonCant').innerText = respuesta/10;
+				// c.log('soy el nene');
+        // d.querySelector('.cartButtonCant').innerText = respuesta/10;
+      }
+    });
+  })
+
+
+
   $( document.body ).on( 'added_to_cart removed_from_cart', ()=>{
 		var data = { 'action' : 'added_to_cart' };
     $.ajax({

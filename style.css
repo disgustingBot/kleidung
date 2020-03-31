@@ -455,7 +455,7 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
-    --footerTemplateColumns: 1fr 1fr 2fr 1fr;
+    --footerTemplateColumns: 1fr 1fr 1fr 1fr;
 
     /* FORMS */
 
@@ -1590,6 +1590,11 @@ singleStorieContent
 
 .footerNav li:hover::after {transform: scale(1);}
 
+
+.footer .socialMedia .cartButton {display: none}
+
+.footer .suscribeButton { border: var(--color1) solid 1px;}
+.footer .suscribeButton:hover { border: white solid 1px;}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------

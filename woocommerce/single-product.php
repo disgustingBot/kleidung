@@ -51,24 +51,155 @@
 
       <div class="SingleProductInteraction">
         <h3 class="singleSideTitle"><?php the_title(); ?></h3>
-        <?php $product->get_attributes( 'Talla' ); ?>
-        <p class="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
+        <?php // var_dump($product->get_attributes( 'Talla' )); ?>
+        <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->
+        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
+        <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p>
         <?php
-    			$product = wc_get_product();
+    			// $product = wc_get_product();
     			if ( $product->is_type( 'variable' ) ) {
-      			$variations = $product->get_available_variations();
-            foreach ($variations as $key => $value){
-              echo $value['attributes']['attribute_talla'];
-              echo '<br/>';
+            $variations = $product->get_available_variations();
+
+            // THIS BLOCK DEFINES THE ARRAY: "$myAttributes"
+            // WE WILL USE THIS ARRAY LATER
+            $myAttributes = array();
+            foreach ($variations as $key => $value) {
+              foreach ($value['attributes'] as $j => $var) {
+                if ( ! array_key_exists ( $j, $myAttributes ) ) {
+                  $myAttributes[$j] = array($var => array($value['variation_id']));
+                } else {
+                  $myAttributes[$j][$var][] = $value['variation_id'];
+                }
+              }
             }
-    			}
+            // var_dump($myAttributes);
+
+            $first = true;
+            foreach ($myAttributes as $key => $value) {
+              $slug = preg_replace("/attribute_/i", "", $key);
+              $name = ucfirst($slug);
+              ?>
+
+              <div class="selectBox" tabindex="1" id="selectBox<?php echo $name; ?>">
+                <div class="selectBoxButton">
+                  <p class="selectBoxPlaceholder"><?php echo $name; ?></p>
+                  <p class="selectBoxCurrent" id="selectBoxCurrent<?php echo $name; ?>"></p>
+                </div>
+                <div class="selectBoxList">
+                  <label for="nul<?php echo $name; ?>" class="selectBoxOption">
+                    <input
+                      class="selectBoxInput"
+                      id="nul<?php echo $name; ?>"
+                      type="radio"
+                      data-ids=""
+                      name="filter_<?php echo $slug; ?>"
+                      onclick="selectBoxControler('','#selectBox<?php echo $name; ?>','#selectBoxCurrent<?php echo $name; ?>')"
+                      value="0"
+                      checked
+                    >
+                    <!-- <span class="checkmark"></span> -->
+                    <p class="colrOptP"></p>
+                  </label>
+                  <?php foreach ($value as $i => $var) { ?>
+                    <!-- <p class="colrOptP"><?php var_dump($var['attributes']); ?></p> -->
+                  <?php // foreach ($value['options'] as $key => $var) { ?>
+                    <label for="<?php echo $i; ?>" class="selectBoxOption<?php if(!$first){echo ' hidden';} ?>">
+                      <input
+                        class="selectBoxInput"
+                        id="<?php echo $i; ?>"
+                        data-ids="<?php
+                          foreach ($var as $j => $x) {
+                            echo $x;
+                            if($j<count($var)-1){ echo ', '; }
+                          }
+                        ?>"
+                        type="radio"
+                        name="filter_<?php echo $slug; ?>"
+                        onclick="selectBoxControler('<?php echo $i; ?>', '#selectBox<?php echo $name; ?>', '#selectBoxCurrent<?php echo $name; ?>')"
+                        value="<?php echo $i; ?>"
+                        <?php // if($_GET['filter_'.$term->slug]==$var->slug){echo "selected";} ?>
+                      >
+                      <!-- <span class="checkmark"></span> -->
+                      <!-- <p class="colrOptP"><?php var_dump($var[0]); ?></p> -->
+                      <p class="colrOptP"><?php echo $i; ?></p>
+                    </label>
+                  <?php } ?>
+                </div>
+              </div>
+            <?php $first = false; ?>
+            <?php } ?>
+
+
+
+
+
+          <?php } ?>
+          <!-- esto tiene un bug, testear extensivamente y asegurarse de que anda bien antes de poner en produccion -->
+          <!-- placeholder="Cantidad" -->
+          <div class="addToCartQntContainer">
+            <input class="addToCartQnt" id="addToCartQantity" type="number" value="1" min="1">
+            <button class="addToCartQntBtn" onclick="changeQuantity(-1)">-</button>
+            <button class="addToCartQntBtn" onclick="changeQuantity(+1)">+</button>
+          </div>
+
+          <button
+            class="btn"
+            id="myAddToCart"
+            data-product-id="<?php echo get_the_id(); ?>"
+            data-product-type="<?php echo $product->get_type(); ?>"
+            data-quantity="1"
+            data-variation-description=""
+          >
+            <?php if($product->is_type( 'simple' )){echo 'ADD TO CART';} ?>
+            <?php if($product->is_type( 'variable' )){echo 'Select options';} ?>
+          </button>
+          <?php
+
+
+
+
+
+
+          function get_variation_id()
+          {
+            global $woocommerce, $product, $post;
+            // $content = file_get_contents(“php://input”);
+            // parse_str($content, $data);
+            // $product_id = $data[‘product_id’];
+            // $attributes = $data[‘attributes’];
+            $product_id = get_the_id();
+            $attributes = $product->get_available_variations();
+            $product = new \WC_Product_Variable($product_id);
+            $selected_product = null;
+            foreach ($product->get_available_variations() as $variation)
+            {
+              var_dump($variation);
+              $variation_attributes = $variation['attributes'];
+              if (count(array_diff($attributes, $variation_attributes)) == 0)
+              {
+                $selected_product = $variation;
+                break;
+              }
+            }
+            echo json_encode($selected_product);
+            // die();
+          }
+          // get_variation_id();
+
+
+
+
+
+
+
+
+
+
         ?>
-        <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button>
+        <!-- <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button> -->
 
-        <!-- esto tiene un bug, testear extensivamente y asegurarse de que anda bien antes de poner en produccion -->
-        <!-- <input class="addToCartQnt" placeholder="Cantidad" type="number" id="addToCartQantity" onchange="addToCartControler(this)"> -->
 
-        <div class="addToCart"><?php
+        <!-- <div class="addToCart"><?php
          echo sprintf( '<a href="%s" id="addToCartA" data-quantity="1" class="%s" %s>%s</a>',
              esc_url( $product->add_to_cart_url() ),
              esc_attr( implode( ' ', array_filter( array(
@@ -84,7 +215,7 @@
              ) ),
              esc_html( $product->add_to_cart_text() )
          );
-        ?></div>
+        ?></div> -->
 
     </div>
 
@@ -120,7 +251,7 @@
     <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
       <?php global $product; ?>
 
-      <figure class="card">
+      <figure class="card" id="card<?php echo get_the_id();?>">
         <a class="cardImg" href="<?php echo get_permalink(); ?>">
           <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
         </a>

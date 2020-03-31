@@ -115,16 +115,10 @@ function goBack(){w.history.back()}
 
 
 
-// add to cart controller
-const addToCartControler = (a) => {
-  c.log(a.value)
-  d.querySelector('#addToCartA').dataset.quantity = a.value;
-  c.log(d.querySelector('#addToCartA').dataset.quantity);
-}
 
 
 // SELECT BOX CONTROLER
-const selectBoxControler=(a, selectBoxId, current)=>{// c.log(a)
+const selectBoxControler=(a, selectBoxId, current)=>{ // c.log(a)
   if(!!a){d.querySelector(selectBoxId).classList.add('alt')}
   else   {d.querySelector(selectBoxId).classList.remove('alt')}
 
@@ -159,6 +153,129 @@ for (i = 0; i < acc.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
 
 // }
+
+
+
+
+
+
+
+// quantity selector on the thing
+const changeQuantity = (value) => {
+  let quantity = parseInt(d.querySelector('#addToCartQantity').value);
+  quantity += value;
+  if (quantity<=1) {
+    quantity = 1;
+  }
+  d.querySelector('#addToCartQantity').value       = quantity;
+  d.querySelector('#myAddToCart').dataset.quantity = quantity;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const selectBoxVisibilityCheck = (selectBox) => {
+  let numberOfHiddens = selectBox.querySelectorAll('.selectBoxOption.hidden').length
+  if (numberOfHiddens + 1 == selectBox.querySelectorAll('.selectBoxInput').length) {
+    selectBox.classList.add('hidden');
+  } else {
+    selectBox.classList.remove('hidden');
+  }
+}
+
+const attributes = [...d.querySelectorAll('.selectBox')]
+attributes.forEach( (x, i) =>{
+  selectBoxVisibilityCheck(x);
+  x.querySelectorAll('.selectBoxInput').forEach( y =>{
+    y.addEventListener('change', z => {
+
+
+      let ids = JSON.parse("[" + z.target.dataset.ids + "]");
+
+      if (i+1<attributes.length) {
+
+        // for all the next selectBoxes
+        for (var counter = i + 1; counter < attributes.length; counter++) {
+
+          // this part brings them back to 0
+          let temp = attributes[counter].querySelector('.selectBoxOption:first-child input');
+          if(!temp.checked){
+            selectBoxControler('', '#'+attributes[counter].id, '#'+attributes[counter].querySelector('.selectBoxCurrent').id);
+            temp.checked = true;
+          }
+          d.querySelector('#myAddToCart').dataset.variationId = ''
+          d.querySelector('#myAddToCart').innerText = "Select Options";
+
+
+          // this next part hides the attributes that are not variations from the next selectBoxes
+          attributes[counter].querySelectorAll('.selectBoxInput').forEach( (w, k) =>{
+            if(k){ // avoid k = 0 to keep blank option
+              let newIds = JSON.parse("[" + w.dataset.ids + "]");
+              let selectBoxOption = attributes[counter].querySelectorAll('.selectBoxOption')[k];
+              // if any of the new ids equals any of the old ids
+              if (newIds.some( r => ids.includes(r))) {
+                selectBoxOption.classList.remove("hidden")
+              } else {
+                selectBoxOption.classList.add("hidden")
+              }
+            }
+          })
+          selectBoxVisibilityCheck(attributes[counter]);
+        }
+
+        d.querySelector('#myAddToCart').dataset.variationId = '';
+
+
+      } else {
+        // aqui voy a  comparar los id y pasar el que tienen todos en común al boton de add to cart
+        attributes.forEach((att,index)=>{
+          // if (index+1<attributes.length) {
+          // let newIds = JSON.parse("[" + att.querySelector('input:checked').dataset.ids + "]");
+          // let commonIds = [...new Set(newIds)].filter(x => new Set(ids).has(x));
+          let newIds = JSON.parse("[" + att.querySelector('input:checked').dataset.ids + "]");
+          if (index>0) {
+            let oldIds = JSON.parse("[" + attributes[index-1].querySelector('input:checked').dataset.ids + "]");
+            let commonIds = [...new Set(newIds)].filter(x => new Set(oldIds).has(x));
+            c.log(commonIds);
+            if (commonIds.length==1) {
+              d.querySelector('#myAddToCart').dataset.variationId = commonIds[0]
+              d.querySelector('#myAddToCart').innerText = "Add to cart";
+              // TODO: falta que ponga una descripcion dinamica en variation description
+              // TODO: falta que muestre el precio de forma dinamica
+            } else {
+              d.querySelector('#myAddToCart').dataset.variationId = ''
+              d.querySelector('#myAddToCart').innerText = "Select Options";
+            }
+          }
+          if (attributes.length == 1) {
+            // c.log(att.querySelector('input:checked').value)
+            if(att.querySelector('input:checked').value!=0){
+              d.querySelector('#myAddToCart').dataset.variationId = att.querySelector('input:checked').value
+              d.querySelector('#myAddToCart').innerText = "Add to cart";
+            } else {
+              d.querySelector('#myAddToCart').dataset.variationId = ''
+              d.querySelector('#myAddToCart').innerText = "Select Options";
+            }
+
+          }
+        })
+      }
+
+
+    })
+  })
+})
+
 
 
 

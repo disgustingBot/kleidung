@@ -455,7 +455,7 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
-    --footerTemplateColumns: 1fr 1fr 2fr 1fr;
+    --footerTemplateColumns: 1fr 1fr 1fr 1fr;
 
     /* FORMS */
 
@@ -1129,7 +1129,7 @@ li {letter-spacing: .1rem;}
 .singleStorieCaption{
   padding: 2.5rem 1rem;
   background: white;
-  z-index: 2;
+  z-index: 1;
   box-shadow: var(--DP6);
   margin: 2rem  var(--lateral);
   margin-top: -3rem;
@@ -1176,6 +1176,8 @@ singleStorieContent
   transition: .7s ease-in;
   opacity: 0;
 }
+
+.storieSocialSharing .socialMedia .cartButton {display: none}
 
 .storieSocialSharing.alt{
   transform: translateY(-5rem);
@@ -1588,6 +1590,11 @@ singleStorieContent
 
 .footerNav li:hover::after {transform: scale(1);}
 
+
+.footer .socialMedia .cartButton {display: none}
+
+.footer .suscribeButton { border: var(--color1) solid 1px;}
+.footer .suscribeButton:hover { border: white solid 1px;}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -2394,3 +2401,7 @@ singleStorieContent
   margin: .25rem auto;
 }
 .signature span:hover{color: #ffcc00!important;transition: .25s; cursor: pointer; }
+
+
+
+/* FIXES PARA ESTILOS DE PLUGINS */

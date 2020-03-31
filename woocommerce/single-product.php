@@ -8,26 +8,14 @@
   <article class="singleProductMain">
       <div class="gallery" id="gallery">
 
-
-
-
-
-        <!-- <img class="lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
-
-        <!-- <div class="gallery" id="gallery"> -->
           <?php $attachment_ids = $product->get_gallery_attachment_ids(); ?>
 
-          <!-- <div class="galleryMainCarousel"> -->
 
             <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
             <?php $count=0; foreach( $attachment_ids as $attachment_id ) { ?>
               <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo $image_link = wp_get_attachment_url( $attachment_id ); ?>" alt="">
             <?php $count++; } ?>
-          <!-- </div> -->
-          <!-- <button class="slideButton rowcol1 slideLeft" onclick="plusImgs(-1)"></button> -->
-          <!-- <button class="slideButton rowcol1 slideRight" onclick="plusImgs(+1)"></button> -->
 
-        <!-- </div> -->
 
 
 

@@ -6,13 +6,12 @@ global $wp;
 ?>
 
   <div class="shopATF ATF">
-    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(110); ?>" alt="">
+    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(119); ?>" alt="">
     <overlay class="ShopOverlay"></overlay>
 
     <hgroup class="ShopATFTxt">
       <h1 class="ShopATFTitle">The finest clothing</h1>
       <h5 class="ShopATFSubtitle">Fluid and comfortable clothing, with a pleasant touch. Designs with a character between modern and vintage.</h5>
-      <a class="btn btnWhite" href="#">See our Latest</a>
     </hgroup>
   </div>
 

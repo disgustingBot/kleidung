@@ -218,7 +218,7 @@ FIN DE MAPA DE CONTENIDOS */
   --contactBoxTemplateC:  unset;
   --contactFormGridC: unset;
   --contactInformationFlexD: row;
-  --contactInformationItemWidth: 45%;
+  --contactInformationItemWidth: 100%;
   --contactInformationItemMarginBottom: 1rem;
   --contactInformationPadding: 1rem;
   --contactInformationTextAlign: center;
@@ -761,6 +761,7 @@ li {letter-spacing: .1rem;}
   text-align: center;
   text-transform: capitalize;
 }
+.contactMain .socialMedia .cartButton {display: none}
 
 .contactMain .contactSocialBox .socialSVGLink {
   margin: 1rem;
@@ -2259,6 +2260,7 @@ singleStorieContent
 .contactInformationItemTxt {
   font-size: var(--fontSize5);
   opacity: .7;
+  text-align: var(--textAlignCenterLeft);
 }
 
 

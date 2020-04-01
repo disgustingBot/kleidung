@@ -20,24 +20,24 @@
     <div class="contactInformation">
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Dirección</h4>
-        <i><p class="contactInformationItemTxt">Calle 1234</p></i>
-        <i><p class="contactInformationItemTxt">Barrio tanto</p></i>
-        <i><p class="contactInformationItemTxt">Cod Postal</p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'calleNumero' )[0]; ?></p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'barrio' )[0]; ?></p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'codPostal' )[0]; ?></p></i>
       </div>
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Llámanos</h4>
-        <i><p class="contactInformationItemTxt">123 45 67 89</p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'telefono' )[0]; ?></p></i>
       </div>
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Mail</h4>
-        <i><p class="contactInformationItemTxt">mailejemplo@marialebredo.com</p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'mail' )[0]; ?></p></i>
       </div>
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Horarios</h4>
         <i><p class="contactInformationItemTxt">Lun a Vier</p></i>
-        <i><p class="contactInformationItemTxt" style="margin-bottom: .5rem">9:00 a 20:00</p></i>
+        <i><p class="contactInformationItemTxt" style="margin-bottom: .5rem"><?php echo get_post_meta( get_the_id(), 'horarioLunesaViernes' )[0]; ?></p></i>
         <i><p class="contactInformationItemTxt">Sábados</p></i>
-        <i><p class="contactInformationItemTxt">9:00 a 13:00</p></i>
+        <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'horarioSabados' )[0]; ?></p></i>
       </div>
     </div>
   </div>

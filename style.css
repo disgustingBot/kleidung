@@ -469,7 +469,7 @@ FIN DE MAPA DE CONTENIDOS */
     /* ?FOOTER */
 
     --contactBoxMargin: -3rem 5% auto 5%;
-    --footerTemplateColumns: 1fr 1fr 1fr 1fr;
+    --footerTemplateColumns: 1fr 1fr 1fr;
 
     /* FORMS */
 
@@ -632,9 +632,9 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
-h1, h2, h3, h4, h5, a {font-family: var(--DMSerif); font-weight: 400;}
+h1, h2, h3, h4, h5, a, button {font-family: var(--DMSerif); font-weight: 400;}
 
-p {font-family: var(--spartanSans)}
+p, .latteLink {font-family: var(--spartanSans)}
 
 li {letter-spacing: .1rem;}
 
@@ -2425,9 +2425,16 @@ singleStorieContent
   grid-gap:var(--footerGridGap);
   padding: 4rem  1rem calc(var(--lateral) / 2 );
   font-size: var(--fontSize5);
+  grid-row-gap: 3rem;
+  align-items: center;
+  justify-content: center;
 }
-
-.logoFooterLink {margin: auto;}
+.logoFooterContainer{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+}
 
 .logoFooter {height: .75rem; width: auto;}
 

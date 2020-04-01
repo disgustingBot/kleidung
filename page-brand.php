@@ -39,6 +39,6 @@
 </section>
 <section class="brandSection3">
   <img class="lazy rowcol1 brandImg5" id="brandImg5" data-url="<?php echo get_post_meta($post->ID, 'img5', true); ?>" alt="">
-  <p class="brandTxt5 rowcol1"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
+  <p class="brandTxt5 rowcol1" id="brandTxt5"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
 </section>
 <?php get_footer(); ?>

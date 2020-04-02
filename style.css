@@ -1954,8 +1954,8 @@ singleStorieContent
 .shopFilterBar {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem var(--lateral);
-  margin: 1rem 0;
+  margin: 1rem var(--lateral);
+  /* margin: 1rem 0; */
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
@@ -1980,7 +1980,7 @@ singleStorieContent
   position: relative;
   /* width:100%; */
   /* width:max-content; */
-  min-width: 2rem;
+  min-width: 9rem;
 }
 
 
@@ -1997,7 +1997,7 @@ singleStorieContent
   width:100%;
   /* width:max-content; */
   height:40px;
-  z-index:4;
+  z-index:1;
 }
 
 .selectBoxPlaceholder {

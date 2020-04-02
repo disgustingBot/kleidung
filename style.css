@@ -575,7 +575,7 @@ FIN DE MAPA DE CONTENIDOS */
   padding:0;
 }
 html{overflow-x:hidden}
-body{display:grid}
+body{display:grid; overflow: hidden;}
 img{object-fit:cover;width:100%}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
@@ -1607,6 +1607,7 @@ singleStorieContent
   height: 100%;
   justify-content: space-between;
   text-transform: uppercase;
+  align-items: center;
 }
 
 .footerNav li {
@@ -1634,7 +1635,7 @@ singleStorieContent
 
 
 .footer .socialMedia .cartButton {display: none}
-
+.footer .suscribe {width:60%;margin: auto;}
 .footer .suscribeButton { border: var(--color1) solid 1px;}
 .footer .suscribeButton:hover { border: white solid 1px;}
 
@@ -2433,7 +2434,8 @@ singleStorieContent
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-gap: 1rem;
+  grid-gap: 2.5rem;
+  margin: auto;
 }
 
 .logoFooter {height: .75rem; width: auto;}

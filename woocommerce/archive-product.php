@@ -6,7 +6,7 @@ global $wp;
 ?>
 
   <div class="shopATF ATF">
-    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(119); ?>" alt="">
+    <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(29); ?>" alt="">
     <overlay class="ShopOverlay"></overlay>
 
     <hgroup class="ShopATFTxt">

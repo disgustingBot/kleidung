@@ -375,9 +375,9 @@ altClassOnScroll('alt', '#brandImg5', '#brandTxt5', true, { threshold : .3 });
 
 
 
-
-const logo = document.querySelectorAll("#logo path");
-
-for (let i = 0; i < logo.length; i++) {
-  console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
-}
+// ESTO ENTREGA EL LENGHT DE LAS LETRAS DEL LOGO PARA LANIMACIÓN, LO DEJO COMENTADO
+// const logo = document.querySelectorAll("#logo path");
+//
+// for (let i = 0; i < logo.length; i++) {
+//   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
+// }

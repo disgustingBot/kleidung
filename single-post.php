@@ -84,7 +84,7 @@
           <?php echo excerpt(100); ?>
         </p>
         <a class="btnWhite btn" href="<?php the_permalink(); ?> ">
-          <span class="readMore">Read more</span>
+          <span class="readMore">Read more >></span>
         </a>
       </figcaption>
     </figure>

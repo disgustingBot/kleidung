@@ -31,11 +31,9 @@
     	wp_nav_menu($args);
   	?>
 
-    <a href="<?php echo site_url('');  ?>">
+    <a class="headerLogoLink" href="<?php echo site_url('');  ?>">
       <svg
       class="headerLogo"
-      width="356"
-      height="28"
       viewBox="0 0 374 33"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg">
@@ -95,11 +93,9 @@
 
   <header  class="mobileHeader">
     <div class="initialNavMobile">
-      <a class="logoMobile" href="<?php echo site_url('');  ?>">
+      <a class="headerLogoLink headerLogoLinkMob" href="<?php echo site_url('');  ?>">
         <svg
-        class="headerLogoMob"
-        width="356"
-        height="28"
+        class="headerLogo headerLogoMob"
         viewBox="0 0 374 33"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg">

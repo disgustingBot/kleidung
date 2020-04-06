@@ -38,7 +38,7 @@
     </figure>
   <?php } ?>
 
-  <button class="sliderArrow" type="button" name="button">&#62;</button>
+  
 
   <a class="btn" href="<?php echo site_url('shop'); ?>">View all</a>
 </section>
@@ -76,9 +76,7 @@
           <p class="cardDescription">
             <?php echo excerpt(100); ?>
           </p>
-          <a class="btnWhite btn" href="<?php the_permalink(); ?>">
-            Read More&raquo;
-          </a>
+          <a class="btnWhite btn" href="<?php the_permalink(); ?>">Read More >></a>
         </figcaption>
       </figure>
     <?php } wp_reset_query(); ?>

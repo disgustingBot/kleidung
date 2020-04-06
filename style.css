@@ -173,6 +173,7 @@ FIN DE MAPA DE CONTENIDOS */
   --colorCaptionBackground: rgba(255,255,255,.8);
   --colorImgDisplay: none;
   --colorCaptionTop: 5rem;
+  --cardStorieDatePosition:0;
 
   /* ATFS */
 
@@ -364,6 +365,7 @@ FIN DE MAPA DE CONTENIDOS */
     --colorCaptionBackground: none;
     --colorImgDisplay: block;
     --colorCaptionTop: 8rem;
+    --cardStorieDatePosition: -.5rem;
 
     /* ATFS */
     /* HOME ATF */
@@ -505,12 +507,30 @@ FIN DE MAPA DE CONTENIDOS */
     --sizeR: calc(var(--sizeRd) * 1px);
 
     /* ?HEADER */
-    --navBarGridGap: 2rem;
+    --navBarGridGap: 1.5rem;
+
 
     /* ?FOOTER */
 
     /* STORIES GALLERY */
     --archiveStoriesGTC: repeat(3,1fr);
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          2.5) min-width:  =1300px
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@media  screen and (min-width: 1300px) {
+  :root {
+
+    /* ?HEADER */
+    --navBarGridGap: 2rem;
+
+    /* ?FOOTER */
+
   }
 }
 /* ---------------------------------------------------------------------------
@@ -825,6 +845,7 @@ li {letter-spacing: .1rem;}
 
 .header.alt{
   background:transparent;
+  border: none;
 }
 
 .header .socialMedia{margin-right:0;}
@@ -863,12 +884,24 @@ li {letter-spacing: .1rem;}
 
 @keyframes line-anim{
   to{
-    stroke-dashoffset: 0;
-    color: black;
+    stroke-dashoffset: 1;
+    color: #757575;
   }
 }
 
+/* DESKTOP HEADER */
 
+.headerLogoLink {
+  margin: auto;
+  display: flex;
+  width: min-content;
+}
+
+.headerLogo {
+  margin: auto;
+  height: 1rem;
+  width: auto;
+}
 
 
 /* MOBILE HEADER */
@@ -888,16 +921,11 @@ li {letter-spacing: .1rem;}
   background: white;
 }
 
-.logoMobile {
-  height: 1rem;
-  margin: auto;
-  width: min-content;
-  margin-left: var(--lateral);
-}
-.logoMobileSVG {
-  height: 100%;
-  width: auto;
-}
+.headerLogoLinkMob {margin: auto auto auto var(--lateral)}
+
+
+
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1210,7 +1238,7 @@ singleStorieContent
 }
 
 .storieSocialSharing{
-  margin: 1rem auto;
+  margin: auto;
   text-align: center;
   background: rgba(0,0,0,0);
   color: white;
@@ -1224,7 +1252,9 @@ singleStorieContent
 
 .storieSocialSharing.alt{
   transform: translateY(-5rem);
+  transition: 1.5s ease-in-out;
   opacity: 1;
+  margin-bottom: -4rem;
 }
 
 
@@ -1245,7 +1275,7 @@ singleStorieContent
 
 
 .singleOthersTitle .titleMoreStories{
-  margin: 2rem var(--lateral) 0 ;
+  margin: 0 var(--lateral) 0 ;
   color: white;
 
 }
@@ -1259,8 +1289,8 @@ singleStorieContent
 
 .cardStorieDate{
   position: absolute;
-  top: -.5rem;
-  left: -.5rem;
+  top: var(--cardStorieDatePosition);
+  left: var(--cardStorieDatePosition);
   background: white;
   text-align: center;
   padding: .5rem!important;
@@ -1574,7 +1604,7 @@ singleStorieContent
   text-transform: uppercase;
   font-size: var(--navBarItemFS);
   position: relative;
-  letter-spacing: auto;
+  letter-spacing: inherit;
 }
 
 .navBar .menu-item::after {

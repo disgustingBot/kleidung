@@ -7,7 +7,7 @@
 } ?>
 
 <section class="homeATF ATF" id="homeATF">
-  <video loop autoplay class="homeATFVideo rowcol1">
+  <video loop muted autoplay class="homeATFVideo rowcol1">
     <source src="<?php echo get_post_meta($post->ID, 'video-portada', true); ?>" type="video/mp4">
   </video>
   <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta($post->ID, 'titulo-portada', true); ?></h1>
@@ -38,7 +38,7 @@
     </figure>
   <?php } ?>
 
-  
+
 
   <a class="btn" href="<?php echo site_url('shop'); ?>">View all</a>
 </section>

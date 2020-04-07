@@ -1553,7 +1553,7 @@ singleStorieContent
 }
 
 .cardImg {
-  display:flex;
+  /* display:flex; */
 }
 
 .cardCaption{

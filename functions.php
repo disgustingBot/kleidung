@@ -34,7 +34,17 @@ function lattte_setup(){
   // $i18n = array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'checkout_url' => get_permalink( wc_get_page_id( 'checkout' ) ) );
   // wp_localize_script( 'so_test', 'SO_TEST_AJAX', $i18n );
 	// OTRO AJAX
-
+	wp_register_script( 'main', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery') );
+	wp_localize_script( 'main', 'lt_data', array(
+		'home' => site_url(), // WordPress home
+		'ajaxUrl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+		// 'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+		// 'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+		// 'max_page' => $wp_query->max_num_pages,
+		// 'first_page' => get_pagenum_link(1) // here it is
+	) );
+	wp_enqueue_script( 'main' );
+	// wp_enqueue_script ( 'main', get_theme_file_uri('/js/custom.js'), array( 'jquery' ), microtime(), true);
 
 
 
@@ -42,7 +52,6 @@ function lattte_setup(){
 
 
   wp_enqueue_style('style', get_stylesheet_uri(), NULL, microtime(), 'all');
-	wp_enqueue_script('main', get_theme_file_uri('/js/custom.js'), array( 'jquery' ), microtime(), true);
   wp_enqueue_script('main', get_theme_file_uri('/js/mycartButton.js'), array( 'jquery' ), microtime(), true);
   // wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/custom_script.js', array( 'jquery' ));
 
@@ -284,7 +293,7 @@ function new_loop_shop_per_page( $cols ) {
   return $cols;
 }
 
-function latte_pagination($max){
+function lt_pagination($max){
   // This part gets the current pagination
   if(get_query_var('paged')){$paged=get_query_var('paged');}elseif(get_query_var('page')){$paged=get_query_var('page');}else{$paged=1;}
   // $result.='<div class="paginationCont"><h5 class="paginationTitle">';
@@ -390,8 +399,8 @@ function latte_pagination($max){
 
 
 
-
-
+// REMOVES WORDPRESS URL PAGINATION
+remove_action('template_redirect', 'redirect_canonical');
 // PAGINATION
 // bloque inspirado en el comienzo de este post:
 // https://rudrastyh.com/wordpress/load-more-and-pagination.html
@@ -550,45 +559,33 @@ function misha_paginator( $first_page_url ){
 
 
 // Receive the Request post that came from AJAX
-add_action( 'wp_ajax_latte_pagination', 'cvf_demo_pagination_load_posts' );
+add_action( 'wp_ajax_latte_pagination', 'latte_pagination' );
 // We allow non-logged in users to access our pagination
-add_action( 'wp_ajax_nopriv_latte_pagination', 'cvf_demo_pagination_load_posts' );
-function cvf_demo_pagination_load_posts() {
+add_action( 'wp_ajax_nopriv_latte_pagination', 'latte_pagination' );
+function latte_pagination() {
+	//gets the global query var object
+	global $wp_query;
 
   if(isset($_POST['page'])){
 		$args = json_decode( stripslashes( $_POST['query'] ), true );
-		// Sanitize the received page
-		$page = sanitize_text_field($_POST['page']);
-		// echo $page;
-		// if ($page==='next') {
-		// 	// we need next page to be loaded
-		// 	$args['paged'] = $_POST['page'] + 1;
-		// } elseif ($page==='prev') {
-		// 	// we need prev page to be loaded
-		// 	$args['paged'] = $_POST['page'] - 1;
-		// } else {
-		// 	// we need a specific page to be loaded
-		// 	$args['paged'] = $page;
+		// var_dump($args['term']);
+		unset($args->term);
+		$args['term'] = null;
+		// foreach ($args as $key => $value) {
+		// 	// code...
+		// 	echo $key;
 		// }
+		// echo 'tax_query solicitada';
+		// echo '<br><br>';
+		// var_dump($args['tax_query']);
+		$oldArgs = $args;
+
+		// Sanitize the received page
+		if($_POST['type']=='story'){$story=true;}else{$story=false;}
+		$page = sanitize_text_field($_POST['page']);
 		$args['paged'] = $page;
 		$args['post_status'] = 'publish';
 
-
-
-		// TODO: conectar filtro con paginacion.
-		// TIP: checkar el bloque siguiente:
-		if (isset($_POST['parent'])) {
-			$parentArray = $_POST['parent'];
-			$categoryArray = $_POST['category'];
-		  foreach ($parentArray as $key => $value) {
-				$args['tax_query'][$key] = array(
-					'taxonomy' => 'product_cat',
-					'field'    => 'slug',
-					'terms'    => $categoryArray[$key],
-				);
-		  }
-		}
-		// $all_blog_posts=new WP_Query($args);
 
 		query_posts( $args );
 
@@ -596,17 +593,37 @@ function cvf_demo_pagination_load_posts() {
 		if( have_posts() ) :
 
 			// run the loop
-			while( have_posts() ): the_post();
-	      ?>
-	        <figure class="card">
-	          <a class="cardImg" href="<?php echo get_permalink(); ?>">
-	            <img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-	            <!-- <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
-	          </a>
-	          <figcaption class="cardCaption">
-	            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
-	          </figcaption>
-	        </figure>
+			while( have_posts() ): the_post(); ?>
+				<figure class="card" id="card<?php echo get_the_id();?>">
+					<a class="cardImg" href="<?php echo get_permalink(); ?>">
+						<img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+					</a>
+				<?php if ($story) { ?>
+		        <p class="cardStorieDate">
+		          <?php echo get_the_date( 'j' ); ?>
+		          <br>
+		          <?php echo get_the_date( 'M' ); ?>
+		        </p>
+		        <figcaption class="cardCaption">
+		          <h3 class="cardTitle">
+		            <?php the_title(); ?>
+		          </h3>
+		          <p class="cardDescription">
+		            <?php echo excerpt(100); ?>
+		          </p>
+		          <a class="btn" href="<?php the_permalink(); ?>">
+		            <span class="readMore">Read More
+		            <svg width="40" height="16" viewBox="0 0 20 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		              <path d="M15 4.95825H0V3.04175H15C13.9217 2.11072 13.5163 1.39965 12.9269 0C15.8187 2.44648 17.3769 3.46462 19.9269 4C17.3769 4.53538 15.8187 5.55352 12.9269 8C13.5163 6.60035 13.9217 5.88928 15 4.95825Z" fill="currentColor"/>
+		            </svg>
+		            </span>
+		          </a>
+				<?php } else { ?>
+						<figcaption class="cardCaption">
+							<p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+				<?php } ?>
+					</figcaption>
+				</figure>
 	      <?php
 
 			endwhile;
@@ -622,7 +639,45 @@ function cvf_demo_pagination_load_posts() {
   exit();
 }
 
+add_action( 'wp_ajax_nopriv_lt_slider', 'lt_slider' );
+add_action( 'wp_ajax_lt_slider', 'lt_slider' );
+function lt_slider(){
+	// echo 'hoa el mundo de los pibes';
+	$page = sanitize_text_field($_POST['page']);
 
+
+
+	  $args = array(
+	    'post_type'=>'product',
+	    'posts_per_page'=>4,
+	  );
+		$args['paged'] = $page;
+	  $blogPosts=new WP_Query($args);
+		if ($page > $blogPosts->max_num_pages) {
+			echo 'no_more';
+			exit();
+		}
+		?>
+
+	  <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
+	    <?php global $product; ?>
+
+	    <figure class="card"  id="card<?php echo get_the_id();?>">
+	      <a class="cardImg" href="<?php echo get_permalink(); ?>">
+	        <img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+	      </a>
+	      <figcaption class="cardCaption">
+	        <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+	        <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
+	      </figcaption>
+	    </figure>
+
+	  <?php }
+
+
+
+	exit();
+}
 
 
 
@@ -710,131 +765,6 @@ function so_27270880_add_variation_to_cart() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function misha_loadmore_ajax_handler(){
-
-	// prepare our arguments for the query
-	$args = json_decode( stripslashes( $_POST['query'] ), true );
-	// $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-	$args['post_status'] = 'publish';
-
-	if (isset($_POST['parent'])) {
-		$parentArray = $_POST['parent'];
-		$categoryArray = $_POST['category'];
-	  foreach ($parentArray as $key => $value) {
-			$args['tax_query'][$key] = array(
-				'taxonomy' => 'product_cat',
-				'field'    => 'slug',
-				'terms'    => $categoryArray[$key],
-			);
-	  }
-	}
-  $el_query=new WP_Query($args);
-
-	// it is always better to use WP_Query but not here
-	// why not?
-	query_posts( $args );
-
-	if( $el_query->have_posts() ) :
-
-		// run the loop
-		while( $el_query->have_posts() ): $el_query->the_post();
-
-			// look into your theme code how the posts are inserted, but you can use your own HTML of course
-			// do you remember? - my example is adapted for Twenty Seventeen theme
-			// get_template_part( 'template-parts/post/content', get_post_format() );
-			// for the test purposes comment the line above and uncomment the below one
-			// the_title();
-      // echo '<br>';
-      ?>
-
-        <figure class="card">
-          <a class="cardImg" href="<?php echo get_permalink(); ?>">
-            <img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-            <!-- <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""> -->
-          </a>
-          <figcaption class="cardCaption">
-            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
-          </figcaption>
-        </figure>
-      <?php
-
-
-		endwhile;
-
-	endif;
-	die; // here we exit the script and even no wp_reset_query() required!
-}
-
-
-
-add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
-add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
-
-
-
-
 function misha_added_to_cart_ajax_handler(){
 	echo WC()->cart->get_cart_contents_count();
 }
@@ -851,78 +781,68 @@ add_action('wp_ajax_nopriv_added_to_cart', 'misha_added_to_cart_ajax_handler'); 
 
 
 
-add_action( 'woocommerce_after_shop_loop_item', 'my_custom_quantity_field', 6 );
 
-function my_custom_quantity_field() {
-  global $product;
 
-  if ( ! $product->is_sold_individually() )
-    woocommerce_quantity_input( array(
-      'min_value' => apply_filters( 'woocommerce_quantity_input_min', 1, $product ),
-      'max_value' => apply_filters( 'woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product )
-    ) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('pre_get_posts','alter_query');
+
+function alter_query($query) {
+	//gets the global query var object
+	global $wp_query;
+	$max_page = $query->max_num_pages;
+	// var_dump($max_page);
+
+	//gets the front page id set in options
+	$front_page_id = get_option('page_on_front');
+
+	if ( !$query->is_main_query() )
+		return;
+
+		// $args['paged'] = $page;
+		// if (isset($_GET['page']) AND $_GET['page'] <= $max_page ) {
+		if (isset($_GET['page'])) {
+		$query-> set('paged' , $_GET['page']);
+	} else {
+		$query-> set('paged' , 1);
+	}
+
+	if (isset($_GET['tipo'])) {
+		$query->query_vars['tax_query']['tipo'] = array(
+			'taxonomy' => 'product_cat',
+			'field'    => 'slug',
+			'terms'    => $_GET['tipo'],
+		);
+	}
+
+	if (isset($_GET['motivo'])) {
+		$query->query_vars['tax_query']['motivo'] = array(
+			'taxonomy' => 'product_cat',
+			'field'    => 'slug',
+			'terms'    => $_GET['motivo'],
+		);
+	}
+	// $query-> set('post__in' ,$front_page_id-);
+	// $query-> set('post__in' ,array( $front_page_id , [YOUR SECOND PAGE ID]  ));
+	// $query-> set('orderby' ,'post__in');
+	// $query-> set('p' , null);
+	// $query-> set( 'page_id' ,null);
+
+	//we remove the actions hooked on the '__after_loop' (post navigation)
+	remove_all_actions ( '__after_loop');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// add_action('wp_ajax_myajax', 'myajax_callback');
-// add_action('wp_ajax_nopriv_myajax', 'myajax_callback');
-//
-//     /**
-//      * AJAX add to cart.
-//      */
-// function myajax_callback() {
-//         ob_start();
-//
-//         //$product_id        = 264;
-//         $product_id        = 34;
-//         $quantity          = 1;
-//         $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
-//         $product_status    = get_post_status( $product_id );
-//
-//         if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity ) && 'publish' === $product_status ) {
-//
-//             do_action( 'woocommerce_ajax_added_to_cart', $product_id );
-//
-//             wc_add_to_cart_message( $product_id );
-//
-//         } else {
-//
-//             // If there was an error adding to the cart, redirect to the product page to show any errors
-//             $data = array(
-//                 'error'       => true,
-//                 'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id )
-//             );
-//
-//             wp_send_json( $data );
-//
-//         }
-//
-//         die();
-//
-// }

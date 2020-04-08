@@ -16,7 +16,7 @@
 			<div class="circle"></div>
 	</view>
 
-  <header class="header alt" id="header">
+  <header class="header Obse" id="header" data-observe="#homeATF" data-unobserve="false">
 
 
     <!-- NAVIGATION BAR -->
@@ -239,7 +239,7 @@
         <input class="suscribeInput" type="email" placeholder="E-MAIL">
         <button class="btn suscribeButton">SUSCRIBE</button>
       </form>
-      
+
       <?php include 'socialMedia.php'; ?>
 
     </nav>

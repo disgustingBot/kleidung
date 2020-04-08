@@ -34,15 +34,15 @@
     <h4 class="archiveStoriesTitle">ALL OF OUR STORIES</h4>
 
 
-    <section class="archiveStories">
+    <section class="archiveStories" id="slider">
 
     <?php
-    $args=array(
-      'post_type'=>'post',
-      'posts_per_page'=>8,
-      'tag' => '',
-    );$stories=new WP_Query($args);
-    while($stories->have_posts()){$stories->the_post(); ?>
+    // $args=array(
+    //   'post_type'=>'post',
+    //   'posts_per_page'=>8,
+    //   'tag' => '',
+    // );$stories=new WP_Query($args);
+    while(have_posts()){the_post(); ?>
       <figure class="card" id="card<?php echo get_the_id();?>">
         <a class="cardImg" href="<?php the_permalink(); ?>">
           <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
@@ -69,6 +69,7 @@
         </figcaption>
       </figure>
     <?php } wp_reset_query(); ?>
+    <?php echo misha_paginator(get_pagenum_link()); ?>
 
   </section>
 

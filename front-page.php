@@ -24,21 +24,24 @@
   $blogPosts=new WP_Query($args); ?>
 
   <h3 class="sliderTitle title">DISCOVER THE LATEST</h3>
-  <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
-    <?php global $product; ?>
 
-    <figure class="card">
-      <a class="cardImg" href="<?php echo get_permalink(); ?>">
-        <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-      </a>
-      <figcaption class="cardCaption">
-        <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
-        <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
-      </figcaption>
-    </figure>
-  <?php } ?>
+  <div class="sliderCards">
+    <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
+      <?php global $product; ?>
 
-  <button class="sliderArrow" type="button" name="button">&#62;</button>
+      <figure class="card"  id="card<?php echo get_the_id();?>">
+        <a class="cardImg" href="<?php echo get_permalink(); ?>">
+          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+        </a>
+        <figcaption class="cardCaption">
+          <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+          <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
+        </figcaption>
+      </figure>
+    <?php } ?>
+  </div>
+
+  <button class="sliderArrow" id="sliderArrow" type="button" name="button" onclick="frontPageSlider(+1)" data-page="1">&#62;</button>
 
   <a class="btn" href="<?php echo site_url('shop'); ?>">View all</a>
 </section>
@@ -54,9 +57,13 @@
   <!-- <div id="more_posts">Load More</div> -->
 
   <div class="frontStories">
-    <?php $args = array('post_type' => 'post',
-    'posts_per_page'=> 3,
-    'tag'=> 'featured' );
+    <?php
+
+    $args = array(
+      'post_type' => 'post',
+      'posts_per_page'=> 3,
+      'tag'=> 'featured'
+    );
 
     $stories=new WP_Query($args);
     while($stories->have_posts()){$stories->the_post(); ?>

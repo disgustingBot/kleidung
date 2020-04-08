@@ -11,11 +11,12 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
   // TODO: re - hacer con rewrite API
   // AND ALSO PAGINATION CONTROLLER
   function filterPagination(parent, category, page){
+    var query = JSON.parse(misha_loadmore_params.posts);
     var filterQueries = new Array();
 
 
 
-
+    // TODO: hacer una funcion en plan "changeUrlVar" y ponerlo fuera
     // URL HANDLING
 		// urlVirg es la url sin variables
     var urlVirg = window.location.href.split('?')[0];
@@ -30,6 +31,7 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 		current = filters.includes("page") ? parseInt(values[filters.findIndex(x=>x=='page')]) : 1;
 		if ( page == 'next' ) { page = current + 1; }
 		if ( page == 'prev' ) { page = current - 1; }
+    // c.log(page)
 
 
 		if(parent){
@@ -69,6 +71,7 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
     // END OF URL HANDLING
 
 
+
 		// PREPARE DATA TO BE SENT
     var categoriesArray = filterQueries.map ( item => item.split('=')[1] );
     var parentsArray = filterQueries.map ( item => item.split('=')[0] );
@@ -76,18 +79,47 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 			categoriesArray.splice(parentsArray.findIndex(x=>x=='page'), 1);
 			parentsArray.splice(parentsArray.findIndex(x=>x=='page'), 1);
 		}
+    query.tax_query = {}
+    query.tax_query['relation'] = 'AND';
+    query.tax_query[0] = {
+      'taxonomy' : 'product_visibility',
+      'field'    : 'term_taxonomy_id',
+      'terms'    : [7],
+      'operator' : 'NOT IN',
+    }
+    if (!!parentsArray[0]) {
+      parentsArray.forEach((item, i) => {
+        Object.defineProperty(query.tax_query,item,{enumerable: true,value:{
+            'taxonomy' : 'product_cat',
+            'field'    : 'slug',
+            'terms'    : categoriesArray[i],
+          }
+        })
+      });
+
+      // query.tax_query.tipo = 0;
+    }
+    // c.log(query.tax_query)
+    // c.log(JSON.stringify(query), 'hello world')
 		// the value in 'action' is the key that will be identified by the 'wp_ajax_' hook
 		var data = {
 			'action'   : 'latte_pagination',
-			'query'    : misha_loadmore_params.posts, // that's how we get params from wp_localize_script() function
+			'query'    : JSON.stringify(query), // that's how we get params from wp_localize_script() function
 			'page'     : page,
 		};
-    if (!!categoriesArray[0]) { data['category'] = categoriesArray; }
-    if (!!parentsArray[0]) { data['parent'] = parentsArray; }
 		// DATA READY
+        // c.log(query.tax_query.tipo);
+        // c.log(query.tax_query.motivo);
 
-
-
+    regex = 'stories';
+    // c.log(urlVirg)
+    // c.log(!!urlVirg.includes(regex))
+    if (!!urlVirg.includes(regex)) {
+      data['type'] = "story";
+    } else {
+      data['type'] = "product";
+    }
+    // c.log(data['type'])
 
     // Send the data
     $.ajax({
@@ -95,6 +127,8 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
       data : data,
       type : 'POST',
       success : respuesta => {
+        // c.log(respuesta)
+        // c.log(JSON.parse(respuesta));
         // d.querySelector('#slider')
         // If successful Append the data into our html container
         $('#slider').empty();

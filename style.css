@@ -695,7 +695,7 @@ li {letter-spacing: .1rem;}
   color:black;
   display: grid;
   transition:.4s;
-  min-width:2rem;
+  /* min-width:2rem; */
   /* transform:scale(1.5); */
 }
 .addToCartQntBtn:focus{
@@ -810,7 +810,7 @@ li {letter-spacing: .1rem;}
 --------------------------------------------------------------------------- */
 .header {
   align-items:center;
-  background:transparent;
+  background:white;
   border-bottom:1px solid black;
   display:var(--headerDisplay);
   grid-template-columns: 1fr 1fr 1fr;
@@ -823,8 +823,9 @@ li {letter-spacing: .1rem;}
   transition:.7s;
 }
 
-.header.alt{
-  background:white;
+.header.alt,
+.header.observed{
+  background:transparent;
 }
 
 .header .socialMedia{margin-right:0;}
@@ -1136,9 +1137,9 @@ li {letter-spacing: .1rem;}
   transition: 2s;
   transition-delay: .3s;
 }
-
+.archiveStories .pagination{grid-column:1/-1}
 .archiveStories .card{
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 
@@ -1463,7 +1464,7 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .slider .pagination{grid-column:1/-1}
-.slider{
+.slider,.sliderCards{
   display:grid;
   grid-template-columns: var(--frontPageSilderTemplateColumns);
   grid-gap: 1rem;
@@ -1471,6 +1472,10 @@ singleStorieContent
   position: relative;
   overflow:hidden;
   z-index: 1;
+}
+.sliderCards{
+  grid-column:1/-1;
+  padding:0;
 }
 .sliderTitle{
   grid-column:1/-1;
@@ -2456,3 +2461,37 @@ singleStorieContent
 
 
 /* FIXES PARA ESTILOS DE PLUGINS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gallery .element.observed{
+  position: fixed;
+}
+
+
+
+
+#obseTest{
+  position: absolute;
+  top:calc(100vh + 300px);
+  right:10rem;
+  width:3rem;
+  height:3rem;
+  border-radius:50%;
+  background:red;
+}

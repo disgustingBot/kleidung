@@ -4,14 +4,14 @@
 <?php while(have_posts()){the_post(); ?>
   <?php global $woocommerce, $product, $post; ?>
 
-
+  <div id="obseTest"></div>
   <article class="singleProductMain">
       <div class="gallery" id="gallery">
 
           <?php $attachment_ids = $product->get_gallery_attachment_ids(); ?>
 
 
-            <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <img class="element rowcol1 lazy Obse" data-observe="#obseTest" data-unobserve="false" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
             <?php $count=0; foreach( $attachment_ids as $attachment_id ) { ?>
               <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo $image_link = wp_get_attachment_url( $attachment_id ); ?>" alt="">
             <?php $count++; } ?>

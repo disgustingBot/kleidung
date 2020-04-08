@@ -2,7 +2,20 @@
 <?php
 global $wp_query;
 global $wp;
+// var_dump($wp_query['tax_query']);
 // var_dump($wp_query);
+// var_dump($wp_query->tax_query);
+// foreach ($wp_query->tax_query as $key => $value) {
+//   // code...
+//   var_dump($value);
+//   foreach ($value as $i => $x) {
+//     echo '<br><br>';
+//     var_dump($x);
+//     echo '<br><br>';
+//     // code...
+//   }
+//   echo '<br><br><br><br><br>';
+// }
 ?>
 
   <div class="shopATF ATF">
@@ -44,10 +57,12 @@ global $wp;
     );
     $subcats = get_categories($args); ?>
 
-    <div class="selectBox" tabindex="1" id="selectBox<?php echo $term->term_id; ?>">
+    <div class="selectBox<?php if(isset($_GET[$term->slug])){ echo ' alt'; } ?>" tabindex="1" id="selectBox<?php echo $term->term_id; ?>">
       <div class="selectBoxButton">
         <p class="selectBoxPlaceholder"><?php echo $term->name; ?></p>
-        <p class="selectBoxCurrent" id="selectBoxCurrent<?php echo $term->term_id; ?>"></p>
+        <p class="selectBoxCurrent" id="selectBoxCurrent<?php echo $term->term_id; ?>">
+          <?php if(isset($_GET[$term->slug])){ echo $_GET[$term->slug]; } ?>
+        </p>
       </div>
       <div class="selectBoxList">
         <label for="nul<?php echo $term->term_id; ?>" class="selectBoxOption">
@@ -60,7 +75,9 @@ global $wp;
             name="filter_<?php echo $term->slug; ?>"
             onclick="selectBoxControler('','#selectBox<?php echo $term->term_id; ?>','#selectBoxCurrent<?php echo $term->term_id; ?>')"
             value="0"
-            selected
+            <?php if(!isset($_GET[$term->slug])){ ?>
+              checked
+            <?php } ?>
           >
           <!-- <span class="checkmark"></span> -->
           <p class="colrOptP"></p>
@@ -76,7 +93,9 @@ global $wp;
               name="filter_<?php echo $term->slug; ?>"
               onclick="selectBoxControler('<?php echo $sc->name ?>', '#selectBox<?php echo $term->term_id; ?>', '#selectBoxCurrent<?php echo $term->term_id; ?>')"
               value="<?php echo $sc->slug; ?>"
-              <?php // if($_GET['filter_'.$term->slug]==$sc->slug){echo "selected";} ?>
+              <?php if(isset($_GET[$term->slug]) && $_GET[$term->slug] == $sc->slug){ ?>
+                checked
+              <?php } ?>
             >
             <!-- <span class="checkmark"></span> -->
             <p class="colrOptP"><?php echo $sc->name ?></p>

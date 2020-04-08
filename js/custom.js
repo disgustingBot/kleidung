@@ -6,6 +6,7 @@ d=document;w=window;c=console;
 w.onload=()=>{
   // LAZY LOAD FUNCTIONS MODULE
   var lBs=[].slice.call(d.querySelectorAll(".lazy-background")),lIs=[].slice.call(d.querySelectorAll(".lazy")),opt={threshold:.01};
+  // c.log(lIs);
   if("IntersectionObserver" in window){
     let lBO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){let l=e.target;l.classList.add("visible");lBO.unobserve(l)}})},opt),
         lIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){let l=e.target;l.classList.remove("lazy");lIO.unobserve(l);l.srcset=l.dataset.url}})},opt);
@@ -20,7 +21,7 @@ w.onload=()=>{
   }
   d.getElementById("load").style.top="-100vh";
   if(d.querySelector('#homeATF')){
-    altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
+    // altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .5 });
   }
 }
 
@@ -198,9 +199,8 @@ const selectBoxVisibilityCheck = (selectBox) => {
 const attributes = [...d.querySelectorAll('.selectBox')]
 attributes.forEach( (x, i) =>{
   selectBoxVisibilityCheck(x);
-  x.querySelectorAll('.selectBoxInput').forEach( y =>{
+  x.querySelectorAll('.single-product .selectBoxInput').forEach( y =>{
     y.addEventListener('change', z => {
-
 
       let ids = JSON.parse("[" + z.target.dataset.ids + "]");
 
@@ -327,14 +327,14 @@ const altClassOnScroll = (clase, selector, observado, unobserve = true, options 
 }
 
 
-altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
+// altClassOnScroll('alt', '#header', '#homeATF', false, { threshold : .7 });
 
 
 // cards = d.querySelectorAll('.card')
 // cards.forEach((item, i) => {
 //   console.log(item.id);
 //   altClassOnScroll('alt', '.archiveStories', item.id { threshold : .51 });
-altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
+// altClassOnScroll('alt', '#header', '#homeATF', { threshold : .7 });
 
 
 /*  Animacion de STORIES ATF  */
@@ -356,7 +356,7 @@ if(d.querySelectorAll('.card')){
 altClassOnScroll('alt', '.storieSocialSharing', '.titleMoreStories',  { threshold : .1 });
 
 
-altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });
+// altClassOnScroll('alt', '#header', '#homeATF',      true, { threshold : .7 });
 altClassOnScroll('alt', '#brandImg1', '#brandTxt1', true, { threshold : .7, rootMargin: "0px 0px 0px 0px" });
 altClassOnScroll('alt', '#brandTxt1', '#brandTxt1', true, { threshold : .3 });
 altClassOnScroll('alt', '#brandImg2', '#brandImg2', true, { threshold : .3 });
@@ -377,6 +377,108 @@ altClassOnScroll('alt', '#brandImg5', '#brandTxt5', true, { threshold : .3 });
 
 
 
+
+
+
+
+
+
+
+
+const altClassOnScroll_v2 = (observado, unobserve = true, reverse = false, options = { root: null, threshold: 1, rootMargin: "0px 0px 0px 0px" }) => {
+
+  const observer = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      const x = d.querySelectorAll('.Obse');
+      if(entry.isIntersecting){
+        x.forEach( y => {
+          if(!reverse){
+            y.classList.add('observed')
+          } else {
+            y.classList.reverse('observed')
+          }
+        });
+        if(unobserve){observer.unobserve(entry.target)}
+      } else {
+        x.forEach( y => {
+          if(!reverse){
+            y.classList.remove('observed')
+          } else {
+            y.classList.add('observed')
+          }
+        });
+      }
+    })
+  }, options);
+
+  d.querySelectorAll(observado).forEach(e => {
+    observer.observe(e);
+  })
+}
+
+if(d.querySelectorAll('.Obse')){
+  d.querySelectorAll('.Obse').forEach((item, i) => {
+    let observe   = item.dataset.observe ? item.dataset.observe : '#'+item.id;
+    let reverse   = item.dataset.reverse ? item.dataset.reverse : false;
+    let unobserve = item.dataset.unobserve == 'false' ? false : true;
+    // c.log(unobserve);
+    altClassOnScroll_v2(observe, unobserve, reverse)
+  })
+}
+
+
+
+
+
+
+
+const frontPageSlider = (page) => {
+  // c.log(lt_data.ajaxUrl);
+
+  d.querySelector('#sliderArrow').dataset.page = parseInt(d.querySelector('#sliderArrow').dataset.page) + page;
+  var url = lt_data.ajaxUrl,
+      dataNames =['action', 'page'],
+      dataValues=['lt_slider', d.querySelector('#sliderArrow').dataset.page];
+  postAjaxCall(url,dataNames,dataValues).then(v=>{
+    // c.log(v)
+    if (v=='no_more') {
+      window.location.href = lt_data.home + '/shop';
+      return;
+    }
+    try{
+      d.querySelectorAll('.slider .card').forEach((x,i)=>{x.remove()})
+      d.querySelector('.sliderCards').innerHTML = v;
+      // d.querySelector('.slider .sliderTitle').insertAfter(v)
+      // JSON.parse(v).forEach((e,i)=>{
+      //   c.log(e)
+      // })
+    }catch(err){
+      c.log(err);c.log(v)
+        d.querySelectorAll('.slider .card').forEach((x,i)=>{x.remove()})
+        // d.querySelector('.slider').insertBefore(v, d.querySelector('.slider .sliderTitle'))
+    }
+  });
+}
+
+
+
+
+
+function postAjaxCall(url,dataNames,dataValues){// return a new promise.
+	return new Promise((resolve,reject)=>{// do the usual XHR stuff
+		var req=new XMLHttpRequest();
+		req.open('post',url);
+		//NOW WE TELL THE SERVER WHAT FORMAT OF POST REQUEST WE ARE MAKING
+		req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		req.onload =()=>{if(req.status>=200&&req.status<300){resolve(req.response)}else{reject(Error(req.statusText));console.log("ERROR")}}
+		req.onerror=()=>{reject(Error("Network Error"))}// handle network errors
+		// prepare the data to be sent
+		let data;
+		for(var i=0;i<dataNames.length;i++){data=data+"&"+dataNames[i]+"="+dataValues[i]}
+		// make the request
+    req.send(data)
+	})
+}
 // ESTO ENTREGA EL LENGHT DE LAS LETRAS DEL LOGO PARA LANIMACIÓN, LO DEJO COMENTADO
 // const logo = document.querySelectorAll("#logo path");
 //

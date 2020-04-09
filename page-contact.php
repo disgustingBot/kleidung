@@ -15,7 +15,7 @@
       <input type="text" name="fname">
       <label for="email">Review</label>
       <textarea name="" id=""></textarea>
-      <input class="btn btnWhite" type="submit" value="Submit">
+      <button class="btn btnWhite" type="submit" value="Submit">SUBMIT</button>
     </form>
     <div class="contactInformation">
       <div class="contactInformationItem">

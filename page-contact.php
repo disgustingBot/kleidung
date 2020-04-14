@@ -7,15 +7,18 @@
   </div>
 
   <div class="contactBox">
-    <form class="form contactForm" action="/action_page.php">
+    <form class="form contactForm" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST">
+      <input type="hidden" name="action" value="lt_form_handler">
+      <input type="hidden" name="link" value="<?php echo home_url( $wp->request ); ?>">
+      <input type="text" name="a00" value="" placeholder="jeje" hidden>
       <h3 class="formTitle">Contáctanos</h3>
       <label for="name">Nombre</label>
-      <input type="text" name="text">
+      <input type="text" id="name" name="a01">
       <label for="email">Email</label>
-      <input type="text" name="fname">
-      <label for="email">Review</label>
-      <textarea name="" id=""></textarea>
-      <button class="btn btnWhite" type="submit" value="Submit">SUBMIT</button>
+      <input type="text" id="email" name="mail">
+      <label for="review">Review</label>
+      <textarea id="review" name="a03"></textarea>
+      <input class="btn btnWhite" type="submit" name="a04" value="Submit">
     </form>
     <div class="contactInformation">
       <div class="contactInformationItem">

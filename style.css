@@ -2492,37 +2492,3 @@ singleStorieContent
 
 
 /* FIXES PARA ESTILOS DE PLUGINS */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.gallery .element.observed{
-  position: fixed;
-}
-
-
-
-
-#obseTest{
-  position: absolute;
-  top:calc(100vh + 300px);
-  right:10rem;
-  width:3rem;
-  height:3rem;
-  border-radius:50%;
-  background:red;
-}

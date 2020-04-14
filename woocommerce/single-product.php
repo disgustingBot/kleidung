@@ -5,6 +5,8 @@
   <?php global $woocommerce, $product, $post; ?>
 
   <div id="obseTest"></div>
+
+  
   <article class="singleProductMain">
       <div class="gallery" id="gallery">
 

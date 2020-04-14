@@ -593,7 +593,13 @@ function latte_pagination() {
 		if( have_posts() ) :
 
 			// run the loop
-			while( have_posts() ): the_post(); ?>
+			while( have_posts() ): the_post();
+			if(get_post_type()=='product'){
+				$_pf = new WC_Product_Factory();
+				$_product = $_pf->get_product(get_the_ID());
+			}
+
+			?>
 				<figure class="card" id="card<?php echo get_the_id();?>">
 					<a class="cardImg" href="<?php echo get_permalink(); ?>">
 						<img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
@@ -621,6 +627,9 @@ function latte_pagination() {
 				<?php } else { ?>
 						<figcaption class="cardCaption">
 							<p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+							<?php if (get_post_type()=='product'){ ?>
+								<p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $_product->get_price_html(); ?> </a></p>
+							<?php } ?>
 				<?php } ?>
 					</figcaption>
 				</figure>
@@ -845,4 +854,100 @@ function alter_query($query) {
 
 	//we remove the actions hooked on the '__after_loop' (post navigation)
 	remove_all_actions ( '__after_loop');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+add_action(        'admin_post_lt_form_handler', 'lt_form_handler');
+add_action( 'admin_post_nopriv_lt_form_handler', 'lt_form_handler');
+function lt_form_handler() {
+
+	if($_POST['a00'] != ""){
+		$link=$_POST['link'];
+
+		$link = add_query_arg( array(
+			'email' => 'nope',
+			// 'mensaje' => $message,
+			// 'status' => $status,
+			// 'resultado' => username_exists( $mail ),
+		), $link );
+	  // header( "Location: https://www.idemomotors.com/?mail=nope" . $_POST['a9'] );
+	  // exit;
+	} else {
+		// $mail=$_POST['mail'];
+		$mail='molinerozadkiel@gmail.com';
+
+		$subject='Form from '.$link;
+		$message='';
+
+		if(isset($_POST['a01'])){$a01=$_POST['a01'];$message=$message.'<strong>Data 01:</strong> '.$a01.' - </br>';}
+		if(isset($_POST['a02'])){$a02=$_POST['a02'];$message=$message.'<strong>Data 02:</strong> '.$a02.' - </br>';}
+		if(isset($_POST['a03'])){$a03=$_POST['a03'];$message=$message.'<strong>Data 03:</strong> '.$a03.' - </br>';}
+		if(isset($_POST['a04'])){$a04=$_POST['a04'];$message=$message.'<strong>Data 04:</strong> '.$a04.' - </br>';}
+		if(isset($_POST['a05'])){$a05=$_POST['a05'];$message=$message.'<strong>Data 05:</strong> '.$a05.' - </br>';}
+		if(isset($_POST['a06'])){$a06=$_POST['a06'];$message=$message.'<strong>Data 06:</strong> '.$a06.' - </br>';}
+		if(isset($_POST['a07'])){$a07=$_POST['a07'];$message=$message.'<strong>Data 07:</strong> '.$a07.' - </br>';}
+		if(isset($_POST['a08'])){$a08=$_POST['a08'];$message=$message.'<strong>Data 08:</strong> '.$a08.' - </br>';}
+		if(isset($_POST['a09'])){$a09=$_POST['a09'];$message=$message.'<strong>Data 09:</strong> '.$a09.' - </br>';}
+		if(isset($_POST['a10'])){$a10=$_POST['a10'];$message=$message.'<strong>Data 10:</strong> '.$a10.' - </br>';}
+		if(isset($_POST['a11'])){$a11=$_POST['a11'];$message=$message.'<strong>Data 11:</strong> '.$a11.' - </br>';}
+		if(isset($_POST['a12'])){$a12=$_POST['a12'];$message=$message.'<strong>Data 12:</strong> '.$a12.' - </br>';}
+		if(isset($_POST['a13'])){$a13=$_POST['a13'];$message=$message.'<strong>Data 13:</strong> '.$a13.' - </br>';}
+		if(isset($_POST['a14'])){$a14=$_POST['a14'];$message=$message.'<strong>Data 14:</strong> '.$a14.' - </br>';}
+		if(isset($_POST['a15'])){$a15=$_POST['a15'];$message=$message.'<strong>Data 15:</strong> '.$a15.' - </br>';}
+		if(isset($_POST['a16'])){$a16=$_POST['a16'];$message=$message.'<strong>Data 16:</strong> '.$a16.' - </br>';}
+		if(isset($_POST['a17'])){$a17=$_POST['a17'];$message=$message.'<strong>Data 17:</strong> '.$a17.' - </br>';}
+		if(isset($_POST['a18'])){$a18=$_POST['a18'];$message=$message.'<strong>Data 18:</strong> '.$a18.' - </br>';}
+		if(isset($_POST['a19'])){$a19=$_POST['a19'];$message=$message.'<strong>Data 19:</strong> '.$a19.' - </br>';}
+		if(isset($_POST['a20'])){$a20=$_POST['a20'];$message=$message.'<strong>Data 20:</strong> '.$a20.' - </br>';}
+
+
+	 // echo $message;
+
+
+	 // $cosa = var_dump(wp_mail( $mail , $subject , $message ));
+	 if (wp_mail( $mail , $subject , $message )) {
+		 // code...
+				$link = add_query_arg( array(
+					'email' => 'sent',
+					// 'mensaje' => $message,
+					// 'resultado' => username_exists( $mail ),
+				), $link );
+	 } else {
+
+				$link = add_query_arg( array(
+					'email' => 'error',
+					// 'mensaje' => $message,
+					// 'status' => $status,
+					// 'resultado' => username_exists( $mail ),
+				), $link );
+	 }
+		// wp_mail( $mail , $subject , $message );
+
+
+		// $a2 = $_POST['a2'];
+		// $a3 = $_POST['a3'];
+		// $a4 = $_POST['a4'];
+		// $a5 = $_POST['a5'];
+		// $a6 = $_POST['a6'];
+
+		// $link = add_query_arg( array(
+		//   'email' => 'sent',
+		//   // 'status' => $status,
+		//   // 'resultado' => username_exists( $mail ),
+		// ), $link );
+
+
+
+	}
+	wp_redirect($link);
 }

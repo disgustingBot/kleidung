@@ -15,7 +15,7 @@
       <label for="name">Nombre</label>
       <input type="text" id="name" name="a01">
       <label for="email">Email</label>
-      <input type="text" id="email" name="a02">
+      <input type="text" id="email" name="mail">
       <label for="review">Review</label>
       <textarea id="review" name="a03"></textarea>
       <input class="btn btnWhite" type="submit" name="a04" value="Submit">

@@ -103,11 +103,11 @@ FIN DE MAPA DE CONTENIDOS */
 
   --sizeR: calc(var(--sizeRa) * 1px);
 
-  --fontSize1: 2.5rem;
-  --fontSize2: 1.5rem;
-  --fontSize3: 1rem;
-  --fontSize4: .8rem;
-  --fontSize5: 16px;
+  --fontSize1: 1.5rem;
+  --fontSize2: 1rem;
+  --fontSize3: .9rem;
+  --fontSize4: .6rem;
+  --fontSize5: 15px;
 
   /* SHADOWS */
 
@@ -133,6 +133,8 @@ FIN DE MAPA DE CONTENIDOS */
     --DP24: 0px 11px 15px rgba(0, 0, 0, 0.2), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 24px 38px rgba(0, 0, 0, 0.14);
 
     /* =TIPOGRAFIAS */
+
+
 
     --DMSerif: 'DM Serif Display', serif;
     --spartanSans: 'Spartan', sans-serif;
@@ -172,7 +174,7 @@ FIN DE MAPA DE CONTENIDOS */
   --stickyBannerAndStoriesDisplay: block;
   --colorCaptionBackground: rgba(255,255,255,.8);
   --colorImgDisplay: none;
-  --colorCaptionTop: 5rem;
+  /* --colorCaptionTop: 5rem; */
   --cardStorieDatePosition:0;
 
   /* ATFS */
@@ -364,7 +366,7 @@ FIN DE MAPA DE CONTENIDOS */
     --stickyBannerAndStoriesDisplay: grid;
     --colorCaptionBackground: none;
     --colorImgDisplay: block;
-    --colorCaptionTop: 8rem;
+    /* --colorCaptionTop: 8rem; */
     --cardStorieDatePosition: -.5rem;
 
     /* ATFS */
@@ -408,7 +410,7 @@ FIN DE MAPA DE CONTENIDOS */
     --singleSideFontSize: .65rem;
     --singleSideTxtalign: left;
     /* --singleSideTxtMarginBottom: unset; */
-    --singleSideTxtMarginBottom:1rem;
+    --singleSideTxtMarginBottom: 2rem;
     --singleProductButtonWidth: 100%;
     --singleProductButtonMargin: .2rem 0;
     --singleProductInteractionBtnPadding: .25rem;
@@ -507,7 +509,6 @@ FIN DE MAPA DE CONTENIDOS */
     --sizeR: calc(var(--sizeRd) * 1px);
 
     /* ?HEADER */
-    --navBarGridGap: 1.5rem;
 
 
     /* ?FOOTER */
@@ -527,7 +528,7 @@ FIN DE MAPA DE CONTENIDOS */
   :root {
 
     /* ?HEADER */
-    --navBarGridGap: 2rem;
+
 
     /* ?FOOTER */
 
@@ -544,6 +545,7 @@ FIN DE MAPA DE CONTENIDOS */
     --sizeR: calc(var(--sizeRd) * 1px);
 
     /* ?HEADER */
+        --navBarGridGap: 1.5rem;
     /* ?FOOTER */
   }
 }
@@ -583,6 +585,25 @@ FIN DE MAPA DE CONTENIDOS */
                            4) =TOPOGRAFIAS:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'bask';
+    src: url('fonts/bask.woff2') format('woff2'),
+         url('fonts/bask.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'parad';
+    src: url('fonts/parad.woff2') format('woff2'),
+         url('fonts/parad.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+
+}
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -652,9 +673,9 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
-h1, h2, h3, h4, h5, a, button {font-family: var(--DMSerif); font-weight: 400;}
+h1, h2, h3, h4, h5 {font-family: 'bask', serif; font-weight: lighter;}
 
-p, .latteLink {font-family: var(--spartanSans)}
+p, a, button {font-family: 'parad', sans-serif; font-weight: lighter;}
 
 li {letter-spacing: .1rem;}
 
@@ -740,22 +761,17 @@ li {letter-spacing: .1rem;}
 }
 
 .socialSVGLink {
-  border: solid 1px black;
-  border-radius: 50%;
   display: flex;
   margin-left: .25rem;
   padding: .3rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.4rem;
+  height: 1.4rem;
   transition: .25s;
-  box-shadow:var(--DP1);
+  border-radius: 50%;
 }
 
 .socialSVGLink:hover {
-  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
-  box-shadow:var(--DP8);
   color: white;
-  border: solid 1px rgba(0,0,0,0);
 }
 
 .socialSVG {
@@ -790,9 +806,6 @@ li {letter-spacing: .1rem;}
   height: 3rem;
 }
 
-.contactMain .contactSocialBox .socialSVGLink:hover {
-  box-shadow: var(--DP6);
-}
 
 
 
@@ -829,9 +842,10 @@ li {letter-spacing: .1rem;}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .header {
+  color: black!important;
   align-items:center;
   background:white;
-  border-bottom:1px solid black;
+  /* border-bottom:1px solid black; */
   display:var(--headerDisplay);
   grid-template-columns: 1fr 1fr 1fr;
   left: 0;
@@ -843,13 +857,20 @@ li {letter-spacing: .1rem;}
   transition:.7s;
 }
 
+.home .header.observed .headerLogo {
+  color: transparent;
+}
+
 .header.alt,
 .header.observed{
   background:transparent;
   border: none;
+  color: white!important;
 }
 
 .header .socialMedia{margin-right:0;}
+
+.header .socialMedia .socialSVGFacebook  {display: none;}
 
 .home .header{position:fixed}
 
@@ -916,6 +937,8 @@ li {letter-spacing: .1rem;}
   z-index: 5;
 }
 
+.mobileHeader .socialMedia .socialSVGFacebook {display: none;}
+
 .initialNavMobile {
   display: flex;
   height: 2.5rem;
@@ -936,9 +959,27 @@ li {letter-spacing: .1rem;}
 
 .ATF {
   display: grid;
-  border-bottom: 2px solid black;
 }
 
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.69) =redDots:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.redDot {
+position: absolute;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+top: 45vh;
+right: 10vw;
+}
+
+.redDot.test{
+  background: red;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -955,11 +996,16 @@ li {letter-spacing: .1rem;}
 
 .homeATFTitle {
   margin: auto;
-  margin-left:var(--lateral);
-  padding-top:8rem;
-  font-size: var(--fontSize1);
-  text-transform: uppercase;
+  margin-left: var(--lateral);
+  /* font-size: var(--fontSize1); */
+  /* text-transform: uppercase; */
   z-index: 1;
+}
+
+.homeATFTitle svg {
+  height: 1.8rem;
+  color: white;
+  width: auto;
 }
 
 /* ---------------------------------------------------------------------------
@@ -1113,36 +1159,9 @@ li {letter-spacing: .1rem;}
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-.stories{
+.stories {
   margin: 0 var(--lateral);
 }
-
-.storiesATFAlternativa{
-  display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr ;
-  margin: 1rem 0;
-  grid-gap: 1rem;
-  align-items: center;
-  position: relative;
-}
-
-.storiesATFAlternativa .sliderArrow{
-  right: -1.5rem;
-}
-
-.storiesATFAlternativa .slideLeft{
-  left: -1.5rem;
-}
-
-.featuredStorie2{
-  position: relative;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.storiesATFAlternativa .featuredStorie2:nth-child(2){filter: blur(1px);}
-.storiesATFAlternativa .featuredStorie2:nth-child(3){filter: blur(2px);}
-
 
 
 /*
@@ -1151,14 +1170,14 @@ li {letter-spacing: .1rem;}
 
 */
 
-.storiesTitle{
+.storiesTitle {
   text-align: center;
   padding: 1rem 0;
 }
 
-.archiveStoriesTitle{padding: 2rem 0}
+.archiveStoriesTitle {padding: 2rem 0}
 
-.archiveStories{
+.archiveStories {
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
   padding-bottom: 2rem;
@@ -1166,13 +1185,13 @@ li {letter-spacing: .1rem;}
   transition: 2s;
   transition-delay: .3s;
 }
-.archiveStories .pagination{grid-column:1/-1}
-.archiveStories .card{
+.archiveStories .pagination {grid-column:1/-1}
+.archiveStories .card {
   /* opacity: 0; */
 }
 
 
-.singleStorieOthers .cardCaption{
+.singleStorieOthers .cardCaption {
   color: white;
   padding: 1rem 0;
 }
@@ -1289,14 +1308,16 @@ singleStorieContent
 }
 
 .cardStorieDate{
-  position: absolute;
+  /* position: absolute;
   top: var(--cardStorieDatePosition);
   left: var(--cardStorieDatePosition);
   background: white;
   text-align: center;
   padding: .5rem!important;
   border-top: solid var(--color1) 2px;
-  border-left: solid var(--color1) 2px;
+  border-left: solid var(--color1) 2px; */
+  display: none;
+
 }
 .singleStorieOthers .cardStorieDate{
 
@@ -1330,7 +1351,7 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .brandATFCaption {
-  background: white;
+  /* background: white; */
   margin: 4rem auto auto 0;
   padding: 1rem;
   max-width: var(--brandATFCaptionMaxWidth);
@@ -1482,7 +1503,7 @@ singleStorieContent
   margin: var(--brandTxt5);
   max-width: var(--brandATFCaptionMaxWidth);
   padding: 1rem 4rem 1rem 1rem;
-  background: white;
+  /* background: white; */
   z-index: 2;
 }
 
@@ -1503,6 +1524,9 @@ singleStorieContent
   position: relative;
   overflow:hidden;
   z-index: 1;
+}
+.home .slider {
+  padding:1rem 0;
 }
 .sliderCards{
   grid-column:1/-1;
@@ -1567,9 +1591,34 @@ singleStorieContent
   grid-gap: .5rem;
 }
 
+.cardCaption .btn {
+  background: none!important;
+  color: black!important;
+  border: none!important;
+  position: relative;
+  padding-left: 0;
+}
+
+.cardCaption .btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: black;
+  transform: scaleX(1);
+  bottom: 4px;
+  left: 0;
+  transition: .25s;
+  transform-origin: left;
+}
+
+.cardCaption .btn:hover::after {
+  transform: scaleX(0);
+}
+
 .cardTitle{
   text-align: var(--textAlignCenterLeft);
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize3);
   text-transform: uppercase;
 }
 
@@ -1616,7 +1665,7 @@ singleStorieContent
   background: black;
   bottom: -.05rem;
   content: ' ';
-  height: .1rem;
+  height: 1px;
   left:0;
   position: absolute;
   transform: scale(0);
@@ -1636,7 +1685,7 @@ singleStorieContent
 
 
 .footerNav {
-  color:white;
+  color: black;
   display: flex;
   flex-direction: column;
   font-size: var(--fontSize5);
@@ -1671,9 +1720,9 @@ singleStorieContent
 
 
 .footer .socialMedia .cartButton {display: none}
-.footer .suscribe {width:60%;margin: auto;}
-.footer .suscribeButton { border: var(--color1) solid 1px;}
-.footer .suscribeButton:hover { border: white solid 1px;}
+
+.footer .suscribe {width: 60%;margin: auto;}
+
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -1737,7 +1786,6 @@ singleStorieContent
   border: solid 1px var(--color3);
 }
 
-.mobileNavBar .suscribe .suscribeInput {border: solid 1px black;}
 
 .mobileNavBar .socialMedia .socialSVGLink, .mobileNavBar .socialMedia .cartButton {
   width: 3rem;
@@ -1798,7 +1846,7 @@ singleStorieContent
   border-bottom:1px solid white;
   transition:.3s;
   font-weight: 100;
-  font-family: var(--DMSerif);
+  font-family: 'bask', serif;
 }
 .paginationCurrent{
   border-bottom:1px solid grey;
@@ -1899,11 +1947,12 @@ singleStorieContent
   height:var(--size);
   width: var(--size);
   border:none;
-  box-shadow:0 0 10px rgba(0,0,0,.3);
   font-size:1.2rem;
   font-weight:100;
   z-index: 10;
+  display: flex;
 }
+.sliderArrow svg {margin:auto}
 
 .slideLeft{
   transform: translateY(-50%) rotate(180deg) ;
@@ -1915,21 +1964,18 @@ singleStorieContent
                           6.06.2) =cartButton:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.header .cartButton{display:grid;}
+.header .cartButton{display:grid; color: unset;}
 .cartButton{
-  height:1.5rem;
-  width: 1.5rem;
+  height:1.4rem;
+  width: 1.4rem;
   color:black;
   transition:.3s;
   padding:.3rem;
-  border: 1px solid black;
   border-radius:50%;
   position:relative;
-  box-shadow:var(--DP1);
 }
 .cartButton:hover{
   background:black;
-  box-shadow:var(--DP8);
   color:white;
 }
 .cartButtonCant{
@@ -1955,7 +2001,7 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .suscribe {
-  color:white;
+  color: black;
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
@@ -1963,14 +2009,14 @@ singleStorieContent
 
 .suscribeInput {
   background:none;
-  border: 1px solid white;
+  border: 1px solid black;
   padding: .5rem;
 }
 
 .suscribeTitle {
   margin: .4rem 0;
   word-spacing: 2px;
-  font-family: var(--DMSerif);
+  font-family: 'parad', sans-serif;
 }
 
 .suscribeButton {
@@ -1992,8 +2038,9 @@ singleStorieContent
   justify-content: flex-end;
   margin: 1rem var(--lateral);
   /* margin: 1rem 0; */
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
+  grid-column: 1/-1;
 }
 
 .filterBarItem {
@@ -2016,7 +2063,7 @@ singleStorieContent
   position: relative;
   /* width:100%; */
   /* width:max-content; */
-  min-width: 9rem;
+  min-width: 8rem;
 }
 
 
@@ -2148,8 +2195,8 @@ singleStorieContent
   grid-row: 1;
   flex-direction: column;
   background: var(--colorCaptionBackground);
-  position: sticky;
-  top: var(--colorCaptionTop);
+  /* position: sticky; */
+  /* top: var(--colorCaptionTop); */
   margin:auto 0;
   z-index: 2;
 }
@@ -2160,6 +2207,7 @@ singleStorieContent
 
 .colorTxt {
   text-align: var(--colorTxtTxtAlign);
+  font-size: var(--fontSize3);
 }
 
 .colorCaption .btn {
@@ -2200,7 +2248,12 @@ singleStorieContent
   grid-column: 1/-1;
   font-size: var(--fontSize2);
   text-transform: uppercase;
-  margin: auto var(--lateral);
+  margin: 1rem auto;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 1rem;
 }
 
 /* ---------------------------------------------------------------------------
@@ -2274,7 +2327,7 @@ singleStorieContent
 .contactInformation {
   display: flex;
   flex-direction: var(--contactInformationFlexD);
-  justify-content: space-between;
+  justify-content: center;
   padding: var(--contactInformationPadding);
   color: white;
   flex-wrap: wrap;
@@ -2356,8 +2409,6 @@ singleStorieContent
 .singleProductsGalleryBtns {
   /* padding: .5rem; */
   margin: var(--singleProductGalleryBtnsMargin);
-  border-radius: 50%;
-  box-shadow: var(--DP4);
   border: none;
   background-color: white;
   color: var(--color3);
@@ -2365,9 +2416,7 @@ singleStorieContent
   height: 2rem;
   width: 2rem;
 }
-.singleProductsGalleryBtns:hover {
-  box-shadow: var(--DP6);
-}
+
 
 
 .SingleProductInteraction {
@@ -2401,7 +2450,8 @@ singleStorieContent
 
 .singleSideTitle, .singleSidePrice {
   text-align: var(--singleSideTxtalign);
-  margin-bottom: var(--singleSideTxtMarginBottom);
+  margin-top: var(--singleSideTxtMarginBottom);
+
 }
 .singleSidePrice {
   font-weight: 800;
@@ -2456,7 +2506,6 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .footer{
-  background: var(--color1);
   display:grid;
   grid-template-columns: var(--footerTemplateColumns);
   grid-gap:var(--footerGridGap);
@@ -2465,23 +2514,23 @@ singleStorieContent
   grid-row-gap: 3rem;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid black;
 }
 .logoFooterContainer{
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-gap: 2.5rem;
+  grid-gap: 1rem;
   margin: auto;
 }
 
 .logoFooter {height: .75rem; width: auto;}
 
 
-.footer .socialMedia {color: white; margin: auto;}
-.footer .socialSVGLink  {border-color: white; margin: .5rem}
+.footer .socialMedia {color: black; margin: auto;}
+.footer .socialSVGLink  {border-color: black; margin: .5rem}
 
 .signature{
-  color:#ddd;
   display:grid;
   grid-column:1/-1;
   justify-content:center;

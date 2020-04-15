@@ -4,9 +4,8 @@
 <?php while(have_posts()){the_post(); ?>
   <?php global $woocommerce, $product, $post; ?>
 
-  <div id="obseTest"></div>
 
-  
+
   <article class="singleProductMain">
       <div class="gallery" id="gallery">
 
@@ -27,13 +26,13 @@
 
         <div class="singleProductsgalleryBtnsContainer">
           <button class="singleProductsGalleryBtns" id="nextButton">
-            <svg class="singleProductArrowSVG" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.5455 21.18L9.77992 12L18.5455 2.82L15.8469 0L4.36365 12L15.8469 24L18.5455 21.18Z" fill="currentColor"/>
+            <svg class="singleProductArrowSVG" width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2956 0L0 12.2956L0.0593109 12.3549L0 12.4142L12.2956 24.7098L13.7098 23.2956L2.76912 12.3549L13.7098 1.41421L12.2956 0Z" fill="black"/>
             </svg>
           </button>
           <button class="singleProductsGalleryBtns" id="prevButton">
-            <svg class="singleProductArrowSVG" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 21.18L14.2713 12L5 2.82L7.85425 0L20 12L7.85425 24L5 21.18Z" fill="currentColor"/>
+            <svg class="singleProductArrowSVG" width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41421 24.7098L13.7098 12.4142L13.6505 12.3549L13.7098 12.2956L1.41421 0L0 1.41421L10.9407 12.3549L0 23.2956L1.41421 24.7098Z" fill="black"/>
             </svg>
           </button>
         </div>
@@ -237,7 +236,7 @@
 
     $blogPosts=new WP_Query($args); ?>
 
-    <h3 class="sliderTitle title">OTHER FEATURED PRODUCTS</h3>
+    <h3 class="sliderTitle title">YOU MAY ALSO LIKE.</h3>
     <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
       <?php global $product; ?>
 

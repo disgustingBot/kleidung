@@ -21,7 +21,7 @@
       <input class="btn btnWhite" type="submit" name="a04" value="Submit">
     </form>
     <div class="contactInformation">
-      <div class="contactInformationItem">
+      <!-- <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Dirección</h4>
         <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'calleNumero' )[0]; ?></p></i>
         <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'barrio' )[0]; ?></p></i>
@@ -30,9 +30,9 @@
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">Llámanos</h4>
         <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'telefono' )[0]; ?></p></i>
-      </div>
+      </div> -->
       <div class="contactInformationItem">
-        <h4 class="contactInformationItemTitle">Mail</h4>
+        <h4 class="contactInformationItemTitle">SUPPORT</h4>
         <i><p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'mail' )[0]; ?></p></i>
       </div>
       <div class="contactInformationItem">
@@ -46,8 +46,7 @@
   </div>
 
   <div class="contactSocialBox">
-    <h3 class="contactSocialBoxTitle"><i>Follow us</i></h3>
-    <?php include 'socialMedia.php' ?>
+    <a href="https://www.instagram.com/marialebredo/" target="blank" class="contactSocialBoxTitle">INSTAGRAM</a>
   </div>
 
 

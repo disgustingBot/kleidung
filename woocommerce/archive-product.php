@@ -18,7 +18,7 @@ global $wp;
 // }
 ?>
 
-  <div class="shopATF ATF">
+  <!-- <div class="shopATF ATF">
     <img class="ShopBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(29); ?>" alt="">
     <overlay class="ShopOverlay"></overlay>
 
@@ -26,7 +26,7 @@ global $wp;
       <h1 class="ShopATFTitle">The finest clothing</h1>
       <h5 class="ShopATFSubtitle">Fluid and comfortable clothing, with a pleasant touch. Designs with a character between modern and vintage.</h5>
     </hgroup>
-  </div>
+  </div> -->
 
 
   <?php function woocommerce_subcats_from_parentcat($category){
@@ -105,14 +105,15 @@ global $wp;
     </div>
   <?php } ?>
 
+
+
+
+  <section class="slider" id="slider">
+  <h4 class="ShopTitle2">ALL PRODUCTS</h4>
   <form class="shopFilterBar">
     <?php woocommerce_subcats_from_parentcat('tipo'); ?>
     <?php woocommerce_subcats_from_parentcat('motivo'); ?>
   </form>
-
-
-  <h4 class="ShopTitle2">Current collections</h4>
-  <section class="slider" id="slider">
 
 
   	<view id="load" class="load">

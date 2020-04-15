@@ -16,7 +16,7 @@
 			<div class="circle"></div>
 	</view>
 
-  <header class="header Obse" id="header" data-observe="#homeATF" data-unobserve="false">
+  <header class="header Obse" id="header" data-observe="#headerActivator" data-unobserve="false">
 
 
     <!-- NAVIGATION BAR -->

@@ -171,9 +171,8 @@ FIN DE MAPA DE CONTENIDOS */
 
   /* STICKY SECTION FRONT PAGE */
 
-  --stickyBannerAndStoriesDisplay: block;
+  --stickyBannerAndStoriesDisplay: flex;
   --colorCaptionBackground: rgba(255,255,255,.8);
-  --colorImgDisplay: none;
   /* --colorCaptionTop: 5rem; */
   --cardStorieDatePosition:0;
 
@@ -365,7 +364,6 @@ FIN DE MAPA DE CONTENIDOS */
     /* STICKY GRONT PAGE */
     --stickyBannerAndStoriesDisplay: grid;
     --colorCaptionBackground: none;
-    --colorImgDisplay: block;
     /* --colorCaptionTop: 8rem; */
     --cardStorieDatePosition: -.5rem;
 
@@ -861,6 +859,10 @@ li {letter-spacing: .1rem;}
   color: transparent;
 }
 
+.home .mobileHeader.observed .headerLogo {
+  color: transparent;
+}
+
 .header.alt,
 .header.observed{
   background:transparent;
@@ -923,6 +925,8 @@ li {letter-spacing: .1rem;}
   margin: auto;
   height: 1rem;
   width: auto;
+  transition:.7s;
+
 }
 
 
@@ -945,7 +949,7 @@ li {letter-spacing: .1rem;}
   background: white;
 }
 
-.headerLogoLinkMob {margin: auto auto auto var(--lateral)}
+.headerLogoLinkMob {margin: auto}
 
 
 
@@ -1268,6 +1272,10 @@ singleStorieContent
   opacity: 0;
 }
 
+.storieSocialSharing .socialSVGFacebook {
+  display: none;
+}
+
 .storieSocialSharing .socialMedia .cartButton {display: none}
 
 .storieSocialSharing.alt{
@@ -1287,10 +1295,8 @@ singleStorieContent
 }
 
 .storieSocialSharing .socialMedia .socialSVGLink {
-  margin-right: .25rem;
-  height: 2.5rem;
-  width: 2.5rem;
-  margin: 1rem .8rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 
@@ -1508,8 +1514,8 @@ singleStorieContent
 }
 
 
-
-
+.page-id-108 {overflow-x:hidden;}
+.blog {overflow-x:hidden;}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           6.03) =slider:
@@ -1587,7 +1593,7 @@ singleStorieContent
 
 .cardCaption{
   display: grid;
-  padding: .5rem 0;
+  padding: .5rem;
   grid-gap: .5rem;
 }
 
@@ -1614,6 +1620,15 @@ singleStorieContent
 
 .cardCaption .btn:hover::after {
   transform: scaleX(0);
+}
+
+.singleStorieOthers .cardCaption .btn {
+  color: white!important;
+  background: transparent!important;
+}
+
+.singleStorieOthers .cardCaption .btn::after {
+  background: white;
 }
 
 .cardTitle{
@@ -1787,18 +1802,32 @@ singleStorieContent
 }
 
 
-.mobileNavBar .socialMedia .socialSVGLink, .mobileNavBar .socialMedia .cartButton {
-  width: 3rem;
-  height: 3rem;
+.mobileNavBar .socialMedia .socialSVGLink {
+  width: 1.5rem;
+  height: 1.5rem;
   padding: .5rem;
   margin: 1rem;
+}
+
+.mobileNavBar .socialMedia .cartButton {
+  display: none;
 }
 
 .mobileNavBar .socialMedia {
   margin: auto;
 }
 
+.mobileHeader .cartButton{
+  margin: auto;
+  margin-left: var(--lateral);
+  height: 1.5rem;
+  width: 1.5rem;
+}
 
+.mobileHeader .cartButton svg{
+  height: 100%;
+  width: 100%;
+}
 
 .navBarMobile {
   display: flex;
@@ -2185,9 +2214,9 @@ singleStorieContent
 --------------------------------------------------------------------------- */
 
 .colorImg{
-  display: var(--colorImgDisplay);
   grid-row: 1;
   grid-column: 2/ span 3;
+  order: 1;
 }
 .colorCaption {
   display: flex;
@@ -2195,10 +2224,9 @@ singleStorieContent
   grid-row: 1;
   flex-direction: column;
   background: var(--colorCaptionBackground);
-  /* position: sticky; */
-  /* top: var(--colorCaptionTop); */
   margin:auto 0;
   z-index: 2;
+  order: 2;
 }
 .colorTitle{
   font-size: var(--fontSize1);
@@ -2223,6 +2251,7 @@ singleStorieContent
 
 .stickyBannerAndStories{
   display: var(--stickyBannerAndStoriesDisplay);
+  flex-direction: column;
   position: relative;
   grid-gap: 1.5rem;
   grid-template-columns: repeat(4,1fr);
@@ -2541,3 +2570,7 @@ singleStorieContent
 
 
 /* FIXES PARA ESTILOS DE PLUGINS */
+#cookie-law-info-bar {
+  font-family: 'parad', sans-serif!important;
+  font-size: 16px!important;
+}

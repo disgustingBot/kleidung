@@ -43,7 +43,7 @@
 
 <div class="singleOthersTitle">
   <figure class="storieSocialSharing">
-    <h5 class="storieSocialSharingTitle">SHARE</h5>
+    <h5 class="storieSocialSharingTitle">INSTAGRAM</h5>
     <?php include 'socialMedia.php'; ?>
   </figure>
 

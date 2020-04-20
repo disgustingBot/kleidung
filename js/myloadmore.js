@@ -15,7 +15,22 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
     var filterQueries = new Array();
 
 
+		current = filters.includes("page") ? parseInt(values[filters.findIndex(x=>x=='page')]) : 1;
+		if ( page == 'next' ) { page = current + 1; }
+		if ( page == 'prev' ) { page = current - 1; }
+    c.log(page);
+    if ( page != 1 ) { setUrlVar( 'page', page ) }
+    else             { setUrlVar( 'page', '' ); c.log('hola pepepepepepepepepepepep ep ep ep epe ep ep epe p') }
 
+    // urlHandle('page','');
+    // urlHandle('page','');
+    // urlHandle('page','');
+    // urlHandle('page','');
+    // urlHandle('page','');
+
+
+
+if(false){
     // TODO: hacer una funcion en plan "changeUrlVar" y ponerlo fuera
     // URL HANDLING
 		// urlVirg es la url sin variables
@@ -69,7 +84,7 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 		}
     window.history.replaceState('', 'Title', urlVirg + '?' + filterQueries.join('&'));
     // END OF URL HANDLING
-
+}
 
 
 		// PREPARE DATA TO BE SENT

@@ -108,7 +108,7 @@ global $wp;
 
 
 
-  <section class="slider" id="slider">
+  <section class="slider">
   <h4 class="ShopTitle2">ALL PRODUCTS</h4>
   <form class="shopFilterBar">
     <?php woocommerce_subcats_from_parentcat('tipo'); ?>
@@ -120,24 +120,26 @@ global $wp;
   			<div class="circle"></div>
   	</view>
 
-  <?php while(have_posts()){the_post(); ?>
-    <?php global $product; ?>
+    <div class="slider" id="slider">
+      <?php while(have_posts()){the_post(); ?>
+        <?php global $product; ?>
 
-    <figure class="card" id="card<?php echo get_the_id();?>">
-      <a class="cardImg" href="<?php echo get_permalink(); ?>">
-        <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-      </a>
-      <figcaption class="cardCaption">
-        <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
-        <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
-      </figcaption>
-    </figure>
-  <?php } ?>
-  <?php echo misha_paginator(get_pagenum_link()); ?>
+        <figure class="card" id="card<?php echo get_the_id();?>">
+          <a class="cardImg" href="<?php echo get_permalink(); ?>">
+            <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          </a>
+          <figcaption class="cardCaption">
+            <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+            <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
+          </figcaption>
+        </figure>
+      <?php } ?>
+      <?php echo misha_paginator(get_pagenum_link()); ?>
+    </div>
 
   <!-- <button class="sliderArrow" type="button" name="button">&#62;</button> -->
 
-</section>
+  </section>
 
 <?php // echo latte_pagination($wp_query->max_num_pages); ?>
 

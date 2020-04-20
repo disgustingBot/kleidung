@@ -289,6 +289,7 @@ add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
 function new_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
+	// $cols = 4;
   $cols = 12;
   return $cols;
 }
@@ -566,7 +567,7 @@ function latte_pagination() {
 	//gets the global query var object
 	global $wp_query;
 
-  if(isset($_POST['page'])){
+  // if(isset($_POST['page'])){
 		$args = json_decode( stripslashes( $_POST['query'] ), true );
 		// var_dump($args['term']);
 		unset($args->term);
@@ -643,10 +644,16 @@ function latte_pagination() {
 		// echo latte_pagination(5);
 		echo misha_paginator(get_pagenum_link());
 
-  }
+  // }
   // Always exit to avoid further execution
   exit();
 }
+
+
+
+
+
+
 
 add_action( 'wp_ajax_nopriv_lt_slider', 'lt_slider' );
 add_action( 'wp_ajax_lt_slider', 'lt_slider' );

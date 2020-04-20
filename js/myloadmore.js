@@ -15,18 +15,20 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
     var filterQueries = new Array();
 
 
-		current = filters.includes("page") ? parseInt(values[filters.findIndex(x=>x=='page')]) : 1;
-		if ( page == 'next' ) { page = current + 1; }
-		if ( page == 'prev' ) { page = current - 1; }
-    c.log(page);
-    if ( page != 1 ) { setUrlVar( 'page', page ) }
-    else             { setUrlVar( 'page', '' ); c.log('hola pepepepepepepepepepepep ep ep ep epe ep ep epe p') }
+        // URL HANDLING
+          urlVars = getUrlVars();
+      		var filters = urlVars.map( x => x.split('=')[0]);
+          var values  = urlVars.map( x => x.split('=')[1]);
+      		current = filters.includes("page") ? parseInt(values[filters.findIndex(x=>x=='page')]) : 1;
+      		if ( page == 'next' ) { page = current + 1; }
+      		if ( page == 'prev' ) { page = current - 1; }
+          // c.log(page)
+          if ( page && page != 1 ) { filterQueries = setUrlVar('page', page); }
+          else if ( page )         { filterQueries = setUrlVar('page'); }
 
-    // urlHandle('page','');
-    // urlHandle('page','');
-    // urlHandle('page','');
-    // urlHandle('page','');
-    // urlHandle('page','');
+          if (category != 0) { filterQueries = setUrlVar(parent, category); }
+          else if ( parent ) { filterQueries = setUrlVar(parent); }
+        // END OF URL HANDLING
 
 
 
@@ -117,6 +119,7 @@ if(false){
     // c.log(query.tax_query)
     // c.log(JSON.stringify(query), 'hello world')
 		// the value in 'action' is the key that will be identified by the 'wp_ajax_' hook
+    c.log(query);
 		var data = {
 			'action'   : 'latte_pagination',
 			'query'    : JSON.stringify(query), // that's how we get params from wp_localize_script() function
@@ -129,6 +132,7 @@ if(false){
     regex = 'stories';
     // c.log(urlVirg)
     // c.log(!!urlVirg.includes(regex))
+    var urlVirg = w.location.href.split('?')[0];
     if (!!urlVirg.includes(regex)) {
       data['type'] = "story";
     } else {

@@ -1521,6 +1521,7 @@ singleStorieContent
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .slider .pagination{grid-column:1/-1}
+.slider .slider{grid-column:1/-1}
 .slider,.sliderCards{
   display:grid;
   grid-template-columns: var(--frontPageSilderTemplateColumns);

@@ -485,3 +485,54 @@ function postAjaxCall(url,dataNames,dataValues){// return a new promise.
 // for (let i = 0; i < logo.length; i++) {
 //   console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
 // }
+
+
+
+// URL HANDLING
+const setUrlVar = ( variable, value = '' ) => {
+  var filterQueries = new Array();
+	// urlVirg es la url sin variables
+  var urlVirg = w.location.href.split('?')[0];
+	// urlVars será el vector de variables en la url
+  // var urlVars = w.location.href.split('?');
+  // urlVars.shift();
+  // urlVars = !urlVars[0] ? [] : urlVars.join().split('&');
+
+  var urlVars = getUrlVars();
+
+	var variables = urlVars.map( x => x.split('=')[0] );
+  var values  = urlVars.map( x => x.split('=')[1] );
+
+  // c.log(page)
+
+
+	if(variable){
+		if(variables.includes(variable)){
+			let j=0;
+			urlVars.forEach((item, i) => {
+				if ( variables[i] == variable ) {
+					// si la categoria es 0 quita el filtro
+					if (value != '') { filterQueries[j] = variable + '=' + value; j+=1; }
+				} else { filterQueries[j] = item; j+=1; }
+			});
+		} else if (value != '') {
+			urlVars.forEach((item, i) => {
+				filterQueries[i] = item;
+			});
+			filterQueries.push(variable + '=' + value);
+		}
+	}
+  let conector = filterQueries.length != 0 ? '?' : '';
+  w.history.replaceState('', 'Title', urlVirg + conector + filterQueries.join('&'));
+  c.log(filterQueries)
+  return filterQueries;
+}
+
+const getUrlVars = () => {
+  var urlVars = w.location.href.split('?');
+  urlVars.shift();
+  urlVars = !urlVars[0] ? [] : urlVars.join().split('&');
+
+  return urlVars;
+}
+// END OF URL HANDLING

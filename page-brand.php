@@ -80,19 +80,19 @@
   <div class="brandTxt1" id="brandTxt1">
     <!-- <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3> -->
     <h3 class="brandTxt1Title uppercase"><?php echo get_post_meta($post->ID, 'titulo1', true); ?></h3>
-    <p class="brandTxt1Txt"><?php echo get_post_meta($post->ID, 'texto1', true); ?></p>
+    <p class="brandATFTxt brandTxt1Txt"><?php echo get_post_meta($post->ID, 'texto1', true); ?></p>
   </div>
-  <p class="brandTxt2" id="brandTxt2"><?php echo get_post_meta($post->ID, 'texto2', true); ?></p>
+  <p class="brandATFTxt brandTxt2" id="brandTxt2"><?php echo get_post_meta($post->ID, 'texto2', true); ?></p>
   <img class="brandImg2" id="brandImg2" src="<?php echo get_post_meta($post->ID, 'img2', true); ?>" alt="">
 </section>
 <section class="brandSection2 brandSection">
-  <p class="brandTxt3" id="brandTxt3"><?php echo get_post_meta($post->ID, 'texto3', true); ?></p>
+  <p class="brandATFTxt brandTxt3" id="brandTxt3"><?php echo get_post_meta($post->ID, 'texto3', true); ?></p>
   <img class="brandImg3" id="brandImg3" src="<?php echo get_post_meta($post->ID, 'img3', true); ?>" alt="">
   <img class="brandImg4" id="brandImg4" src="<?php echo get_post_meta($post->ID, 'img4', true); ?>" alt="">
-    <p class="brandTxt4" id="brandTxt4"><?php echo get_post_meta($post->ID, 'texto4', true); ?></p>
+    <p class="brandATFTxt brandTxt4" id="brandTxt4"><?php echo get_post_meta($post->ID, 'texto4', true); ?></p>
 </section>
 <section class="brandSection3">
   <img class="lazy rowcol1 brandImg5" id="brandImg5" data-url="<?php echo get_post_meta($post->ID, 'img5', true); ?>" alt="">
-  <p class="brandTxt5 rowcol1" id="brandTxt5"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
+  <p class="brandATFTxt brandTxt5 rowcol1" id="brandTxt5"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
 </section>
 <?php get_footer(); ?>

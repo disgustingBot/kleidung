@@ -103,11 +103,11 @@ FIN DE MAPA DE CONTENIDOS */
 
   --sizeR: calc(var(--sizeRa) * 1px);
 
-  --fontSize1: 1.5rem;
-  --fontSize2: 1rem;
-  --fontSize3: .9rem;
-  --fontSize4: .6rem;
-  --fontSize5: 15px;
+  --fontSize1: 28px;
+  --fontSize2: 24px;
+  --fontSize3: 21px;
+  --fontSize4: 16px;
+  --fontSize5: 14px;
 
   /* SHADOWS */
 
@@ -208,7 +208,6 @@ FIN DE MAPA DE CONTENIDOS */
 
   --archiveStoriesGTC:  repeat(1,1fr);
 
-  --cardGalleryGridGap: 3rem;
 
 
   /* FORMS */
@@ -671,9 +670,10 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
-h1, h2, h3, h4, h5 {font-family: 'bask', serif; font-weight: lighter;}
+h1, h2, h3, h4, h5 {font-family: 'parad', sans-serif; font-weight: lighter!important;}
+li a {font-family: 'parad', sans-serif; font-weight: lighter!important;}
 
-p, a, button {font-family: 'parad', sans-serif; font-weight: lighter;}
+p, a, button {font-family: 'bask', serif; font-weight: lighter!important;}
 
 li {letter-spacing: .1rem;}
 
@@ -1000,9 +1000,6 @@ right: 10vw;
 
 .homeATFTitle {
   margin: auto;
-  margin-left: var(--lateral);
-  /* font-size: var(--fontSize1); */
-  /* text-transform: uppercase; */
   z-index: 1;
 }
 
@@ -1144,7 +1141,7 @@ right: 10vw;
   background: white;
   text-transform: uppercase;
   font-size: 1rem;
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize5);
   padding: .2rem .5rem;
 }
 
@@ -1163,9 +1160,7 @@ right: 10vw;
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 
-.stories {
-  margin: 0 var(--lateral);
-}
+
 
 
 /*
@@ -1177,15 +1172,19 @@ right: 10vw;
 .storiesTitle {
   text-align: center;
   padding: 1rem 0;
+  font-size: var(--fontSize2);
 }
 
-.archiveStoriesTitle {padding: 2rem 0}
+.archiveStoriesTitle {
+  padding: 2rem var(--lateral);
+  font-size: var(--fontSize3);
+}
 
 .archiveStories {
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);
   padding-bottom: 2rem;
-  grid-gap: var(--cardGalleryGridGap);
+  grid-gap: 7px;
   transition: 2s;
   transition-delay: .3s;
 }
@@ -1310,7 +1309,7 @@ singleStorieContent
   display: grid;
   grid-template-columns: var(--archiveStoriesGTC);;
   padding: 1rem var(--lateral) 2rem var(--lateral);
-  grid-gap: var(--cardGalleryGridGap);
+  grid-gap: 7px;
 }
 
 .cardStorieDate{
@@ -1370,7 +1369,7 @@ singleStorieContent
 }
 
 
-.brandSection p {font-size: var(--fontSize5)}
+.brandATFTxt {font-size: var(--fontSize5)}
 .brandSection h3 {font-size: var(--fontSize3);margin-bottom: .5rem;}
 
 
@@ -1525,8 +1524,8 @@ singleStorieContent
 .slider,.sliderCards{
   display:grid;
   grid-template-columns: var(--frontPageSilderTemplateColumns);
-  grid-gap: 1rem;
-  padding:1rem var(--lateral);
+  grid-gap: 7px;
+  padding:1rem 0;
   position: relative;
   overflow:hidden;
   z-index: 1;
@@ -1541,6 +1540,7 @@ singleStorieContent
 .sliderTitle{
   grid-column:1/-1;
   text-align: center;
+  font-size: var(--fontSize3)
 }
 .slider .btn{
   grid-column:1/-1;
@@ -1587,14 +1587,13 @@ singleStorieContent
   opacity: 1;
 }
 
-.cardImg {
-  /* display:flex; */
-}
+
 
 .cardCaption{
   display: grid;
   padding: .5rem;
   grid-gap: .5rem;
+  text-align: center;
 }
 
 .cardCaption .btn {
@@ -1632,8 +1631,7 @@ singleStorieContent
 }
 
 .cardTitle{
-  text-align: var(--textAlignCenterLeft);
-  font-size: var(--fontSize3);
+  font-size: var(--fontSize4);
   text-transform: uppercase;
 }
 
@@ -1649,7 +1647,7 @@ singleStorieContent
 
 
 .productCardPrice {
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize5);
   font-weight: bold;
 }
 /* ---------------------------------------------------------------------------
@@ -2127,8 +2125,11 @@ singleStorieContent
   padding-bottom:2px;
   font-size: var(--fontSize4);
   position: relative;
-  border-bottom:2px solid #666;
+  text-transform: uppercase;
 }
+
+
+
 .selectBoxCurrent::after{
   content:'';
   position:absolute;
@@ -2229,13 +2230,13 @@ singleStorieContent
   order: 2;
 }
 .colorTitle{
-  font-size: var(--fontSize1);
+  font-size: var(--fontSize3);
   text-align: var(--colorTitleTextAlign);
 }
 
 .colorTxt {
   text-align: var(--colorTxtTxtAlign);
-  font-size: var(--fontSize3);
+  font-size: var(--fontSize5);
 }
 
 .colorCaption .btn {
@@ -2303,6 +2304,8 @@ singleStorieContent
 .form .formTitle {
   font-weight: 100;
   margin-bottom: 1.5rem;
+  font-size: var(--fontSize2);
+
 }
 
 .form label {
@@ -2378,7 +2381,6 @@ singleStorieContent
 
 .contactInformationItemTxt {
   font-size: var(--fontSize5);
-  opacity: .7;
   text-align: var(--textAlignCenterLeft);
 }
 

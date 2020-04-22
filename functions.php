@@ -289,8 +289,8 @@ add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
 function new_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-	// $cols = 4;
-  $cols = 12;
+	$cols = 4;
+  // $cols = 12;
   return $cols;
 }
 
@@ -393,118 +393,89 @@ function lt_pagination($max){
 
 
 
+add_action(        'admin_post_lt_form_handler', 'lt_form_handler');
+add_action( 'admin_post_nopriv_lt_form_handler', 'lt_form_handler');
+function lt_form_handler() {
+
+	if($_POST['a00'] != ""){
+		$link=$_POST['link'];
+
+		$link = add_query_arg( array(
+			'email' => 'nope',
+			// 'mensaje' => $message,
+			// 'status' => $status,
+			// 'resultado' => username_exists( $mail ),
+		), $link );
+	  // header( "Location: https://www.idemomotors.com/?mail=nope" . $_POST['a9'] );
+	  // exit;
+	} else {
+		// $mail=$_POST['mail'];
+		$mail='molinerozadkiel@gmail.com';
+
+		$subject='Form from '.$link;
+		$message='';
+
+		if(isset($_POST['a01'])){$a01=$_POST['a01'];$message=$message.'<strong>Data 01:</strong> '.$a01.' - </br>';}
+		if(isset($_POST['a02'])){$a02=$_POST['a02'];$message=$message.'<strong>Data 02:</strong> '.$a02.' - </br>';}
+		if(isset($_POST['a03'])){$a03=$_POST['a03'];$message=$message.'<strong>Data 03:</strong> '.$a03.' - </br>';}
+		if(isset($_POST['a04'])){$a04=$_POST['a04'];$message=$message.'<strong>Data 04:</strong> '.$a04.' - </br>';}
+		if(isset($_POST['a05'])){$a05=$_POST['a05'];$message=$message.'<strong>Data 05:</strong> '.$a05.' - </br>';}
+		if(isset($_POST['a06'])){$a06=$_POST['a06'];$message=$message.'<strong>Data 06:</strong> '.$a06.' - </br>';}
+		if(isset($_POST['a07'])){$a07=$_POST['a07'];$message=$message.'<strong>Data 07:</strong> '.$a07.' - </br>';}
+		if(isset($_POST['a08'])){$a08=$_POST['a08'];$message=$message.'<strong>Data 08:</strong> '.$a08.' - </br>';}
+		if(isset($_POST['a09'])){$a09=$_POST['a09'];$message=$message.'<strong>Data 09:</strong> '.$a09.' - </br>';}
+		if(isset($_POST['a10'])){$a10=$_POST['a10'];$message=$message.'<strong>Data 10:</strong> '.$a10.' - </br>';}
+		if(isset($_POST['a11'])){$a11=$_POST['a11'];$message=$message.'<strong>Data 11:</strong> '.$a11.' - </br>';}
+		if(isset($_POST['a12'])){$a12=$_POST['a12'];$message=$message.'<strong>Data 12:</strong> '.$a12.' - </br>';}
+		if(isset($_POST['a13'])){$a13=$_POST['a13'];$message=$message.'<strong>Data 13:</strong> '.$a13.' - </br>';}
+		if(isset($_POST['a14'])){$a14=$_POST['a14'];$message=$message.'<strong>Data 14:</strong> '.$a14.' - </br>';}
+		if(isset($_POST['a15'])){$a15=$_POST['a15'];$message=$message.'<strong>Data 15:</strong> '.$a15.' - </br>';}
+		if(isset($_POST['a16'])){$a16=$_POST['a16'];$message=$message.'<strong>Data 16:</strong> '.$a16.' - </br>';}
+		if(isset($_POST['a17'])){$a17=$_POST['a17'];$message=$message.'<strong>Data 17:</strong> '.$a17.' - </br>';}
+		if(isset($_POST['a18'])){$a18=$_POST['a18'];$message=$message.'<strong>Data 18:</strong> '.$a18.' - </br>';}
+		if(isset($_POST['a19'])){$a19=$_POST['a19'];$message=$message.'<strong>Data 19:</strong> '.$a19.' - </br>';}
+		if(isset($_POST['a20'])){$a20=$_POST['a20'];$message=$message.'<strong>Data 20:</strong> '.$a20.' - </br>';}
+
+
+	 // echo $message;
+
+
+	 // $cosa = var_dump(wp_mail( $mail , $subject , $message ));
+	 if (wp_mail( $mail , $subject , $message )) {
+		 // code...
+				$link = add_query_arg( array(
+					'email' => 'sent',
+					// 'mensaje' => $message,
+					// 'resultado' => username_exists( $mail ),
+				), $link );
+	 } else {
+
+				$link = add_query_arg( array(
+					'email' => 'error',
+					// 'mensaje' => $message,
+					// 'status' => $status,
+					// 'resultado' => username_exists( $mail ),
+				), $link );
+	 }
+		// wp_mail( $mail , $subject , $message );
+
+
+		// $a2 = $_POST['a2'];
+		// $a3 = $_POST['a3'];
+		// $a4 = $_POST['a4'];
+		// $a5 = $_POST['a5'];
+		// $a6 = $_POST['a6'];
+
+		// $link = add_query_arg( array(
+		//   'email' => 'sent',
+		//   // 'status' => $status,
+		//   // 'resultado' => username_exists( $mail ),
+		// ), $link );
 
 
 
-
-
-
-
-// REMOVES WORDPRESS URL PAGINATION
-remove_action('template_redirect', 'redirect_canonical');
-// PAGINATION
-// bloque inspirado en el comienzo de este post:
-// https://rudrastyh.com/wordpress/load-more-and-pagination.html
-function misha_paginator( $first_page_url ){
-
-	// the function works only with $wp_query that's why we must use query_posts() instead of WP_Query()
-	global $wp_query;
-
-	// remove the trailing slash if necessary
-	$first_page_url = untrailingslashit( $first_page_url );
-
-
-	// it is time to separate our URL from search query
-	$first_page_url_exploded = array(); // set it to empty array
-	$first_page_url_exploded = explode("/?", $first_page_url);
-	// by default a search query is empty
-	$search_query = '';
-	// if the second array element exists
-	if( isset( $first_page_url_exploded[1] ) ) {
-		$search_query = "/?" . $first_page_url_exploded[1];
-		$first_page_url = $first_page_url_exploded[0];
 	}
-
-	// get parameters from $wp_query object
-	// how much posts to display per page (DO NOT SET CUSTOM VALUE HERE!!!)
-	$posts_per_page = (int) $wp_query->query_vars['posts_per_page'];
-	// current page
-	$current_page = (int) $wp_query->query_vars['paged'];
-	// the overall amount of pages
-	$max_page = $wp_query->max_num_pages;
-
-	// we don't have to display pagination or load more button in this case
-	if( $max_page <= 1 ) return;
-
-	// set the current page to 1 if not exists
-	if( empty( $current_page ) || $current_page == 0) $current_page = 1;
-
-	// you can play with this parameter - how much links to display in pagination
-	$links_in_the_middle = 4;
-	$links_in_the_middle_minus_1 = $links_in_the_middle-1;
-
-	// the code below is required to display the pagination properly for large amount of pages
-	// I mean 1 ... 10, 12, 13 .. 100
-	// $first_link_in_the_middle is 10
-	// $last_link_in_the_middle is 13
-	$first_link_in_the_middle = $current_page - floor( $links_in_the_middle_minus_1/2 );
-	$last_link_in_the_middle = $current_page + ceil( $links_in_the_middle_minus_1/2 );
-
-	// some calculations with $first_link_in_the_middle and $last_link_in_the_middle
-	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
-	if( ( $last_link_in_the_middle - $first_link_in_the_middle ) != $links_in_the_middle_minus_1 ) { $last_link_in_the_middle = $first_link_in_the_middle + $links_in_the_middle_minus_1; }
-	if( $last_link_in_the_middle > $max_page ) { $first_link_in_the_middle = $max_page - $links_in_the_middle_minus_1; $last_link_in_the_middle = (int) $max_page; }
-	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
-
-	// begin to generate HTML of the pagination
-	$pagination = '<nav class="pagination" role="navigation">';
-
-	// when to display "..." and the first page before it
-	if ($first_link_in_the_middle >= 3 && $links_in_the_middle < $max_page) {
-		$pagination.= '<a class="paginationLink" data-pagination="1">1</a>';
-
-		if( $first_link_in_the_middle != 2 )
-			$pagination .= '<span class="page-numbers extend">...</span>';
-	}
-
-	// arrow left (previous page)
-	if ($current_page != 1)
-		$pagination.= '<a class="paginationLink prev" data-pagination="prev">prev</a>';
-
-
-	// loop page links in the middle between "..." and "..."
-	for($i = $first_link_in_the_middle; $i <= $last_link_in_the_middle; $i++) {
-		if($i == $current_page) {
-			$pagination.= '<span class="paginationCurrent">'.$i.'</span>';
-		} else {
-			$pagination .= '<a class="paginationLink" data-pagination="'.$i.'">'.$i.'</a>';
-		}
-	}
-
-	// arrow right (next page)
-	if ($current_page != $last_link_in_the_middle )
-		$pagination.= '<a class="paginationLink next" data-pagination="next">next</a>';
-
-
-	// when to display "..." and the last page after it
-	if ( $last_link_in_the_middle < $max_page ) {
-
-		if( $last_link_in_the_middle != ($max_page-1) )
-			$pagination .= '<span class="page-numbers extend">...</span>';
-
-		$pagination .= '<a class="paginationLink" data-pagination="'. $max_page .'">'. $max_page .'</a>';
-	}
-
-	// end HTML
-	// $pagination.= "</div></nav>\n";
-	$pagination.= "</nav>\n";
-
-	// haha, this is our load more posts link
-	// if( $current_page < $max_page )
-		// $pagination.= '<div id="misha_loadmore">More posts</div>';
-
-	// replace first page before printing it
-	echo str_replace(array("/page/1?", "/page/1\""), array("?", "\""), $pagination);
+	wp_redirect($link);
 }
 
 
@@ -559,95 +530,14 @@ function misha_paginator( $first_page_url ){
 
 
 
-// Receive the Request post that came from AJAX
-add_action( 'wp_ajax_latte_pagination', 'latte_pagination' );
-// We allow non-logged in users to access our pagination
-add_action( 'wp_ajax_nopriv_latte_pagination', 'latte_pagination' );
-function latte_pagination() {
-	//gets the global query var object
-	global $wp_query;
-
-  // if(isset($_POST['page'])){
-		$args = json_decode( stripslashes( $_POST['query'] ), true );
-		// var_dump($args['term']);
-		unset($args->term);
-		$args['term'] = null;
-		// foreach ($args as $key => $value) {
-		// 	// code...
-		// 	echo $key;
-		// }
-		// echo 'tax_query solicitada';
-		// echo '<br><br>';
-		// var_dump($args['tax_query']);
-		$oldArgs = $args;
-
-		// Sanitize the received page
-		if($_POST['type']=='story'){$story=true;}else{$story=false;}
-		$page = sanitize_text_field($_POST['page']);
-		$args['paged'] = $page;
-		$args['post_status'] = 'publish';
 
 
-		query_posts( $args );
 
 
-		if( have_posts() ) :
 
-			// run the loop
-			while( have_posts() ): the_post();
-			if(get_post_type()=='product'){
-				$_pf = new WC_Product_Factory();
-				$_product = $_pf->get_product(get_the_ID());
-			}
 
-			?>
-				<figure class="card" id="card<?php echo get_the_id();?>">
-					<a class="cardImg" href="<?php echo get_permalink(); ?>">
-						<img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-					</a>
-				<?php if ($story) { ?>
-		        <p class="cardStorieDate">
-		          <?php echo get_the_date( 'j' ); ?>
-		          <br>
-		          <?php echo get_the_date( 'M' ); ?>
-		        </p>
-		        <figcaption class="cardCaption">
-		          <h3 class="cardTitle">
-		            <?php the_title(); ?>
-		          </h3>
-		          <p class="cardDescription">
-		            <?php echo excerpt(100); ?>
-		          </p>
-		          <a class="btn" href="<?php the_permalink(); ?>">
-		            <span class="readMore">Read More
-		            <svg width="40" height="16" viewBox="0 0 20 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-		              <path d="M15 4.95825H0V3.04175H15C13.9217 2.11072 13.5163 1.39965 12.9269 0C15.8187 2.44648 17.3769 3.46462 19.9269 4C17.3769 4.53538 15.8187 5.55352 12.9269 8C13.5163 6.60035 13.9217 5.88928 15 4.95825Z" fill="currentColor"/>
-		            </svg>
-		            </span>
-		          </a>
-				<?php } else { ?>
-						<figcaption class="cardCaption">
-							<p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
-							<?php if (get_post_type()=='product'){ ?>
-								<p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $_product->get_price_html(); ?> </a></p>
-							<?php } ?>
-				<?php } ?>
-					</figcaption>
-				</figure>
-	      <?php
 
-			endwhile;
 
-		endif;
-
-		// var_dump(misha_paginator(5));
-		// echo latte_pagination(5);
-		echo misha_paginator(get_pagenum_link());
-
-  // }
-  // Always exit to avoid further execution
-  exit();
-}
 
 
 
@@ -864,97 +754,203 @@ function alter_query($query) {
 }
 
 
+// REMOVES WORDPRESS URL PAGINATION
+remove_action('template_redirect', 'redirect_canonical');
+// PAGINATION
+// bloque inspirado en el comienzo de este post:
+// https://rudrastyh.com/wordpress/load-more-and-pagination.html
+function misha_paginator( $first_page_url ){
+
+	// the function works only with $wp_query that's why we must use query_posts() instead of WP_Query()
+	global $wp_query;
+
+	// remove the trailing slash if necessary
+	$first_page_url = untrailingslashit( $first_page_url );
 
 
-
-
-
-
-
-
-
-
-add_action(        'admin_post_lt_form_handler', 'lt_form_handler');
-add_action( 'admin_post_nopriv_lt_form_handler', 'lt_form_handler');
-function lt_form_handler() {
-
-	if($_POST['a00'] != ""){
-		$link=$_POST['link'];
-
-		$link = add_query_arg( array(
-			'email' => 'nope',
-			// 'mensaje' => $message,
-			// 'status' => $status,
-			// 'resultado' => username_exists( $mail ),
-		), $link );
-	  // header( "Location: https://www.idemomotors.com/?mail=nope" . $_POST['a9'] );
-	  // exit;
-	} else {
-		// $mail=$_POST['mail'];
-		$mail='molinerozadkiel@gmail.com';
-
-		$subject='Form from '.$link;
-		$message='';
-
-		if(isset($_POST['a01'])){$a01=$_POST['a01'];$message=$message.'<strong>Data 01:</strong> '.$a01.' - </br>';}
-		if(isset($_POST['a02'])){$a02=$_POST['a02'];$message=$message.'<strong>Data 02:</strong> '.$a02.' - </br>';}
-		if(isset($_POST['a03'])){$a03=$_POST['a03'];$message=$message.'<strong>Data 03:</strong> '.$a03.' - </br>';}
-		if(isset($_POST['a04'])){$a04=$_POST['a04'];$message=$message.'<strong>Data 04:</strong> '.$a04.' - </br>';}
-		if(isset($_POST['a05'])){$a05=$_POST['a05'];$message=$message.'<strong>Data 05:</strong> '.$a05.' - </br>';}
-		if(isset($_POST['a06'])){$a06=$_POST['a06'];$message=$message.'<strong>Data 06:</strong> '.$a06.' - </br>';}
-		if(isset($_POST['a07'])){$a07=$_POST['a07'];$message=$message.'<strong>Data 07:</strong> '.$a07.' - </br>';}
-		if(isset($_POST['a08'])){$a08=$_POST['a08'];$message=$message.'<strong>Data 08:</strong> '.$a08.' - </br>';}
-		if(isset($_POST['a09'])){$a09=$_POST['a09'];$message=$message.'<strong>Data 09:</strong> '.$a09.' - </br>';}
-		if(isset($_POST['a10'])){$a10=$_POST['a10'];$message=$message.'<strong>Data 10:</strong> '.$a10.' - </br>';}
-		if(isset($_POST['a11'])){$a11=$_POST['a11'];$message=$message.'<strong>Data 11:</strong> '.$a11.' - </br>';}
-		if(isset($_POST['a12'])){$a12=$_POST['a12'];$message=$message.'<strong>Data 12:</strong> '.$a12.' - </br>';}
-		if(isset($_POST['a13'])){$a13=$_POST['a13'];$message=$message.'<strong>Data 13:</strong> '.$a13.' - </br>';}
-		if(isset($_POST['a14'])){$a14=$_POST['a14'];$message=$message.'<strong>Data 14:</strong> '.$a14.' - </br>';}
-		if(isset($_POST['a15'])){$a15=$_POST['a15'];$message=$message.'<strong>Data 15:</strong> '.$a15.' - </br>';}
-		if(isset($_POST['a16'])){$a16=$_POST['a16'];$message=$message.'<strong>Data 16:</strong> '.$a16.' - </br>';}
-		if(isset($_POST['a17'])){$a17=$_POST['a17'];$message=$message.'<strong>Data 17:</strong> '.$a17.' - </br>';}
-		if(isset($_POST['a18'])){$a18=$_POST['a18'];$message=$message.'<strong>Data 18:</strong> '.$a18.' - </br>';}
-		if(isset($_POST['a19'])){$a19=$_POST['a19'];$message=$message.'<strong>Data 19:</strong> '.$a19.' - </br>';}
-		if(isset($_POST['a20'])){$a20=$_POST['a20'];$message=$message.'<strong>Data 20:</strong> '.$a20.' - </br>';}
-
-
-	 // echo $message;
-
-
-	 // $cosa = var_dump(wp_mail( $mail , $subject , $message ));
-	 if (wp_mail( $mail , $subject , $message )) {
-		 // code...
-				$link = add_query_arg( array(
-					'email' => 'sent',
-					// 'mensaje' => $message,
-					// 'resultado' => username_exists( $mail ),
-				), $link );
-	 } else {
-
-				$link = add_query_arg( array(
-					'email' => 'error',
-					// 'mensaje' => $message,
-					// 'status' => $status,
-					// 'resultado' => username_exists( $mail ),
-				), $link );
-	 }
-		// wp_mail( $mail , $subject , $message );
-
-
-		// $a2 = $_POST['a2'];
-		// $a3 = $_POST['a3'];
-		// $a4 = $_POST['a4'];
-		// $a5 = $_POST['a5'];
-		// $a6 = $_POST['a6'];
-
-		// $link = add_query_arg( array(
-		//   'email' => 'sent',
-		//   // 'status' => $status,
-		//   // 'resultado' => username_exists( $mail ),
-		// ), $link );
-
-
-
+	// it is time to separate our URL from search query
+	$first_page_url_exploded = array(); // set it to empty array
+	$first_page_url_exploded = explode("/?", $first_page_url);
+	// by default a search query is empty
+	$search_query = '';
+	// if the second array element exists
+	if( isset( $first_page_url_exploded[1] ) ) {
+		$search_query = "/?" . $first_page_url_exploded[1];
+		$first_page_url = $first_page_url_exploded[0];
 	}
-	wp_redirect($link);
+
+	// get parameters from $wp_query object
+	// how much posts to display per page (DO NOT SET CUSTOM VALUE HERE!!!)
+	$posts_per_page = (int) $wp_query->query_vars['posts_per_page'];
+	// current page
+	$current_page = (int) $wp_query->query_vars['paged'];
+	// the overall amount of pages
+	$max_page = $wp_query->max_num_pages;
+
+	// we don't have to display pagination or load more button in this case
+	if( $max_page <= 1 ) return;
+
+	// set the current page to 1 if not exists
+	if( empty( $current_page ) || $current_page == 0) $current_page = 1;
+
+	// you can play with this parameter - how much links to display in pagination
+	$links_in_the_middle = 4;
+	$links_in_the_middle_minus_1 = $links_in_the_middle-1;
+
+	// the code below is required to display the pagination properly for large amount of pages
+	// I mean 1 ... 10, 12, 13 .. 100
+	// $first_link_in_the_middle is 10
+	// $last_link_in_the_middle is 13
+	$first_link_in_the_middle = $current_page - floor( $links_in_the_middle_minus_1/2 );
+	$last_link_in_the_middle = $current_page + ceil( $links_in_the_middle_minus_1/2 );
+
+	// some calculations with $first_link_in_the_middle and $last_link_in_the_middle
+	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
+	if( ( $last_link_in_the_middle - $first_link_in_the_middle ) != $links_in_the_middle_minus_1 ) { $last_link_in_the_middle = $first_link_in_the_middle + $links_in_the_middle_minus_1; }
+	if( $last_link_in_the_middle > $max_page ) { $first_link_in_the_middle = $max_page - $links_in_the_middle_minus_1; $last_link_in_the_middle = (int) $max_page; }
+	if( $first_link_in_the_middle <= 0 ) $first_link_in_the_middle = 1;
+
+	// begin to generate HTML of the pagination
+	$pagination = '<nav class="pagination" role="navigation">';
+
+	// when to display "..." and the first page before it
+	if ($first_link_in_the_middle >= 3 && $links_in_the_middle < $max_page) {
+		$pagination.= '<a class="paginationLink" data-pagination="1">1</a>';
+
+		if( $first_link_in_the_middle != 2 )
+			$pagination .= '<span class="page-numbers extend">...</span>';
+	}
+
+	// arrow left (previous page)
+	if ($current_page != 1)
+		$pagination.= '<a class="paginationLink prev" data-pagination="prev">prev</a>';
+
+
+	// loop page links in the middle between "..." and "..."
+	for($i = $first_link_in_the_middle; $i <= $last_link_in_the_middle; $i++) {
+		if($i == $current_page) {
+			$pagination.= '<span class="paginationCurrent">'.$i.'</span>';
+		} else {
+			$pagination .= '<a class="paginationLink" data-pagination="'.$i.'">'.$i.'</a>';
+		}
+	}
+
+	// arrow right (next page)
+	if ($current_page != $last_link_in_the_middle )
+		$pagination.= '<a class="paginationLink next" data-pagination="next">next</a>';
+
+
+	// when to display "..." and the last page after it
+	if ( $last_link_in_the_middle < $max_page ) {
+
+		if( $last_link_in_the_middle != ($max_page-1) )
+			$pagination .= '<span class="page-numbers extend">...</span>';
+
+		$pagination .= '<a class="paginationLink" data-pagination="'. $max_page .'">'. $max_page .'</a>';
+	}
+
+	// end HTML
+	// $pagination.= "</div></nav>\n";
+	$pagination.= "</nav>\n";
+
+	// haha, this is our load more posts link
+	// if( $current_page < $max_page )
+		// $pagination.= '<div id="misha_loadmore">More posts</div>';
+
+	// replace first page before printing it
+	echo str_replace(array("/page/1?", "/page/1\""), array("?", "\""), $pagination);
+}
+
+
+
+// Receive the Request post that came from AJAX
+add_action( 'wp_ajax_latte_pagination', 'latte_pagination' );
+// We allow non-logged in users to access our pagination
+add_action( 'wp_ajax_nopriv_latte_pagination', 'latte_pagination' );
+function latte_pagination() {
+	//gets the global query var object
+	global $wp_query;
+
+
+  // if(isset($_POST['page'])){
+		$args = json_decode( stripslashes( $_POST['query'] ), true );
+		// var_dump($args['term']);
+		unset($args->term);
+		$args['term'] = null;
+		// foreach ($args as $key => $value) {
+		// 	// code...
+		// 	echo $key;
+		// }
+		// echo 'tax_query solicitada';
+		// echo '<br><br>';
+		// var_dump($args['tax_query']);
+		$oldArgs = $args;
+
+		// Sanitize the received page
+		if($_POST['type']=='story'){$story=true;}else{$story=false;}
+		$page = sanitize_text_field($_POST['page']);
+		$args['paged'] = $page;
+		$args['post_status'] = 'publish';
+
+
+		query_posts( $args );
+
+		echo 'a<br>';
+		if( have_posts() ) :
+			echo 'b<br>';
+
+			// run the loop
+			while( have_posts() ): the_post();
+			if(get_post_type()=='product'){
+				$_pf = new WC_Product_Factory();
+				$_product = $_pf->get_product(get_the_ID());
+			}
+
+			?>
+				<figure class="card" id="card<?php echo get_the_id();?>">
+					<a class="cardImg" href="<?php echo get_permalink(); ?>">
+						<img class="cardImg" src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+					</a>
+				<?php if ($story) { ?>
+		        <p class="cardStorieDate">
+		          <?php echo get_the_date( 'j' ); ?>
+		          <br>
+		          <?php echo get_the_date( 'M' ); ?>
+		        </p>
+		        <figcaption class="cardCaption">
+		          <h3 class="cardTitle">
+		            <?php the_title(); ?>
+		          </h3>
+		          <p class="cardDescription">
+		            <?php echo excerpt(100); ?>
+		          </p>
+		          <a class="btn" href="<?php the_permalink(); ?>">
+		            <span class="readMore">Read More
+		            <svg width="40" height="16" viewBox="0 0 20 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		              <path d="M15 4.95825H0V3.04175H15C13.9217 2.11072 13.5163 1.39965 12.9269 0C15.8187 2.44648 17.3769 3.46462 19.9269 4C17.3769 4.53538 15.8187 5.55352 12.9269 8C13.5163 6.60035 13.9217 5.88928 15 4.95825Z" fill="currentColor"/>
+		            </svg>
+		            </span>
+		          </a>
+				<?php } else { ?>
+						<figcaption class="cardCaption">
+							<p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
+							<?php if (get_post_type()=='product'){ ?>
+								<p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $_product->get_price_html(); ?> </a></p>
+							<?php } ?>
+				<?php } ?>
+					</figcaption>
+				</figure>
+	      <?php
+
+			endwhile;
+
+		endif;
+
+		// var_dump(misha_paginator(5));
+		// echo latte_pagination(5);
+		echo misha_paginator(get_pagenum_link());
+
+  // }
+  // Always exit to avoid further execution
+  exit();
 }

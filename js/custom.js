@@ -524,7 +524,7 @@ const setUrlVar = ( variable, value = '' ) => {
 	}
   let conector = filterQueries.length != 0 ? '?' : '';
   w.history.replaceState('', 'Title', urlVirg + conector + filterQueries.join('&'));
-  c.log(filterQueries)
+  // c.log(filterQueries)
   return filterQueries;
 }
 

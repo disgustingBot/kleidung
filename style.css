@@ -1602,7 +1602,8 @@ singleStorieContent
   color: black!important;
   border: none!important;
   position: relative;
-  padding-left: 0;
+  padding: 0;
+  padding-bottom: .5rem;
 }
 
 .cardCaption .btn::after {

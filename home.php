@@ -59,7 +59,7 @@
           <p class="cardDescription">
             <?php echo excerpt(100); ?>
           </p>
-          <a class="btn" href="<?php the_permalink(); ?>">Read More >></a>
+          <a class="btn" href="<?php the_permalink(); ?>">Read More</a>
         </figcaption>
       </figure>
     <?php } wp_reset_query(); ?>

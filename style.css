@@ -582,7 +582,7 @@ FIN DE MAPA DE CONTENIDOS */
                            4) =TOPOGRAFIAS:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-
+/*
 @font-face {
     font-family: 'bask';
     src: url('fonts/bask.woff2') format('woff2'),
@@ -599,7 +599,7 @@ FIN DE MAPA DE CONTENIDOS */
     font-weight: lighter;
     font-style: normal;
 
-}
+} */
 
 
 /* ---------------------------------------------------------------------------
@@ -670,10 +670,10 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
-h1, h2, h3, h4, h5 {font-family: 'parad', sans-serif; font-weight: lighter!important;}
-li a {font-family: 'parad', sans-serif; font-weight: lighter!important;}
+/* h1, h2, h3, h4, h5 {font-family: 'parad', sans-serif; font-weight: lighter!important;} */
+/* li a {font-family: 'parad', sans-serif; font-weight: lighter!important;} */
 
-p, a, button {font-family: 'bask', serif; font-weight: lighter!important;}
+/* p, a, button {font-family: 'bask', serif; font-weight: lighter!important;} */
 
 li {letter-spacing: .1rem;}
 
@@ -1875,7 +1875,7 @@ singleStorieContent
   border-bottom:1px solid white;
   transition:.3s;
   font-weight: 100;
-  font-family: 'bask', serif;
+  /* font-family: 'bask', serif; */
 }
 .paginationCurrent{
   border-bottom:1px solid grey;
@@ -2045,7 +2045,7 @@ singleStorieContent
 .suscribeTitle {
   margin: .4rem 0;
   word-spacing: 2px;
-  font-family: 'parad', sans-serif;
+  /* font-family: 'parad', sans-serif; */
 }
 
 .suscribeButton {
@@ -2575,6 +2575,6 @@ singleStorieContent
 
 /* FIXES PARA ESTILOS DE PLUGINS */
 #cookie-law-info-bar {
-  font-family: 'parad', sans-serif!important;
+  /* font-family: 'parad', sans-serif!important; */
   font-size: 16px!important;
 }

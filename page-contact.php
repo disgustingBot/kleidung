@@ -35,13 +35,13 @@
         <h4 class="contactInformationItemTitle">SUPPORT</h4>
         <p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'mail' )[0]; ?></p>
       </div>
-      <div class="contactInformationItem">
+      <!-- <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">HORARIOS</h4>
         <p class="contactInformationItemTxt">Lun a Vier</p>
         <p class="contactInformationItemTxt" style="margin-bottom: .5rem"><?php echo get_post_meta( get_the_id(), 'horarioLunesaViernes' )[0]; ?></p>
         <p class="contactInformationItemTxt">Sábados</p>
         <p class="contactInformationItemTxt"><?php echo get_post_meta( get_the_id(), 'horarioSabados' )[0]; ?></p></i>
-      </div>
+      </div> -->
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">INSTAGRAM</h4>
         <p class="contactInformationItemTxt" style="text-decoration:underline;"><a href="https://www.instagram.com/marialebredo/" target="_blank">@marialebredo</a></p>

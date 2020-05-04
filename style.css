@@ -1778,7 +1778,7 @@ singleStorieContent
   padding: 1.5rem 0;
 }
 
-.mobileNavBar.alt {
+.mobileNavBar.mobileNavBarVisible {
   margin-left: 0;
 }
 

@@ -1775,6 +1775,7 @@ singleStorieContent
   grid-template-rows: 1fr auto auto;
   grid-gap: 1.5rem;
   padding: 1.5rem 0;
+  z-index:12;
 }
 
 .mobileNavBar.alt {

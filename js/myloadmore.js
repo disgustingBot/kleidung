@@ -119,7 +119,7 @@ if(false){
     // c.log(query.tax_query)
     // c.log(JSON.stringify(query), 'hello world')
 		// the value in 'action' is the key that will be identified by the 'wp_ajax_' hook
-    c.log(query);
+    // c.log(query);
 		var data = {
 			'action'   : 'latte_pagination',
 			'query'    : JSON.stringify(query), // that's how we get params from wp_localize_script() function

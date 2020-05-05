@@ -874,6 +874,7 @@ function latte_pagination() {
 
   // if(isset($_POST['page'])){
 		$args = json_decode( stripslashes( $_POST['query'] ), true );
+		var_dump($args);
 		// var_dump($args['term']);
 		unset($args->term);
 		$args['term'] = null;

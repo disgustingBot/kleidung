@@ -1771,17 +1771,17 @@ singleStorieContent
   width: 100vw;
   background: white;
   transition: .5s;
-  margin-left: 100vw;
+  left: 100vw!important;
   display: grid;
   border-top: solid 2px black;
   grid-template-rows: 1fr auto auto;
   grid-gap: 1.5rem;
   padding: 1.5rem 0;
-  z-index:12;
+  z-index: 10;
 }
 
   .mobileNavBar.mobileNavBarVisible {
-  margin-left: 0;
+  left: 0!important;
 }
 
 
@@ -1807,13 +1807,22 @@ singleStorieContent
 .mobileNavBar .socialMedia .socialSVGLink {
   width: 1.5rem;
   height: 1.5rem;
-  padding: .5rem;
   margin: 1rem;
+}
+
+.mobileNavBar .socialMedia .socialSVGFacebook {
+  display: none;
 }
 
 .mobileNavBar .socialMedia .cartButton {
   display: none;
 }
+
+.mobileNavBar .socialMedia .socialSVGInstagram {
+   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+
 
 .mobileNavBar .socialMedia {
   margin: auto;

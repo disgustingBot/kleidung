@@ -1688,6 +1688,7 @@ singleStorieContent
   width: 100%;
 }
 
+.navBar .menu-item.current-menu-item::after,
 .navBar .menu-item:hover::after {transform: scale(1);}
 
 

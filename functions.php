@@ -396,9 +396,9 @@ function lt_pagination($max){
 add_action(        'admin_post_lt_form_handler', 'lt_form_handler');
 add_action( 'admin_post_nopriv_lt_form_handler', 'lt_form_handler');
 function lt_form_handler() {
+	$link=$_POST['link'];
 
 	if($_POST['a00'] != ""){
-		$link=$_POST['link'];
 
 		$link = add_query_arg( array(
 			'email' => 'nope',
@@ -410,38 +410,26 @@ function lt_form_handler() {
 	  // exit;
 	} else {
 		// $mail=$_POST['mail'];
-		$mail='molinerozadkiel@gmail.com';
+		// $mail='molinerozadkiel@gmail.com';
+		$mail='hello@marialebredo.com';
 
 		$subject='Form from '.$link;
 		$message='';
 
-		if(isset($_POST['a01'])){$a01=$_POST['a01'];$message=$message.'<strong>Data 01:</strong> '.$a01.' - </br>';}
-		if(isset($_POST['a02'])){$a02=$_POST['a02'];$message=$message.'<strong>Data 02:</strong> '.$a02.' - </br>';}
-		if(isset($_POST['a03'])){$a03=$_POST['a03'];$message=$message.'<strong>Data 03:</strong> '.$a03.' - </br>';}
-		if(isset($_POST['a04'])){$a04=$_POST['a04'];$message=$message.'<strong>Data 04:</strong> '.$a04.' - </br>';}
-		if(isset($_POST['a05'])){$a05=$_POST['a05'];$message=$message.'<strong>Data 05:</strong> '.$a05.' - </br>';}
-		if(isset($_POST['a06'])){$a06=$_POST['a06'];$message=$message.'<strong>Data 06:</strong> '.$a06.' - </br>';}
-		if(isset($_POST['a07'])){$a07=$_POST['a07'];$message=$message.'<strong>Data 07:</strong> '.$a07.' - </br>';}
-		if(isset($_POST['a08'])){$a08=$_POST['a08'];$message=$message.'<strong>Data 08:</strong> '.$a08.' - </br>';}
-		if(isset($_POST['a09'])){$a09=$_POST['a09'];$message=$message.'<strong>Data 09:</strong> '.$a09.' - </br>';}
-		if(isset($_POST['a10'])){$a10=$_POST['a10'];$message=$message.'<strong>Data 10:</strong> '.$a10.' - </br>';}
-		if(isset($_POST['a11'])){$a11=$_POST['a11'];$message=$message.'<strong>Data 11:</strong> '.$a11.' - </br>';}
-		if(isset($_POST['a12'])){$a12=$_POST['a12'];$message=$message.'<strong>Data 12:</strong> '.$a12.' - </br>';}
-		if(isset($_POST['a13'])){$a13=$_POST['a13'];$message=$message.'<strong>Data 13:</strong> '.$a13.' - </br>';}
-		if(isset($_POST['a14'])){$a14=$_POST['a14'];$message=$message.'<strong>Data 14:</strong> '.$a14.' - </br>';}
-		if(isset($_POST['a15'])){$a15=$_POST['a15'];$message=$message.'<strong>Data 15:</strong> '.$a15.' - </br>';}
-		if(isset($_POST['a16'])){$a16=$_POST['a16'];$message=$message.'<strong>Data 16:</strong> '.$a16.' - </br>';}
-		if(isset($_POST['a17'])){$a17=$_POST['a17'];$message=$message.'<strong>Data 17:</strong> '.$a17.' - </br>';}
-		if(isset($_POST['a18'])){$a18=$_POST['a18'];$message=$message.'<strong>Data 18:</strong> '.$a18.' - </br>';}
-		if(isset($_POST['a19'])){$a19=$_POST['a19'];$message=$message.'<strong>Data 19:</strong> '.$a19.' - </br>';}
-		if(isset($_POST['a20'])){$a20=$_POST['a20'];$message=$message.'<strong>Data 20:</strong> '.$a20.' - </br>';}
+		$message='';
 
+		foreach ($_POST as $key => $value) {
+			if ( $key != 'a00' && $key != 'action' && $key != 'link' && $key != 'status' && $key != 'submit' && $key != 'g-recaptcha-response' ) {
+				$message=$message.'<strong>'.$key.':</strong> '.$value.' - <br>';
+			}
+		}
 
 	 // echo $message;
+   $headers = array('Content-Type: text/html; charset=UTF-8');
 
 
 	 // $cosa = var_dump(wp_mail( $mail , $subject , $message ));
-	 if (wp_mail( $mail , $subject , $message )) {
+	 if (wp_mail( $mail , $subject , $message , $headers )) {
 		 // code...
 				$link = add_query_arg( array(
 					'email' => 'sent',
@@ -874,7 +862,7 @@ function latte_pagination() {
 
   // if(isset($_POST['page'])){
 		$args = json_decode( stripslashes( $_POST['query'] ), true );
-		var_dump($args);
+		// var_dump($args);
 		// var_dump($args['term']);
 		unset($args->term);
 		$args['term'] = null;
@@ -896,9 +884,9 @@ function latte_pagination() {
 
 		query_posts( $args );
 
-		echo 'a<br>';
+		// echo 'a<br>';
 		if( have_posts() ) :
-			echo 'b<br>';
+			// echo 'b<br>';
 
 			// run the loop
 			while( have_posts() ): the_post();

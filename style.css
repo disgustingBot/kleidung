@@ -2195,6 +2195,7 @@ singleStorieContent
   pointer-events: unset;
 
 }
+.selectBoxOption:first-child{height:1.5rem}
 .selectBoxOption{
   cursor:pointer;
   font-size: var(--fontSize4);

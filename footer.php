@@ -67,7 +67,7 @@
 
 
 
-    <signature class="signature"><p>&#60;&#47;&#62; with <span style="color:red">❤</span> by <a href="https://lattedev.com/" target="_blank" class="latteLink">Latte</a></p></signature>
+    <!-- <signature class="signature"><p>&#60;&#47;&#62; with <span style="color:red">❤</span> by <a href="https://lattedev.com/" target="_blank" class="latteLink">Latte</a></p></signature> -->
 
   </footer>
   <?php wp_footer(); ?>

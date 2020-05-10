@@ -1005,12 +1005,15 @@ right: 10vw;
 
 .homeATFVideo {
   width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .homeATFTitle {
   margin: auto;
   z-index: 1;
-  display: none;
+  /* display: none; */
 }
 
 .homeATFTitle svg {

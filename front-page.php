@@ -11,8 +11,8 @@
   <video loop muted autoplay class="homeATFVideo rowcol1">
     <source src="<?php echo get_post_meta($post->ID, 'video-portada', true); ?>" type="video/mp4">
   </video>
-  <!-- <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta($post->ID, 'titulo-portada', true); ?></h1> -->
-  <a class="homeATFTitle rowcol1" href="http://localhost/marialebredo">
+  <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta( get_the_id(), 'titulo-portada' )[0]; ?></h1>
+  <!-- <a class="homeATFTitle rowcol1" href="http://localhost/marialebredo">
     <svg class="" viewBox="0 0 374 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 
           <!-- M   -->
@@ -52,7 +52,7 @@
           <path d="M341.953 0.65625C345.729 0.65625 348.952 1.99089 351.621 4.66016C354.29 7.32943 355.625 10.5521 355.625 14.3281C355.625 18.1042 354.29 21.3268 351.621 23.9961C348.952 26.6654 345.729 28 341.953 28C338.177 28 334.954 26.6654 332.285 23.9961C329.616 21.3268 328.281 18.1042 328.281 14.3281C328.281 10.5521 329.616 7.32943 332.285 4.66016C334.954 1.99089 338.177 0.65625 341.953 0.65625ZM341.953 2.60938C338.711 2.60938 335.944 3.75521 333.652 6.04688C331.374 8.32552 330.234 11.0859 330.234 14.3281C330.234 17.5703 331.374 20.3372 333.652 22.6289C335.944 24.9076 338.711 26.0469 341.953 26.0469C345.195 26.0469 347.956 24.9076 350.234 22.6289C352.526 20.3372 353.672 17.5703 353.672 14.3281C353.672 11.0859 352.526 8.32552 350.234 6.04688C347.956 3.75521 345.195 2.60938 341.953 2.60938Z" fill="currentColor"></path>
           </svg>
 
-  </a>
+  </a> -->
 </section>
 
 

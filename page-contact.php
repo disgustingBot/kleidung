@@ -3,7 +3,7 @@
 <main class="contactMain">
 
   <div class="contactATF ATF">
-    <img class="contactBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
+    <img class="contactBanner lazy" data-url="<?php echo get_the_post_thumbnail_url(); ?>" alt="Contact page front banner">
   </div>
 
   <div class="contactBox">
@@ -44,7 +44,7 @@
       </div> -->
       <div class="contactInformationItem">
         <h4 class="contactInformationItemTitle">INSTAGRAM</h4>
-        <p class="contactInformationItemTxt" style="text-decoration:underline;"><a href="https://www.instagram.com/marialebredo/" target="_blank">@marialebredo</a></p>
+        <p class="contactInformationItemTxt" style="text-decoration:underline;"><a rel="noreferrer" href="https://www.instagram.com/marialebredo/" target="_blank">@marialebredo</a></p>
       </div>
     </div>
   </div>

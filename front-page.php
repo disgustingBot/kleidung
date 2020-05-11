@@ -11,9 +11,8 @@
   <video loop muted autoplay class="homeATFVideo rowcol1">
     <source src="<?php echo get_post_meta($post->ID, 'video-portada', true); ?>" type="video/mp4">
   </video>
-  <!-- <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta($post->ID, 'titulo-portada', true); ?></h1> -->
-  <a class="homeATFTitle rowcol1" href="http://localhost/marialebredo">
-    <svg class="" viewBox="0 0 374 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta( get_the_id(), 'titulo-portada' )[0]; ?></h1>
+
 
           <!-- M   -->
           <path d="M0 1.63281C0 1.35938 0.0911458 1.13151 0.273438 0.949219C0.46875 0.753906 0.703125 0.65625 0.976562 0.65625C1.25 0.65625 1.48438 0.747396 1.67969 0.929688L13.6914 12.9219L25.5664 1.04688C25.6055 1.00781 25.6445 0.96875 25.6836 0.929688C25.8659 0.747396 26.0938 0.65625 26.3672 0.65625C26.6406 0.65625 26.8685 0.753906 27.0508 0.949219C27.2461 1.13151 27.3438 1.35938 27.3438 1.63281V27.0234C27.3438 27.2969 27.2461 27.5312 27.0508 27.7266C26.8685 27.9089 26.6406 28 26.3672 28C26.0938 28 25.8594 27.9089 25.6641 27.7266C25.4818 27.5312 25.3906 27.2969 25.3906 27.0234V3.99609L14.375 15.0117L14.2578 15.1289C14.0885 15.2461 13.8932 15.3047 13.6719 15.3047C13.3984 15.3047 13.1706 15.207 12.9883 15.0117C12.9362 14.9727 12.8971 14.9336 12.8711 14.8945L1.95312 3.97656V27.0234C1.95312 27.2969 1.85547 27.5312 1.66016 27.7266C1.47786 27.9089 1.25 28 0.976562 28C0.703125 28 0.46875 27.9089 0.273438 27.7266C0.0911458 27.5312 0 27.2969 0 27.0234V1.63281Z" fill="currentColor"></path>
@@ -52,7 +51,7 @@
           <path d="M341.953 0.65625C345.729 0.65625 348.952 1.99089 351.621 4.66016C354.29 7.32943 355.625 10.5521 355.625 14.3281C355.625 18.1042 354.29 21.3268 351.621 23.9961C348.952 26.6654 345.729 28 341.953 28C338.177 28 334.954 26.6654 332.285 23.9961C329.616 21.3268 328.281 18.1042 328.281 14.3281C328.281 10.5521 329.616 7.32943 332.285 4.66016C334.954 1.99089 338.177 0.65625 341.953 0.65625ZM341.953 2.60938C338.711 2.60938 335.944 3.75521 333.652 6.04688C331.374 8.32552 330.234 11.0859 330.234 14.3281C330.234 17.5703 331.374 20.3372 333.652 22.6289C335.944 24.9076 338.711 26.0469 341.953 26.0469C345.195 26.0469 347.956 24.9076 350.234 22.6289C352.526 20.3372 353.672 17.5703 353.672 14.3281C353.672 11.0859 352.526 8.32552 350.234 6.04688C347.956 3.75521 345.195 2.60938 341.953 2.60938Z" fill="currentColor"></path>
           </svg>
 
-  </a>
+  </a> -->
 </section>
 
 
@@ -65,7 +64,7 @@
   );
   $blogPosts=new WP_Query($args); ?>
 
-  <h3 class="sliderTitle title">DISCOVER THE LATEST</h3>
+  <h3 class="sliderTitle title"><?php echo get_post_meta($post->ID, 'subtitulo', true); ?></h3>
 
   <div class="sliderCards">
     <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
@@ -73,17 +72,17 @@
 
       <figure class="card"  id="card<?php echo get_the_id();?>">
         <a class="cardImg" href="<?php echo get_permalink(); ?>">
-          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="Product Image">
         </a>
         <figcaption class="cardCaption">
           <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
           <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
         </figcaption>
       </figure>
-    <?php } ?>
+    <?php } wp_reset_query(); ?>
   </div>
 
-  <button class="sliderArrow" id="sliderArrow" type="button" name="button" onclick="frontPageSlider(+1)" data-page="1">
+  <button aria-label="Slider handler" class="sliderArrow" id="sliderArrow" type="button" name="button" onclick="frontPageSlider(+1)" data-page="1">
     <svg class="singleProductArrowSVG" width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41421 24.7098L13.7098 12.4142L13.6505 12.3549L13.7098 12.2956L1.41421 0L0 1.41421L10.9407 12.3549L0 23.2956L1.41421 24.7098Z" fill="black"/>
     </svg>
@@ -96,45 +95,11 @@
 <div class="stickyBannerAndStories">
 
     <div class="colorCaption">
-      <h5 class="colorTitle"><nobr>SLOW FASHON</nobr></h5>
-      <p class="colorTxt">Against the overproduction, we bet for exclusivity and take care of the people who work in the manufacturing process.</p>
-      <a class="btn" href="<?php echo site_url('brand'); ?>">About us</a>
+      <h5 class="colorTitle"><?php echo get_post_meta($post->ID, 'titulo-seccion-destacada', true); ?></h5>
+      <p class="colorTxt"><?php echo get_post_meta($post->ID, 'texto-seccion-destacada', true); ?></p>
+      <a class="btn" href="<?php echo get_post_meta($post->ID, 'destino-boton-seccion-destacada', true); ?>"><?php echo get_post_meta($post->ID, 'texto-boton-seccion-destacada', true); ?></a>
     </div>
-    <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
-  <!-- <div id="more_posts">Load More</div> -->
-
-  <!-- <div class="frontStories">
-    <?php
-
-    $args = array(
-      'post_type' => 'post',
-      'posts_per_page'=> 3,
-      'tag'=> 'featured'
-    );
-
-    $stories=new WP_Query($args);
-    while($stories->have_posts()){$stories->the_post(); ?>
-      <figure class="card"  id="card<?php echo get_the_id();?>">
-        <a class="cardImg" href="<?php the_permalink(); ?>">
-          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-        </a>
-        <p class="cardStorieDate">
-          <?php echo get_the_date( 'j' ); ?>
-          <br>
-          <?php echo get_the_date( 'M' ); ?>
-        </p>
-        <figcaption class="cardCaption">
-          <h3 class="cardTitle">
-            <?php the_title(); ?>
-          </h3>
-          <p class="cardDescription">
-            <?php echo excerpt(100); ?>
-          </p>
-          <a class="btnWhite btn" href="<?php the_permalink(); ?>">Read More >></a>
-        </figcaption>
-      </figure>
-    <?php } wp_reset_query(); ?>
-  </div> -->
+    <img class="colorImg" src="<?php echo get_post_meta($post->ID, 'imagen-seccion-destacada', true); ?>" alt="Featured section Image">
 
 
 </div>

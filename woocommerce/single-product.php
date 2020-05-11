@@ -12,9 +12,9 @@
           <?php $attachment_ids = $product->get_gallery_attachment_ids(); ?>
 
 
-            <img class="element rowcol1 lazy Obse" data-observe="#obseTest" data-unobserve="false" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <img class="element rowcol1 lazy Obse" data-observe="#obseTest" data-unobserve="false" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="Gallery left Handler">
             <?php $count=0; foreach( $attachment_ids as $attachment_id ) { ?>
-              <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo $image_link = wp_get_attachment_url( $attachment_id ); ?>" alt="">
+              <img class="element rowcol1 lazy" onclick="altClassFromSelector('alt','#gallery')" data-url="<?php echo $image_link = wp_get_attachment_url( $attachment_id ); ?>" alt="Gallery right Handler">
             <?php $count++; } ?>
 
 
@@ -25,12 +25,12 @@
 
 
         <div class="singleProductsgalleryBtnsContainer">
-          <button class="singleProductsGalleryBtns" id="nextButton">
+          <button class="singleProductsGalleryBtns" id="nextButton" aria-label="Slider left handler">
             <svg class="singleProductArrowSVG" width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2956 0L0 12.2956L0.0593109 12.3549L0 12.4142L12.2956 24.7098L13.7098 23.2956L2.76912 12.3549L13.7098 1.41421L12.2956 0Z" fill="black"/>
             </svg>
           </button>
-          <button class="singleProductsGalleryBtns" id="prevButton">
+          <button class="singleProductsGalleryBtns" id="prevButton" aria-label="Slider right handler">
             <svg class="singleProductArrowSVG" width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41421 24.7098L13.7098 12.4142L13.6505 12.3549L13.7098 12.2956L1.41421 0L0 1.41421L10.9407 12.3549L0 23.2956L1.41421 24.7098Z" fill="black"/>
             </svg>
@@ -242,7 +242,7 @@
 
       <figure class="card" id="card<?php echo get_the_id();?>">
         <a class="cardImg" href="<?php echo get_permalink(); ?>">
-          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="Product Image">
         </a>
         <figcaption class="cardCaption">
           <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>

@@ -65,7 +65,7 @@
   );
   $blogPosts=new WP_Query($args); ?>
 
-  <h3 class="sliderTitle title">DISCOVER THE LATEST</h3>
+  <h3 class="sliderTitle title"><?php echo get_post_meta($post->ID, 'subtitulo', true); ?></h3>
 
   <div class="sliderCards">
     <?php while($blogPosts->have_posts()){$blogPosts->the_post(); ?>
@@ -80,7 +80,7 @@
           <p class="productCardPrice"><a href="<?php echo get_permalink(); ?>"> <?php echo $product->get_price_html(); ?> </a></p>
         </figcaption>
       </figure>
-    <?php } ?>
+    <?php } wp_reset_query(); ?>
   </div>
 
   <button class="sliderArrow" id="sliderArrow" type="button" name="button" onclick="frontPageSlider(+1)" data-page="1">
@@ -96,45 +96,11 @@
 <div class="stickyBannerAndStories">
 
     <div class="colorCaption">
-      <h5 class="colorTitle"><nobr>SLOW FASHON</nobr></h5>
-      <p class="colorTxt">Against the overproduction, we bet for exclusivity and take care of the people who work in the manufacturing process.</p>
-      <a class="btn" href="<?php echo site_url('brand'); ?>">About us</a>
+      <h5 class="colorTitle"><?php echo get_post_meta($post->ID, 'titulo-seccion-destacada', true); ?></h5>
+      <p class="colorTxt"><?php echo get_post_meta($post->ID, 'texto-seccion-destacada', true); ?></p>
+      <a class="btn" href="<?php echo get_post_meta($post->ID, 'destino-boton-seccion-destacada', true); ?>"><?php echo get_post_meta($post->ID, 'texto-boton-seccion-destacada', true); ?></a>
     </div>
-    <img class="colorImg" src="<?php echo get_template_directory_uri(); ?>/img/color.jpg" alt="">
-  <!-- <div id="more_posts">Load More</div> -->
-
-  <!-- <div class="frontStories">
-    <?php
-
-    $args = array(
-      'post_type' => 'post',
-      'posts_per_page'=> 3,
-      'tag'=> 'featured'
-    );
-
-    $stories=new WP_Query($args);
-    while($stories->have_posts()){$stories->the_post(); ?>
-      <figure class="card"  id="card<?php echo get_the_id();?>">
-        <a class="cardImg" href="<?php the_permalink(); ?>">
-          <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-        </a>
-        <p class="cardStorieDate">
-          <?php echo get_the_date( 'j' ); ?>
-          <br>
-          <?php echo get_the_date( 'M' ); ?>
-        </p>
-        <figcaption class="cardCaption">
-          <h3 class="cardTitle">
-            <?php the_title(); ?>
-          </h3>
-          <p class="cardDescription">
-            <?php echo excerpt(100); ?>
-          </p>
-          <a class="btnWhite btn" href="<?php the_permalink(); ?>">Read More >></a>
-        </figcaption>
-      </figure>
-    <?php } wp_reset_query(); ?>
-  </div> -->
+    <img class="colorImg" src="<?php echo get_post_meta($post->ID, 'imagen-seccion-destacada', true); ?>" alt="">
 
 
 </div>

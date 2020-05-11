@@ -9,7 +9,8 @@
     height="28"
     viewBox="0 0 356 28"
     fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+    alt="Logo appearing with an animation">
 
     <!-- M   -->
     <path d="M0 1.63281C0 1.35938 0.0911458 1.13151 0.273438 0.949219C0.46875 0.753906 0.703125 0.65625 0.976562 0.65625C1.25 0.65625 1.48438 0.747396 1.67969 0.929688L13.6914 12.9219L25.5664 1.04688C25.6055 1.00781 25.6445 0.96875 25.6836 0.929688C25.8659 0.747396 26.0938 0.65625 26.3672 0.65625C26.6406 0.65625 26.8685 0.753906 27.0508 0.949219C27.2461 1.13151 27.3438 1.35938 27.3438 1.63281V27.0234C27.3438 27.2969 27.2461 27.5312 27.0508 27.7266C26.8685 27.9089 26.6406 28 26.3672 28C26.0938 28 25.8594 27.9089 25.6641 27.7266C25.4818 27.5312 25.3906 27.2969 25.3906 27.0234V3.99609L14.375 15.0117L14.2578 15.1289C14.0885 15.2461 13.8932 15.3047 13.6719 15.3047C13.3984 15.3047 13.1706 15.207 12.9883 15.0117C12.9362 14.9727 12.8971 14.9336 12.8711 14.8945L1.95312 3.97656V27.0234C1.95312 27.2969 1.85547 27.5312 1.66016 27.7266C1.47786 27.9089 1.25 28 0.976562 28C0.703125 28 0.46875 27.9089 0.273438 27.7266C0.0911458 27.5312 0 27.2969 0 27.0234V1.63281Z"
@@ -76,23 +77,23 @@
   </figcaption>
 </figure>
 <section class="brandSection1 brandSection">
-  <img class="brandImg1" id="brandImg1" src="<?php echo get_post_meta($post->ID, 'img1', true); ?>" alt="">
+  <img class="brandImg1" id="brandImg1" src="<?php echo get_post_meta($post->ID, 'img1', true); ?>" alt="Branding Image 1">
   <div class="brandTxt1" id="brandTxt1">
     <!-- <h3 class="brandTxt1Title uppercase">"Cita de un autor"</h3> -->
     <h3 class="brandTxt1Title uppercase"><?php echo get_post_meta($post->ID, 'titulo1', true); ?></h3>
     <p class="brandATFTxt brandTxt1Txt"><?php echo get_post_meta($post->ID, 'texto1', true); ?></p>
   </div>
   <p class="brandATFTxt brandTxt2" id="brandTxt2"><?php echo get_post_meta($post->ID, 'texto2', true); ?></p>
-  <img class="brandImg2" id="brandImg2" src="<?php echo get_post_meta($post->ID, 'img2', true); ?>" alt="">
+  <img class="brandImg2" id="brandImg2" src="<?php echo get_post_meta($post->ID, 'img2', true); ?>" alt="Branding Image 2">
 </section>
 <section class="brandSection2 brandSection">
   <p class="brandATFTxt brandTxt3" id="brandTxt3"><?php echo get_post_meta($post->ID, 'texto3', true); ?></p>
-  <img class="brandImg3" id="brandImg3" src="<?php echo get_post_meta($post->ID, 'img3', true); ?>" alt="">
-  <img class="brandImg4" id="brandImg4" src="<?php echo get_post_meta($post->ID, 'img4', true); ?>" alt="">
+  <img class="brandImg3" id="brandImg3" src="<?php echo get_post_meta($post->ID, 'img3', true); ?>" alt="Branding Image 3">
+  <img class="brandImg4" id="brandImg4" src="<?php echo get_post_meta($post->ID, 'img4', true); ?>" alt="Branding Image 4">
     <p class="brandATFTxt brandTxt4" id="brandTxt4"><?php echo get_post_meta($post->ID, 'texto4', true); ?></p>
 </section>
 <section class="brandSection3">
-  <img class="lazy rowcol1 brandImg5" id="brandImg5" data-url="<?php echo get_post_meta($post->ID, 'img5', true); ?>" alt="">
+  <img class="lazy rowcol1 brandImg5" id="brandImg5" data-url="<?php echo get_post_meta($post->ID, 'img5', true); ?>" alt="Branding Image 5, end of brand page">
   <p class="brandATFTxt brandTxt5 rowcol1" id="brandTxt5"><?php echo get_post_meta($post->ID, 'texto5', true); ?></p>
 </section>
 <?php get_footer(); ?>

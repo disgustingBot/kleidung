@@ -12,9 +12,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-	<view id="load" class="load">
-			<div class="circle"></div>
-	</view>
+	<view id="load" class="load"><div class="circle"></div></view>
 
   <header class="header Obse" id="header" data-observe="#headerActivator" data-unobserve="false">
 

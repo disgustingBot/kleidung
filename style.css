@@ -343,7 +343,6 @@ FIN DE MAPA DE CONTENIDOS */
     --headerDisplay: grid;
     --mobileHeaderDisplay: none;
     --navBarItemFS: 13px;
-    --navBarGridGap: .75rem;
 
 
 
@@ -767,13 +766,11 @@ li {letter-spacing: .1rem;}
 }
 
 .socialSVGLink {
-  display: flex;
   margin-left: .25rem;
   padding: .3rem;
   width: 1.4rem;
   height: 1.4rem;
   transition: .25s;
-  border-radius: 50%;
 }
 
 .socialSVGLink:hover {
@@ -787,10 +784,10 @@ li {letter-spacing: .1rem;}
 }
 
 
-.socialSVGPinterest:hover {background: #E60023}
+/* .socialSVGPinterest:hover {background: #E60023}
 .socialSVGInstagram:hover {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)}
-.socialSVGFacebook:hover {background: #4267B2}
+.socialSVGFacebook:hover {background: #4267B2} */
 
 
 /* CONTACT SOCIAL MEDIA */
@@ -851,7 +848,6 @@ li {letter-spacing: .1rem;}
   color: black!important;
   align-items:center;
   background:white;
-  /* border-bottom:1px solid black; */
   display:var(--headerDisplay);
   grid-template-columns: 1fr 1fr 1fr;
   left: 0;
@@ -871,8 +867,21 @@ li {letter-spacing: .1rem;}
   color: white;
 }
 
-.mobileHeader.observed .initialNavMobile{
+.home .mobileHeader.observed .menuStripe {
+  background: white;
+}
+
+
+.home .mobileHeader.observed svg {
+  color: white;
+}
+
+.home .mobileHeader.observed .initialNavMobile{
   background: transparent!important;
+}
+
+.home .mobileHeader.observed .cartButton .cartButtonCant {
+  color: white!important;
 }
 
 .header.alt,
@@ -882,7 +891,7 @@ li {letter-spacing: .1rem;}
   color: white!important;
 }
 
-.header .socialMedia{margin-right:0;}
+.header .socialMedia{margin: auto 0 0 auto;}
 
 .header .socialMedia .socialSVGFacebook  {display: none;}
 
@@ -928,14 +937,14 @@ li {letter-spacing: .1rem;}
 /* DESKTOP HEADER */
 
 .headerLogoLink {
-  margin: auto;
+  margin: auto auto 0 auto;
   display: flex;
   width: min-content;
 }
 
 .headerLogo {
   margin: auto;
-  height: 1rem;
+  height: 1.3rem;
   width: auto;
   transition:.7s;
 
@@ -957,14 +966,36 @@ li {letter-spacing: .1rem;}
 .mobileHeader .socialMedia .socialSVGFacebook {display: none;}
 
 .initialNavMobile {
-  display: flex;
-  height: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  padding: 16px;
   background: white;
+  height: 5rem;
+  grid-row-gap: 8px;
 }
 
-.headerLogoLinkMob {margin: auto}
+.initialNavMobile .socialMedia {
+  grid-column: 3;
+  grid-row: 1;
+  margin-right: 0;
+}
+
+/* .initialNavMobile .socialSVGInstagram {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.initialNavMobile .cartButton {
+  width: 1.3rem;
+  height: 1.3rem;
+} */
 
 
+.headerLogoLinkMob {
+  margin: auto;
+  grid-column: 2;
+  grid-row: 2;
+}
 
 
 
@@ -1689,6 +1720,7 @@ singleStorieContent
   grid-auto-flow: column;
   grid-gap: var(--navBarGridGap);
   width: max-content;
+  margin: auto auto 0 0;
 }
 
 .navBar .menu-item {
@@ -1776,20 +1808,22 @@ singleStorieContent
   width: 1.5rem;
   justify-content: space-around;
   cursor: pointer;
+  grid-column: 1;
+  grid-row: 1;
   margin: auto;
-  margin-right: var(--lateral);
+  margin-left: 0;
 }
 
 .menuStripe {
   width: 100%;
-  height: .2rem;
+  height: 2px;
   background: black;
 }
 
 .mobileNavBar {
   position: fixed;
-  top: 2.5rem;
-  height: calc(100vh - 2.5rem);
+  top: 5rem;
+  height: calc(100vh - 5rem);
   width: 100vw;
   background: white;
   transition: .5s;
@@ -1826,12 +1860,6 @@ singleStorieContent
 }
 
 
-.mobileNavBar .socialMedia .socialSVGLink {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin: 1rem;
-}
-
 .mobileNavBar .socialMedia .socialSVGFacebook {
   display: none;
 }
@@ -1840,9 +1868,7 @@ singleStorieContent
   display: none;
 }
 
-.mobileNavBar .socialMedia .socialSVGInstagram {
-   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-}
+
 
 
 
@@ -1850,17 +1876,6 @@ singleStorieContent
   margin: auto;
 }
 
-.mobileHeader .cartButton{
-  margin: auto;
-  margin-left: var(--lateral);
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.mobileHeader .cartButton svg{
-  height: 100%;
-  width: 100%;
-}
 
 .navBarMobile {
   display: flex;
@@ -1869,7 +1884,7 @@ singleStorieContent
 }
 
 .navBarMobile li {
-  font-size: var(--fontSize2);
+  font-size: var(--fontSize4);
   margin: 1rem auto;
   width: max-content;
 }
@@ -1879,15 +1894,15 @@ singleStorieContent
   border: none;
   color: white;
 }
-.mobileHeader .socialSVGInstagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-  border: none;
-  color: white;
-}
+
 .mobileHeader .socialSVGFacebook {
   background: #4267B2;
   border: none;
   color: white;
+}
+
+.headerLogoMob {
+  height: 1.2rem;
 }
 
 /* ---------------------------------------------------------------------------
@@ -2026,7 +2041,12 @@ singleStorieContent
                           6.06.2) =cartButton:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.header .cartButton{display:grid; color: unset;}
+.header .cartButton{
+  color: unset;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
 .cartButton{
   height:1.4rem;
   width: 1.4rem;

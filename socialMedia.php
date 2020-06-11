@@ -1,14 +1,14 @@
 <div class="socialMedia">
 
 
-      <a class="cartButton" id="cartButton" href="<?php echo wc_get_cart_url(); ?>" alt="Cart button (go to cart)">
-        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-          <path fill="currentColor" d="M551.991 64H129.28l-8.329-44.423C118.822 8.226 108.911 0 97.362 0H12C5.373 0 0 5.373 0 12v8c0 6.627 5.373 12 12 12h78.72l69.927 372.946C150.305 416.314 144 431.42 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-17.993-7.435-34.24-19.388-45.868C506.022 391.891 496.76 384 485.328 384H189.28l-12-64h331.381c11.368 0 21.177-7.976 23.496-19.105l43.331-208C578.592 77.991 567.215 64 551.991 64zM240 448c0 17.645-14.355 32-32 32s-32-14.355-32-32 14.355-32 32-32 32 14.355 32 32zm224 32c-17.645 0-32-14.355-32-32s14.355-32 32-32 32 14.355 32 32-14.355 32-32 32zm38.156-192H171.28l-36-192h406.876l-40 192z"></path>
-        </svg>
-        <p class="cartButtonCant" id="cartButtonCant">
-          <?php echo WC()->cart->get_cart_contents_count(); ?>
-        </p>
-      </a>
+  <a class="cartButton" id="cartButton" href="<?php echo wc_get_cart_url(); ?>" alt="Cart button (go to cart)">
+    <svg viewBox="0 0 209 234" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M187.5 56.0833H149.833V45.6667C149.833 22.6562 127.177 0 104.167 0C81.1563 0 58.5 22.6562 58.5 45.6667V56.0833H20.8333L0 233.167H208.333L187.5 56.0833ZM72.9167 45.6667C72.9167 28.4375 86.9375 14.4167 104.167 14.4167C121.396 14.4167 135.417 28.4375 135.417 45.6667V56.0833H72.9167V45.6667ZM23.4271 212.333L39.3542 76.9167H58.5V92.5417C65.8334 92.6667 65.8334 92.6667 65.8334 92.6667C65.8334 92.6667 65.8334 92.6667 72.9167 92.5417V76.9167H135.417V92.5417C142.333 92.5417 139.458 92.5417 142.333 92.5417C145.208 92.5417 142.333 92.5417 149.833 92.5417V76.9167H168.979L184.906 212.333H23.4271Z" fill="currentCOlor"/>
+    </svg>
+    <p class="cartButtonCant" id="cartButtonCant">
+      <?php echo WC()->cart->get_cart_contents_count(); ?>
+    </p>
+  </a>
 
   <a rel="noreferrer" href="https://www.instagram.com/marialebredo/" target="_blank" class="socialSVGLink socialSVGInstagram">
     <svg class="socialSVG" width="101" height="100" viewBox="0 0 101 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" alt="Instagram logo">

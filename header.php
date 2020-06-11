@@ -174,6 +174,5 @@
       <button class="btn suscribeButton">SUSCRIBE</button>
     </form>
 
-    <?php include 'socialMedia.php'; ?>
 
   </nav>

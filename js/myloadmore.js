@@ -190,7 +190,7 @@ if(false){
     if(addToCart.dataset.productType == 'variable'){
       var variationId = addToCart.dataset.variationId;
       if (!variationId) {
-        alert('selecciona las opciones para poder comprar')
+        alert('Select a size in order to add to cart')
         return;
       }
 

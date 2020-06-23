@@ -39,11 +39,12 @@
       </div>
 
       <div class="SingleProductInteraction">
-        <h3 class="singleSideTitle"><?php the_title(); ?></h3>
+        <h1 class="singleSideTitle"><?php the_title(); ?></h1>
         <?php // var_dump($product->get_attributes( 'Talla' )); ?>
         <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->
-        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
-        <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p>
+        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php // if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
+        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php // if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
+        <p class="singleSidePrice" id="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <?php
     			// $product = wc_get_product();
     			if ( $product->is_type( 'variable' ) ) {
@@ -125,11 +126,11 @@
           <?php } ?>
           <!-- esto tiene un bug, testear extensivamente y asegurarse de que anda bien antes de poner en produccion -->
           <!-- placeholder="Cantidad" -->
-          <div class="addToCartQntContainer">
+          <!-- <div class="addToCartQntContainer">
             <input class="addToCartQnt" id="addToCartQantity" type="number" value="1" min="1">
             <button class="addToCartQntBtn" onclick="changeQuantity(-1)">-</button>
             <button class="addToCartQntBtn" onclick="changeQuantity(+1)">+</button>
-          </div>
+          </div> -->
 
           <button
             class="btn"
@@ -140,7 +141,7 @@
             data-variation-description=""
           >
             <?php if($product->is_type( 'simple' )){echo 'ADD TO CART';} ?>
-            <?php if($product->is_type( 'variable' )){echo 'Select options';} ?>
+            <?php if($product->is_type( 'variable' )){echo 'Select size';} ?>
           </button>
           <?php
 
@@ -209,8 +210,6 @@
     </div>
 
       <div class="singleProductDescription">
-        <h1 class="singleProductTitle"><?php the_title(); ?></h1>
-        <h2 class="singleProductSubtitle"><?php echo get_the_excerpt(); ?></h2>
         <div class="singleProductTxt"><?php echo get_the_content(); ?></div>
       </div>
   </article>

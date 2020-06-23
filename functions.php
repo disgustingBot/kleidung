@@ -944,3 +944,18 @@ function latte_pagination() {
   // Always exit to avoid further execution
   exit();
 }
+
+function ogf_lattedev_elements( $elements ) {
+		$elements = array();
+    // $elements['ogf_post_page_h3']['selectors'] = '.sliderTitle, .entry-content h3, .post-content h3, .page-content h3, #content h3, .single-content h3';
+		$newCosa = array(
+			'label'       => esc_html__( 'Slider Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your headings.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => 'h1, h2, h3, h4, h5, h6, p, a',
+		);
+		array_push($elements, $newCosa);
+
+  	return $elements;
+}
+add_filter( 'ogf_elements', 'ogf_lattedev_elements' );

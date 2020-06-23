@@ -2141,6 +2141,8 @@ singleStorieContent
   position: relative;
   width:max-content;
   min-width: 4rem;
+  border-bottom: 2px solid #666;
+  width: 100%;
 }
 
 
@@ -2170,12 +2172,12 @@ singleStorieContent
   transition:.3s;
   transform-origin:left;
 }
-.selectBoxCurrent{
-  padding-top:16px;
-  padding-bottom:2px;
+
+.selectBoxCurrent {
   font-size: var(--fontSize5);
   position: relative;
   text-transform: uppercase;
+  padding: 20px 0 4px 15px;
 }
 
 
@@ -2537,17 +2539,17 @@ singleStorieContent
   order: 1;
 }
 
-.singleProductTitle {
+/* .singleProductTitle {
   font-size: var(--fontSize2);
   font-weight: 100;
   text-align: var(--textAlignCenterLeft);
   text-transform: uppercase;
-}
-.singleProductSubtitle {
+} */
+/* .singleProductSubtitle {
   font-size: 1rem;
   margin-bottom: .5rem;
   text-align: var(--textAlignCenterLeft);
-}
+} */
 .singleProductTxt {
   font-size: var(--fontSize4);
   opacity: .8;

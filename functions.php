@@ -945,16 +945,254 @@ function latte_pagination() {
   exit();
 }
 
+
+
+/////////////////////// PLUGIN GOOGLE FONTS
+
 function ogf_lattedev_elements( $elements ) {
 		$elements = array();
     // $elements['ogf_post_page_h3']['selectors'] = '.sliderTitle, .entry-content h3, .post-content h3, .page-content h3, #content h3, .single-content h3';
-		$newCosa = array(
-			'label'       => esc_html__( 'Slider Title', 'olympus-google-fonts' ),
+
+		$navegacionHeader = array(
+			'label'       => esc_html__( 'Header Navigation', 'olympus-google-fonts' ),
 			'description' => esc_html__( 'Select and configure the font for your headings.', 'olympus-google-fonts' ),
 			'section'     => 'ogf_basic',
-			'selectors'   => 'h1, h2, h3, h4, h5, h6, p, a',
+			'selectors'   => '.navBar .menu-item a',
 		);
-		array_push($elements, $newCosa);
+		$navBarMobile = array(
+			'label'       => esc_html__( 'Header Navigation Mobile', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your headings on Mobile.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.navBarMobile .menu-item a',
+		);
+		$footerNav = array(
+			'label'       => esc_html__( 'Footer Navigation', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your footer.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.footerNav li a',
+		);
+		$suscribeTitle = array(
+			'label'       => esc_html__( 'Footer Subscribe', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your footer subscribe.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.suscribeTitle',
+		);
+		$suscribeTitle = array(
+			'label'       => esc_html__( 'Footer Subscribe', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your footer subscribe.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.suscribeTitle',
+		);
+		$sliderTitle = array(
+			'label'       => esc_html__( 'Front-Page // Subtitle', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Front-Page // Subtitle.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.sliderTitle',
+		);
+		$FPcardTitle = array(
+			'label'       => esc_html__( 'Front-Page // Product Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Front-Page // Product Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.sliderCards .cardTitle',
+		);
+		$FPcolorTitle = array(
+			'label'       => esc_html__( 'Front-Page // Banner Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Front-Page // Banner Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.colorTitle',
+		);
+		$FPcolorTxt = array(
+			'label'       => esc_html__( 'Front-Page // Banner Text', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Front-Page // Banner Text.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.colorTxt',
+		);
+		$FPproductPrice = array(
+			'label'       => esc_html__( 'Front-Page // Product Price', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Product Price.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.sliderCards .productCardPrice',
+		);
+		$btn = array(
+			'label'       => esc_html__( 'General // Buttons', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your buttons.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.btn',
+		);
+
+
+		///////////////// BRAND
+		$brandATFTxt = array(
+			'label'       => esc_html__( 'Brand // ATF Text', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand Page ATF.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandATFTxt',
+		);
+		$brandTxt1Title = array(
+			'label'       => esc_html__( 'Brand // Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand // Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt1Title',
+		);
+		$brandTxt1Txt = array(
+			'label'       => esc_html__( 'Brand // 1º Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand //  1º Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt1Txt',
+		);
+		$brandTxt2 = array(
+			'label'       => esc_html__( 'Brand // 2º Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand //  2º Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt2',
+		);
+		$brandTxt3 = array(
+			'label'       => esc_html__( 'Brand // 3º Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand //  3º Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt3',
+		);
+		$brandTxt4 = array(
+			'label'       => esc_html__( 'Brand // 4º Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand //  4º Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt4',
+		);
+		$brandTxt5 = array(
+			'label'       => esc_html__( 'Brand // 5º Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Brand //  5º Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.brandTxt5',
+		);
+
+		//////////////SHOP
+		$ShopTitle2 = array(
+			'label'       => esc_html__( 'Shop // Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Shop // Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.ShopTitle2',
+		);
+		$selectBoxPlaceholder = array(
+			'label'       => esc_html__( 'Shop // Filters', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Shop // Filters.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.selectBoxPlaceholder',
+		);
+		$shopCardTitle = array(
+			'label'       => esc_html__( 'Shop // Product Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your Shop // Product Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.slider .cardTitle',
+		);
+		$shopProductPrice = array(
+			'label'       => esc_html__( 'Shop // Product Price', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Shop // Product Price.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.slider .productCardPrice',
+		);
+
+		////// STORIES
+		$storiesPageTitle = array(
+			'label'       => esc_html__( 'Stories // Page-Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Stories // Page-Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.storiesTitle',
+		);
+		$storiesTitle = array(
+			'label'       => esc_html__( 'Stories // Stories Titles', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Stories // Stories Titles.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.archiveStories .cardTitle',
+		);
+		$storiesSmallDescription = array(
+			'label'       => esc_html__( 'Stories // Stories Small Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Stories // Stories Titles.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.archiveStories .cardDescription',
+		);
+
+		///////////////// SINGLE STORIES
+
+		$singleStorieTitle = array(
+			'label'       => esc_html__( 'Single-Stories // Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Stories // Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleStorieTitle',
+		);
+		$singleStorieContent = array(
+			'label'       => esc_html__( 'Single-Stories // Content', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Stories // Content.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleStorieContent',
+		);
+		$storieSocialSharingTitle = array(
+			'label'       => esc_html__( 'Single-Stories // Social Media Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Stories // Social Media Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.storieSocialSharingTitle',
+		);
+		$titleMoreStories = array(
+			'label'       => esc_html__( 'Single-Stories // More Stories Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Stories // More Stories Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.titleMoreStories',
+		);
+		$cardStoriesSingle = array(
+			'label'       => esc_html__( 'Single-Stories // Card Storie Titles', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your   Single-Stories // Card Storie Titles.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleStorieOthers .cardTitle',
+		);
+		$cardStoriesDesc = array(
+			'label'       => esc_html__( 'Single-Stories // Card Storie Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Stories // Card Storie Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleStorieOthers .cardDescription',
+		);
+
+		///////////////////// SINGLE-PRODUCT
+		$singleSideTitle = array(
+			'label'       => esc_html__( 'Single-Product // Main Product Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // Main Product Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleSideTitle',
+		);
+		$singleSidePrice = array(
+			'label'       => esc_html__( 'Single-Product // Main Product Price', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // Main Product Price.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.SingleProductInteraction .singleSidePrice',
+		);
+		$singleProductTxt = array(
+			'label'       => esc_html__( 'Single-Product // Main Product Description', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // Main Product Description.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.singleProductTxt',
+		);
+		$relatedProductsSliderTitle = array(
+			'label'       => esc_html__( 'Single-Product // Related Products Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // More Products Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.relatedProducts .sliderTitle',
+		);
+		$relatedProductsCardTitle = array(
+			'label'       => esc_html__( 'Single-Product // Related Products Card Title', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // More Products Card Title.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.relatedProducts .cardTitle',
+		);
+		$relatedProductsCardPrice = array(
+			'label'       => esc_html__( 'Single-Product // Related Products Card Price', 'olympus-google-fonts' ),
+			'description' => esc_html__( 'Select and configure the font for your  Single-Product // More Products Card Price.', 'olympus-google-fonts' ),
+			'section'     => 'ogf_basic',
+			'selectors'   => '.relatedProducts .productCardPrice',
+		);
+
+		array_push($elements, $navegacionHeader,$navBarMobile,$footerNav,$suscribeTitle,$sliderTitle,$FPcardTitle,$FPcolorTitle,$FPcolorTxt,$FPproductPrice,
+								$btn,$brandATFTxt,$brandTxt1Title,$brandTxt1Txt,$brandTxt2,$brandTxt3,$brandTxt4, $brandTxt5,$ShopTitle2,$selectBoxPlaceholder,
+							$shopCardTitle,$shopProductPrice,$storiesPageTitle,$storiesTitle,$storiesSmallDescription,$singleStorieTitle, $singleStorieContent,
+						$storieSocialSharingTitle,$titleMoreStories,$cardStoriesSingle,$cardStoriesDesc,$singleSideTitle,$singleSidePrice,$singleProductTxt,
+					$relatedProductsSliderTitle,$relatedProductsCardTitle,$relatedProductsCardPrice );
 
   	return $elements;
 }

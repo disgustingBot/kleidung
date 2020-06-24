@@ -2141,8 +2141,6 @@ singleStorieContent
   position: relative;
   width:max-content;
   min-width: 4rem;
-  border-bottom: 2px solid #666;
-  width: 100%;
 }
 
 
@@ -2172,12 +2170,12 @@ singleStorieContent
   transition:.3s;
   transform-origin:left;
 }
-
-.selectBoxCurrent {
+.selectBoxCurrent{
+  padding-top:16px;
+  padding-bottom:2px;
   font-size: var(--fontSize5);
   position: relative;
   text-transform: uppercase;
-  padding: 20px 0 4px 15px;
 }
 
 
@@ -2492,8 +2490,6 @@ singleStorieContent
 
 
 .SingleProductInteraction {
-  /* display: flex; */
-  /* flex-direction: column; */
   display:grid;
   grid-gap:.5rem;
   grid-column: 4/ span 1;
@@ -2501,6 +2497,14 @@ singleStorieContent
   margin: auto;
   width: 100%;
   order: 3;
+}
+
+.SingleProductInteraction  .selectBox {
+  width: 100%;
+}
+
+.selectBoxButton {
+  border-bottom:2px solid #666;
 }
 
 

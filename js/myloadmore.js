@@ -31,64 +31,6 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
         // END OF URL HANDLING
 
 
-
-if(false){
-    // TODO: hacer una funcion en plan "changeUrlVar" y ponerlo fuera
-    // URL HANDLING
-		// urlVirg es la url sin variables
-    var urlVirg = window.location.href.split('?')[0];
-		// urlVars será el vector de variables en la url
-    var urlVars = window.location.href.split('?');
-    urlVars.shift();
-    urlVars = !urlVars[0] ? [] : urlVars.join().split('&');
-
-		var filters = urlVars.map( x => x.split('=')[0]);
-    var values  = urlVars.map( x => x.split('=')[1]);
-
-		current = filters.includes("page") ? parseInt(values[filters.findIndex(x=>x=='page')]) : 1;
-		if ( page == 'next' ) { page = current + 1; }
-		if ( page == 'prev' ) { page = current - 1; }
-    // c.log(page)
-
-
-		if(parent){
-			if(filters.includes(parent)){
-				let j=0;
-				urlVars.forEach((item, i) => {
-					if (item.split('=')[0] == parent) {
-						// si la categoria es 0 quita el filtro
-						if (category != '0') { filterQueries[j] = parent + '=' + category; j+=1; }
-					} else { filterQueries[j] = item; j+=1; }
-				});
-			} else {
-				urlVars.forEach((item, i) => {
-					filterQueries[i] = item;
-				});
-				filterQueries.push(parent + '=' + category);
-			}
-		}
-
-		if(page){
-			if(filters.includes('page')){
-				c.log(page);
-				let j=0;
-				urlVars.forEach((item, i) => {
-					if (item.split('=')[0] == 'page') {
-						filterQueries[j] = 'page=' + page; j++;
-					} else { filterQueries[j] = item; j++; }
-				});
-			} else {
-				urlVars.forEach((item, i) => {
-					filterQueries[i] = item;
-				});
-				filterQueries.push('page=' + page);
-			}
-		}
-    window.history.replaceState('', 'Title', urlVirg + '?' + filterQueries.join('&'));
-    // END OF URL HANDLING
-}
-
-
 		// PREPARE DATA TO BE SENT
     var categoriesArray = filterQueries.map ( item => item.split('=')[1] );
     var parentsArray = filterQueries.map ( item => item.split('=')[0] );

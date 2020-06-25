@@ -42,8 +42,8 @@
         <h3 class="singleSideTitle"><?php the_title(); ?></h3>
         <?php // var_dump($product->get_attributes( 'Talla' )); ?>
         <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->
-        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
-        <p class="singleSidePrice" id="singleSidePrice"><?php if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p>
+        <!-- <p class="singleSidePrice" id="singleSidePrice"><?php // if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
+        <p class="singleSidePrice" id="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <?php
     			// $product = wc_get_product();
     			if ( $product->is_type( 'variable' ) ) {

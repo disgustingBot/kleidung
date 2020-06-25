@@ -1961,6 +1961,8 @@ singleStorieContent
   text-align: center;
 }
 .woocommerce a.button,.added_to_cart.wc-forward {width:100%; margin: .5rem auto;}
+.btn:disabled{background:#555!important;}
+.btn:disabled:hover{background:#555!important;color:var(--color2)!important;}
 
 .thinBtn {
   background: var(--color1);

@@ -131,10 +131,12 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 
     if(addToCart.dataset.productType == 'variable'){
       var variationId = addToCart.dataset.variationId;
+      var variation = addToCart.dataset.variation;
       if (!variationId) {
         alert('Select a size in order to add to cart')
         return;
       }
+      console.log(variationId)
 
     }
 		var data = {
@@ -142,17 +144,20 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 			"product_id" : product_id,
 			"variation_id" : variationId,
 			"quantity" : quantity,
-			// "variation" : {
-			// 	"Attributes" : "m - l",
-			// },
-		};
+			"variation" : {
+				"Size" : variation,
+			},
+    };
+    console.log(data)
     $.ajax({
       url : misha_loadmore_params.ajaxurl,
       data : data,
       type : 'POST',
       success : respuesta => {
-				c.log(respuesta);
-	        d.querySelector('.cartButtonCant').innerText = respuesta/10;
+        respuesta = JSON.parse(respuesta);
+        c.log(respuesta);
+        cant = respuesta.count
+        d.querySelector('.cartButtonCant').innerText = cant;
 				// c.log('soy el nene');
         // d.querySelector('.cartButtonCant').innerText = respuesta/10;
       }

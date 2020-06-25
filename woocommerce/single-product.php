@@ -3,6 +3,7 @@
 
 <?php while(have_posts()){the_post(); ?>
   <?php global $woocommerce, $product, $post; ?>
+  <?php if( !$product->is_on_backorder() AND !$product->is_in_stock() ){ $is_out_of_stock = true; } ?>
 
 
 
@@ -40,6 +41,10 @@
 
       <div class="SingleProductInteraction">
         <h1 class="singleSideTitle"><?php the_title(); ?></h1>
+        
+        <?php if($product->is_on_backorder()){ ?>
+          <p>This product is on backorder. You can still buy it, but it will take 15 days to arrive</p>
+        <?php } ?>
         <?php // var_dump($product->get_attributes( 'Talla' )); ?>
         <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->
         <!-- <p class="singleSidePrice" id="singleSidePrice"><?php // if($product->is_type( 'simple' )){echo $product->get_price_html();} ?></p> -->
@@ -49,7 +54,7 @@
         <p class="singleSidePrice" id="singleSidePrice"><?php echo $product->get_price_html(); ?></p>
         <?php
     			// $product = wc_get_product();
-    			if ( $product->is_type( 'variable' ) ) {
+    			if ( $product->is_type( 'variable' ) AND !$is_out_of_stock ) {
             $variations = $product->get_available_variations();
 
             // THIS BLOCK DEFINES THE ARRAY: "$myAttributes"
@@ -141,10 +146,16 @@
             data-product-type="<?php echo $product->get_type(); ?>"
             data-quantity="1"
             data-variation-description=""
+            <?php if( $is_out_of_stock ){ echo 'disabled'; } ?>
           >
-            <?php if($product->is_type( 'simple' )){echo 'ADD TO CART';} ?>
-            <?php if($product->is_type( 'variable' )){echo 'Select size';} ?>
+            <?php if( $is_out_of_stock ){ echo 'OUT OF STOCK'; } else { ?>
+              <?php if($product->is_type( 'simple' )){echo 'ADD TO CART';} ?>
+              <?php if($product->is_type( 'variable' )){echo 'Select size';} ?>
+            <?php } ?>
           </button>
+
+
+
           <?php
 
 
@@ -152,30 +163,30 @@
 
 
 
-          function get_variation_id()
-          {
-            global $woocommerce, $product, $post;
-            // $content = file_get_contents(“php://input”);
-            // parse_str($content, $data);
-            // $product_id = $data[‘product_id’];
-            // $attributes = $data[‘attributes’];
-            $product_id = get_the_id();
-            $attributes = $product->get_available_variations();
-            $product = new \WC_Product_Variable($product_id);
-            $selected_product = null;
-            foreach ($product->get_available_variations() as $variation)
-            {
-              var_dump($variation);
-              $variation_attributes = $variation['attributes'];
-              if (count(array_diff($attributes, $variation_attributes)) == 0)
-              {
-                $selected_product = $variation;
-                break;
-              }
-            }
-            echo json_encode($selected_product);
-            // die();
-          }
+          // function get_variation_id()
+          // {
+          //   global $woocommerce, $product, $post;
+          //   // $content = file_get_contents(“php://input”);
+          //   // parse_str($content, $data);
+          //   // $product_id = $data[‘product_id’];
+          //   // $attributes = $data[‘attributes’];
+          //   $product_id = get_the_id();
+          //   $attributes = $product->get_available_variations();
+          //   $product = new \WC_Product_Variable($product_id);
+          //   $selected_product = null;
+          //   foreach ($product->get_available_variations() as $variation)
+          //   {
+          //     // var_dump($variation);
+          //     $variation_attributes = $variation['attributes'];
+          //     if (count(array_diff($attributes, $variation_attributes)) == 0)
+          //     {
+          //       $selected_product = $variation;
+          //       break;
+          //     }
+          //   }
+          //   echo json_encode($selected_product);
+          //   // die();
+          // }
           // get_variation_id();
 
 

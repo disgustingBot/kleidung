@@ -126,7 +126,7 @@ global $wp;
 
         <figure class="card" id="card<?php echo get_the_id();?>">
           <a class="cardImg" href="<?php echo get_permalink(); ?>">
-            <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+            <img class="cardImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="Product Image">
           </a>
           <figcaption class="cardCaption">
             <p class="cardTitle"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></p>
@@ -137,7 +137,6 @@ global $wp;
       <?php echo misha_paginator(get_pagenum_link()); ?>
     </div>
 
-  <!-- <button class="sliderArrow" type="button" name="button">&#62;</button> -->
 
   </section>
 

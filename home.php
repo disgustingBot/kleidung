@@ -6,7 +6,7 @@
 
 
 
-  <section class="storiesATF">
+  <!-- <section class="storiesATF">
 
     <?php
     $args=array(
@@ -27,7 +27,7 @@
 
     <?php } wp_reset_query(); ?>
 
-    </section>
+    </section> -->
 
       <!-- SECCION ATF ALTERNATIVA COMENTADA  -->
 

@@ -2496,7 +2496,7 @@ singleStorieContent
   grid-gap:.5rem;
   grid-column: 4/ span 1;
   grid-row: 1;
-  margin: auto;
+  margin: 1.2rem auto;
   width: 100%;
   order: 3;
 }

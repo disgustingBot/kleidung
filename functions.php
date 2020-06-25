@@ -602,6 +602,7 @@ add_action( 'wp_ajax_nopriv_woocommerce_add_variation_to_cart', 'so_27270880_add
 add_action( 'wp_ajax_woocommerce_add_variation_to_cart', 'so_27270880_add_variation_to_cart' );
 
 function so_27270880_add_variation_to_cart() {
+	$respuesta = array();
 	// echo WC()->cart->get_cart_contents_count();
 
     // ob_start();
@@ -615,6 +616,8 @@ function so_27270880_add_variation_to_cart() {
 
     $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity, $variation_id, $variations, $cart_item_data );
 		// echo WC()->cart->get_cart_contents_count();
+
+	$respuesta['variations'] = $variations;
 
     if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variations ) ) {
 
@@ -638,10 +641,13 @@ function so_27270880_add_variation_to_cart() {
 				//
         // wp_send_json( $data );
 
-    }
-		echo WC()->cart->get_cart_contents_count();
+	}
+	
+	// echo WC()->cart->get_cart_contents_count();
+	$respuesta['count'] = WC()->cart->get_cart_contents_count();
 
-    // die();
+	echo wp_json_encode($respuesta);
+	exit();
 }
 
 
@@ -1197,3 +1203,58 @@ function ogf_lattedev_elements( $elements ) {
   	return $elements;
 }
 add_filter( 'ogf_elements', 'ogf_lattedev_elements' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function es_add_cart_notice() {
+    // Only on cart and check out pages
+    if( ! ( is_cart() || is_checkout() ) ) return;
+
+    // Set message
+    $message = "You have a backorder product in your cart.";
+
+    // Set variable
+    $found = false;
+
+    // Loop through all products in the Cart        
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        // Get an instance of the WC_Product object
+        $product = $cart_item['data'];
+
+        // Product on backorder
+        if( $product->is_on_backorder() ) {
+            $found = true;
+            break;
+        }
+    }
+
+    // true
+    if ( $found ) {
+        wc_add_notice( __( $message, 'woocommerce' ), 'notice' );
+
+        // Removing the proceed button, until the condition is met
+        // optional
+        // remove_action( 'woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
+    }
+
+}
+add_action( 'woocommerce_check_cart_items', 'es_add_cart_notice', 10, 0 );

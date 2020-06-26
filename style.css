@@ -230,6 +230,7 @@ FIN DE MAPA DE CONTENIDOS */
 
   /* SINGLE */
   --singleProductMainDisplay: flex;
+  --SingleProductInteractionM: 3rem auto 1.2rem auto;
   --textAlignCenterLeft: center;
   --textAlignJustifyLeft: justify;
   --singleSideFontSize: 1.5rem;
@@ -240,8 +241,6 @@ FIN DE MAPA DE CONTENIDOS */
   --singleProductInteractionBtnPadding: 1rem;
   --relatedProductDisplay: block;
   --relatedProductsCardMarginBottom: 2rem;
-  --singleProductsgalleryBtnsContainerWidth: 100%;
-  --singleProductGalleryBtnsMargin: 1rem auto;
   --singleProductDescriptionMarginTop: 3rem;
 
 
@@ -409,6 +408,7 @@ FIN DE MAPA DE CONTENIDOS */
 
     /* SINGLE */
     --singleProductMainDisplay: grid;
+    --SingleProductInteractionM: 1.2rem auto;
     --textAlignCenterLeft: left;
     --textAlignJustifyLeft: left;
     --singleSideFontSize: .65rem;
@@ -420,8 +420,6 @@ FIN DE MAPA DE CONTENIDOS */
     --singleProductInteractionBtnPadding: .25rem;
     --relatedProductDisplay: grid;
     --relatedProductsCardMarginBottom: unset;
-    --singleProductsgalleryBtnsContainerWidth: unset;
-    --singleProductGalleryBtnsMargin: .25rem;
     --singleProductDescriptionMarginTop: 1rem;
 
 
@@ -2443,6 +2441,7 @@ singleStorieContent
   grid-template-rows: min-content 1fr;
   grid-gap: 1rem;
   padding: 1rem calc(var(--lateral) * 2);
+  margin-top: 3rem;
 }
 
 .gallery {
@@ -2470,15 +2469,16 @@ singleStorieContent
   margin: auto;
   margin-top: 0;
   display: flex;
-  width: var(--singleProductsgalleryBtnsContainerWidth);
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
 }
 .singleProductArrowSVG {color: var(--color1);}
 
 .singleProductsGalleryBtns {
-  /* padding: .5rem; */
-  margin: var(--singleProductGalleryBtnsMargin);
   border: none;
-  background-color: white;
+  background-color: transparent;
   color: var(--color3);
   transition: .25s;
   height: 2rem;
@@ -2492,7 +2492,7 @@ singleStorieContent
   grid-gap:.5rem;
   grid-column: 4/ span 1;
   grid-row: 1;
-  margin: 1.2rem auto;
+  margin: var(--SingleProductInteractionM);
   width: 100%;
   order: 3;
 }

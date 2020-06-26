@@ -41,7 +41,7 @@
 
       <div class="SingleProductInteraction">
         <h1 class="singleSideTitle"><?php the_title(); ?></h1>
-        
+
         <?php if($product->is_on_backorder()){ ?>
           <p>Hi! We ran out of stock of this product, but you can still preorder it and receive it in 10-15 days :)</p>
         <?php } ?>

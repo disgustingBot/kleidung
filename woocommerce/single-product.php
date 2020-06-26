@@ -41,9 +41,9 @@
 
       <div class="SingleProductInteraction">
         <h1 class="singleSideTitle"><?php the_title(); ?></h1>
-        
+
         <?php if($product->is_on_backorder()){ ?>
-          <p>This product is on backorder. You can still buy it, but it will take 15 days to arrive</p>
+          <p class="backorderMessage"><strong>ATTENTION:</strong> <i>This product is on backorder</i>. You can purchase it, and it will take 15 days to arrive. </p>
         <?php } ?>
         <?php // var_dump($product->get_attributes( 'Talla' )); ?>
         <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->

@@ -773,11 +773,6 @@ li {letter-spacing: .1rem;}
   transition: .25s;
 }
 
-.socialSVGLink:hover {
-  background: black;
-  color: white;
-}
-
 .socialSVG {
   margin: auto;
   height: 100%;
@@ -2531,6 +2526,11 @@ singleStorieContent
   margin-top: var(--singleSideTxtMarginBottom);
 
 }
+
+.singleSideTitle {
+  font-size: var(--fontSize5);
+}
+
 .singleSidePrice {
   font-weight: 800;
   line-height: var(--fontSize3);
@@ -2623,3 +2623,14 @@ singleStorieContent
   /* font-family: 'parad', sans-serif!important; */
   font-size: 16px!important;
 }
+
+
+/* Tamaños de fuentes para el carrito */
+
+.woocommerce-notices-wrapper >*, .woocommerce-error >* {
+  font-size: var(--fontSize5);
+}
+
+.shop_table >*, .button {font-size: var(--fontSize4)!important}
+.cart_totals >* {font-size: var(--fontSize3)!important}
+.checkout-button {width: max-content!important; font-size: var(--fontSize4)}

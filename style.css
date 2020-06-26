@@ -2512,7 +2512,6 @@ singleStorieContent
 
 .SingleProductInteraction button {
   width: var(--singleProductButtonWidth);
-  /* margin: var(--singleProductButtonMargin); */
   font-size: var(--fontSize4);
   padding: var(--singleProductInteractionBtnPadding);
 }

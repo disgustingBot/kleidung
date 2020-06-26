@@ -303,6 +303,21 @@ attributes.forEach( (x, i) =>{
         d.querySelector('#myAddToCart').innerText = "Select Options";
       }
 
+      
+      if(z.target.value!=0){
+        d.querySelector('#myBuyNow').dataset.variationId = ids
+        d.querySelector('#myBuyNow').dataset.variation = z.target.value
+        if (d.querySelector('#myBuyNow').dataset.preorder=='true') {
+          d.querySelector('#myBuyNow').innerText = "Order Now";
+        } else {
+          d.querySelector('#myBuyNow').innerText = "Buy Now!";
+        }
+      } else {
+        d.querySelector('#myBuyNow').dataset.variationId = ''
+        d.querySelector('#myBuyNow').dataset.variation = ''
+        d.querySelector('#myBuyNow').innerText = "Select Options";
+      }
+
 
     })
   // })

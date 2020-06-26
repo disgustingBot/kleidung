@@ -122,12 +122,17 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
 
 
 
+
+
+
+
   // ADD TO CART CONTROLLER
   $('#myAddToCart').on('click',()=>{
 		// c.log('add to cart')
     let addToCart = d.querySelector('#myAddToCart');
 		var product_id = addToCart.dataset.productId;
     var quantity = addToCart.dataset.quantity;
+    var buy = addToCart.dataset.buy;
 
     if(addToCart.dataset.productType == 'variable'){
       var variationId = addToCart.dataset.variationId;
@@ -163,6 +168,61 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
       }
     });
   })
+
+
+
+
+
+  // ADD TO CART CONTROLLER
+  $('#myBuyNow').on('click',()=>{
+		// c.log('add to cart')
+    let addToCart = d.querySelector('#myBuyNow');
+		var product_id = addToCart.dataset.productId;
+    var quantity = addToCart.dataset.quantity;
+    var buy = addToCart.dataset.buy;
+    console.log(buy)
+
+    if(addToCart.dataset.productType == 'variable'){
+      var variationId = addToCart.dataset.variationId;
+      var variation = addToCart.dataset.variation;
+      if (!variationId) {
+        alert('Select a size in order to add to cart')
+        return;
+      }
+      console.log(variationId)
+
+    }
+		var data = {
+			"action" : "woocommerce_add_variation_to_cart",
+			"product_id" : product_id,
+			"variation_id" : variationId,
+			"quantity" : quantity,
+			"variation" : {
+				"Size" : variation,
+			},
+    };
+    console.log(data)
+    $.ajax({
+      url : misha_loadmore_params.ajaxurl,
+      data : data,
+      type : 'POST',
+      success : respuesta => {
+        respuesta = JSON.parse(respuesta);
+        c.log(respuesta);
+        cant = respuesta.count
+        d.querySelector('.cartButtonCant').innerText = cant;
+        if(buy=="now"){
+          // redirect to cart
+          // alert('redirect to cart');
+          var url = "https://marialebredo.com/cart/";
+          window.location.href = url;
+        }
+      }
+    });
+  })
+
+
+
 
 
 

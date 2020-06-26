@@ -43,7 +43,7 @@
         <h1 class="singleSideTitle"><?php the_title(); ?></h1>
 
         <?php if($product->is_on_backorder()){ ?>
-          <p class="backorderMessage"><strong>ATTENTION:</strong> <i>This product is on backorder</i>. You can purchase it, and it will take 15 days to arrive. </p>
+          <p>Hi! We ran out of stock of this product, but you can still preorder it and receive it in 10-15 days :)</p>
         <?php } ?>
         <?php // var_dump($product->get_attributes( 'Talla' )); ?>
         <!-- TODO: mostrar precio dinamico con la seleccion de la variacion -->
@@ -146,79 +146,51 @@
             data-product-type="<?php echo $product->get_type(); ?>"
             data-quantity="1"
             data-variation-description=""
+            data-buy="later"
+            <?php if($product->is_on_backorder()){ ?>
+              data-preorder="true"
+            <?php } else { ?>
+              data-preorder="false"
+            <?php } ?>
             <?php if( $is_out_of_stock ){ echo 'disabled'; } ?>
           >
-            <?php if( $is_out_of_stock ){ echo 'OUT OF STOCK'; } else { ?>
-              <?php if($product->is_type( 'simple' )){echo 'ADD TO CART';} ?>
-              <?php if($product->is_type( 'variable' )){echo 'Select size';} ?>
+            <?php
+            if( $is_out_of_stock ){
+              echo 'OUT OF STOCK';
+            } else {
+              echo 'ADD TO CART';
+            }
+            ?>
+          </button>
+          
+          <button
+            class="btn"
+            id="myBuyNow"
+            data-product-id="<?php echo get_the_id(); ?>"
+            data-product-type="<?php echo $product->get_type(); ?>"
+            data-quantity="1"
+            data-variation-description=""
+            data-buy="now"
+            <?php if($product->is_on_backorder()){ ?>
+              data-preorder="true"
+            <?php } else { ?>
+              data-preorder="false"
             <?php } ?>
+            <?php if( $is_out_of_stock ){ echo 'disabled'; } ?>
+          >
+            <?php
+            if( $is_out_of_stock ){
+              echo 'OUT OF STOCK';
+            } else {
+              if($product->is_on_backorder()){ 
+                echo 'ORDER NOW';
+              } else {
+                echo 'BUY NOW';
+              }
+            }
+            ?>
           </button>
 
-
-
-          <?php
-
-
-
-
-
-
-          // function get_variation_id()
-          // {
-          //   global $woocommerce, $product, $post;
-          //   // $content = file_get_contents(“php://input”);
-          //   // parse_str($content, $data);
-          //   // $product_id = $data[‘product_id’];
-          //   // $attributes = $data[‘attributes’];
-          //   $product_id = get_the_id();
-          //   $attributes = $product->get_available_variations();
-          //   $product = new \WC_Product_Variable($product_id);
-          //   $selected_product = null;
-          //   foreach ($product->get_available_variations() as $variation)
-          //   {
-          //     // var_dump($variation);
-          //     $variation_attributes = $variation['attributes'];
-          //     if (count(array_diff($attributes, $variation_attributes)) == 0)
-          //     {
-          //       $selected_product = $variation;
-          //       break;
-          //     }
-          //   }
-          //   echo json_encode($selected_product);
-          //   // die();
-          // }
-          // get_variation_id();
-
-
-
-
-
-
-
-
-
-
-        ?>
-        <!-- <button class="thinBtn btnWhite singleProductSizeBtn">S/M</button> -->
-
-
-        <!-- <div class="addToCart"><?php
-         echo sprintf( '<a href="%s" id="addToCartA" data-quantity="1" class="%s" %s>%s</a>',
-             esc_url( $product->add_to_cart_url() ),
-             esc_attr( implode( ' ', array_filter( array(
-                 'button', 'product_type_' . $product->get_type(),
-                 $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-                 $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
-             ) ) ) ),
-             wc_implode_html_attributes( array(
-                 'data-product_id'  => $product->get_id(),
-                 // 'data-product_sku' => $product->get_sku(),
-                 'aria-label'       => $product->add_to_cart_description(),
-                 'rel'              => 'nofollow',
-             ) ),
-             esc_html( $product->add_to_cart_text() )
-         );
-        ?></div> -->
 
     </div>
 

@@ -642,7 +642,7 @@ function so_27270880_add_variation_to_cart() {
         // wp_send_json( $data );
 
 	}
-	
+
 	// echo WC()->cart->get_cart_contents_count();
 	$respuesta['count'] = WC()->cart->get_cart_contents_count();
 
@@ -1230,12 +1230,12 @@ function es_add_cart_notice() {
     if( ! ( is_cart() || is_checkout() ) ) return;
 
     // Set message
-    $message = "You have a backorder product in your cart.";
+    $message = "Hi! We ran out of stock of this product, but you can still preorder it and receive it in 10-15 days :)";
 
     // Set variable
     $found = false;
 
-    // Loop through all products in the Cart        
+    // Loop through all products in the Cart
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         // Get an instance of the WC_Product object
         $product = $cart_item['data'];

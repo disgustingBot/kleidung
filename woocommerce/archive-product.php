@@ -65,7 +65,7 @@ global $wp;
         </p>
       </div>
       <div class="selectBoxList">
-        <label for="nul<?php echo $term->term_id; ?>" class="selectBoxOption">
+        <label for="nul<?php echo $term->term_id; ?>" class="selectBoxOption"><strong>All</strong>
           <input
             class="selectBoxInput"
             id="nul<?php echo $term->term_id; ?>"
@@ -108,7 +108,7 @@ global $wp;
 
 
 
-  <section class="slider">
+  <section class="slider ATF">
   <h4 class="ShopTitle2">ALL PRODUCTS</h4>
   <form class="shopFilterBar">
     <?php woocommerce_subcats_from_parentcat('tipo'); ?>

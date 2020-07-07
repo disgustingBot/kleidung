@@ -3,16 +3,13 @@
 <?php while(have_posts()){the_post(); ?>
 
 
-  <div class="singleStoriesATF">
+  <div class="singleStoriesATF ATF">
 
     <section class="singleStorie">
 
       <figure class="singleStorieFigure">
         <img class="singleStorieImg lazy" data-url="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-
-
       </figure>
-
 
     </section>
     <div class="singleStorieCaption">
@@ -25,9 +22,6 @@
       <main class="singleStorieContent">
         <?php echo the_content(); ?>
       </main>
-      <h4 class="cardAuthor">
-        <?php echo get_the_author(); ?>
-      </h4>
     </div>
     <!--
     ////////////////////

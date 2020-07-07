@@ -168,11 +168,13 @@
     wp_nav_menu($args);
     ?>
 
-    <form class="suscribe" action="">
+    <!-- <form class="suscribe" action="">
       <p class="suscribeTitle">Suscríbete a nuestro newsletter</p>
       <input class="suscribeInput" type="email" placeholder="E-MAIL">
       <button class="btn suscribeButton">SUSCRIBE</button>
-    </form>
+    </form> -->
+
+      <?php echo do_shortcode('[mc4wp_form id="521"]'); ?>
 
 
   </nav>

@@ -9,8 +9,9 @@
 <div id="headerActivator" class="redDot"></div>
 <section class="homeATF ATF" id="homeATF">
   <video loop muted autoplay class="homeATFVideo rowcol1">
-    <source src="<?php echo get_post_meta($post->ID, 'video-portada', true); ?>" type="video/mp4">
+    <source src="<?php echo get_post_meta($post->ID, '2-video-portada', true); ?>" type="video/mp4" alt="video de portada">
   </video>
+  <img class="homeATFVideo rowcol1" src="<?php echo get_post_meta($post->ID, '1-foto-portada', true); ?>" alt="imagen de portada">
   <h1 class="homeATFTitle rowcol1"><?php echo get_post_meta( get_the_id(), 'titulo-portada' )[0]; ?></h1>
 
 

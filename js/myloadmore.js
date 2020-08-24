@@ -101,10 +101,14 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
   // cvf_load_all_posts(1);
 
   // Handle the clicks
-  $('.paginationLink').live('click',function(){
-      // var page = $(this).attr('p');
-      page = this.dataset.pagination;
-      filterPagination(false, false, page);
+  // $('.paginationLink').live('click',function(){
+  //   // var page = $(this).attr('p');
+  //   page = this.dataset.pagination;
+  //   filterPagination(false, false, page);
+  // });
+  $('.paginationLink').click(function(){
+    page = this.dataset.pagination;
+    filterPagination(false, false, page);
   });
 	$('.selectBoxOption').change(function(){
     var button = $(this),

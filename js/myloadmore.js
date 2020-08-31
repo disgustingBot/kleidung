@@ -94,6 +94,10 @@ jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" e
         // If successful Append the data into our html container
         $('#slider').empty();
         $('#slider').append(respuesta);
+        $('.paginationLink').click(function(){
+          page = this.dataset.pagination;
+          filterPagination(false, false, page);
+        });
       }
     });
   }
